@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histoires de Réussite — INFC Maroc</title>
+    <meta name="description" content="Découvrez les récits cliniques et les résultats mesurables de nos patients accompagnés par la méthode INFC au Maroc.">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        /* Premium Store-like Layout for Success Stories */
+        .stories-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+            padding: 60px 0;
+            align-items: start;
+        }
+
+        @media (max-width: 992px) {
+            .stories-layout {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        /* Sidebar Filter Style */
+        .filter-sidebar {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(10, 22, 40, 0.05);
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar-title {
+            font-size: 1.2rem;
+            color: var(--color-navy);
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--color-creme);
+        }
+
+        .filter-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .filter-btn {
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--color-grey-text);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .filter-btn:hover {
+            background: var(--color-creme);
+            color: var(--color-navy);
+        }
+
+        .filter-btn.active {
+            background: var(--color-navy);
+            color: var(--color-white);
+        }
+
+        .filter-count {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--color-gold);
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .filter-btn.active .filter-count {
+            background: var(--color-gold);
+            color: var(--color-navy);
+        }
+
+        /* Content Area & Cards */
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        .story-full-card {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(10, 22, 40, 0.05);
+            box-shadow: var(--shadow-soft);
+            padding: 30px;
+            transition: all 0.35s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .story-full-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--color-gold);
+        }
+
+        .card-category-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-gold);
+            margin-bottom: 12px;
+        }
+
+        .card-title-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .card-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--color-creme);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .card-meta h3 {
+            font-size: 1.15rem;
+            color: var(--color-navy);
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .card-meta span {
+            font-size: 0.85rem;
+            color: var(--color-grey-text);
+        }
+
+        .card-quote {
+            font-style: italic;
+            color: var(--color-navy);
+            font-size: 0.98rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            border-left: 3px solid var(--color-gold);
+            padding-left: 15px;
+        }
+
+        .card-divider {
+            border-top: 1px dashed rgba(10, 22, 40, 0.1);
+            margin: 20px 0;
+        }
+
+        .card-section-title {
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--color-navy);
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .card-steps {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 15px;
+        }
+
+        .card-steps li {
+            font-size: 0.9rem;
+            color: var(--color-grey-text);
+            margin-bottom: 6px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .card-steps li::before {
+            content: '➔';
+            position: absolute;
+            left: 0;
+            color: var(--color-gold);
+            font-weight: 700;
+        }
+
+        .card-metrics {
+            background: rgba(16, 185, 129, 0.06);
+            border-left: 4px solid #10B981;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: var(--color-navy);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .card-metrics span {
+            color: #10B981;
+            font-weight: 700;
+        }
+
+        .card-guide {
+            font-size: 0.85rem;
+            color: var(--color-grey-text);
+            background: var(--color-creme);
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid rgba(10, 22, 40, 0.05);
+        }
+
+        .card-guide strong {
+            color: var(--color-navy);
+        }
+
+        /* Animation class for filtering */
+        .fade-in {
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/logos/logo.png" alt="INFC Logo">
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="neurofeedback.html">La Science</a></li>
+                    <li><a href="programmes.html">Programmes</a></li>
+                    <li><a href="centres.html">Nos Centres</a></li>
+                    <li><a href="apropos.html">À Propos</a></li>
+                    <li><a href="idees.html">Boîte à Idées</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+            <div class="nav-cta">
+                <a href="contact.html" class="btn btn-navy">S'orienter</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="section bg-white" style="padding: 60px 0 40px; text-align: center;">
+            <div class="container">
+                <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:10px;">Histoires de Réussite Réelles</span>
+                <h1 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: var(--color-navy);">Parcours de Transformation</h1>
+                <p style="max-width: 700px; margin: 15px auto 0; font-size: 1.1rem; color: var(--color-grey-text);">
+                    Découvrez en détail les étapes cliniques, les chiffres clés et les protocoles appliqués pour nos patients à Casablanca, Marrakech, Tanger et Kénitra.
+                </p>
+            </div>
+        </section>
+
+        <!-- Stories Filter and List Layout -->
+        <section class="section bg-creme" style="padding-top: 20px;">
+            <div class="container">
+                <div class="stories-layout">
+                    
+                    <!-- Left Sidebar Filters -->
+                    <aside class="filter-sidebar">
+                        <h2 class="sidebar-title">Profils Cliniques</h2>
+                        <div class="filter-options">
+                            <button class="filter-btn active" data-filter="all">
+                                <span>Tous les récits</span>
+                                <span class="filter-count" id="count-all">0</span>
+                            </button>
+                            <button class="filter-btn" data-filter="parents">
+                                <span>Parents & TDA/H</span>
+                                <span class="filter-count" id="count-parents">0</span>
+                            </button>
+                            <button class="filter-btn" data-filter="veterans">
+                                <span>Vétérans & Trauma</span>
+                                <span class="filter-count" id="count-veterans">0</span>
+                            </button>
+                            <button class="filter-btn" data-filter="performers">
+                                <span>Peak Performers</span>
+                                <span class="filter-count" id="count-performers">0</span>
+                            </button>
+                            <button class="filter-btn" data-filter="adults">
+                                <span>Adultes & Sérénité</span>
+                                <span class="filter-count" id="count-adults">0</span>
+                            </button>
+                        </div>
+                    </aside>
+
+                    <!-- Right Stories Grid -->
+                    <div class="stories-grid" id="storiesGrid">
+                        
+                        <!-- Story 1: Sarah M. -->
+                        <div class="story-full-card fade-in" data-category="parents">
+                            <div>
+                                <span class="card-category-badge">👶 Accompagnement Pédiatrique</span>
+                                <div class="card-title-row">
+                                    <div class="card-avatar">👩</div>
+                                    <div class="card-meta">
+                                        <h3>Sarah M.</h3>
+                                        <span>Mère de famille (Casablanca)</span>
+                                    </div>
+                                </div>
+                                <p class="card-quote">
+                                    "Après 6 mois de neurofeedback, les symptômes de TDAH de mon fils se sont spectaculairement améliorés. Son focus en classe et son comportement à la maison sont incomparables !"
+                                </p>
+                                
+                                <div class="card-divider"></div>
+                                
+                                <h4 class="card-section-title">👣 Le Processus & Les Étapes :</h4>
+                                <ul class="card-steps">
+                                    <li><strong>Étape 1 :</strong> Échange d'orientation & cartographie d'attention.</li>
+                                    <li><strong>Étape 2 :</strong> 6 séances initiales de régulation neuro-sensible (calmage).</li>
+                                    <li><strong>Étape 3 :</strong> 12 séances de consolidation + plan de nutrition cérébrale.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="card-metrics">
+                                    📊 Chiffres clés : <span>-65%</span> de distractibilité en classe & endormissement en <span>12 min</span> (au lieu de 1h30).
+                                </div>
+                                <div class="card-guide">
+                                    📖 Guide Appliqué : <strong>Le Guide d'Accompagnement Neuro-Sensible INFC</strong> (gestion des écrans et routines).
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Story 2: James T. -->
+                        <div class="story-full-card fade-in" data-category="performers">
+                            <div>
+                                <span class="card-category-badge">🚀 Optimisation Cognitive</span>
+                                <div class="card-title-row">
+                                    <div class="card-avatar">👨‍💼</div>
+                                    <div class="card-meta">
+                                        <h3>James T.</h3>
+                                        <span>Directeur Financier (Marrakech)</span>
+                                    </div>
+                                </div>
+                                <p class="card-quote">
+                                    "J'étais sceptique au départ, mais le neurofeedback a transformé ma gestion du stress et mes prises de décision. Je me sens plus lucide et maître de mes capacités."
+                                </p>
+                                
+                                <div class="card-divider"></div>
+                                
+                                <h4 class="card-section-title">👣 Le Processus & Les Étapes :</h4>
+                                <ul class="card-steps">
+                                    <li><strong>Étape 1 :</strong> Bilan de stress aigu & mesure de surcharge mentale.</li>
+                                    <li><strong>Étape 2 :</strong> 8 séances intensives d'optimisation cognitive (bi-hebdomadaire).</li>
+                                    <li><strong>Étape 3 :</strong> 4 séances de stabilisation espacées sur 1 mois.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="card-metrics">
+                                    📊 Chiffres clés : <span>-58%</span> de stress perçu & <span>+45 min</span> de sommeil profond par nuit.
+                                </div>
+                                <div class="card-guide">
+                                    📖 Protocole Appliqué : <strong>Focus Haute Performance INFC</strong> (micro-siestes tactiques).
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Story 3: Michael R. -->
+                        <div class="story-full-card fade-in" data-category="veterans">
+                            <div>
+                                <span class="card-category-badge">🎖️ Régulation du Système Nerveux</span>
+                                <div class="card-title-row">
+                                    <div class="card-avatar">👴</div>
+                                    <div class="card-meta">
+                                        <h3>Michael R.</h3>
+                                        <span>Vétéran & Retraité (Tanger)</span>
+                                    </div>
+                                </div>
+                                <p class="card-quote">
+                                    "Pour la première fois depuis des années, je dors toute la nuit. Les cauchemars ont complètement disparu. Le neurofeedback m'a tout simplement rendu ma vie."
+                                </p>
+                                
+                                <div class="card-divider"></div>
+                                
+                                <h4 class="card-section-title">👣 Le Processus & Les Étapes :</h4>
+                                <ul class="card-steps">
+                                    <li><strong>Étape 1 :</strong> Création d'un espace rassurant (à faible intensité lumineuse).</li>
+                                    <li><strong>Étape 2 :</strong> 10 séances axées sur l'apaisement du système sympathique.</li>
+                                    <li><strong>Étape 3 :</strong> 10 séances de consolidation de la résilience nerveuse.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="card-metrics">
+                                    📊 Chiffres clés : <span>Suppression totale</span> des cauchemars nocturnes & <span>-75%</span> d'hypervigilance.
+                                </div>
+                                <div class="card-guide">
+                                    📖 Guide Appliqué : <strong>Plan d'Apaisement Autonome Post-Traumatique</strong>.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Story 4: Leyla A. -->
+                        <div class="story-full-card fade-in" data-category="adults">
+                            <div>
+                                <span class="card-category-badge">🧠 Sérénité & Équilibre</span>
+                                <div class="card-title-row">
+                                    <div class="card-avatar">👩‍⚕️</div>
+                                    <div class="card-meta">
+                                        <h3>Leyla A.</h3>
+                                        <span>Architecte (Casablanca)</span>
+                                    </div>
+                                </div>
+                                <p class="card-quote">
+                                    "Le burn-out m'avait complètement vidée de mon énergie. Grâce aux séances de neurofeedback, j'ai retrouvé ma vitalité mentale et mon calme intérieur."
+                                </p>
+                                
+                                <div class="card-divider"></div>
+                                
+                                <h4 class="card-section-title">👣 Le Processus & Les Étapes :</h4>
+                                <ul class="card-steps">
+                                    <li><strong>Étape 1 :</strong> Évaluation de la fatigue cognitive et du profil de surmenage.</li>
+                                    <li><strong>Étape 2 :</strong> 8 séances de régulation neuro-sensible axées sur les ondes Alpha.</li>
+                                    <li><strong>Étape 3 :</strong> 6 séances d'harmonisation de l'humeur.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="card-metrics">
+                                    📊 Chiffres clés : <span>83%</span> de réduction de la charge mentale & disparition des crises de panique.
+                                </div>
+                                <div class="card-guide">
+                                    📖 Protocole Appliqué : <strong>Protocole Reset Fatigue INFC</strong>.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Story 5: Youssef K. -->
+                        <div class="story-full-card fade-in" data-category="parents">
+                            <div>
+                                <span class="card-category-badge">👶 Accompagnement Pédiatrique</span>
+                                <div class="card-title-row">
+                                    <div class="card-avatar">👦</div>
+                                    <div class="card-meta">
+                                        <h3>Youssef K. (10 ans)</h3>
+                                        <span>Élève (Kénitra)</span>
+                                    </div>
+                                </div>
+                                <p class="card-quote">
+                                    "Avant, l'école me faisait peur parce que je n'arrivais pas à rester assis. Maintenant, je lis des livres entiers et je me sens beaucoup plus tranquille."
+                                </p>
+                                
+                                <div class="card-divider"></div>
+                                
+                                <h4 class="card-section-title">👣 Le Processus & Les Étapes :</h4>
+                                <ul class="card-steps">
+                                    <li><strong>Étape 1 :</strong> Bilan d'orientation et de concentration ludique.</li>
+                                    <li><strong>Étape 2 :</strong> 10 séances de neurofeedback dynamique NeurOptimal®.</li>
+                                    <li><strong>Étape 3 :</strong> 5 séances de stabilisation avant la rentrée scolaire.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="card-metrics">
+                                    📊 Chiffres clés : <span>+50%</span> d'amélioration des notes & diminution de l'agitation motrice.
+                                </div>
+                                <div class="card-guide">
+                                    📖 Guide Appliqué : <strong>Guide de l'Apprentissage Heureux INFC</strong>.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="assets/logos/logowhite.png" alt="INFC Logo" style="height: 40px; margin-bottom: 1rem;">
+                    <p>Centre d'excellence en neurofeedback au Maroc. Entraînement cérébral 100% naturel pour votre bien-être.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Nos Programmes</h4>
+                    <ul>
+                        <li><a href="programmes.html">Sérénité & Sommeil</a></li>
+                        <li><a href="programmes.html">Focus Scolaire</a></li>
+                        <li><a href="programmes.html">Haute Performance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Nos Centres</h4>
+                    <ul>
+                        <li><a href="centres.html">Casablanca</a></li>
+                        <li><a href="centres.html">Marrakech</a></li>
+                        <li><a href="centres.html">Kenitra</a></li>
+                        <li><a href="centres.html">Tanger</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p>📍 Twin Center, Casablanca, Maroc</p>
+                    <p>📞 +212 622 60 60 09</p>
+                    <p>✉️ contact@neurofeedback.ma</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 International Neurofeedback Center. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Filter JS Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const storyCards = document.querySelectorAll('.story-full-card');
+
+            // Set counts in sidebar
+            const countAll = storyCards.length;
+            const countParents = document.querySelectorAll('.story-full-card[data-category="parents"]').length;
+            const countVeterans = document.querySelectorAll('.story-full-card[data-category="veterans"]').length;
+            const countPerformers = document.querySelectorAll('.story-full-card[data-category="performers"]').length;
+            const countAdults = document.querySelectorAll('.story-full-card[data-category="adults"]').length;
+
+            document.getElementById('count-all').textContent = countAll;
+            document.getElementById('count-parents').textContent = countParents;
+            document.getElementById('count-veterans').textContent = countVeterans;
+            document.getElementById('count-performers').textContent = countPerformers;
+            document.getElementById('count-adults').textContent = countAdults;
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from other buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const filterValue = button.getAttribute('data-filter');
+
+                    storyCards.forEach(card => {
+                        card.style.display = 'none';
+                        card.classList.remove('fade-in');
+
+                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.style.display = 'flex';
+                            // Force reflow
+                            void card.offsetWidth;
+                            card.classList.add('fade-in');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Propos - INFC</title>
+    <meta name="description" content="Découvrez la vision du Dr. Chadia Chakib et l'approche unique de l'International Neurofeedback Center.">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        /* Founder Section Premium Layout */
+        .founder-section {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: start;
+        }
+        @media(max-width: 992px) {
+            .founder-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+        
+        /* Stylized Portrait Card */
+        .founder-portrait-container {
+            position: relative;
+            background: linear-gradient(135deg, var(--color-navy), var(--color-navy-light));
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            box-shadow: var(--shadow-hover);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            overflow: visible;
+        }
+        .founder-portrait-graphic {
+            width: 100%;
+            height: 480px;
+            border-radius: var(--radius-md);
+            background: rgba(255,255,255,0.03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .portrait-svg {
+            width: 85%;
+            height: 85%;
+            opacity: 0.9;
+        }
+        
+        /* Floating Badges */
+        .floating-badge {
+            position: absolute;
+            background: var(--color-white);
+            color: var(--color-navy);
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.82rem;
+            box-shadow: 0 10px 25px rgba(10, 22, 40, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            font-family: var(--font-heading);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        .floating-badge:hover {
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.25);
+            background: var(--color-creme);
+        }
+        .badge-1 { top: 12%; left: -25px; }
+        .badge-2 { bottom: 25%; right: -20px; }
+        .badge-3 { bottom: 8%; left: 10%; }
+        
+        @media(max-width: 576px) {
+            .badge-1 { left: 10px; top: 5%; }
+            .badge-2 { right: 10px; bottom: 15%; }
+            .badge-3 { left: 10px; bottom: 5%; }
+        }
+
+        .badge-icon {
+            font-size: 1.1rem;
+        }
+
+        /* Timeline styles */
+        .timeline {
+            position: relative;
+            margin-top: 30px;
+            padding-left: 30px;
+            border-left: 2px dashed rgba(212, 175, 55, 0.3);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -39px;
+            top: 4px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--color-navy);
+            border: 3px solid var(--color-gold);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+            transition: all 0.3s ease;
+        }
+        .timeline-item:hover::before {
+            background: var(--color-gold);
+            transform: scale(1.2);
+        }
+        .timeline-date {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--color-gold);
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+        .timeline-title {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--color-navy);
+            margin-bottom: 8px;
+        }
+        .timeline-text {
+            font-size: 0.95rem;
+            color: var(--color-grey-text);
+            line-height: 1.5;
+            margin: 0;
+        }
+        
+        .quote {
+            font-size: 1.4rem;
+            font-family: var(--font-heading);
+            color: var(--color-navy);
+            border-left: 4px solid var(--color-gold);
+            padding-left: 20px;
+            margin-bottom: 2.5rem;
+            line-height: 1.45;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/logos/logo.png" alt="INFC Logo">
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="neurofeedback.html">La Science</a></li>
+                    <li><a href="programmes.html">Programmes</a></li>
+                    <li><a href="centres.html">Nos Centres</a></li>
+                    <li><a href="apropos.html" class="active">À Propos</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-cta">
+                <a href="contact.html" class="btn btn-navy">S'orienter</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero fade-in" style="padding: 80px 0;">
+            <div class="container">
+                <h1>Notre Vision</h1>
+                <p>Repenser l'accompagnement neuro-cognitif au Maroc.</p>
+            </div>
+        </section>
+
+        <section class="section bg-white fade-in">
+            <div class="container">
+                <div class="founder-section">
+                    
+                    <!-- Left Column: Premium Graphic Frame & Floating Badges -->
+                    <div class="founder-portrait-container">
+                        <div class="floating-badge badge-1">
+                            <span class="badge-icon">🎓</span>
+                            <span>Neurologue Praticienne</span>
+                        </div>
+                        <div class="floating-badge badge-2">
+                            <span class="badge-icon">🎖️</span>
+                            <span>Certifiée NeurOptimal®</span>
+                        </div>
+                        <div class="floating-badge badge-3">
+                            <span class="badge-icon">🇲🇦</span>
+                            <span>Pionnière au Maroc</span>
+                        </div>
+                        
+                        <div class="founder-portrait-graphic">
+                            <!-- Premium SVG medical/brain graphic representing Dr. Chadia -->
+                            <svg class="portrait-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="100" cy="100" r="80" stroke="rgba(212, 175, 55, 0.2)" stroke-width="2"/>
+                                <circle cx="100" cy="100" r="60" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1"/>
+                                <!-- Stylized abstract profile silhouette -->
+                                <path d="M100 55C83.4315 55 70 68.4315 70 85C70 94.757 74.654 103.428 81.875 108.875C70.366 114.773 62 126.837 62 141C62 143.209 63.7909 145 66 145H134C136.209 145 138 143.209 138 141C138 126.837 129.634 114.773 118.125 108.875C125.346 103.428 130 94.757 130 85C130 68.4315 116.569 55 100 55Z" fill="rgba(212, 175, 55, 0.1)"/>
+                                <path d="M100 65C88.9543 65 80 73.9543 80 85C80 96.0457 88.9543 105 100 105C111.046 105 120 96.0457 120 85C120 73.9543 111.046 65 100 65Z" stroke="var(--color-gold)" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M72 138C76.2 124.6 86.8 115 100 115C113.2 115 123.8 124.6 128 138" stroke="var(--color-gold)" stroke-width="2" stroke-linecap="round"/>
+                                <!-- Glowing synapses -->
+                                <circle cx="100" cy="50" r="4" fill="var(--color-gold)"/>
+                                <circle cx="135" cy="85" r="3" fill="#10B981"/>
+                                <circle cx="65" cy="85" r="3" fill="#10B981"/>
+                                <path d="M100 50L100 65" stroke="var(--color-gold)" stroke-width="1.5" stroke-dasharray="2 2"/>
+                                <path d="M135 85L120 85" stroke="#10B981" stroke-width="1.5" stroke-dasharray="2 2"/>
+                                <path d="M65 85L80 85" stroke="#10B981" stroke-width="1.5" stroke-dasharray="2 2"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Timeline & Vision Statement -->
+                    <div class="founder-content">
+                        <div class="quote">
+                            "Nous n'accompagnons pas seulement des cerveaux, nous accompagnons des êtres humains vers leur propre excellence organique."
+                        </div>
+                        <h2 style="margin-bottom: 0.5rem; color: var(--color-navy);">Dr. Chadia Chakib</h2>
+                        <p style="color: var(--color-gold); font-weight: 700; margin-bottom: 1.5rem; font-family: var(--font-heading); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;">Fondatrice de l'International Neurofeedback Center</p>
+                        
+                        <p style="margin-bottom: 2rem; line-height: 1.6;">L'INFC n'est pas une clinique classique. C'est un espace de régulation neuro-sensible où le cerveau est considéré comme une intelligence à accompagner — jamais comme un problème à corriger.</p>
+                        
+                        <!-- Timeline of Achievements -->
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-date">2010 — Spécialisation Médicale</div>
+                                <div class="timeline-title">Parcours en Neurologie</div>
+                                <p class="timeline-text">Recherches cliniques approfondies sur la neuroplasticité et les mécanismes d'autorégulation cérébrale.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">2016 — Certification Internationale</div>
+                                <div class="timeline-title">NeurOptimal® au Canada</div>
+                                <p class="timeline-text">Formation et certification avancée auprès de Zengar Institute pour introduire cette technologie de pointe au Maroc.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">2018 — Fondation</div>
+                                <div class="timeline-title">Lancement d'INFC Maroc</div>
+                                <p class="timeline-text">Ouverture du premier centre pilote haut de gamme à Casablanca pour démocratiser l'accompagnement neuro-sensible.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-creme fade-in">
+            <div class="container text-center">
+                <h2 style="margin-bottom: 2rem;">Notre Équipe</h2>
+                <p style="max-width: 600px; margin: 0 auto 3rem;">Des praticiens certifiés, formés à l'approche INFC, qui placent l'humain au cœur de la technologie.</p>
+                
+                <div class="card-grid">
+                    <!-- Placeholders for team members -->
+                    <div class="card" style="padding: 2rem;">
+                        <div style="width: 120px; height: 120px; border-radius: 50%; background: var(--color-creme); margin: 0 auto 1.5rem;"></div>
+                        <h3 class="text-navy">Praticien INFC</h3>
+                        <p style="font-size: 0.9rem;">Spécialiste en neuro-régulation</p>
+                    </div>
+                    <div class="card" style="padding: 2rem;">
+                        <div style="width: 120px; height: 120px; border-radius: 50%; background: var(--color-creme); margin: 0 auto 1.5rem;"></div>
+                        <h3 class="text-navy">Praticien INFC</h3>
+                        <p style="font-size: 0.9rem;">Spécialiste en neuro-régulation</p>
+                    </div>
+                    <div class="card" style="padding: 2rem;">
+                        <div style="width: 120px; height: 120px; border-radius: 50%; background: var(--color-creme); margin: 0 auto 1.5rem;"></div>
+                        <h3 class="text-navy">Praticien INFC</h3>
+                        <p style="font-size: 0.9rem;">Spécialiste en neuro-régulation</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 International Neurofeedback Center. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

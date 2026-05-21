@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Ressources - INFC</title>
+    <meta name="description" content="Ressources et articles sur la neuro-régulation, l'apprentissage et le bien-être cérébral.">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        .blog-card {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+        .blog-img {
+            height: 200px;
+            background-color: var(--color-navy-light);
+            background-image: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-gold);
+            font-size: 3rem;
+        }
+        .blog-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-category {
+            color: var(--color-gold);
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+        .blog-content h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        .blog-content p {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/logos/logo.png" alt="INFC Logo">
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="neurofeedback.html">La Science</a></li>
+                    <li><a href="programmes.html">Programmes</a></li>
+                    <li><a href="centres.html">Nos Centres</a></li>
+                    <li><a href="apropos.html">À Propos</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-cta">
+                <a href="contact.html" class="btn btn-navy">S'orienter</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero fade-in" style="padding: 80px 0;">
+            <div class="container">
+                <h1>Ressources & Articles</h1>
+                <p>Comprendre le fonctionnement de son cerveau pour mieux l'accompagner.</p>
+            </div>
+        </section>
+
+        <section class="section bg-creme fade-in">
+            <div class="container">
+                <div class="card-grid">
+                    <!-- Featured Article: Brain Boost Guide -->
+                    <div class="blog-card">
+                        <div class="blog-img">📚</div>
+                        <div class="blog-content">
+                            <div class="blog-category">Guide Pratique</div>
+                            <h3>Préparer le cerveau pour les examens</h3>
+                            <p>Ce que la neuroscience nous apprend vraiment sur la surcharge cognitive, l'attention et la mémoire des étudiants.</p>
+                            <a href="#" class="btn btn-outline" style="text-align: center;">Lire l'article</a>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <div class="blog-img">🧠</div>
+                        <div class="blog-content">
+                            <div class="blog-category">Neuroscience</div>
+                            <h3>Régulation vs Correction</h3>
+                            <p>Pourquoi l'approche neuro-sensible privilégie l'auto-organisation du cerveau plutôt que la correction forcée.</p>
+                            <a href="#" class="btn btn-outline" style="text-align: center;">Lire l'article</a>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <div class="blog-img">💤</div>
+                        <div class="blog-content">
+                            <div class="blog-category">Bien-être</div>
+                            <h3>L'impact du bruit mental sur le sommeil</h3>
+                            <p>Découvrez comment la réduction du chaos interne favorise un sommeil profond et réparateur.</p>
+                            <a href="#" class="btn btn-outline" style="text-align: center;">Lire l'article</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 International Neurofeedback Center. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

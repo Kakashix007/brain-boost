@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeuroMaroc | Neurofeedback Dynamique NeurOptimal®</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal: #0F6E56;
+  --teal-light: #E1F5EE;
+  --teal-mid: #1D9E75;
+  --teal-dark: #085041;
+  --gold: #BA7517;
+  --gold-light: #FAEEDA;
+  --text: #2C2C2A;
+  --muted: #5F5E5A;
+  --border: rgba(44,44,42,0.12);
+  --bg: #FAFAF8;
+  --white: #fff;
+  --radius: 14px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; }
+h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; font-weight: 400; line-height: 1.2; }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: var(--teal); letter-spacing: 0.02em; text-decoration: none; }
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; transition: color .2s; }
+.nav-links a:hover { color: var(--teal); }
+.nav-cta { background: var(--teal); color: #fff; padding: 9px 20px; border-radius: 100px; font-size: 13px; text-decoration: none; transition: background .2s; }
+.nav-cta:hover { background: var(--teal-dark); }
+
+/* PAGES */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ---- LANDING PAGE ---- */
+.hero {
+  min-height: calc(100vh - 64px);
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; gap: 4rem;
+  padding: 5rem 5%;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(29,158,117,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-tag {
+  display: inline-block;
+  background: var(--teal-light); color: var(--teal-dark);
+  padding: 6px 14px; border-radius: 100px;
+  font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.hero h1 { font-size: clamp(2.8rem, 5vw, 4rem); color: var(--text); margin-bottom: 1.5rem; }
+.hero h1 span { color: var(--teal); }
+.hero p { font-size: 16px; color: var(--muted); max-width: 460px; margin-bottom: 2rem; }
+.btn-primary {
+  background: var(--teal); color: #fff;
+  padding: 14px 32px; border-radius: 100px;
+  text-decoration: none; font-size: 15px;
+  display: inline-block; transition: all .2s;
+  border: none; cursor: pointer;
+}
+.btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); }
+.btn-outline {
+  background: transparent; color: var(--teal);
+  border: 1.5px solid var(--teal);
+  padding: 13px 28px; border-radius: 100px;
+  text-decoration: none; font-size: 15px;
+  display: inline-block; transition: all .2s;
+  cursor: pointer;
+}
+.btn-outline:hover { background: var(--teal-light); }
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero-visual {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 2.5rem;
+  position: relative;
+}
+.brain-icon { font-size: 80px; text-align: center; display: block; margin-bottom: 1.5rem; opacity: 0.85; }
+.stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.stat-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  text-align: center;
+}
+.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--teal); }
+.stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
+.badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.5rem; }
+.badge {
+  background: var(--teal-light); color: var(--teal-dark);
+  padding: 5px 12px; border-radius: 100px; font-size: 12px;
+}
+
+/* ABOUT SECTION */
+.about-section { padding: 6rem 5%; background: var(--white); }
+.section-tag { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal); margin-bottom: 1rem; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.about-grid h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); margin-bottom: 1.5rem; }
+.about-grid p { color: var(--muted); margin-bottom: 1rem; font-size: 15px; }
+.how-steps { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+.step {
+  display: flex; gap: 1rem; align-items: flex-start;
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.25rem;
+}
+.step-num {
+  width: 36px; height: 36px; min-width: 36px;
+  background: var(--teal); color: #fff;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 500;
+}
+.step h4 { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; margin-bottom: 3px; }
+.step p { font-size: 13px; color: var(--muted); margin: 0; }
+
+/* PERSONAS / USE CASES */
+.personas-section { padding: 6rem 5%; }
+.personas-section h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); text-align: center; margin-bottom: .75rem; }
+.personas-section > p { text-align: center; color: var(--muted); max-width: 520px; margin: 0 auto 3rem; }
+.personas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+.persona-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 2rem 1.5rem;
+  transition: all .25s; cursor: default;
+}
+.persona-card:hover { border-color: var(--teal-mid); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(15,110,86,0.08); }
+.persona-icon { font-size: 2rem; margin-bottom: 1rem; }
+.persona-card h3 { font-size: 1.2rem; margin-bottom: .5rem; }
+.persona-card p { font-size: 13px; color: var(--muted); }
+.persona-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
+.persona-tag { background: var(--teal-light); color: var(--teal-dark); padding: 3px 10px; border-radius: 100px; font-size: 11px; }
+
+/* QUIZ SECTION */
+.quiz-section { padding: 6rem 5%; background: var(--teal); position: relative; overflow: hidden; }
+.quiz-section::before {
+  content: ''; position: absolute;
+  bottom: -150px; left: -150px;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+}
+.quiz-header { text-align: center; max-width: 600px; margin: 0 auto 3rem; }
+.quiz-header h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); color: #fff; margin-bottom: 1rem; }
+.quiz-header p { color: rgba(255,255,255,0.75); font-size: 15px; }
+.quiz-card {
+  max-width: 640px; margin: 0 auto;
+  background: #fff; border-radius: 20px;
+  padding: 2.5rem; position: relative;
+}
+.quiz-progress-bar {
+  height: 4px; background: var(--teal-light);
+  border-radius: 2px; margin-bottom: 2rem;
+  overflow: hidden;
+}
+.quiz-progress-fill {
+  height: 100%; background: var(--teal);
+  border-radius: 2px; transition: width .4s ease;
+}
+.quiz-step-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: .75rem; }
+.quiz-question { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; color: var(--text); margin-bottom: 1.75rem; }
+.quiz-options { display: grid; gap: .75rem; }
+.quiz-option {
+  border: 1.5px solid var(--border); border-radius: 12px;
+  padding: 1rem 1.25rem; cursor: pointer;
+  display: flex; gap: .75rem; align-items: center;
+  transition: all .2s; font-size: 14px;
+  background: var(--bg);
+}
+.quiz-option:hover { border-color: var(--teal); background: var(--teal-light); }
+.quiz-option.selected { border-color: var(--teal); background: var(--teal-light); color: var(--teal-dark); }
+.quiz-option-icon { font-size: 1.2rem; }
+.quiz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; }
+.btn-back { background: transparent; border: 1.5px solid var(--border); color: var(--muted); padding: 10px 20px; border-radius: 100px; cursor: pointer; font-size: 13px; }
+.btn-next { background: var(--teal); color: #fff; border: none; padding: 12px 28px; border-radius: 100px; cursor: pointer; font-size: 14px; transition: background .2s; }
+.btn-next:hover { background: var(--teal-dark); }
+.btn-next:disabled { opacity: .4; cursor: not-allowed; }
+
+/* QUIZ RESULT */
+.quiz-result { text-align: center; }
+.result-icon { font-size: 3rem; margin-bottom: 1rem; }
+.result-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: .5rem; }
+.result-desc { color: var(--muted); font-size: 14px; max-width: 420px; margin: 0 auto 1.5rem; }
+.result-tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 2rem; }
+.result-tag { background: var(--teal-light); color: var(--teal-dark); padding: 5px 14px; border-radius: 100px; font-size: 12px; }
+.lead-form { text-align: left; margin-top: 1.5rem; }
+.lead-form h4 { font-size: 14px; margin-bottom: 1rem; color: var(--muted); font-weight: 400; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: .75rem; }
+.form-input {
+  width: 100%; padding: 11px 14px;
+  border: 1.5px solid var(--border); border-radius: 10px;
+  font-size: 14px; font-family: 'DM Sans', sans-serif;
+  background: var(--bg); color: var(--text);
+  transition: border-color .2s;
+}
+.form-input:focus { outline: none; border-color: var(--teal); }
+.form-input.full { grid-column: 1/-1; }
+.form-select {
+  width: 100%; padding: 11px 14px;
+  border: 1.5px solid var(--border); border-radius: 10px;
+  font-size: 14px; font-family: 'DM Sans', sans-serif;
+  background: var(--bg); color: var(--text); cursor: pointer;
+}
+.submit-btn { width: 100%; margin-top: .75rem; padding: 14px; font-size: 15px; border: none; }
+.success-msg { background: var(--teal-light); border: 1px solid var(--teal-mid); border-radius: 12px; padding: 1.25rem; text-align: center; margin-top: 1rem; color: var(--teal-dark); font-size: 14px; display: none; }
+
+/* TESTIMONIALS */
+.testimonials-section { padding: 6rem 5%; background: var(--white); }
+.testimonials-section h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); text-align: center; margin-bottom: 3rem; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.testimonial {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.75rem;
+}
+.stars { color: var(--gold); font-size: 14px; margin-bottom: .75rem; letter-spacing: 2px; }
+.testimonial p { font-size: 14px; color: var(--muted); font-style: italic; margin-bottom: 1rem; }
+.testimonial-author { display: flex; gap: .75rem; align-items: center; }
+.author-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--teal); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 500;
+}
+.author-name { font-size: 13px; font-weight: 500; }
+.author-city { font-size: 12px; color: var(--muted); }
+
+/* CITIES SECTION */
+.cities-section { padding: 6rem 5%; }
+.cities-section h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); text-align: center; margin-bottom: .75rem; }
+.cities-section > p { text-align: center; color: var(--muted); max-width: 520px; margin: 0 auto 3rem; }
+.cities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+.city-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.75rem 1.5rem;
+  text-align: center; transition: all .25s; cursor: pointer;
+  text-decoration: none; color: var(--text);
+}
+.city-card:hover { border-color: var(--teal); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(15,110,86,0.08); }
+.city-flag { font-size: 2.5rem; margin-bottom: 1rem; }
+.city-card h3 { font-size: 1.25rem; margin-bottom: .25rem; }
+.city-card p { font-size: 12px; color: var(--muted); }
+.city-status { display: inline-block; margin-top: .75rem; padding: 4px 10px; border-radius: 100px; font-size: 11px; }
+.city-open { background: var(--teal-light); color: var(--teal-dark); }
+.city-soon { background: var(--gold-light); color: var(--gold); }
+
+/* FOOTER */
+footer { background: var(--text); color: rgba(255,255,255,0.7); padding: 4rem 5% 2rem; }
+.footer-grid { display: grid; grid-template-columns: 2fr repeat(3,1fr); gap: 3rem; margin-bottom: 3rem; }
+.footer-brand h3 { font-family: 'Cormorant Garamond', serif; color: #fff; font-size: 1.5rem; margin-bottom: .75rem; }
+.footer-brand p { font-size: 13px; line-height: 1.7; max-width: 280px; }
+.footer-col h4 { color: #fff; font-size: 13px; font-weight: 500; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: .6rem; }
+.footer-col a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 13px; transition: color .2s; }
+.footer-col a:hover { color: #fff; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; font-size: 12px; display: flex; justify-content: space-between; }
+
+/* ---- RESERVATION PAGE ---- */
+.reservation-page { padding: 5rem 5%; }
+.page-hero { text-align: center; max-width: 640px; margin: 0 auto 4rem; }
+.page-hero h1 { font-size: clamp(2.2rem, 4vw, 3.2rem); margin-bottom: 1rem; }
+.page-hero p { color: var(--muted); font-size: 15px; }
+.city-tabs { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: center; margin-bottom: 3rem; }
+.city-tab {
+  padding: 10px 22px; border-radius: 100px;
+  border: 1.5px solid var(--border);
+  background: var(--white); cursor: pointer;
+  font-size: 14px; transition: all .2s;
+  display: flex; align-items: center; gap: 6px;
+}
+.city-tab:hover { border-color: var(--teal); color: var(--teal); }
+.city-tab.active { background: var(--teal); color: #fff; border-color: var(--teal); }
+.city-panel { display: none; }
+.city-panel.active { display: block; }
+.city-reservation-header {
+  display: grid; grid-template-columns: 1fr auto; gap: 2rem;
+  align-items: start; margin-bottom: 2.5rem;
+  padding: 2rem; background: var(--teal); border-radius: 20px; color: #fff;
+}
+.city-res-name { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; margin-bottom: .25rem; }
+.city-res-sub { font-size: 14px; opacity: .8; }
+.city-res-badge { background: rgba(255,255,255,0.15); padding: 8px 18px; border-radius: 100px; font-size: 13px; white-space: nowrap; }
+.reservation-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 2.5rem; align-items: start; }
+.res-form-card, .res-info-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 2rem;
+}
+.res-form-card h3, .res-info-card h3 { font-size: 1.2rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
+.form-group { margin-bottom: 1rem; }
+.form-label { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: .4rem; }
+.session-types { display: grid; gap: .6rem; margin-bottom: 1rem; }
+.session-type {
+  border: 1.5px solid var(--border); border-radius: 10px;
+  padding: .9rem 1rem; cursor: pointer; display: flex;
+  justify-content: space-between; align-items: center;
+  transition: all .2s; font-size: 14px;
+}
+.session-type:hover { border-color: var(--teal); }
+.session-type.selected { border-color: var(--teal); background: var(--teal-light); }
+.session-type .price { font-weight: 500; color: var(--teal); font-size: 13px; }
+.slots-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin-bottom: 1rem; }
+.slot {
+  border: 1.5px solid var(--border); border-radius: 8px;
+  padding: 8px; text-align: center; font-size: 12px;
+  cursor: pointer; transition: all .2s;
+}
+.slot:hover { border-color: var(--teal); }
+.slot.selected { background: var(--teal); color: #fff; border-color: var(--teal); }
+.slot.unavailable { opacity: .35; cursor: not-allowed; text-decoration: line-through; }
+.info-row {
+  display: flex; gap: .75rem; align-items: flex-start;
+  padding: .9rem 0; border-bottom: 1px solid var(--border);
+}
+.info-row:last-child { border-bottom: none; }
+.info-icon { font-size: 1rem; min-width: 20px; }
+.info-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 2px; }
+.info-value { font-size: 14px; }
+.whatsapp-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: #25D366; color: #fff; border: none;
+  padding: 12px; border-radius: 10px; font-size: 14px;
+  cursor: pointer; width: 100%; margin-top: 1rem; text-decoration: none;
+  transition: opacity .2s;
+}
+.whatsapp-btn:hover { opacity: .9; }
+.cal-mini { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin: 1rem 0; }
+.cal-day {
+  aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+  font-size: 11px; border-radius: 6px; cursor: pointer; transition: all .15s;
+}
+.cal-day.header { color: var(--muted); cursor: default; font-weight: 500; }
+.cal-day.available:hover { background: var(--teal-light); }
+.cal-day.selected { background: var(--teal); color: #fff; }
+.cal-day.unavailable { color: var(--border); cursor: not-allowed; }
+.cal-day.today { border: 1px solid var(--teal); color: var(--teal); }
+
+/* 404 PAGE */
+.error-page {
+  min-height: calc(100vh - 64px);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 4rem 5%;
+}
+.error-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(6rem, 18vw, 12rem);
+  color: var(--teal); line-height: 1;
+  opacity: .12; position: absolute;
+  pointer-events: none; user-select: none;
+}
+.error-content { position: relative; }
+.error-icon { font-size: 4rem; margin-bottom: 1.5rem; }
+.error-content h1 { font-size: clamp(1.8rem, 3.5vw, 2.5rem); margin-bottom: 1rem; }
+.error-content p { color: var(--muted); max-width: 420px; margin: 0 auto 2rem; font-size: 15px; }
+.error-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.brain-pulse {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: var(--teal-light);
+  margin: 0 auto 1.5rem;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.5rem;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.08)} }
+
+/* Responsive */
+@media(max-width:768px){
+  .hero, .about-grid { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+  .reservation-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .city-reservation-header { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a class="nav-logo" onclick="showPage('home')">NeuroMaroc</a>
+  <div class="nav-links">
+    <a onclick="showPage('home')">Accueil</a>
+    <a onclick="showPage('home'); setTimeout(()=>scrollTo('#about'),200)">À propos</a>
+    <a onclick="showPage('home'); setTimeout(()=>scrollTo('#quiz'),200)">Quiz</a>
+    <a onclick="showPage('reservation')" class="nav-cta">Réserver</a>
+  </div>
+</nav>
+
+<!-- ===================== HOME PAGE ===================== -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-tag">🧠 NeurOptimal® certifié au Maroc</div>
+      <h1>Entraînez votre cerveau pour un <span>bien-être durable</span></h1>
+      <p>Découvrez le Neurofeedback Dynamique — une technologie non-invasive qui aide votre cerveau à s'autoréguler. Stress, sommeil, concentration : retrouvez votre équilibre.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="showPage('reservation')">Réserver une séance</button>
+        <button class="btn-outline" onclick="document.getElementById('quiz-section').scrollIntoView({behavior:'smooth'})">Faire le quiz</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <span class="brain-icon">🧠</span>
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-num">4</div><div class="stat-label">Villes</div></div>
+        <div class="stat-card"><div class="stat-num">3M+</div><div class="stat-label">Heures mondiales</div></div>
+        <div class="stat-card"><div class="stat-num">0</div><div class="stat-label">Effets secondaires</div></div>
+      </div>
+      <div class="badges">
+        <span class="badge">Casablanca</span>
+        <span class="badge">Marrakech</span>
+        <span class="badge">Tanger</span>
+        <span class="badge">Kenitra</span>
+        <span class="badge">NeurOptimal® certified</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about-section">
+    <div class="about-grid">
+      <div>
+        <div class="section-tag">Comment ça fonctionne</div>
+        <h2>Une technologie naturelle, sans effort</h2>
+        <p>Le Neurofeedback Dynamique NeurOptimal® mesure en temps réel l'activité électrique de votre cerveau et lui envoie un retour subtil, l'aidant à s'autoréguler naturellement.</p>
+        <p>Sans diagnostic, sans protocole imposé — votre cerveau fait lui-même ses propres choix de régulation.</p>
+      </div>
+      <div class="how-steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div><h4>Installation confortable</h4><p>Vous êtes installé dans un fauteuil. Des capteurs sont posés sur votre crâne — aucun courant électrique n'est envoyé.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div><h4>Film ou musique</h4><p>Vous regardez un film ou écoutez de la musique pendant toute la séance. Aucune concentration requise.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div><h4>Le cerveau s'autorégule</h4><p>Le système NeurOptimal® analyse et renvoie les informations au cerveau en temps réel. Il apprend à mieux fonctionner.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div><h4>Résultats progressifs</h4><p>Après chaque séance, vous pouvez ressentir apaisement, meilleur sommeil, clarté mentale et regain d'énergie.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERSONAS / USE CASES -->
+  <section class="personas-section">
+    <div class="section-tag" style="text-align:center">Pour qui ?</div>
+    <h2>Une solution pour chaque profil</h2>
+    <p>Le Neurofeedback s'adapte à tout âge et à toute situation — sans contre-indication.</p>
+    <div class="personas-grid">
+      <div class="persona-card">
+        <div class="persona-icon">😰</div>
+        <h3>Stress & Anxiété</h3>
+        <p>Professionnels sous pression, parents débordés, personnes en burn-out cherchant un retour à la sérénité.</p>
+        <div class="persona-tags"><span class="persona-tag">Burn-out</span><span class="persona-tag">Anxiété</span><span class="persona-tag">TSPT</span></div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-icon">😴</div>
+        <h3>Sommeil difficile</h3>
+        <p>Insomnies, réveils nocturnes, fatigue chronique — retrouvez un rythme de sommeil régulier et réparateur.</p>
+        <div class="persona-tags"><span class="persona-tag">Insomnie</span><span class="persona-tag">Fatigue</span></div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-icon">📚</div>
+        <h3>Enfants & Ados</h3>
+        <p>TDAH, difficultés d'apprentissage, troubles du comportement — une approche douce et efficace pour les jeunes.</p>
+        <div class="persona-tags"><span class="persona-tag">TDAH</span><span class="persona-tag">Dyslexie</span><span class="persona-tag">Apprentissage</span></div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-icon">🧘</div>
+        <h3>Bien-être & Performance</h3>
+        <p>Sportifs, dirigeants, créatifs cherchant à optimiser leurs performances cognitives et émotionnelles.</p>
+        <div class="persona-tags"><span class="persona-tag">Concentration</span><span class="persona-tag">Créativité</span></div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-icon">🧓</div>
+        <h3>Séniors & Neurologie</h3>
+        <p>Déclin cognitif, rééducation post-AVC, dépression — un accompagnement bienveillant à tout âge.</p>
+        <div class="persona-tags"><span class="persona-tag">Dépression</span><span class="persona-tag">AVC</span><span class="persona-tag">Mémoire</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ SECTION -->
+  <section id="quiz-section" class="quiz-section">
+    <div class="quiz-header">
+      <h2>Quel profil êtes-vous ?</h2>
+      <p>Répondez à 4 questions pour découvrir si le Neurofeedback est fait pour vous — et recevoir nos recommandations personnalisées.</p>
+    </div>
+
+    <div class="quiz-card">
+      <div id="quiz-container">
+        <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-progress" style="width:0%"></div></div>
+        <div class="quiz-step-label" id="quiz-step-label">Question 1 sur 4</div>
+        <div class="quiz-question" id="quiz-question">Quelle est votre principale préoccupation en ce moment ?</div>
+        <div class="quiz-options" id="quiz-options"></div>
+        <div class="quiz-nav">
+          <button class="btn-back" id="btn-back" onclick="quizBack()" style="visibility:hidden">← Retour</button>
+          <button class="btn-next" id="btn-next" onclick="quizNext()" disabled>Suivant →</button>
+        </div>
+      </div>
+      <div id="quiz-result" class="quiz-result" style="display:none"></div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <h2>Ce que disent nos patients</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>"Après 10 séances, mon anxiété a considérablement diminué. Je dors mieux et je me sens beaucoup plus sereine dans ma vie professionnelle."</p>
+        <div class="testimonial-author"><div class="author-avatar">SR</div><div><div class="author-name">Sana R.</div><div class="author-city">Casablanca</div></div></div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>"Mon fils de 9 ans avait un TDAH sévère. Après 2 mois de séances, ses enseignants ont remarqué une amélioration remarquable en classe."</p>
+        <div class="testimonial-author"><div class="author-avatar">FM</div><div><div class="author-name">Fatima M.</div><div class="author-city">Marrakech</div></div></div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>"En tant que dirigeant, le neurofeedback m'a aidé à mieux gérer le stress et à prendre des décisions plus claires. Je recommande vivement."</p>
+        <div class="testimonial-author"><div class="author-avatar">KA</div><div><div class="author-name">Karim A.</div><div class="author-city">Tanger</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CITIES -->
+  <section class="cities-section">
+    <div class="section-tag" style="text-align:center">Nos centres</div>
+    <h2>Présents dans 4 villes</h2>
+    <p>Trouvez le centre le plus proche de vous et réservez votre première séance découverte.</p>
+    <div class="cities-grid">
+      <div class="city-card" onclick="showPage('reservation','casa')">
+        <div class="city-flag">🏙️</div>
+        <h3>Casablanca</h3>
+        <p>Maârif & Racine</p>
+        <span class="city-status city-open">Ouvert</span>
+      </div>
+      <div class="city-card" onclick="showPage('reservation','marrakech')">
+        <div class="city-flag">🌴</div>
+        <h3>Marrakech</h3>
+        <p>Guéliz</p>
+        <span class="city-status city-open">Ouvert</span>
+      </div>
+      <div class="city-card" onclick="showPage('reservation','tanger')">
+        <div class="city-flag">🌊</div>
+        <h3>Tanger</h3>
+        <p>Malabata</p>
+        <span class="city-status city-open">Ouvert</span>
+      </div>
+      <div class="city-card" onclick="showPage('reservation','kenitra')">
+        <div class="city-flag">🌿</div>
+        <h3>Kenitra</h3>
+        <p>Centre-ville</p>
+        <span class="city-status city-open">Ouvert</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>NeuroMaroc</h3>
+        <p>Premier réseau de centres Neurofeedback Dynamique NeurOptimal® au Maroc. Votre cerveau, votre équilibre.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Centres</h4>
+        <ul>
+          <li><a onclick="showPage('reservation','casa')">Casablanca</a></li>
+          <li><a onclick="showPage('reservation','marrakech')">Marrakech</a></li>
+          <li><a onclick="showPage('reservation','tanger')">Tanger</a></li>
+          <li><a onclick="showPage('reservation','kenitra')">Kenitra</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Séance découverte</a></li>
+          <li><a href="#">Pack 10 séances</a></li>
+          <li><a href="#">Location d'équipement</a></li>
+          <li><a href="#">Formation NeurOptimal</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:contact@neuromaroc.com">contact@neuromaroc.com</a></li>
+          <li><a href="tel:+212600000000">+212 600 000 000</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 NeuroMaroc · Tous droits réservés</span>
+      <span>Politique de confidentialité · CGU</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ===================== RESERVATION PAGE ===================== -->
+<div id="page-reservation" class="page reservation-page">
+  <div class="page-hero">
+    <div class="hero-tag">📅 Prise de rendez-vous</div>
+    <h1>Réservez votre séance</h1>
+    <p>Choisissez la ville qui vous convient et sélectionnez votre créneau. Première séance découverte offerte sur présentation de ce formulaire.</p>
+  </div>
+
+  <!-- CITY TABS -->
+  <div class="city-tabs">
+    <button class="city-tab active" onclick="switchCity('casa',this)">🏙️ Casablanca</button>
+    <button class="city-tab" onclick="switchCity('marrakech',this)">🌴 Marrakech</button>
+    <button class="city-tab" onclick="switchCity('tanger',this)">🌊 Tanger</button>
+    <button class="city-tab" onclick="switchCity('kenitra',this)">🌿 Kenitra</button>
+  </div>
+
+  <!-- CASABLANCA -->
+  <div class="city-panel active" id="panel-casa">
+    <div class="city-reservation-header">
+      <div>
+        <div class="city-res-name">Casablanca</div>
+        <div class="city-res-sub">2 centres disponibles · Maârif & Racine</div>
+      </div>
+      <div class="city-res-badge">Lun–Sam · 9h–19h</div>
+    </div>
+    <div class="reservation-grid">
+      <div class="res-form-card">
+        <h3>🗓️ Choisissez votre créneau</h3>
+        <div class="form-group">
+          <label class="form-label">Centre</label>
+          <select class="form-select">
+            <option>Centre Maârif – Bd Zerktouni, Casa</option>
+            <option>Centre Racine – Av. Hassan II, Casa</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Type de séance</label>
+          <div class="session-types">
+            <div class="session-type selected" onclick="selectSession(this)"><span>🌟 Séance découverte (1h)</span><span class="price">Gratuite</span></div>
+            <div class="session-type" onclick="selectSession(this)"><span>🧠 Séance standard (1h)</span><span class="price">600 MAD</span></div>
+            <div class="session-type" onclick="selectSession(this)"><span>📦 Pack 10 séances</span><span class="price">5 000 MAD</span></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Mai 2025</label>
+          <div class="cal-mini" id="cal-casa"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Horaire disponible</label>
+          <div class="slots-grid" id="slots-casa">
+            <div class="slot" onclick="selectSlot(this)">9:00</div>
+            <div class="slot" onclick="selectSlot(this)">10:00</div>
+            <div class="slot unavailable">11:00</div>
+            <div class="slot" onclick="selectSlot(this)">14:00</div>
+            <div class="slot" onclick="selectSlot(this)">15:00</div>
+            <div class="slot unavailable">16:00</div>
+            <div class="slot" onclick="selectSlot(this)">17:00</div>
+            <div class="slot" onclick="selectSlot(this)">18:00</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Vos coordonnées</label>
+          <div class="form-row">
+            <input class="form-input" placeholder="Prénom" type="text">
+            <input class="form-input" placeholder="Nom" type="text">
+          </div>
+          <div class="form-row">
+            <input class="form-input" placeholder="Téléphone" type="tel">
+            <input class="form-input" placeholder="Email" type="email">
+          </div>
+          <textarea class="form-input full" rows="2" placeholder="Motif de consultation (optionnel)" style="resize:none;margin-top:.5rem"></textarea>
+        </div>
+        <button class="btn-primary submit-btn" onclick="submitReservation(this)">Confirmer la réservation</button>
+        <div class="success-msg" id="success-casa">✅ Votre demande a bien été envoyée ! Nous vous confirmons par SMS dans les 2h.</div>
+      </div>
+      <div class="res-info-card">
+        <h3>📍 Informations centre</h3>
+        <div class="info-row"><div class="info-icon">📍</div><div><div class="info-label">Adresse</div><div class="info-value">Bd Zerktouni, Maârif, Casablanca</div></div></div>
+        <div class="info-row"><div class="info-icon">📞</div><div><div class="info-label">Téléphone</div><div class="info-value">+212 522 000 001</div></div></div>
+        <div class="info-row"><div class="info-icon">🕐</div><div><div class="info-label">Horaires</div><div class="info-value">Lundi – Samedi : 9h – 19h</div></div></div>
+        <div class="info-row"><div class="info-icon">🅿️</div><div><div class="info-label">Parking</div><div class="info-value">Parking gratuit disponible</div></div></div>
+        <div class="info-row"><div class="info-icon">💰</div><div><div class="info-label">Tarifs</div><div class="info-value">À partir de 600 MAD / séance</div></div></div>
+        <div class="info-row"><div class="info-icon">👤</div><div><div class="info-label">Équipe</div><div class="info-value">Neurothérapeutes certifiés NeurOptimal®</div></div></div>
+        <a class="whatsapp-btn" href="https://wa.me/212600000000" target="_blank">
+          <span style="font-size:1.1rem">💬</span> Contacter sur WhatsApp
+        </a>
+        <div style="margin-top:1.5rem;padding:1rem;background:var(--teal-light);border-radius:10px;font-size:13px;color:var(--teal-dark)">
+          <strong>🎁 Première séance gratuite</strong><br>Mentionnez ce formulaire pour bénéficier de votre séance découverte offerte.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARRAKECH -->
+  <div class="city-panel" id="panel-marrakech">
+    <div class="city-reservation-header">
+      <div>
+        <div class="city-res-name">Marrakech</div>
+        <div class="city-res-sub">1 centre disponible · Guéliz</div>
+      </div>
+      <div class="city-res-badge">Lun–Sam · 9h–18h</div>
+    </div>
+    <div class="reservation-grid">
+      <div class="res-form-card">
+        <h3>🗓️ Choisissez votre créneau</h3>
+        <div class="form-group">
+          <label class="form-label">Centre</label>
+          <select class="form-select"><option>Centre Guéliz – Av. Mohammed V, Marrakech</option></select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Type de séance</label>
+          <div class="session-types">
+            <div class="session-type selected" onclick="selectSession(this)"><span>🌟 Séance découverte (1h)</span><span class="price">Gratuite</span></div>
+            <div class="session-type" onclick="selectSession(this)"><span>🧠 Séance standard (1h)</span><span class="price">600 MAD</span></div>
+            <div class="session-type" onclick="selectSession(this)"><span>📦 Pack 10 séances</span><span class="price">5 000 MAD</span></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Horaire disponible</label>
+          <div class="slots-grid">
+            <div class="slot" onclick="selectSlot(this)">9:30</div>
+            <div class="slot unavailable">11:00</div>
+            <div class="slot" onclick="selectSlot(this)">14:00</div>
+            <div class="slot" onclick="selectSlot(this)">15:30</div>
+            <div class="slot unavailable">17:00</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Vos coordonnées</label>
+          <div class="form-row">
+            <input class="form-input" placeholder="Prénom" type="text">
+            <input class="form-input" placeholder="Nom" type="text">
+          </div>
+          <div class="form-row">
+            <input class="form-input" placeholder="Téléphone" type="tel">
+            <input class="form-input" placeholder="Email" type="email">
+          </div>
+        </div>
+        <button class="btn-primary submit-btn" onclick="submitReservation(this)">Confirmer la réservation</button>
+        <div class="success-msg">✅ Réservation envoyée ! Nous vous contactons dans les 2h.</div>
+      </div>
+      <div class="res-info-card">
+        <h3>📍 Informations centre</h3>
+        <div class="info-row"><div class="info-icon">📍</div><div><div class="info-label">Adresse</div><div class="info-value">Av. Mohammed V, Guéliz, Marrakech</div></div></div>
+        <div class="info-row"><div class="info-icon">📞</div><div><div class="info-label">Téléphone</div><div class="info-value">+212 524 000 002</div></div></div>
+        <div class="info-row"><div class="info-icon">🕐</div><div><div class="info-label">Horaires</div><div class="info-value">Lundi – Samedi : 9h – 18h</div></div></div>
+        <div class="info-row"><div class="info-icon">💰</div><div><div class="info-label">Tarifs</div><div class="info-value">À partir de 600 MAD / séance</div></div></div>
+        <a class="whatsapp-btn" href="https://wa.me/212600000000" target="_blank"><span style="font-size:1.1rem">💬</span> Contacter sur WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TANGER -->
+  <div class="city-panel" id="panel-tanger">
+    <div class="city-reservation-header">
+      <div>
+        <div class="city-res-name">Tanger</div>
+        <div class="city-res-sub">1 centre disponible · Malabata</div>
+      </div>
+      <div class="city-res-badge">Mar–Sam · 10h–19h</div>
+    </div>
+    <div class="reservation-grid">
+      <div class="res-form-card">
+        <h3>🗓️ Choisissez votre créneau</h3>
+        <div class="form-group">
+          <label class="form-label">Centre</label>
+          <select class="form-select"><option>Centre Malabata – Bd Mohammed VI, Tanger</option></select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Type de séance</label>
+          <div class="session-types">
+            <div class="session-type selected" onclick="selectSession(this)"><span>🌟 Séance découverte (1h)</span><span class="price">Gratuite</span></div>
+            <div class="session-type" onclick="selectSession(this)"><span>🧠 Séance standard (1h)</span><span class="price">600 MAD</span></div>
+            <div class="session-type" onclick="selectSession(this)"><span>📦 Pack 10 séances</span><span class="price">5 000 MAD</span></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Horaire disponible</label>
+          <div class="slots-grid">
+            <div class="slot" onclick="selectSlot(this)">10:00</div>
+            <div class="slot" onclick="selectSlot(this)">11:00</div>
+            <div class="slot unavailable">14:00</div>
+            <div class="slot" onclick="selectSlot(this)">16:00</div>
+            <div class="slot" onclick="selectSlot(this)">18:00</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Vos coordonnées</label>
+          <div class="form-row">
+            <input class="form-input" placeholder="Prénom" type="text">
+            <input class="form-input" placeholder="Nom" type="text">
+          </div>
+          <div class="form-row">
+            <input class="form-input" placeholder="Téléphone" type="tel">
+            <input class="form-input" placeholder="Email" type="email">
+          </div>
+        </div>
+        <button class="btn-primary submit-btn" onclick="submitReservation(this)">Confirmer la réservation</button>
+        <div class="success-msg">✅ Réservation envoyée ! Nous vous contactons dans les 2h.</div>
+      </div>
+      <div class="res-info-card">
+        <h3>📍 Informations centre</h3>
+        <div class="info-row"><div class="info-icon">📍</div><div><div class="info-label">Adresse</div><div class="info-value">Bd Mohammed VI, Malabata, Tanger</div></div></div>
+        <div class="info-row"><div class="info-icon">📞</div><div><div class="info-label">Téléphone</div><div class="info-value">+212 539 000 003</div></div></div>
+        <div class="info-row"><div class="info-icon">🕐</div><div><div class="info-label">Horaires</div><div class="info-value">Mardi – Samedi : 10h – 19h</div></div></div>
+        <div class="info-row"><div class="info-icon">💰</div><div><div class="info-label">Tarifs</div><div class="info-value">À partir de 600 MAD / séance</div></div></div>
+        <a class="whatsapp-btn" href="https://wa.me/212600000000" target="_blank"><span style="font-size:1.1rem">💬</span> Contacter sur WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- KENITRA -->
+  <div class="city-panel" id="panel-kenitra">
+    <div class="city-reservation-header">
+      <div>
+        <div class="city-res-name">Kenitra</div>
+        <div class="city-res-sub">1 centre disponible · Centre-ville</div>
+      </div>
+      <div class="city-res-badge">Lun–Ven · 9h–18h</div>
+    </div>
+    <div class="reservation-grid">
+      <div class="res-form-card">
+        <h3>🗓️ Choisissez votre créneau</h3>
+        <div class="form-group">
+          <label class="form-label">Centre</label>
+          <select class="form-select"><option>Centre Kenitra – Av. Mohammed Diouri, Kenitra</option></select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Type de séance</label>
+          <div class="session-types">
+            <div class="session-type selected" onclick="selectSession(this)"><span>🌟 Séance découverte (1h)</span><span class="price">Gratuite</span></div>
+            <div class="session-type" onclick="selectSession(this)"><span>🧠 Séance standard (1h)</span><span class="price">600 MAD</span></div>
+            <div class="session-type" onclick="selectSession(this)"><span>📦 Pack 10 séances</span><span class="price">5 000 MAD</span></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Horaire disponible</label>
+          <div class="slots-grid">
+            <div class="slot" onclick="selectSlot(this)">9:00</div>
+            <div class="slot" onclick="selectSlot(this)">10:30</div>
+            <div class="slot" onclick="selectSlot(this)">14:00</div>
+            <div class="slot unavailable">15:30</div>
+            <div class="slot" onclick="selectSlot(this)">17:00</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Vos coordonnées</label>
+          <div class="form-row">
+            <input class="form-input" placeholder="Prénom" type="text">
+            <input class="form-input" placeholder="Nom" type="text">
+          </div>
+          <div class="form-row">
+            <input class="form-input" placeholder="Téléphone" type="tel">
+            <input class="form-input" placeholder="Email" type="email">
+          </div>
+        </div>
+        <button class="btn-primary submit-btn" onclick="submitReservation(this)">Confirmer la réservation</button>
+        <div class="success-msg">✅ Réservation envoyée ! Nous vous contactons dans les 2h.</div>
+      </div>
+      <div class="res-info-card">
+        <h3>📍 Informations centre</h3>
+        <div class="info-row"><div class="info-icon">📍</div><div><div class="info-label">Adresse</div><div class="info-value">Av. Mohammed Diouri, Kenitra</div></div></div>
+        <div class="info-row"><div class="info-icon">📞</div><div><div class="info-label">Téléphone</div><div class="info-value">+212 537 000 004</div></div></div>
+        <div class="info-row"><div class="info-icon">🕐</div><div><div class="info-label">Horaires</div><div class="info-value">Lundi – Vendredi : 9h – 18h</div></div></div>
+        <div class="info-row"><div class="info-icon">💰</div><div><div class="info-label">Tarifs</div><div class="info-value">À partir de 600 MAD / séance</div></div></div>
+        <a class="whatsapp-btn" href="https://wa.me/212600000000" target="_blank"><span style="font-size:1.1rem">💬</span> Contacter sur WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 404 PAGE ===================== -->
+<div id="page-404" class="page">
+  <div class="error-page">
+    <div class="error-num">404</div>
+    <div class="error-content">
+      <div class="brain-pulse">🧠</div>
+      <h1>Page introuvable</h1>
+      <p>Il semble que votre cerveau — et le nôtre — n'arrivent pas à trouver cette page. Mais pas de panique, c'est récupérable !</p>
+      <div class="error-actions">
+        <button class="btn-primary" onclick="showPage('home')">Retour à l'accueil</button>
+        <button class="btn-outline" onclick="showPage('reservation')">Réserver une séance</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ---- PAGE ROUTING ----
+function showPage(page, city) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + (page === '404' ? '404' : page)).classList.add('active');
+  window.scrollTo(0,0);
+  if (page === 'reservation' && city) {
+    switchCity(city, document.querySelector(`.city-tab[onclick*="${city}"]`));
+  }
+}
+
+// ---- CITY SWITCHING ----
+function switchCity(city, btn) {
+  document.querySelectorAll('.city-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.city-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + city).classList.add('active');
+  if (btn) btn.classList.add('active');
+  window.scrollTo({top: document.querySelector('.city-tabs').offsetTop - 100, behavior: 'smooth'});
+}
+
+// ---- SLOT SELECTION ----
+function selectSlot(el) {
+  if (el.classList.contains('unavailable')) return;
+  el.closest('.slots-grid').querySelectorAll('.slot').forEach(s => s.classList.remove('selected'));
+  el.classList.add('selected');
+}
+function selectSession(el) {
+  el.closest('.session-types').querySelectorAll('.session-type').forEach(s => s.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+// ---- RESERVATION SUBMIT ----
+function submitReservation(btn) {
+  btn.textContent = '⏳ Envoi en cours...';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = '✅ Réservation confirmée !';
+    btn.style.background = '#0F6E56';
+    const msg = btn.nextElementSibling;
+    if (msg) msg.style.display = 'block';
+  }, 1500);
+}
+
+// ---- CALENDAR MINI ----
+function buildCalendar(containerId) {
+  const cal = document.getElementById(containerId);
+  if (!cal) return;
+  const days = ['Lu','Ma','Me','Je','Ve','Sa','Di'];
+  days.forEach(d => {
+    const el = document.createElement('div');
+    el.className = 'cal-day header'; el.textContent = d; cal.appendChild(el);
+  });
+  const today = new Date().getDate();
+  for (let i = 1; i <= 31; i++) {
+    const el = document.createElement('div');
+    el.className = 'cal-day';
+    el.textContent = i;
+    if (i === today) el.classList.add('today');
+    else if (i < today || i % 7 === 0) el.classList.add('unavailable');
+    else {
+      el.classList.add('available');
+      el.onclick = function() {
+        cal.querySelectorAll('.cal-day').forEach(c => c.classList.remove('selected'));
+        this.classList.add('selected');
+      };
+    }
+    cal.appendChild(el);
+  }
+}
+buildCalendar('cal-casa');
+
+// ---- QUIZ ENGINE ----
+const quizData = [
+  {
+    q: "Quelle est votre principale préoccupation en ce moment ?",
+    opts: [
+      {icon:"😰", text:"Stress & anxiété chronique"},
+      {icon:"😴", text:"Problèmes de sommeil"},
+      {icon:"📚", text:"Difficultés d'apprentissage / TDAH"},
+      {icon:"🏆", text:"Améliorer mes performances"},
+    ]
+  },
+  {
+    q: "Pour qui consultez-vous ?",
+    opts: [
+      {icon:"👤", text:"Pour moi-même (adulte)"},
+      {icon:"👶", text:"Pour mon enfant"},
+      {icon:"👵", text:"Pour un proche senior"},
+      {icon:"🤝", text:"Usage professionnel / cabinet"},
+    ]
+  },
+  {
+    q: "Depuis combien de temps ressentez-vous ces difficultés ?",
+    opts: [
+      {icon:"📅", text:"Quelques semaines"},
+      {icon:"🗓️", text:"Quelques mois"},
+      {icon:"⏳", text:"Plus d'un an"},
+      {icon:"🕰️", text:"Depuis l'enfance"},
+    ]
+  },
+  {
+    q: "Quel est votre niveau de connaissance du Neurofeedback ?",
+    opts: [
+      {icon:"🔍", text:"Je découvre tout juste"},
+      {icon:"📖", text:"J'en ai entendu parler"},
+      {icon:"✅", text:"Je connais bien le concept"},
+      {icon:"🧠", text:"J'ai déjà essayé"},
+    ]
+  }
+];
+
+const results = {
+  stress: {icon:"😌", title:"Profil : Gestion du stress", desc:"Le Neurofeedback est particulièrement efficace pour réduire l'anxiété et aider votre système nerveux à retrouver son équilibre naturel.", tags:["Stress chronique","Burn-out","Anxiété"]},
+  sommeil: {icon:"🌙", title:"Profil : Amélioration du sommeil", desc:"En régulant les ondes cérébrales, le Neurofeedback aide à retrouver un rythme de sommeil régulier et réparateur dès les premières séances.", tags:["Insomnie","Fatigue","Qualité du sommeil"]},
+  enfant: {icon:"🌟", title:"Profil : Enfant & apprentissage", desc:"Pour les enfants avec TDAH ou difficultés scolaires, le Neurofeedback offre une approche douce et sans médicaments, avec des résultats concrets.", tags:["TDAH","Concentration","Apprentissage"]},
+  performance: {icon:"⚡", title:"Profil : Optimisation cognitive", desc:"Dirigeants, sportifs, créatifs — le Neurofeedback booste vos capacités mentales, votre concentration et votre résilience émotionnelle.", tags:["Performance","Clarté mentale","Leadership"]},
+};
+
+let quizAnswers = [];
+let currentQ = 0;
+
+function renderQuestion() {
+  const data = quizData[currentQ];
+  document.getElementById('quiz-question').textContent = data.q;
+  document.getElementById('quiz-step-label').textContent = `Question ${currentQ+1} sur ${quizData.length}`;
+  document.getElementById('quiz-progress').style.width = ((currentQ / quizData.length)*100) + '%';
+  const opts = document.getElementById('quiz-options');
+  opts.innerHTML = '';
+  data.opts.forEach((o, i) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-option' + (quizAnswers[currentQ] === i ? ' selected' : '');
+    div.innerHTML = `<span class="quiz-option-icon">${o.icon}</span><span>${o.text}</span>`;
+    div.onclick = () => {
+      opts.querySelectorAll('.quiz-option').forEach(x => x.classList.remove('selected'));
+      div.classList.add('selected');
+      quizAnswers[currentQ] = i;
+      document.getElementById('btn-next').disabled = false;
+    };
+    opts.appendChild(div);
+  });
+  document.getElementById('btn-back').style.visibility = currentQ > 0 ? 'visible' : 'hidden';
+  document.getElementById('btn-next').disabled = quizAnswers[currentQ] === undefined;
+  document.getElementById('btn-next').textContent = currentQ < quizData.length - 1 ? 'Suivant →' : 'Voir mon résultat ✨';
+}
+
+function quizNext() {
+  if (currentQ < quizData.length - 1) {
+    currentQ++;
+    renderQuestion();
+  } else {
+    showQuizResult();
+  }
+}
+function quizBack() {
+  if (currentQ > 0) { currentQ--; renderQuestion(); }
+}
+
+function showQuizResult() {
+  document.getElementById('quiz-progress').style.width = '100%';
+  let r;
+  if (quizAnswers[1] === 1) r = results.enfant;
+  else if (quizAnswers[0] === 0) r = results.stress;
+  else if (quizAnswers[0] === 1) r = results.sommeil;
+  else r = results.performance;
+
+  document.getElementById('quiz-container').style.display = 'none';
+  const res = document.getElementById('quiz-result');
+  res.style.display = 'block';
+  res.innerHTML = `
+    <div class="result-icon">${r.icon}</div>
+    <div class="result-title">${r.title}</div>
+    <div class="result-desc">${r.desc}</div>
+    <div class="result-tags">${r.tags.map(t=>`<span class="result-tag">${t}</span>`).join('')}</div>
+    <div class="lead-form">
+      <h4>📩 Recevez notre guide personnalisé gratuit et une offre découverte :</h4>
+      <div class="form-row">
+        <input class="form-input" placeholder="Votre prénom" type="text">
+        <input class="form-input" placeholder="Votre téléphone" type="tel">
+      </div>
+      <div class="form-row">
+        <input class="form-input form-full" placeholder="Email" type="email" style="grid-column:1/-1">
+      </div>
+      <div class="form-row">
+        <select class="form-select" style="grid-column:1/-1">
+          <option value="">Votre ville la plus proche...</option>
+          <option>Casablanca</option><option>Marrakech</option><option>Tanger</option><option>Kenitra</option>
+        </select>
+      </div>
+      <button class="btn-primary submit-btn" onclick="submitLead(this)">Recevoir mon guide gratuit →</button>
+      <div class="success-msg" id="lead-success">🎉 Merci ! Vous recevrez votre guide sous 24h. Notre équipe vous contacte bientôt.</div>
+    </div>
+    <div style="margin-top:1.5rem">
+      <button class="btn-outline" style="width:100%" onclick="showPage('reservation')">Réserver ma séance découverte →</button>
+    </div>
+  `;
+}
+
+function submitLead(btn) {
+  btn.textContent = '⏳ Envoi...'; btn.disabled = true;
+  setTimeout(() => {
+    btn.style.display = 'none';
+    document.getElementById('lead-success').style.display = 'block';
+  }, 1200);
+}
+
+renderQuestion();
+</script>
+</body>
+</html>

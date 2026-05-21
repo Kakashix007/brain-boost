@@ -1,14 +1,12 @@
-# Ignore everything by default
-*
+# Dependencies
+node_modules/
+site/node_modules/
 
-# Allow the .gitignore file itself
-!.gitignore
-
-# Allow the site/ directory itself so Git can traverse it
-!site/
-
-# Ignore all files/folders inside site/
-site/*
-
-# Allow only the brain-boost.html file
-!site/brain-boost.html
+# OS/System files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

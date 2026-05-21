@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Centres - INFC</title>
+    <meta name="description" content="Carte du Maroc et détails des centres INFC (Casablanca, Marrakech, Tanger, Kénitra).">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        .custom-map-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0;
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 3rem;
+            border: 1px solid rgba(10, 22, 40, 0.05);
+        }
+        .morocco-map-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 1/1;
+        }
+        .morocco-map-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            opacity: 0.9;
+        }
+        .map-marker {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .marker-dot {
+            width: 12px;
+            height: 12px;
+            background-color: var(--color-gold);
+            border-radius: 50%;
+            border: 2px solid var(--color-white);
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            z-index: 2;
+        }
+        .marker-pulse {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 12px;
+            height: 12px;
+            background-color: var(--color-gold);
+            border-radius: 50%;
+            z-index: 1;
+            animation: pulse 2s infinite ease-out;
+        }
+        .marker-label {
+            background-color: var(--color-navy);
+            color: var(--color-white);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-top: 6px;
+            white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            font-family: var(--font-heading);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .map-marker:hover .marker-label {
+            background-color: var(--color-gold);
+            color: var(--color-navy);
+            transform: translateY(-2px);
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(3.5);
+                opacity: 0;
+            }
+        }
+        .centre-card {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 2rem;
+            border: 2px solid rgba(10, 22, 40, 0.05);
+            transition: all 0.5s ease;
+        }
+        .centre-card.highlighted {
+            border-color: var(--color-gold);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
+            transform: scale(1.02);
+        }
+        .centre-gallery { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+        .centre-gallery img { width: calc(33% - 0.66rem); border-radius: var(--radius-md); }
+        .btn-group { display: flex; gap: 0.5rem; margin-top: 1rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <div class="logo"><a href="index.html"><img src="assets/logos/logo.png" alt="INFC Logo"></a></div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="neurofeedback.html">La Science</a></li>
+                    <li><a href="programmes.html">Programmes</a></li>
+                    <li><a href="centres.html" class="active">Nos Centres</a></li>
+                    <li><a href="apropos.html">À Propos</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+            <div class="nav-cta"><a href="contact.html" class="btn btn-navy">S'orienter</a></div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero fade-in" style="background: linear-gradient(135deg, var(--color-navy), var(--color-navy-light)); color: var(--color-white); padding: 120px 0; text-align: center;">
+            <div class="container">
+                <h1>Nos Centres au Maroc</h1>
+                <p>Un espace premium et humain dédié à la régulation neuro‑sensible.</p>
+            </div>
+        </section>
+
+        <!-- Interactive map -->
+        <section class="section bg-creme fade-in">
+            <div class="container">
+                <div class="custom-map-wrapper">
+                    <div class="morocco-map-container">
+                        <img src="assets/images/morocco-map.jpg" alt="Carte du Maroc INFC" class="morocco-map-img">
+                        
+                        <!-- Tanger Marker -->
+                        <div class="map-marker" style="top: 10%; left: 68%;" onclick="showCentre('Tanger')">
+                            <span class="marker-pulse"></span>
+                            <span class="marker-dot"></span>
+                            <span class="marker-label">Tanger</span>
+                        </div>
+                        
+                        <!-- Kénitra Marker -->
+                        <div class="map-marker" style="top: 21%; left: 63%;" onclick="showCentre('Kénitra')">
+                            <span class="marker-pulse"></span>
+                            <span class="marker-dot"></span>
+                            <span class="marker-label">Kénitra</span>
+                        </div>
+
+                        <!-- Casablanca Marker -->
+                        <div class="map-marker" style="top: 29%; left: 54%;" onclick="showCentre('Casablanca')">
+                            <span class="marker-pulse"></span>
+                            <span class="marker-dot"></span>
+                            <span class="marker-label">Casablanca</span>
+                        </div>
+
+                        <!-- Marrakech Marker -->
+                        <div class="map-marker" style="top: 44%; left: 45%;" onclick="showCentre('Marrakech')">
+                            <span class="marker-pulse"></span>
+                            <span class="marker-dot"></span>
+                            <span class="marker-label">Marrakech</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Centre details (mock data) -->
+        <section class="section bg-white fade-in">
+            <div class="container">
+                <!-- Casablanca -->
+                <div class="centre-card" id="centre-casablanca">
+                    <h2>INFC Casablanca</h2>
+                    <p><strong>Adresse :</strong> Numéro 12, Immeuble Living Office, 362 Boulevard Ghandi, Casablanca, Maroc</p>
+                    <p><strong>Téléphone :</strong> 05 22 99 17 83</p>
+                    <p><strong>Horaires :</strong> Lundi‑Samedi : 09h00 – 19h00</p>
+                    <p><strong>Équipe :</strong> Dr. Chadia Chakib (Fondatrice), 3 praticiens certifiés</p>
+                    <div class="btn-group">
+                        <a href="https://www.google.com/maps/search/?api=1&query=362+Boulevard+Ghandi+Casablanca" target="_blank" class="btn btn-outline">Google Maps</a>
+                        <a href="https://wa.me/212522991783" target="_blank" class="btn btn-gold">WhatsApp</a>
+                    </div>
+                    <div class="centre-gallery">
+                        <img src="assets/images/neurofeedback-casablanca-1-480.jpg" alt="Casablanca – intérieur">
+                        <img src="assets/images/neurofeedback-casablanca-2-480.jpg" alt="Casablanca – salle de séance">
+                        <img src="assets/images/neurofeedback-casablanca-3-480.jpg" alt="Casablanca – réception">
+                    </div>
+                </div>
+
+                <!-- Marrakech -->
+                <div class="centre-card" id="centre-marrakech">
+                    <h2>INFC Marrakech</h2>
+                    <p><strong>Adresse :</strong> 45 Avenue Mohammed V, Guéliz, Marrakech, Maroc</p>
+                    <p><strong>Téléphone :</strong> +212 524 00 00 02</p>
+                    <p><strong>Horaires :</strong> Lundi‑Samedi : 09h00 – 18h30</p>
+                    <p><strong>Équipe :</strong> 2 praticiens certifiés, 1 coordinateur</p>
+                    <div class="btn-group">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Marrakech+Gu%C3%A9liz" target="_blank" class="btn btn-outline">Google Maps</a>
+                        <a href="https://wa.me/212524000002" target="_blank" class="btn btn-gold">WhatsApp</a>
+                    </div>
+                    <div class="centre-gallery">
+                        <img src="assets/images/neurofeedback-marrakech-2-480.jpg" alt="Marrakech – intérieur">
+                        <img src="assets/images/neurofeedback-marrakech-3-480.jpg" alt="Marrakech – salle de séance">
+                        <img src="assets/images/neurofeedback-marrakech-5-480.jpg" alt="Marrakech – réception">
+                    </div>
+                </div>
+
+                <!-- Tanger -->
+                <div class="centre-card" id="centre-tanger">
+                    <h2>INFC Tanger</h2>
+                    <p><strong>Adresse :</strong> Boulevard Pasteur, Centre‑Ville, Tanger, Maroc</p>
+                    <p><strong>Téléphone :</strong> +212 539 00 00 03</p>
+                    <p><strong>Horaires :</strong> Lundi‑Samedi : 09h00 – 19h00</p>
+                    <p><strong>Équipe :</strong> 2 praticiens certifiés</p>
+                    <div class="btn-group">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Tanger+Pasteur" target="_blank" class="btn btn-outline">Google Maps</a>
+                        <a href="https://wa.me/212539000003" target="_blank" class="btn btn-gold">WhatsApp</a>
+                    </div>
+                    <div class="centre-gallery">
+                        <img src="assets/images/neurofeedback-tanger-2.jpg" alt="Tanger – intérieur">
+                        <img src="assets/images/neurofeedback-tanger-3.jpg" alt="Tanger – salle de séance">
+                        <img src="assets/images/neurofeedback-tanger-4-480.jpg" alt="Tanger – réception">
+                    </div>
+                </div>
+
+                <!-- Kénitra (mock) -->
+                <div class="centre-card" id="centre-kenitra">
+                    <h2>INFC Kénitra (ouverture prochaine)</h2>
+                    <p><strong>Adresse :</strong> 10 Rue du Futur, Kénitra, Maroc</p>
+                    <p><strong>Téléphone :</strong> +212 539 00 00 04</p>
+                    <p><strong>Horaires :</strong> Bientôt disponible</p>
+                    <p><strong>Équipe :</strong> En cours de recrutement</p>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-outline" style="pointer-events:none; opacity:0.5;">Google Maps</a>
+                        <a href="#" class="btn btn-gold" style="pointer-events:none; opacity:0.5;">WhatsApp</a>
+                    </div>
+                    <div class="centre-gallery">
+                        <img src="assets/images/neurofeedback-casablanca-1-480.jpg" alt="Placeholder image">
+                        <img src="assets/images/neurofeedback-casablanca-2-480.jpg" alt="Placeholder image">
+                        <img src="assets/images/neurofeedback-casablanca-3-480.jpg" alt="Placeholder image">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><img src="assets/logos/logowhite.png" alt="INFC" style="height:40px; margin-bottom:1rem;"><p>Une approche humaine du bien‑être cérébral.</p></div>
+                <div class="footer-col"><h4>Navigation</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="neurofeedback.html">La Science</a></li><li><a href="programmes.html">Programmes</a></li><li><a href="centres.html">Nos Centres</a></li><li><a href="apropos.html">À Propos</a></li></ul></div>
+                <div class="footer-col"><h4>Informations</h4><ul><li><a href="faq.html">FAQ</a></li><li><a href="recrutement.html">Recrutement</a></li><li><a href="franchise.html">Franchise</a></li></ul></div>
+                <div class="footer-col"><h4>Contact</h4><p>05 22 99 17 83</p><p>contact@neurofeedback.ma</p></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 International Neurofeedback Center. Tous droits réservés.</p></div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        function showCentre(name) {
+            // Convert e.g., "Kénitra" -> "kenitra" for element ID lookup
+            const idMap = {
+                'Tanger': 'centre-tanger',
+                'Kénitra': 'centre-kenitra',
+                'Casablanca': 'centre-casablanca',
+                'Marrakech': 'centre-marrakech'
+            };
+            
+            const targetId = idMap[name];
+            const element = document.getElementById(targetId);
+            
+            if (element) {
+                // Smooth scroll to the centre details block
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Add highlight animation
+                element.classList.add('highlighted');
+                
+                // Remove highlight animation after 2.5s
+                setTimeout(() => {
+                    element.classList.remove('highlighted');
+                }, 2500);
+            }
+        }
+    </script>
+</body>
+</html>

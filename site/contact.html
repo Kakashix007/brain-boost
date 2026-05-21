@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Orientation - INFC</title>
+    <meta name="description" content="Prenez contact avec l'International Neurofeedback Center pour un échange d'orientation personnalisé.">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+        @media(min-width: 768px) {
+            .contact-container {
+                flex-direction: row;
+            }
+        }
+        .contact-form-wrapper {
+            flex: 1;
+            background: var(--color-white);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+        }
+        .contact-info-wrapper {
+            flex: 1;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--color-navy);
+            font-weight: 500;
+        }
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(10, 22, 40, 0.1);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-gold);
+        }
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        .city-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .city-card {
+            background: var(--color-white);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-soft);
+            text-align: center;
+        }
+        .city-card h4 {
+            color: var(--color-navy);
+            margin-bottom: 0.5rem;
+        }
+        .city-card p {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/logos/logo.png" alt="INFC Logo">
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="neurofeedback.html">La Science</a></li>
+                    <li><a href="programmes.html">Programmes</a></li>
+                    <li><a href="centres.html">Nos Centres</a></li>
+                    <li><a href="apropos.html">À Propos</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-cta">
+                <a href="contact.html" class="btn btn-navy">S'orienter</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero fade-in" style="padding: 80px 0;">
+            <div class="container">
+                <h1>Échange d'orientation personnalisé</h1>
+                <p>Prenez contact avec notre équipe pour discuter de votre situation et définir si notre approche est adaptée à vos besoins.</p>
+            </div>
+        </section>
+
+        <section class="section bg-creme fade-in">
+            <div class="container contact-container">
+                
+                <div class="contact-info-wrapper">
+                    <h2 style="margin-bottom: 1.5rem; color: var(--color-navy);">Nos Centres</h2>
+                    <p style="margin-bottom: 2rem;">Vous pouvez nous contacter directement via WhatsApp pour toute question ou prise de rendez-vous dans le centre le plus proche de chez vous.</p>
+                    
+                    <div class="city-grid">
+                        <div class="city-card">
+                            <h4>Casablanca</h4>
+                            <p>Immeuble Living Office, Bd Ghandi</p>
+                            <a href="#" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.9rem; width: 100%;">WhatsApp</a>
+                        </div>
+                        <div class="city-card">
+                            <h4>Marrakech</h4>
+                            <p>Guéliz, Av. Mohammed V</p>
+                            <a href="#" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.9rem; width: 100%;">WhatsApp</a>
+                        </div>
+                        <div class="city-card">
+                            <h4>Tanger</h4>
+                            <p>Centre-ville, Bd. Pasteur</p>
+                            <a href="#" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.9rem; width: 100%;">WhatsApp</a>
+                        </div>
+                        <div class="city-card">
+                            <h4>Kénitra</h4>
+                            <p>Ouverture prochaine</p>
+                            <a href="#" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.9rem; width: 100%; opacity: 0.5; pointer-events: none;">Bientôt</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper">
+                    <h2 style="margin-bottom: 1.5rem; color: var(--color-navy);">Demande de contact</h2>
+                    <p style="margin-bottom: 2rem;">Remplissez ce formulaire et un praticien INFC vous recontactera dans les plus brefs délais.</p>
+                    
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Nom et Prénom</label>
+                            <input type="text" id="name" name="name" class="form-control" required placeholder="Votre nom complet">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Téléphone / WhatsApp</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" required placeholder="+212 6 XX XX XX XX">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="city" class="form-label">Ville de résidence</label>
+                            <select id="city" name="city" class="form-control" required>
+                                <option value="" disabled selected>Sélectionnez votre ville</option>
+                                <option value="casablanca">Casablanca</option>
+                                <option value="marrakech">Marrakech</option>
+                                <option value="tanger">Tanger</option>
+                                <option value="kenitra">Kénitra</option>
+                                <option value="autre">Autre ville</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Quel est le motif de votre demande ? (Optionnel)</label>
+                            <textarea id="message" name="message" class="form-control" placeholder="Décrivez brièvement votre situation ou vos attentes..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-gold" style="width: 100%; border: none;">Envoyer ma demande</button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 International Neurofeedback Center. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

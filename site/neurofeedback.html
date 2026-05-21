@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Science - INFC</title>
+    <meta name="description" content="Découvrez le neurofeedback dynamique NeurOptimal®. Une approche scientifiquement validée pour réguler le cerveau.">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        .faq-item {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            margin-bottom: 1rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-soft);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .faq-question {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--color-navy);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            color: var(--color-grey-text);
+            margin-top: 0;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            margin-top: 1rem;
+        }
+        .faq-item.active .faq-question::after {
+            content: "−";
+        }
+        .faq-question::after {
+            content: "+";
+            font-size: 1.5rem;
+            color: var(--color-gold);
+        }
+
+        /* Regulation Loop Interactive Layout */
+        .regulation-section {
+            padding: 80px 0;
+            background: var(--color-white);
+        }
+        .regulation-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        @media (max-width: 992px) {
+            .regulation-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+        
+        /* Visualizer Box */
+        .visualizer-card {
+            background: var(--color-navy);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        .visualizer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 2;
+        }
+        .visualizer-status {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #10B981;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px #10B981;
+        }
+        .visualizer-body {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Wave SVG Animations */
+        .wave-svg {
+            width: 100%;
+            height: 150px;
+            overflow: visible;
+        }
+        .wave-path {
+            fill: none;
+            stroke-width: 3.5;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .wave-path.erratic {
+            stroke: #EF4444;
+            opacity: 0;
+        }
+        .wave-path.analysis {
+            stroke: var(--color-gold);
+            opacity: 0;
+        }
+        .wave-path.stable {
+            stroke: #10B981;
+            opacity: 0;
+        }
+        
+        /* Active States for Visuals */
+        .state-1 .wave-path.erratic { opacity: 1; }
+        .state-2 .wave-path.analysis { opacity: 1; }
+        .state-3 .wave-path.stable { opacity: 1; }
+        
+        /* Pulsing instability indicators for step 2 */
+        .instability-glow {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background: var(--color-gold);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 15px var(--color-gold);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 3;
+        }
+        .state-2 .instability-glow {
+            opacity: 1;
+            animation: ringGlow 1.5s infinite alternate;
+        }
+        @keyframes ringGlow {
+            0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.6; }
+            100% { transform: translate(-50%, -50%) scale(1.3); opacity: 1; box-shadow: 0 0 25px var(--color-gold); }
+        }
+
+        .visualizer-footer {
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+        .visualizer-footer-text {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
+        }
+        
+        /* Stepper Column */
+        .stepper-column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .step-card {
+            background: var(--color-creme);
+            border: 2px solid transparent;
+            border-radius: var(--radius-md);
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        .step-card:hover {
+            transform: translateX(5px);
+            border-color: rgba(10, 22, 40, 0.1);
+        }
+        .step-card.active {
+            background: var(--color-navy);
+            border-color: var(--color-gold);
+        }
+        .step-card.active .step-num-badge {
+            background: var(--color-gold);
+            color: var(--color-navy);
+        }
+        .step-card.active h3 {
+            color: #fff;
+        }
+        .step-card.active p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .step-num-badge {
+            background: var(--color-navy);
+            color: #fff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+            font-family: var(--font-heading);
+            transition: all 0.3s ease;
+        }
+        .step-text h3 {
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+            transition: color 0.3s ease;
+        }
+        .step-text p {
+            font-size: 0.92rem;
+            line-height: 1.5;
+            color: var(--color-grey-text);
+            margin: 0;
+            transition: color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/logos/logo.png" alt="INFC Logo">
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="neurofeedback.html" class="active">La Science</a></li>
+                    <li><a href="programmes.html">Programmes</a></li>
+                    <li><a href="centres.html">Nos Centres</a></li>
+                    <li><a href="apropos.html">À Propos</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+            <div class="nav-cta">
+                <a href="contact.html" class="btn btn-navy">S'orienter</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero fade-in">
+            <div class="container">
+                <h1>Entraîner le cerveau à s'auto-réguler</h1>
+                <p>Découvrez la science derrière le neurofeedback dynamique NeurOptimal®. Une méthode non invasive utilisée par la NASA, les athlètes de haut niveau et les professionnels exigeants.</p>
+            </div>
+        </section>
+
+        <!-- Regulation section -->
+        <section class="regulation-section bg-white fade-in">
+            <div class="container">
+                <div class="section-header text-center" style="max-width: 700px; margin: 0 auto 50px;">
+                    <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:10px;">Entraînement Organique</span>
+                    <h2>Comment fonctionne la boucle de régulation ?</h2>
+                    <p style="font-size: 1.1rem; color: var(--color-grey-text); margin-top: 10px;">Ce n'est pas une thérapie médicale active. C'est un miroir en temps réel qui permet à votre cerveau de s'auto-corriger.</p>
+                </div>
+
+                <div class="regulation-grid">
+                    
+                    <!-- Left: Interactive Visualizer Card -->
+                    <div class="visualizer-card state-1" id="visualizerCard">
+                        <div class="visualizer-header">
+                            <span class="visualizer-status">
+                                <span class="status-dot"></span>
+                                <span id="visualizerStatusText">Étape 1 : Capture en cours</span>
+                            </span>
+                            <span style="color: rgba(255,255,255,0.4); font-size: 0.8rem; font-family: var(--font-heading); font-weight: 700; letter-spacing: 1px;">INFC MONITOR v1.2</span>
+                        </div>
+
+                        <div class="visualizer-body">
+                            <!-- Glow instability indicators (visible in step 2) -->
+                            <div class="instability-glow" style="top: 20%; left: 15%;"></div>
+                            <div class="instability-glow" style="top: 80%; left: 55%;"></div>
+                            <div class="instability-glow" style="top: 25%; left: 80%;"></div>
+
+                            <!-- Waves SVG -->
+                            <svg class="wave-svg" viewBox="0 0 500 150" preserveAspectRatio="none">
+                                <!-- Step 1 Wave: Erratic red -->
+                                <path class="wave-path erratic" d="M0,75 L25,30 L50,110 L75,20 L100,130 L125,50 L150,95 L175,30 L200,120 L225,45 L250,105 L275,25 L300,125 L325,55 L350,90 L375,35 L400,115 L425,40 L450,100 L475,30 L500,75"></path>
+                                
+                                <!-- Step 2 Wave: Gold with highlights -->
+                                <path class="wave-path analysis" d="M0,75 C25,50 50,100 75,30 C100,120 125,40 150,90 C175,40 200,110 225,50 C250,100 275,35 300,115 C325,55 350,95 375,40 C400,110 425,50 450,95 C475,45 500,75"></path>
+                                
+                                <!-- Step 3 Wave: Smooth green/stable -->
+                                <path class="wave-path stable" d="M0,75 C40,40 80,110 120,75 C160,40 200,110 240,75 C280,40 320,110 360,75 C400,40 440,110 480,75 L500,75"></path>
+                            </svg>
+                        </div>
+
+                        <div class="visualizer-footer">
+                            <span class="visualizer-footer-text" id="visualizerFooterText">Lecture passive de l'activité corticale naturelle. Aucun courant envoyé.</span>
+                            <span style="color: var(--color-gold); font-weight: 700; font-size: 0.8rem;">256 Hz Analysis</span>
+                        </div>
+                    </div>
+
+                    <!-- Right: Stepper Card Column -->
+                    <div class="stepper-column">
+                        
+                        <!-- Step 1 Card -->
+                        <div class="step-card active" onclick="setRegulationStep(1)">
+                            <div class="step-num-badge">1</div>
+                            <div class="step-text">
+                                <h3>La Capture (Écoute passive)</h3>
+                                <p>Des capteurs d'EEG passifs écoutent l'activité électrique naturelle de votre cerveau. Aucun courant n'est émis. Vous vous relaxez.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 Card -->
+                        <div class="step-card" onclick="setRegulationStep(2)">
+                            <div class="step-num-badge">2</div>
+                            <div class="step-text">
+                                <h3>L'Analyse en Temps Réel</h3>
+                                <p>Le logiciel analyse les signaux 256 fois par seconde. Il repère les sursauts de tension ou micro-instabilités qui précèdent le stress.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 Card -->
+                        <div class="step-card" onclick="setRegulationStep(3)">
+                            <div class="step-num-badge">3</div>
+                            <div class="step-text">
+                                <h3>Le Feedback (Auto-correction)</h3>
+                                <p>Une micro-interruption dans le flux audio signale l'instabilité au cerveau, qui choisit instantanément de se réorganiser.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-creme fade-in">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Des données, pas des promesses</h2>
+                    <p>Observations issues de millions d'heures d'entraînement à travers le monde.</p>
+                </div>
+                
+                <div class="card-grid">
+                    <div class="card text-center">
+                        <h2 class="text-gold" style="font-size: 3rem;">91%</h2>
+                        <p>Rapportent une amélioration de la gestion du stress.</p>
+                    </div>
+                    <div class="card text-center">
+                        <h2 class="text-gold" style="font-size: 3rem;">85%</h2>
+                        <p>Observent une réduction significative de l'anxiété.</p>
+                    </div>
+                    <div class="card text-center">
+                        <h2 class="text-gold" style="font-size: 3rem;">83%</h2>
+                        <p>Constatent une meilleure capacité de concentration.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-white fade-in">
+            <div class="container" style="max-width: 800px;">
+                <div class="section-header">
+                    <h2>Questions Fréquentes</h2>
+                </div>
+                
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">Est-ce médical ou invasif ?</div>
+                        <div class="faq-answer">Non. Le neurofeedback dynamique est une approche naturelle et non invasive. Aucun courant électrique ni impulsion n'est envoyé au cerveau. Le système agit uniquement comme un miroir, permettant au cerveau de s'auto-réguler.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Combien de temps avant de ressentir les effets ?</div>
+                        <div class="faq-answer">L'expérience est souvent ressentie progressivement dès les premières séances. Beaucoup de nos clients décrivent une sensation de "clarté" et de "calme intérieur" très rapidement, bien qu'un entraînement complet nécessite un accompagnement sur la durée.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Est-ce adapté aux enfants ?</div>
+                        <div class="faq-answer">Oui, parfaitement. Notre approche est sans effort conscient. L'enfant s'installe, regarde un film ou écoute de la musique, et son cerveau s'entraîne de manière passive. C'est idéal pour la préparation aux examens ou l'accompagnement neuro-atypique.</div>
+                    </div>
+                </div>
+                
+                <div class="text-center" style="margin-top: 3rem;">
+                    <a href="contact.html" class="btn btn-navy">Échange d'orientation personnalisé</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer here (same as index.html) -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="assets/logos/logowhite.png" alt="INFC Logo" style="height: 40px; margin-bottom: 1rem;">
+                    <p>Une approche humaine du bien-être cérébral.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="neurofeedback.html">La Science</a></li>
+                        <li><a href="programmes.html">Programmes</a></li>
+                        <li><a href="centres.html">Nos Centres</a></li>
+                        <li><a href="apropos.html">À Propos</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 International Neurofeedback Center. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Interactive visualizer state machine
+        function setRegulationStep(step) {
+            const card = document.getElementById('visualizerCard');
+            const statusText = document.getElementById('visualizerStatusText');
+            const footerText = document.getElementById('visualizerFooterText');
+            const stepCards = document.querySelectorAll('.step-card');
+            
+            // Update active states on step cards
+            stepCards.forEach((btn, index) => {
+                if (index === (step - 1)) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            // Update card classes to trigger wave path transitions
+            card.className = `visualizer-card state-${step}`;
+
+            // Update text dynamic content
+            if (step === 1) {
+                statusText.textContent = "Étape 1 : Capture en cours";
+                footerText.textContent = "Lecture passive de l'activité corticale naturelle. Aucun courant envoyé.";
+            } else if (step === 2) {
+                statusText.textContent = "Étape 2 : Analyse active (256 Hz)";
+                footerText.textContent = "Recherche d'instabilités de signaux. Détection pré-symptomatique du stress.";
+            } else if (step === 3) {
+                statusText.textContent = "Étape 3 : Feedback harmonisé";
+                footerText.textContent = "Micro-coupures sonores initiant une auto-régulation naturelle immédiate.";
+            }
+        }
+
+        // FAQ Accordion
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    faqItems.forEach(i => i.classList.remove('active'));
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
