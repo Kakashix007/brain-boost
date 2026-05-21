@@ -1,0 +1,14 @@
+# Ignore everything by default
+*
+
+# Allow the .gitignore file itself
+!.gitignore
+
+# Allow the site/ directory itself so Git can traverse it
+!site/
+
+# Ignore all files/folders inside site/
+site/*
+
+# Allow only the brain-boost.html file
+!site/brain-boost.html
