@@ -10,3 +10,8 @@ site/node_modules/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Exclude private tools and dashboards
+site/franchise-dashboard.html
+site/generate_ads_report.js
+site/generate_guide.js
