@@ -104,7 +104,7 @@
         }
         .centre-gallery { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
         .centre-gallery img { width: calc(33% - 0.66rem); border-radius: var(--radius-md); }
-        .btn-group { display: flex; gap: 0.5rem; margin-top: 1rem; }
+        .btn-group { display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap; }
     </style>
 </head>
 <body>
@@ -126,7 +126,7 @@
     </header>
 
     <main>
-        <section class="hero fade-in" style="background: linear-gradient(135deg, var(--color-navy), var(--color-navy-light)); color: var(--color-white); padding: 120px 0; text-align: center;">
+        <section class="hero fade-in" style="background: linear-gradient(rgba(10, 22, 40, 0.75), rgba(10, 22, 40, 0.75)), url('assets/images/centre-headline-bg.jpg') no-repeat center center / cover; color: var(--color-white); padding: 140px 0; text-align: center;">
             <div class="container">
                 <h1>Nos Centres au Maroc</h1>
                 <p>Un espace premium et humain dédié à la régulation neuro‑sensible.</p>
@@ -178,13 +178,14 @@
                 <!-- Casablanca -->
                 <div class="centre-card" id="centre-casablanca">
                     <h2>INFC Casablanca</h2>
-                    <p><strong>Adresse :</strong> Numéro 12, Immeuble Living Office, 362 Boulevard Ghandi, Casablanca, Maroc</p>
-                    <p><strong>Téléphone :</strong> 05 22 99 17 83</p>
-                    <p><strong>Horaires :</strong> Lundi‑Samedi : 09h00 – 19h00</p>
+                    <p><strong>Adresse :</strong> Nº12 2ème étage, Immeuble Living office 362 BD Ghandi Oasis, Casablanca, Maroc</p>
+                    <p><strong>Téléphone :</strong> <a href="tel:0522991783">0522991783</a></p>
+                    <p><strong>Horaires :</strong> Lundi‑Samedi : 09h00 – 19h00</p>
                     <p><strong>Équipe :</strong> Dr. Chadia Chakib (Fondatrice), 3 praticiens certifiés</p>
                     <div class="btn-group">
-                        <a href="https://www.google.com/maps/search/?api=1&query=362+Boulevard+Ghandi+Casablanca" target="_blank" class="btn btn-outline">Google Maps</a>
-                        <a href="https://wa.me/212522991783" target="_blank" class="btn btn-gold">WhatsApp</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Living+office+362+BD+Ghandi+Oasis+Casablanca" target="_blank" class="btn btn-outline">📍 Itinéraire Google Maps</a>
+                        <a href="https://wa.me/212622606011" target="_blank" class="btn btn-gold">💬 WhatsApp</a>
+                        <a href="tel:0522991783" class="btn btn-navy">📞 Appeler</a>
                     </div>
                     <div class="centre-gallery">
                         <img src="assets/images/neurofeedback-casablanca-1-480.jpg" alt="Casablanca – intérieur">
@@ -196,13 +197,14 @@
                 <!-- Marrakech -->
                 <div class="centre-card" id="centre-marrakech">
                     <h2>INFC Marrakech</h2>
-                    <p><strong>Adresse :</strong> 45 Avenue Mohammed V, Guéliz, Marrakech, Maroc</p>
-                    <p><strong>Téléphone :</strong> +212 524 00 00 02</p>
-                    <p><strong>Horaires :</strong> Lundi‑Samedi : 09h00 – 18h30</p>
+                    <p><strong>Adresse :</strong> N°33 3ème étage, Résidence Le Noyer A, Rue Ibn Sina Gueliz, Marrakech, Maroc</p>
+                    <p><strong>Téléphone :</strong> <a href="tel:0524207263">0524207263</a></p>
+                    <p><strong>Horaires :</strong> Lundi‑Samedi : 09h00 – 18h30</p>
                     <p><strong>Équipe :</strong> 2 praticiens certifiés, 1 coordinateur</p>
                     <div class="btn-group">
-                        <a href="https://www.google.com/maps/search/?api=1&query=Marrakech+Gu%C3%A9liz" target="_blank" class="btn btn-outline">Google Maps</a>
-                        <a href="https://wa.me/212524000002" target="_blank" class="btn btn-gold">WhatsApp</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Residence+Le+Noyer+A+Rue+Ibn+Sina+Gueliz+Marrakech" target="_blank" class="btn btn-outline">📍 Itinéraire Google Maps</a>
+                        <a href="https://wa.me/212622606012" target="_blank" class="btn btn-gold">💬 WhatsApp</a>
+                        <a href="tel:0524207263" class="btn btn-navy">📞 Appeler</a>
                     </div>
                     <div class="centre-gallery">
                         <img src="assets/images/neurofeedback-marrakech-2-480.jpg" alt="Marrakech – intérieur">
@@ -214,13 +216,14 @@
                 <!-- Tanger -->
                 <div class="centre-card" id="centre-tanger">
                     <h2>INFC Tanger</h2>
-                    <p><strong>Adresse :</strong> Boulevard Pasteur, Centre‑Ville, Tanger, Maroc</p>
-                    <p><strong>Téléphone :</strong> +212 539 00 00 03</p>
-                    <p><strong>Horaires :</strong> Lundi‑Samedi : 09h00 – 19h00</p>
+                    <p><strong>Adresse :</strong> N° 25 2ème étage, Résidence El Jaghaoui, Tower Route Des Abattoirs, Tanger, Maroc</p>
+                    <p><strong>Téléphone :</strong> <a href="tel:0539367519">0539367519</a></p>
+                    <p><strong>Horaires :</strong> Lundi‑Samedi : 09h00 – 19h00</p>
                     <p><strong>Équipe :</strong> 2 praticiens certifiés</p>
                     <div class="btn-group">
-                        <a href="https://www.google.com/maps/search/?api=1&query=Tanger+Pasteur" target="_blank" class="btn btn-outline">Google Maps</a>
-                        <a href="https://wa.me/212539000003" target="_blank" class="btn btn-gold">WhatsApp</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Residence+El+Jaghaoui+Tower+Route+Des+Abattoirs+Tanger" target="_blank" class="btn btn-outline">📍 Itinéraire Google Maps</a>
+                        <a href="https://wa.me/212622606017" target="_blank" class="btn btn-gold">💬 WhatsApp</a>
+                        <a href="tel:0539367519" class="btn btn-navy">📞 Appeler</a>
                     </div>
                     <div class="centre-gallery">
                         <img src="assets/images/neurofeedback-tanger-2.jpg" alt="Tanger – intérieur">
@@ -229,16 +232,17 @@
                     </div>
                 </div>
 
-                <!-- Kénitra (mock) -->
+                <!-- Kénitra -->
                 <div class="centre-card" id="centre-kenitra">
-                    <h2>INFC Kénitra (ouverture prochaine)</h2>
-                    <p><strong>Adresse :</strong> 10 Rue du Futur, Kénitra, Maroc</p>
-                    <p><strong>Téléphone :</strong> +212 539 00 00 04</p>
-                    <p><strong>Horaires :</strong> Bientôt disponible</p>
-                    <p><strong>Équipe :</strong> En cours de recrutement</p>
+                    <h2>INFC Kénitra</h2>
+                    <p><strong>Adresse :</strong> Nº2 Résidence el waha rue imam ali et saad zaghlou, Kénitra, Maroc</p>
+                    <p><strong>Téléphone :</strong> <a href="tel:0622606033">0622606033</a></p>
+                    <p><strong>Horaires :</strong> Lundi‑Samedi : 09h00 – 19h00</p>
+                    <p><strong>Équipe :</strong> Praticiens certifiés INFC</p>
                     <div class="btn-group">
-                        <a href="#" class="btn btn-outline" style="pointer-events:none; opacity:0.5;">Google Maps</a>
-                        <a href="#" class="btn btn-gold" style="pointer-events:none; opacity:0.5;">WhatsApp</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Residence+el+waha+rue+imam+ali+et+saad+zaghlou+Kenitra" target="_blank" class="btn btn-outline">📍 Itinéraire Google Maps</a>
+                        <a href="https://wa.me/212622606033" target="_blank" class="btn btn-gold">💬 WhatsApp</a>
+                        <a href="tel:0622606033" class="btn btn-navy">📞 Appeler</a>
                     </div>
                     <div class="centre-gallery">
                         <img src="assets/images/neurofeedback-casablanca-1-480.jpg" alt="Placeholder image">
@@ -256,7 +260,12 @@
                 <div class="footer-col"><img src="assets/logos/logowhite.png" alt="INFC" style="height:40px; margin-bottom:1rem;"><p>Une approche humaine du bien‑être cérébral.</p></div>
                 <div class="footer-col"><h4>Navigation</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="neurofeedback.html">La Science</a></li><li><a href="programmes.html">Programmes</a></li><li><a href="centres.html">Nos Centres</a></li><li><a href="apropos.html">À Propos</a></li></ul></div>
                 <div class="footer-col"><h4>Informations</h4><ul><li><a href="faq.html">FAQ</a></li><li><a href="recrutement.html">Recrutement</a></li><li><a href="franchise.html">Franchise</a></li></ul></div>
-                <div class="footer-col"><h4>Contact</h4><p>05 22 99 17 83</p><p>contact@neurofeedback.ma</p></div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p>📍 Nº12 2ème étage, Immeuble Living office 362 BD Ghandi Oasis, Casablanca</p>
+                    <p>📞 <a href="tel:0522991783">0522991783</a></p>
+                    <p>✉️ <a href="mailto:contact@neurofeedback.ma">contact@neurofeedback.ma</a></p>
+                </div>
             </div>
             <div class="footer-bottom"><p>&copy; 2026 International Neurofeedback Center. Tous droits réservés.</p></div>
         </div>

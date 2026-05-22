@@ -82,6 +82,28 @@
             min-height: 280px;
             position: relative;
         }
+        .persona-visual.has-bg {
+            background-size: cover;
+            background-position: center;
+            padding: 0;
+            overflow: hidden;
+            align-items: stretch;
+        }
+        .persona-visual.has-bg .visual-box {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+        .persona-visual.has-bg .visual-title {
+            color: #FFFFFF !important;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+            font-size: 1.4rem;
+            text-align: center;
+        }
         .visual-box {
             text-align: center;
         }
@@ -554,10 +576,9 @@
                 
                 <!-- 1. For Parents -->
                 <div class="persona-row" id="persona-parents">
-                    <div class="persona-visual" style="background: rgba(139, 92, 246, 0.05);">
+                    <div class="persona-visual has-bg" style="background-image: linear-gradient(rgba(10, 22, 40, 0.25), rgba(10, 22, 40, 0.65)), url('assets/images/program-parents.png');">
                         <div class="visual-box">
-                            <span class="visual-icon" style="animation-delay: 0s;">👶</span>
-                            <div class="visual-title" style="color: var(--color-purple);">Brain Training for Kids</div>
+                            <div class="visual-title">Brain Training for Kids</div>
                         </div>
                     </div>
                     <div class="persona-content">
@@ -584,10 +605,9 @@
 
                 <!-- 2. Veterans & Trauma Survivors -->
                 <div class="persona-row reverse" id="persona-trauma">
-                    <div class="persona-visual" style="background: rgba(10, 22, 40, 0.05);">
+                    <div class="persona-visual has-bg" style="background-image: linear-gradient(rgba(10, 22, 40, 0.25), rgba(10, 22, 40, 0.65)), url('assets/images/program-trauma.png');">
                         <div class="visual-box">
-                            <span class="visual-icon" style="animation-delay: 1s;">🛡️</span>
-                            <div class="visual-title" style="color: var(--color-navy);">Trauma Recovery</div>
+                            <div class="visual-title">Trauma Recovery</div>
                         </div>
                     </div>
                     <div class="persona-content">
@@ -614,10 +634,9 @@
 
                 <!-- 3. Peak Performers -->
                 <div class="persona-row" id="persona-performers">
-                    <div class="persona-visual" style="background: rgba(212, 175, 55, 0.05);">
+                    <div class="persona-visual has-bg" style="background-image: linear-gradient(rgba(10, 22, 40, 0.25), rgba(10, 22, 40, 0.65)), url('assets/images/program-performers.png');">
                         <div class="visual-box">
-                            <span class="visual-icon" style="animation-delay: 2s;">⚡</span>
-                            <div class="visual-title" style="color: var(--color-gold);">Peak Performance</div>
+                            <div class="visual-title">Peak Performance</div>
                         </div>
                     </div>
                     <div class="persona-content">
@@ -644,10 +663,9 @@
 
                 <!-- 4. For Adults -->
                 <div class="persona-row reverse" id="persona-adults">
-                    <div class="persona-visual" style="background: rgba(139, 92, 246, 0.05);">
+                    <div class="persona-visual has-bg" style="background-image: linear-gradient(rgba(10, 22, 40, 0.25), rgba(10, 22, 40, 0.65)), url('assets/images/program-adults.png');">
                         <div class="visual-box">
-                            <span class="visual-icon" style="animation-delay: 3s;">💜</span>
-                            <div class="visual-title" style="color: var(--color-purple);">Emotional Wellness</div>
+                            <div class="visual-title">Emotional Wellness</div>
                         </div>
                     </div>
                     <div class="persona-content">

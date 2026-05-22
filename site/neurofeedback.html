@@ -264,10 +264,10 @@
     </header>
 
     <main>
-        <section class="hero fade-in">
+        <section class="hero fade-in" style="background: linear-gradient(rgba(10, 22, 40, 0.72), rgba(10, 22, 40, 0.85)), url('assets/images/neuroptimal-equipment.jpg') center/cover no-repeat; min-height: 420px; display: flex; align-items: center;">
             <div class="container">
                 <h1>Entraîner le cerveau à s'auto-réguler</h1>
-                <p>Découvrez la science derrière le neurofeedback dynamique NeurOptimal®. Une méthode non invasive utilisée par la NASA, les athlètes de haut niveau et les professionnels exigeants.</p>
+                <p style="max-width: 680px; margin: 0 auto;">Découvrez la science derrière le neurofeedback dynamique NeurOptimal®. Une approche naturelle et non invasive de régulation cérébrale, validée par des décennies de recherche en neurosciences.</p>
             </div>
         </section>
 
@@ -352,6 +352,46 @@
             </div>
         </section>
 
+        <!-- Comment se déroule une séance -->
+        <section class="section fade-in" style="background: var(--color-navy); color: #fff; overflow: hidden;">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+                    <div>
+                        <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:10px;">L'Expérience INFC</span>
+                        <h2 style="color: #fff; margin-bottom: 1.5rem;">Comment se déroule une séance ?</h2>
+                        <p style="opacity: 0.9; line-height: 1.7; margin-bottom: 1.5rem;">Vous vous installez confortablement dans un fauteuil ergonomique. Deux capteurs EEG sont délicatement placés sur le cuir chevelu — aucune douleur, aucune sensation. Vous lancez un film ou une playlist musicale de votre choix.</p>
+                        <p style="opacity: 0.9; line-height: 1.7; margin-bottom: 1.5rem;">Pendant 33 minutes, le logiciel NeurOptimal® analyse votre activité cérébrale 256 fois par seconde. À chaque micro-instabilité détectée, une interruption sonore imperceptible invite votre cerveau à se réorganiser de lui-même.</p>
+                        <p style="opacity: 0.9; line-height: 1.7; margin-bottom: 2rem;">Vous n'avez rien à faire. Pas d'effort conscient, pas de visualisation guidée. Votre cerveau travaille pour vous, à son rythme, de manière organique.</p>
+                        <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 2.5rem; font-weight: 800; color: var(--color-gold); font-family: var(--font-heading);">33 min</div>
+                                <div style="font-size: 0.85rem; opacity: 0.7;">Durée d'une séance</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 2.5rem; font-weight: 800; color: var(--color-gold); font-family: var(--font-heading);">0</div>
+                                <div style="font-size: 0.85rem; opacity: 0.7;">Effort conscient requis</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 2.5rem; font-weight: 800; color: var(--color-gold); font-family: var(--font-heading);">256 Hz</div>
+                                <div style="font-size: 0.85rem; opacity: 0.7;">Fréquence d'analyse</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.4); border: 1px solid rgba(212,175,55,0.2);">
+                        <img src="assets/images/session-room.jpg" alt="Salle de séance neurofeedback INFC" style="width: 100%; height: 500px; object-fit: cover; display: block;">
+                    </div>
+                </div>
+            </div>
+            <style>
+                @media (max-width: 992px) {
+                    .section [style*='grid-template-columns: 1fr 1fr'] {
+                        grid-template-columns: 1fr !important;
+                        gap: 40px !important;
+                    }
+                }
+            </style>
+        </section>
+
         <section class="section bg-creme fade-in">
             <div class="container">
                 <div class="section-header">
@@ -376,6 +416,74 @@
             </div>
         </section>
 
+        <!-- Nos Pères Fondateurs -->
+        <section class="section bg-white fade-in">
+            <div class="container">
+                <div class="section-header" style="margin-bottom: 50px;">
+                    <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px;">Héritage Scientifique</span>
+                    <h2 style="margin-top: 10px;">Nos Pères Fondateurs</h2>
+                    <p>Le neurofeedback s'appuie sur plus de 50 ans de recherche en neurosciences. Voici les pionniers dont les travaux ont rendu cette technologie possible.</p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 50px;">
+                    <div style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-hover); border: 1px solid rgba(212,175,55,0.15);">
+                        <img src="assets/images/founders-wall-closeup.jpg" alt="Nos Pères Fondateurs — Valdeane Brown, Barry Sterman, Susan Brown, Lisa Feldman Barrett" style="width: 100%; height: 420px; object-fit: cover; display: block;">
+                    </div>
+                    <div>
+                        <blockquote style="border-left: 4px solid var(--color-gold); padding-left: 20px; margin-bottom: 2rem;">
+                            <p style="font-size: 1.3rem; font-style: italic; color: var(--color-navy); line-height: 1.5; font-family: var(--font-heading);">« Le cerveau sait ce qu'il fait. Nous n'avons pas besoin de le diriger, nous devons juste lui permettre de mieux se percevoir. »</p>
+                            <footer style="color: var(--color-gold); font-weight: 700; margin-top: 10px;">— Valdeane W. Brown, Inventeur du Neurofeedback Dynamique NeurOptimal®</footer>
+                        </blockquote>
+                        <p style="line-height: 1.7; margin-bottom: 1.5rem;">De <strong>Barry Sterman</strong>, pionnier de la recherche sur les rythmes SMR dans les années 1960, à <strong>Valdeane et Susan Brown</strong>, créateurs du système NeurOptimal® qui a révolutionné l'approche du neurofeedback, en passant par <strong>Lisa Feldman Barrett</strong> et ses travaux novateurs sur la construction des émotions — chaque avancée scientifique a posé les fondations de notre méthode.</p>
+                        <p style="line-height: 1.7;">Chez INFC, nous honorons cet héritage en restant fidèles à un principe fondamental : <strong>le cerveau n'est jamais un problème à corriger, c'est une intelligence à accompagner.</strong></p>
+                    </div>
+                </div>
+                
+                <div style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-hover); border: 1px solid rgba(212,175,55,0.15);">
+                    <img src="assets/images/founders-wall-full.jpg" alt="Mur complet des Pères Fondateurs du Neurofeedback à l'INFC" style="width: 100%; height: 400px; object-fit: cover; display: block;">
+                </div>
+                <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: var(--color-grey-text); font-style: italic;">Le mur des Pères Fondateurs du neurofeedback, installé dans nos centres INFC au Maroc.</p>
+            </div>
+        </section>
+
+        <!-- Neuroplasticité Section -->
+        <section class="section fade-in" style="background: linear-gradient(135deg, #0A1628, #152238);">
+            <div class="container">
+                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:15px;">Le Principe Scientifique</span>
+                    <h2 style="color: #fff; margin-bottom: 1.5rem;">La Neuroplasticité : votre cerveau sait se transformer</h2>
+                    <p style="color: rgba(255,255,255,0.85); font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">La neuroplasticité est la capacité du cerveau à se réorganiser en formant de nouvelles connexions neuronales tout au long de la vie. Ce n'est pas une promesse — c'est un fait biologique documenté par des milliers d'études.</p>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 900px; margin: 0 auto;">
+                    <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.2); border-radius: var(--radius-md); padding: 30px; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 15px;">🧬</div>
+                        <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">Régénération Synaptique</h3>
+                        <p style="color: rgba(255,255,255,0.7); font-size: 0.92rem; line-height: 1.5;">Votre cerveau crée de nouvelles voies neuronales à chaque séance, renforçant sa résilience naturelle.</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.2); border-radius: var(--radius-md); padding: 30px; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 15px;">🔄</div>
+                        <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">Auto-Organisation</h3>
+                        <p style="color: rgba(255,255,255,0.7); font-size: 0.92rem; line-height: 1.5;">Aucune direction imposée. Le cerveau choisit lui-même la meilleure voie de régulation. C'est la philosophie NeurOptimal®.</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.2); border-radius: var(--radius-md); padding: 30px; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 15px;">📈</div>
+                        <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">Effet Cumulatif</h3>
+                        <p style="color: rgba(255,255,255,0.7); font-size: 0.92rem; line-height: 1.5;">Les bienfaits se renforcent séance après séance. La régulation devient progressivement naturelle et durable.</p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 3rem;">
+                    <p style="color: rgba(255,255,255,0.6); font-size: 0.85rem; max-width: 600px; margin: 0 auto; font-style: italic;">Le neurofeedback NeurOptimal® ne traite aucune pathologie. Il entraîne le cerveau à mieux se percevoir, favorisant une régulation organique progressive.</p>
+                </div>
+            </div>
+            <style>
+                @media (max-width: 768px) {
+                    [style*='grid-template-columns: repeat(3'] {
+                        grid-template-columns: 1fr !important;
+                    }
+                }
+            </style>
+        </section>
+
         <section class="section bg-white fade-in">
             <div class="container" style="max-width: 800px;">
                 <div class="section-header">
@@ -385,15 +493,27 @@
                 <div class="faq-container">
                     <div class="faq-item">
                         <div class="faq-question">Est-ce médical ou invasif ?</div>
-                        <div class="faq-answer">Non. Le neurofeedback dynamique est une approche naturelle et non invasive. Aucun courant électrique ni impulsion n'est envoyé au cerveau. Le système agit uniquement comme un miroir, permettant au cerveau de s'auto-réguler.</div>
+                        <div class="faq-answer">Non. Le neurofeedback dynamique est une approche naturelle et non invasive. Aucun courant électrique ni impulsion n'est envoyé au cerveau. Le système agit uniquement comme un miroir, permettant au cerveau de s'auto-réguler. C'est un entraînement, pas un traitement.</div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">Combien de temps avant de ressentir les effets ?</div>
-                        <div class="faq-answer">L'expérience est souvent ressentie progressivement dès les premières séances. Beaucoup de nos clients décrivent une sensation de "clarté" et de "calme intérieur" très rapidement, bien qu'un entraînement complet nécessite un accompagnement sur la durée.</div>
+                        <div class="faq-answer">Les premiers bienfaits sont souvent ressentis dès la première séance : une sensation de clarté mentale, un sommeil plus profond, ou un apaisement général. Cependant, la régulation cérébrale est un processus progressif et organique — un accompagnement sur la durée permet d'ancrer durablement ces changements.</div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">Est-ce adapté aux enfants ?</div>
-                        <div class="faq-answer">Oui, parfaitement. Notre approche est sans effort conscient. L'enfant s'installe, regarde un film ou écoute de la musique, et son cerveau s'entraîne de manière passive. C'est idéal pour la préparation aux examens ou l'accompagnement neuro-atypique.</div>
+                        <div class="faq-answer">Oui, parfaitement. Notre approche est sans effort conscient. L'enfant s'installe, regarde un film ou écoute de la musique, et son cerveau s'entraîne de manière passive. C'est idéal pour la préparation aux examens, l'accompagnement neuro-atypique (TDA/H, autisme) et la gestion du stress scolaire.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Quelle est la différence avec le neurofeedback classique ?</div>
+                        <div class="faq-answer">Le neurofeedback classique (linéaire) impose des protocoles fixes au cerveau en ciblant des fréquences spécifiques. NeurOptimal® est un neurofeedback dynamique : il ne dirige pas le cerveau, il lui donne un miroir en temps réel pour qu'il s'auto-organise. C'est plus respectueux, plus sûr, et aligné avec le fonctionnement naturel du système nerveux central.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Combien de séances sont recommandées ?</div>
+                        <div class="faq-answer">Il n'y a pas de nombre standard — chaque cerveau est unique. En général, 10 à 20 séances permettent d'observer des changements significatifs. Certains clients choisissent de poursuivre l'entraînement sur le long terme comme un rituel de bien-être cérébral, à l'image de l'exercice physique régulier.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Y a-t-il des effets secondaires ?</div>
+                        <div class="faq-answer">NeurOptimal® est considéré comme l'un des systèmes de neurofeedback les plus sûrs au monde. Aucun courant n'est envoyé au cerveau. Occasionnellement, certaines personnes peuvent ressentir une légère fatigue passagère après les premières séances — signe que le cerveau réorganise activement ses réseaux.</div>
                     </div>
                 </div>
                 

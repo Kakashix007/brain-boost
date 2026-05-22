@@ -296,6 +296,28 @@
             min-height: 280px;
             position: relative;
         }
+        .persona-visual.has-bg {
+            background-size: cover;
+            background-position: center;
+            padding: 0;
+            overflow: hidden;
+            align-items: stretch;
+        }
+        .persona-visual.has-bg .visual-box {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+        .persona-visual.has-bg .visual-title {
+            color: #FFFFFF !important;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+            font-size: 1.4rem;
+            text-align: center;
+        }
         .visual-box {
             text-align: center;
         }
@@ -1201,7 +1223,7 @@
                         
                         <ul class="hero-bullets-list">
                             <li>Sans médicaments — 100% naturel</li>
-                            <li>Résultats dès la 1ère séance</li>
+                            <li>Bienfaits ressentis dès la 1ère séance</li>
                             <li>4 centres au Maroc</li>
                         </ul>
 
@@ -1376,10 +1398,9 @@
                     
                     <!-- 1. For Parents -->
                     <div class="persona-row">
-                        <div class="persona-visual" style="background: rgba(139, 92, 246, 0.05);">
+                        <div class="persona-visual has-bg" style="background-image: linear-gradient(rgba(10, 22, 40, 0.25), rgba(10, 22, 40, 0.65)), url('assets/images/program-parents.png');">
                             <div class="visual-box">
-                                <span class="visual-icon" style="animation-delay: 0s;">👶</span>
-                                <div class="visual-title" style="color: var(--color-purple);">Brain Training for Kids</div>
+                                <div class="visual-title">Brain Training for Kids</div>
                             </div>
                         </div>
                         <div class="persona-content">
@@ -1406,10 +1427,9 @@
 
                     <!-- 2. Veterans & Trauma Survivors -->
                     <div class="persona-row reverse">
-                        <div class="persona-visual" style="background: rgba(10, 22, 40, 0.05);">
+                        <div class="persona-visual has-bg" style="background-image: linear-gradient(rgba(10, 22, 40, 0.25), rgba(10, 22, 40, 0.65)), url('assets/images/program-trauma.png');">
                             <div class="visual-box">
-                                <span class="visual-icon" style="animation-delay: 1s;">🛡️</span>
-                                <div class="visual-title" style="color: var(--color-navy);">Trauma Recovery</div>
+                                <div class="visual-title">Trauma Recovery</div>
                             </div>
                         </div>
                         <div class="persona-content">
@@ -1436,10 +1456,9 @@
 
                     <!-- 3. Peak Performers -->
                     <div class="persona-row">
-                        <div class="persona-visual" style="background: rgba(212, 175, 55, 0.05);">
+                        <div class="persona-visual has-bg" style="background-image: linear-gradient(rgba(10, 22, 40, 0.25), rgba(10, 22, 40, 0.65)), url('assets/images/program-performers.png');">
                             <div class="visual-box">
-                                <span class="visual-icon" style="animation-delay: 2s;">⚡</span>
-                                <div class="visual-title" style="color: var(--color-gold);">Peak Performance</div>
+                                <div class="visual-title">Peak Performance</div>
                             </div>
                         </div>
                         <div class="persona-content">
@@ -1466,10 +1485,9 @@
 
                     <!-- 4. For Adults -->
                     <div class="persona-row reverse">
-                        <div class="persona-visual" style="background: rgba(139, 92, 246, 0.05);">
+                        <div class="persona-visual has-bg" style="background-image: linear-gradient(rgba(10, 22, 40, 0.25), rgba(10, 22, 40, 0.65)), url('assets/images/program-adults.png');">
                             <div class="visual-box">
-                                <span class="visual-icon" style="animation-delay: 3s;">💜</span>
-                                <div class="visual-title" style="color: var(--color-purple);">Emotional Wellness</div>
+                                <div class="visual-title">Emotional Wellness</div>
                             </div>
                         </div>
                         <div class="persona-content">
@@ -1792,8 +1810,8 @@
                 <div class="team-grid">
                     <!-- Dr. Chadia Chakib -->
                     <div class="team-card">
-                        <div class="team-img-container">
-                            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=300&q=80" alt="Dr. Chadia Chakib">
+                        <div class="team-img-container" style="background: var(--color-creme); display: flex; align-items: center; justify-content: center;">
+                            <span style="font-size: 0.85rem; color: var(--color-grey-text); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Photo à venir</span>
                         </div>
                         <div class="team-info">
                             <h3>Dr. Chadia Chakib</h3>
@@ -1802,27 +1820,27 @@
                         </div>
                     </div>
 
-                    <!-- Yassine El Fassi -->
+                    <!-- Praticien 2 -->
                     <div class="team-card">
-                        <div class="team-img-container">
-                            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=300&q=80" alt="Yassine El Fassi">
+                        <div class="team-img-container" style="background: var(--color-creme); display: flex; align-items: center; justify-content: center;">
+                            <span style="font-size: 0.85rem; color: var(--color-grey-text); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Photo à venir</span>
                         </div>
                         <div class="team-info">
-                            <h3>Yassine El Fassi</h3>
+                            <h3>Praticien INFC</h3>
                             <div class="team-role">Praticien Senior & Focus Pédiatrique</div>
                             <p>Expert en accompagnement du TDA/H, focus scolaire et accompagnement des enfants neuro-atypiques.</p>
                         </div>
                     </div>
 
-                    <!-- Dr. Samira Alami -->
+                    <!-- Praticien 3 -->
                     <div class="team-card">
-                        <div class="team-img-container">
-                            <img src="https://images.unsplash.com/photo-1594824813573-246434de83fb?auto=format&fit=crop&w=300&q=80" alt="Dr. Samira Alami">
+                        <div class="team-img-container" style="background: var(--color-creme); display: flex; align-items: center; justify-content: center;">
+                            <span style="font-size: 0.85rem; color: var(--color-grey-text); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Photo à venir</span>
                         </div>
                         <div class="team-info">
-                            <h3>Dr. Samira Alami</h3>
+                            <h3>Praticien INFC</h3>
                             <div class="team-role">Consultante stress & cohérence</div>
-                            <p>Médecin consultante spécialisée en régulation du stress aigu, burn-out et cohérence neuro-cardiaque.</p>
+                            <p>Spécialisée en régulation du stress aigu, burn-out et cohérence neuro-cardiaque.</p>
                         </div>
                     </div>
                 </div>
@@ -1847,8 +1865,8 @@
                         <div class="center-body">
                             <h3>Casablanca</h3>
                             <ul class="center-details-list">
-                                <li><span>📍</span> Twin Center, Tour Ouest, 5ème étage</li>
-                                <li><span>📞</span> +212 522 60 60 09</li>
+                                <li><span>📍</span> Nº12 2ème étage, Immeuble Living office 362 BD Ghandi Oasis</li>
+                                <li><span>📞</span> <a href="tel:+212522991783">+212 522 99 17 83</a></li>
                                 <li><span>🕒</span> Lun-Sam: 9h-19h</li>
                             </ul>
                             <a href="centres.html" class="center-card-link">Voir le centre ➔</a>
@@ -1863,8 +1881,8 @@
                         <div class="center-body">
                             <h3>Marrakech</h3>
                             <ul class="center-details-list">
-                                <li><span>📍</span> Guéliz, Rue de la Liberté</li>
-                                <li><span>📞</span> +212 524 60 60 09</li>
+                                <li><span>📍</span> N°33 3ème étage, Résidence Le Noyer A, Rue Ibn Sina Gueliz</li>
+                                <li><span>📞</span> <a href="tel:+212524207263">+212 524 20 72 63</a></li>
                                 <li><span>🕒</span> Lun-Sam: 9h-19h</li>
                             </ul>
                             <a href="centres.html" class="center-card-link">Voir le centre ➔</a>
@@ -1879,8 +1897,8 @@
                         <div class="center-body">
                             <h3>Kenitra</h3>
                             <ul class="center-details-list">
-                                <li><span>📍</span> Centre-ville, Avenue Mohammed V</li>
-                                <li><span>📞</span> +212 537 60 60 09</li>
+                                <li><span>📍</span> Nº2 Résidence el waha rue imam ali et saad zaghlou</li>
+                                <li><span>📞</span> <a href="tel:+212622606033">+212 622 60 60 33</a></li>
                                 <li><span>🕒</span> Lun-Sam: 9h-19h</li>
                             </ul>
                             <a href="centres.html" class="center-card-link">Voir le centre ➔</a>
@@ -1895,8 +1913,8 @@
                         <div class="center-body">
                             <h3>Tanger</h3>
                             <ul class="center-details-list">
-                                <li><span>📍</span> Boulevard Pasteur</li>
-                                <li><span>📞</span> +212 539 60 60 09</li>
+                                <li><span>📍</span> N° 25 2ème étage, Résidence El Jaghaoui, Tower Route Des Abattoirs</li>
+                                <li><span>📞</span> <a href="tel:+212539367519">+212 539 36 75 19</a></li>
                                 <li><span>🕒</span> Lun-Sam: 9h-19h</li>
                             </ul>
                             <a href="centres.html" class="center-card-link">Voir le centre ➔</a>
@@ -1968,9 +1986,9 @@
                 </div>
                 <div class="footer-col">
                     <h4>Contact</h4>
-                    <p>📍 Twin Center, Casablanca, Maroc</p>
-                    <p>📞 +212 622 60 60 09</p>
-                    <p>✉️ contact@neurofeedback.ma</p>
+                    <p>📍 Nº12 2ème étage, Immeuble Living office 362 BD Ghandi Oasis, Casablanca</p>
+                    <p>📞 <a href="tel:0522991783">0522991783</a></p>
+                    <p>✉️ <a href="mailto:contact@neurofeedback.ma">contact@neurofeedback.ma</a></p>
                 </div>
             </div>
             <div class="footer-bottom">

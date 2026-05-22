@@ -197,23 +197,8 @@
                             <span>Pionnière au Maroc</span>
                         </div>
                         
-                        <div class="founder-portrait-graphic">
-                            <!-- Premium SVG medical/brain graphic representing Dr. Chadia -->
-                            <svg class="portrait-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="100" cy="100" r="80" stroke="rgba(212, 175, 55, 0.2)" stroke-width="2"/>
-                                <circle cx="100" cy="100" r="60" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1"/>
-                                <!-- Stylized abstract profile silhouette -->
-                                <path d="M100 55C83.4315 55 70 68.4315 70 85C70 94.757 74.654 103.428 81.875 108.875C70.366 114.773 62 126.837 62 141C62 143.209 63.7909 145 66 145H134C136.209 145 138 143.209 138 141C138 126.837 129.634 114.773 118.125 108.875C125.346 103.428 130 94.757 130 85C130 68.4315 116.569 55 100 55Z" fill="rgba(212, 175, 55, 0.1)"/>
-                                <path d="M100 65C88.9543 65 80 73.9543 80 85C80 96.0457 88.9543 105 100 105C111.046 105 120 96.0457 120 85C120 73.9543 111.046 65 100 65Z" stroke="var(--color-gold)" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M72 138C76.2 124.6 86.8 115 100 115C113.2 115 123.8 124.6 128 138" stroke="var(--color-gold)" stroke-width="2" stroke-linecap="round"/>
-                                <!-- Glowing synapses -->
-                                <circle cx="100" cy="50" r="4" fill="var(--color-gold)"/>
-                                <circle cx="135" cy="85" r="3" fill="#10B981"/>
-                                <circle cx="65" cy="85" r="3" fill="#10B981"/>
-                                <path d="M100 50L100 65" stroke="var(--color-gold)" stroke-width="1.5" stroke-dasharray="2 2"/>
-                                <path d="M135 85L120 85" stroke="#10B981" stroke-width="1.5" stroke-dasharray="2 2"/>
-                                <path d="M65 85L80 85" stroke="#10B981" stroke-width="1.5" stroke-dasharray="2 2"/>
-                            </svg>
+                        <div class="founder-portrait-graphic" style="overflow: hidden;">
+                            <img src="assets/images/founders-wall-corridor.jpg" alt="Le mur des Pères Fondateurs du neurofeedback dans les centres INFC" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md);">
                         </div>
                     </div>
 
@@ -250,6 +235,40 @@
             </div>
         </section>
 
+        <!-- Nos Espaces Section -->
+        <section class="section bg-white fade-in">
+            <div class="container">
+                <div class="section-header" style="margin-bottom: 40px;">
+                    <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px;">Nos Espaces</span>
+                    <h2 style="margin-top: 10px;">Un environnement conçu pour votre bien-être</h2>
+                    <p>Chaque détail de nos centres a été pensé pour créer un cadre propice à la régulation neuro-sensible.</p>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                    <div style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-hover); border: 1px solid rgba(212,175,55,0.15);">
+                        <img src="assets/images/session-room.jpg" alt="Salle de séance de neurofeedback INFC" style="width: 100%; height: 320px; object-fit: cover; display: block;">
+                        <div style="padding: 20px; background: #fff;">
+                            <h3 style="color: var(--color-navy); font-size: 1.1rem; margin-bottom: 5px;">Salle de Séance</h3>
+                            <p style="color: var(--color-grey-text); font-size: 0.92rem;">Fauteuil ergonomique de relaxation dans un espace calme et tamisé pour un confort maximal.</p>
+                        </div>
+                    </div>
+                    <div style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-hover); border: 1px solid rgba(212,175,55,0.15);">
+                        <img src="assets/images/neuroptimal-equipment.jpg" alt="Équipement NeurOptimal® INFC" style="width: 100%; height: 320px; object-fit: cover; display: block;">
+                        <div style="padding: 20px; background: #fff;">
+                            <h3 style="color: var(--color-navy); font-size: 1.1rem; margin-bottom: 5px;">Équipement NeurOptimal®</h3>
+                            <p style="color: var(--color-grey-text); font-size: 0.92rem;">Technologie de pointe avec capteurs EEG et logiciel d'analyse à 256 Hz pour une régulation précise.</p>
+                        </div>
+                    </div>
+                </div>
+                <style>
+                    @media (max-width: 768px) {
+                        [style*='grid-template-columns: 1fr 1fr'] {
+                            grid-template-columns: 1fr !important;
+                        }
+                    }
+                </style>
+            </div>
+        </section>
+
         <section class="section bg-creme fade-in">
             <div class="container text-center">
                 <h2 style="margin-bottom: 2rem;">Notre Équipe</h2>
@@ -258,17 +277,23 @@
                 <div class="card-grid">
                     <!-- Placeholders for team members -->
                     <div class="card" style="padding: 2rem;">
-                        <div style="width: 120px; height: 120px; border-radius: 50%; background: var(--color-creme); margin: 0 auto 1.5rem;"></div>
+                        <div style="width: 120px; height: 120px; border-radius: 50%; background: var(--color-creme); border: 2px dashed rgba(212,175,55,0.3); margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center;">
+                            <span style="font-size: 0.7rem; color: var(--color-grey-text); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Photo à venir</span>
+                        </div>
                         <h3 class="text-navy">Praticien INFC</h3>
                         <p style="font-size: 0.9rem;">Spécialiste en neuro-régulation</p>
                     </div>
                     <div class="card" style="padding: 2rem;">
-                        <div style="width: 120px; height: 120px; border-radius: 50%; background: var(--color-creme); margin: 0 auto 1.5rem;"></div>
+                        <div style="width: 120px; height: 120px; border-radius: 50%; background: var(--color-creme); border: 2px dashed rgba(212,175,55,0.3); margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center;">
+                            <span style="font-size: 0.7rem; color: var(--color-grey-text); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Photo à venir</span>
+                        </div>
                         <h3 class="text-navy">Praticien INFC</h3>
                         <p style="font-size: 0.9rem;">Spécialiste en neuro-régulation</p>
                     </div>
                     <div class="card" style="padding: 2rem;">
-                        <div style="width: 120px; height: 120px; border-radius: 50%; background: var(--color-creme); margin: 0 auto 1.5rem;"></div>
+                        <div style="width: 120px; height: 120px; border-radius: 50%; background: var(--color-creme); border: 2px dashed rgba(212,175,55,0.3); margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center;">
+                            <span style="font-size: 0.7rem; color: var(--color-grey-text); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Photo à venir</span>
+                        </div>
                         <h3 class="text-navy">Praticien INFC</h3>
                         <p style="font-size: 0.9rem;">Spécialiste en neuro-régulation</p>
                     </div>
