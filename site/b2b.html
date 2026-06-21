@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B2B - Entreprises, Écoles & Institutions — INFC</title>
+    <meta name="description" content="Découvrez nos programmes de régulation cérébrale et d'accompagnement cognitif B2B pour entreprises, écoles, clubs sportifs et associations au Maroc.">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        /* B2B Page Specific Styles */
+        .b2b-hero {
+            background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-light) 100%);
+            color: var(--color-white);
+            padding: clamp(3rem, 6vw, 6rem) 0;
+            text-align: center;
+        }
+        .b2b-hero h1 {
+            color: var(--color-white);
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        .b2b-hero h1 span {
+            color: var(--color-gold);
+            display: block;
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+        .b2b-hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 750px;
+            margin: 0 auto 2rem;
+        }
+
+        .b2b-sectors-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            .b2b-sectors-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .b2b-sector-card {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-soft);
+            border-top: 4px solid var(--color-navy);
+        }
+        .b2b-sector-card h3 {
+            margin-bottom: 1rem;
+            color: var(--color-navy);
+        }
+
+        .stats-infographic {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        .stat-circle {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+            border-bottom: 3px solid var(--color-gold);
+        }
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            margin-bottom: 0.5rem;
+            font-family: var(--font-heading);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/logos/logo.png" alt="INFC Logo">
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="neurofeedback.html">La Science</a></li>
+                    <li><a href="programmes.html">Programmes</a></li>
+                    <li><a href="vision.html">Vision</a></li>
+                    <li><a href="centres.html">Nos Centres</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="b2b.html">B2B</a></li>
+                    <li><a href="franchise.html">Franchise</a></li>
+                </ul>
+            </nav>
+            <div class="nav-cta">
+                <a href="contact.html" class="btn btn-gold">Bilan découverte</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="b2b-hero">
+            <div class="container">
+                <h1>
+                    <span>Neurofeedback · Bien-être Mental · Performance Cognitive</span>
+                    Accompagner le cerveau au cœur des organisations
+                </h1>
+                <p>
+                    Entreprises, écoles, institutions, associations et clubs sportifs. Le stress, la surcharge mentale, les difficultés d'attention, la fatigue cognitive, le sommeil perturbé et l'épuisement professionnel sont devenus des enjeux majeurs dans les environnements de travail, d'apprentissage et de performance.
+                </p>
+                <p style="font-size: 1.1rem; color: rgba(255,255,255,0.7); max-width: 800px; margin: 1.5rem auto 0;">
+                    À l'International Neurofeedback Center, nous accompagnons les organisations qui souhaitent soutenir le bien-être cérébral, la concentration, la récupération et l'équilibre émotionnel de leurs équipes, élèves, collaborateurs ou bénéficiaires.
+                </p>
+                <div style="margin-top: 2.5rem; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <a href="contact.html?type=b2b" class="btn btn-gold">Demander une offre B2B</a>
+                    <a href="contact.html?type=b2b_call" class="btn btn-outline" style="border-color: var(--color-white); color: var(--color-white) !important;">Planifier un échange</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pourquoi Maintenant Section -->
+        <section class="section bg-white">
+            <div class="container">
+                <div class="section-header">
+                    <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:10px;">Enjeux</span>
+                    <h2>Pourquoi maintenant ?</h2>
+                    <p style="margin-top: 10px; font-weight: 600; color: var(--color-navy);">Un enjeu humain et économique</p>
+                </div>
+                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <p style="font-size: 1.15rem; line-height: 1.7; margin-bottom: 2rem;">
+                        Le stress, l'absentéisme, le désengagement et l'épuisement professionnel ont un coût humain et organisationnel réel. Soutenir le bien-être cérébral des équipes, c'est agir sur la concentration, la récupération, l'engagement et la qualité de vie au travail (QVT) - un levier de plus en plus inscrit dans les démarches RSE des organisations.
+                    </p>
+                </div>
+                <div class="stats-infographic">
+                    <div class="stat-circle">
+                        <div class="stat-value">QVT</div>
+                        <p style="font-size: 0.95rem;">Qualité de vie au travail renforcée</p>
+                    </div>
+                    <div class="stat-circle">
+                        <div class="stat-value">RSE</div>
+                        <p style="font-size: 0.95rem;">Responsabilité sociale intégrée</p>
+                    </div>
+                    <div class="stat-circle">
+                        <div class="stat-value">- Stress</div>
+                        <p style="font-size: 0.95rem;">Régulation de la surcharge mentale</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- À qui s'adresse l'accompagnement Section -->
+        <section class="section bg-creme">
+            <div class="container">
+                <div class="section-header">
+                    <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:10px;">Cibles</span>
+                    <h2>À qui s'adresse l'accompagnement B2B ?</h2>
+                    <p style="margin-top: 10px;">Des solutions adaptées aux exigences de chaque structure</p>
+                </div>
+                <div class="b2b-sectors-grid">
+                    <div class="b2b-sector-card">
+                        <h3>Entreprises</h3>
+                        <p style="font-size: 0.95rem; line-height: 1.6;">
+                            Pour les collaborateurs, managers, dirigeants et équipes exposées à une charge mentale importante. Aide face au stress chronique, à la surcharge mentale, fatigue cognitive, burnout, baisse de concentration, pression de performance.
+                        </p>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; font-weight: 600; color: var(--color-gold);">
+                            Thématiques : stress professionnel, prévention de l'épuisement, sommeil & récupération, concentration, régulation émotionnelle, clarté décisionnelle.
+                        </p>
+                    </div>
+                    <div class="b2b-sector-card">
+                        <h3>Écoles & établissements éducatifs</h3>
+                        <p style="font-size: 0.95rem; line-height: 1.6;">
+                            Destiné aux élèves, parents, enseignants ou équipes pédagogiques. Vise à améliorer l'attention, la concentration, la régulation émotionnelle, la confiance et la disponibilité mentale des élèves via des formats de sensibilisation ou de partenariats.
+                        </p>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; font-weight: 600; color: var(--color-gold);">
+                            Thématiques : concentration, TDA/H & agitation, stress scolaire, anxiété des examens, sommeil, confiance, accompagnement parental, sensibilisation pédagogique.
+                        </p>
+                    </div>
+                    <div class="b2b-sector-card">
+                        <h3>Clubs sportifs & académies</h3>
+                        <p style="font-size: 0.95rem; line-height: 1.6;">
+                            Dans une logique complémentaire d'accompagnement de la performance — sans stimulation électrique ni effort conscient.
+                        </p>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; font-weight: 600; color: var(--color-gold);">
+                            Thématiques : focus avant compétition, gestion du stress de performance, récupération nerveuse, sommeil du sportif, stabilité émotionnelle, endurance mentale.
+                        </p>
+                    </div>
+                    <div class="b2b-sector-card">
+                        <h3>Associations & fondations</h3>
+                        <p style="font-size: 0.95rem; line-height: 1.6;">
+                            Pour les publics exposés à la fatigue émotionnelle, au stress, à l'anxiété ou à la surcharge — enfants, adolescents, familles, femmes, personnes en situation de vulnérabilité.
+                        </p>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; font-weight: 600; color: var(--color-gold);">
+                            Formats adaptés au profil du public, avec une approche prudente, progressive et respectueuse du cadre de chaque structure.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ce que nous accompagnons Section -->
+        <section class="section bg-white">
+            <div class="container">
+                <h3 class="text-center" style="font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--color-gold); margin-bottom: 2rem;">Ce que nous accompagnons</h3>
+                <div class="situations-tags">
+                    <span class="situation-tag">Stress professionnel</span>
+                    <span class="situation-tag">Surcharge mentale</span>
+                    <span class="situation-tag">Burnout et fatigue nerveuse</span>
+                    <span class="situation-tag">Baisse de concentration</span>
+                    <span class="situation-tag">Difficultés d'attention</span>
+                    <span class="situation-tag">Sommeil perturbé</span>
+                    <span class="situation-tag">Récupération insuffisante</span>
+                    <span class="situation-tag">Charge émotionnelle</span>
+                    <span class="situation-tag">Pression de performance</span>
+                    <span class="situation-tag">Prise de décision sous stress</span>
+                    <span class="situation-tag">Fatigue des équipes</span>
+                    <span class="situation-tag">Autorégulation chez l'enfant/ado</span>
+                    <span class="situation-tag">Préparation mentale des sportifs</span>
+                    <span class="situation-tag">Bien-être des collaborateurs</span>
+                    <span class="situation-tag">Qualité de vie au travail</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nos Objectifs Section -->
+        <section class="section bg-white" style="padding-top:0;">
+            <div class="container" style="max-width: 900px;">
+                <div class="section-header">
+                    <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:10px;">Objectifs</span>
+                    <h2>Bien-être, clarté mentale et performance durable</h2>
+                </div>
+                <div class="card-grid">
+                    <div class="card">
+                        <p style="font-size: 0.95rem; line-height:1.6;">Sensibiliser les équipes au fonctionnement du cerveau ; mieux comprendre les mécanismes du stress et de la surcharge ; soutenir la concentration et la disponibilité mentale.</p>
+                    </div>
+                    <div class="card">
+                        <p style="font-size: 0.95rem; line-height:1.6;">Accompagner la récupération nerveuse ; favoriser un meilleur équilibre émotionnel ; prévenir l'épuisement professionnel.</p>
+                    </div>
+                    <div class="card">
+                        <p style="font-size: 0.95rem; line-height:1.6;">Soutenir enfants et adolescents dans leurs apprentissages ; améliorer la qualité de vie au travail ; accompagner les profils à haute exigence via une solution complémentaire, non invasive et structurée.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nos Formats Section -->
+        <section class="section bg-creme">
+            <div class="container" style="max-width: 900px;">
+                <div class="section-header">
+                    <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:10px;">Formats</span>
+                    <h2>Nos formats d'intervention</h2>
+                    <p style="margin-top:10px;">Des solutions modulables selon vos besoins</p>
+                </div>
+                <div class="program-card-detail">
+                    <h3>Conférences & sensibilisation</h3>
+                    <p>Interventions pédagogiques sur le cerveau, le stress, l'attention, le sommeil, la neuroplasticité et l'autorégulation - pour ouvrir le dialogue et donner des repères simples et utiles.</p>
+                </div>
+                <div class="program-card-detail">
+                    <h3>Ateliers pratiques</h3>
+                    <p>Autour de la régulation du stress, de la charge mentale, de l'attention, du sommeil, de la récupération ou de la préparation mentale - pour collaborateurs, managers, enseignants, parents, élèves ou sportifs.</p>
+                </div>
+                <div class="program-card-detail">
+                    <h3>Bilans d'orientation</h3>
+                    <p>Temps d'échange individuels ou collectifs pour comprendre les besoins et orienter. Ces bilans ne constituent pas un diagnostic médical : ils permettent une première lecture des besoins et une orientation structurée.</p>
+                </div>
+                <div class="program-card-detail">
+                    <h3>Programmes d'accompagnement</h3>
+                    <p>Parcours spécifiques selon le public (collaborateurs en surcharge, enfants avec difficultés attentionnelles, sportifs sous pression, dirigeants…), dans nos centres ou selon un format défini avec l'organisation.</p>
+                </div>
+                <div class="program-card-detail">
+                    <h3>Partenariats réguliers</h3>
+                    <p>Collaborations durables avec entreprises, écoles, associations, clubs ou institutions - pouvant inclure tarifs préférentiels, journées d'orientation, conférences, ateliers ou parcours dédiés.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modalités Section -->
+        <section class="section bg-white">
+            <div class="container" style="max-width: 800px; text-align: center;">
+                <div class="section-header">
+                    <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:10px;">Modalités</span>
+                    <h2>Comment ça se passe concrètement</h2>
+                </div>
+                <p style="font-size: 1.15rem; line-height: 1.7; margin-bottom: 2rem;">
+                    Les interventions peuvent se dérouler sur votre site ou dans nos centres, en individuel ou en groupe, selon le format retenu. La durée, la taille des groupes et le rythme sont définis ensemble en fonction de votre public et de vos objectifs.
+                </p>
+                <div style="font-weight: 600; color: var(--color-navy); font-size: 1.15rem; font-style: italic;">
+                    « Chaque collaboration fait l'objet d'un devis et, si nécessaire, d'une convention de partenariat, pour un cadre clair et contractualisé. »
+                </div>
+            </div>
+        </section>
+
+        <!-- Démarche Responsable Section -->
+        <section class="section bg-creme">
+            <div class="container" style="max-width: 900px;">
+                <div class="section-header">
+                    <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:10px;">Engagement</span>
+                    <h2>Une approche non invasive et responsable</h2>
+                    <p style="margin-top: 10px; font-weight: 600; color: var(--color-navy);">Un accompagnement doux, structuré et complémentaire</p>
+                </div>
+                <div style="background: var(--color-white); border-radius: var(--radius-lg); padding: 3rem; box-shadow: var(--shadow-soft);">
+                    <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                        Le neurofeedback dynamique est une approche non invasive : les capteurs mesurent l'activité cérébrale naturelle sans envoyer de courant. La séance est indolore, sans stimulation électrique, sans effort conscient et sans médicament.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.7; font-weight: 500; color: var(--color-navy);">
+                        Dans le cadre B2B, l'INFC respecte une communication responsable : aucun diagnostic automatique, aucun traitement médical, et aucune promesse de guérison miracle. Nos interventions s'inscrivent toujours dans un cadre éthique de bien-être et de complémentarité.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Action Section -->
+        <section class="section bg-white" style="padding-bottom: 0;">
+            <div class="container">
+                <div class="double-cta-box">
+                    <h2>Co-construisons votre projet</h2>
+                    <p>Discutons de vos besoins organisationnels pour concevoir un atelier ou un partenariat adapté.</p>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                        <a href="contact.html?type=b2b" class="btn btn-gold">Demander une offre B2B</a>
+                        <a href="contact.html?type=b2b_call" class="btn btn-navy">Planifier un échange</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="assets/logos/logowhite.png" alt="INFC Logo" style="height: 40px; margin-bottom: 1rem;">
+                    <p>Centre de régulation cérébrale et d'accompagnement psychologique au Maroc.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Raccourcis</h4>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="neurofeedback.html">La Science</a></li>
+                        <li><a href="programmes.html">Nos Programmes</a></li>
+                        <li><a href="vision.html">Notre Vision</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Réseau</h4>
+                    <ul>
+                        <li><a href="centres.html">Casablanca</a></li>
+                        <li><a href="centres.html">Marrakech</a></li>
+                        <li><a href="centres.html">Kénitra</a></li>
+                        <li><a href="centres.html">Tanger</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Espaces Dédiés</h4>
+                    <ul>
+                        <li><a href="b2b.html">Entreprises & B2B</a></li>
+                        <li><a href="franchise.html">Modèle Franchise</a></li>
+                        <li><a href="contact.html">Nous Contacter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p style="font-size: 0.8rem; margin-bottom: 1.5rem; line-height: 1.6; opacity: 0.6; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    Le neurofeedback dynamique est un entraînement cérébral d'autorégulation et de bien-être. Cette méthode ne constitue pas un traitement médical, ne pose aucun diagnostic et ne remplace pas une consultation ou un suivi auprès de professionnels de santé habilités.
+                </p>
+                <p>&copy; 2026 International Neurofeedback Center. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

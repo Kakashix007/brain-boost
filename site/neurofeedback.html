@@ -3,243 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Science - INFC</title>
-    <meta name="description" content="Découvrez le neurofeedback dynamique NeurOptimal®. Une approche scientifiquement validée pour réguler le cerveau.">
+    <title>La Science derrière la Régulation Cérébrale — INFC</title>
+    <meta name="description" content="Découvrez les fondements scientifiques du neurofeedback dynamique non-invasif, de la neuroplasticité et de l'autorégulation cérébrale.">
     <link rel="stylesheet" href="index.css">
     <style>
-        .faq-item {
-            background: var(--color-white);
-            border-radius: var(--radius-md);
-            margin-bottom: 1rem;
-            padding: 1.5rem;
-            box-shadow: var(--shadow-soft);
-            cursor: pointer;
-            transition: all 0.3s ease;
+        /* Science Specific Styles */
+        .science-hero {
+            background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-deep) 100%);
+            color: var(--color-white);
+            padding: clamp(3rem, 6vw, 6rem) 0;
+            text-align: left;
         }
-        .faq-question {
-            font-family: var(--font-heading);
-            font-weight: 600;
-            color: var(--color-navy);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-            color: var(--color-grey-text);
-            margin-top: 0;
-        }
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-            margin-top: 1rem;
-        }
-        .faq-item.active .faq-question::after {
-            content: "−";
-        }
-        .faq-question::after {
-            content: "+";
-            font-size: 1.5rem;
-            color: var(--color-gold);
-        }
-
-        /* Regulation Loop Interactive Layout */
-        .regulation-section {
-            padding: 80px 0;
-            background: var(--color-white);
-        }
-        .regulation-grid {
+        .science-hero-grid {
             display: grid;
-            grid-template-columns: 1.1fr 1fr;
-            gap: 50px;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 4rem;
             align-items: center;
         }
-        @media (max-width: 992px) {
-            .regulation-grid {
+        .science-hero h1 {
+            color: var(--color-white);
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        .science-hero h1 span {
+            color: var(--color-gold);
+            display: block;
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+        .science-hero p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 1.5rem;
+            line-height: 1.65;
+        }
+        .science-hero-image-wrapper {
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(7, 42, 90, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .science-hero-image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        @media (max-width: 991px) {
+            .science-hero {
+                text-align: center;
+            }
+            .science-hero-grid {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 2.5rem;
+            }
+            .science-hero-image-wrapper {
+                max-width: 450px;
+                margin: 0 auto;
             }
         }
-        
-        /* Visualizer Box */
-        .visualizer-card {
-            background: var(--color-navy);
-            border-radius: var(--radius-lg);
-            padding: 40px;
-            height: 380px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-hover);
-            border: 1px solid rgba(212, 175, 55, 0.15);
-        }
-        .visualizer-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 2;
-        }
-        .visualizer-status {
-            background: rgba(255, 255, 255, 0.08);
-            color: #fff;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: #10B981;
-            border-radius: 50%;
-            display: inline-block;
-            box-shadow: 0 0 8px #10B981;
-        }
-        .visualizer-body {
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* Wave SVG Animations */
-        .wave-svg {
-            width: 100%;
-            height: 150px;
-            overflow: visible;
-        }
-        .wave-path {
-            fill: none;
-            stroke-width: 3.5;
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .wave-path.erratic {
-            stroke: #EF4444;
-            opacity: 0;
-        }
-        .wave-path.analysis {
-            stroke: var(--color-gold);
-            opacity: 0;
-        }
-        .wave-path.stable {
-            stroke: #10B981;
-            opacity: 0;
-        }
-        
-        /* Active States for Visuals */
-        .state-1 .wave-path.erratic { opacity: 1; }
-        .state-2 .wave-path.analysis { opacity: 1; }
-        .state-3 .wave-path.stable { opacity: 1; }
-        
-        /* Pulsing instability indicators for step 2 */
-        .instability-glow {
-            position: absolute;
-            width: 14px;
-            height: 14px;
-            background: var(--color-gold);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 15px var(--color-gold);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: 3;
-        }
-        .state-2 .instability-glow {
-            opacity: 1;
-            animation: ringGlow 1.5s infinite alternate;
-        }
-        @keyframes ringGlow {
-            0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.6; }
-            100% { transform: translate(-50%, -50%) scale(1.3); opacity: 1; box-shadow: 0 0 25px var(--color-gold); }
-        }
 
-        .visualizer-footer {
-            z-index: 2;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding-top: 15px;
-            margin-top: 15px;
+        .process-steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
-        .visualizer-footer-text {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.8rem;
+        .science-step-card {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-soft);
+            border-top: 4px solid var(--color-gold);
+            text-align: center;
         }
-        
-        /* Stepper Column */
-        .stepper-column {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .step-card {
-            background: var(--color-creme);
-            border: 2px solid transparent;
-            border-radius: var(--radius-md);
-            padding: 24px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-        }
-        .step-card:hover {
-            transform: translateX(5px);
-            border-color: rgba(10, 22, 40, 0.1);
-        }
-        .step-card.active {
-            background: var(--color-navy);
-            border-color: var(--color-gold);
-        }
-        .step-card.active .step-num-badge {
-            background: var(--color-gold);
+        .science-step-card h3 {
+            margin: 1rem 0;
             color: var(--color-navy);
         }
-        .step-card.active h3 {
-            color: #fff;
+
+        .not-is-box {
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            margin-top: 3rem;
         }
-        .step-card.active p {
-            color: rgba(255, 255, 255, 0.8);
+
+        .qa-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
         }
-        .step-num-badge {
-            background: var(--color-navy);
-            color: #fff;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            flex-shrink: 0;
-            font-family: var(--font-heading);
-            transition: all 0.3s ease;
+        @media (max-width: 768px) {
+            .qa-grid {
+                grid-template-columns: 1fr;
+            }
         }
-        .step-text h3 {
+        .qa-card {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-soft);
+        }
+        .qa-card h3 {
             font-size: 1.15rem;
-            margin-bottom: 6px;
-            transition: color 0.3s ease;
+            margin-bottom: 0.8rem;
+            color: var(--color-navy);
+            display: flex;
+            gap: 8px;
         }
-        .step-text p {
-            font-size: 0.92rem;
-            line-height: 1.5;
-            color: var(--color-grey-text);
-            margin: 0;
-            transition: color 0.3s ease;
+        .qa-card h3::before {
+            content: 'Q.';
+            color: var(--color-gold);
+            font-weight: 700;
         }
     </style>
 </head>
 <body>
+
+    <!-- Header Navigation -->
     <header>
         <div class="container nav-container">
             <div class="logo">
@@ -250,351 +137,327 @@
             <nav>
                 <ul class="nav-links">
                     <li><a href="index.html">Accueil</a></li>
-                    <li><a href="neurofeedback.html" class="active">La Science</a></li>
+                    <li><a href="neurofeedback.html">La Science</a></li>
                     <li><a href="programmes.html">Programmes</a></li>
+                    <li><a href="vision.html">Vision</a></li>
                     <li><a href="centres.html">Nos Centres</a></li>
-                    <li><a href="apropos.html">À Propos</a></li>
-                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="b2b.html">B2B</a></li>
+                    <li><a href="franchise.html">Franchise</a></li>
                 </ul>
             </nav>
             <div class="nav-cta">
-                <a href="contact.html" class="btn btn-navy">S'orienter</a>
+                <a href="contact.html" class="btn btn-gold">Bilan découverte</a>
             </div>
         </div>
     </header>
 
     <main>
-        <section class="hero fade-in" style="background: linear-gradient(rgba(10, 22, 40, 0.72), rgba(10, 22, 40, 0.85)), url('assets/images/neuroptimal-equipment.jpg') center/cover no-repeat; min-height: 420px; display: flex; align-items: center;">
-            <div class="container">
-                <h1>Entraîner le cerveau à s'auto-réguler</h1>
-                <p style="max-width: 680px; margin: 0 auto;">Découvrez la science derrière le neurofeedback dynamique NeurOptimal®. Une approche naturelle et non invasive de régulation cérébrale, validée par des décennies de recherche en neurosciences.</p>
-            </div>
-        </section>
-
-        <!-- Regulation section -->
-        <section class="regulation-section bg-white fade-in">
-            <div class="container">
-                <div class="section-header text-center" style="max-width: 700px; margin: 0 auto 50px;">
-                    <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:10px;">Entraînement Organique</span>
-                    <h2>Comment fonctionne la boucle de régulation ?</h2>
-                    <p style="font-size: 1.1rem; color: var(--color-grey-text); margin-top: 10px;">Ce n'est pas une thérapie médicale active. C'est un miroir en temps réel qui permet à votre cerveau de s'auto-corriger.</p>
+        <!-- Hero Section -->
+        <section class="science-hero">
+            <div class="container science-hero-grid">
+                <div class="fade-up">
+                    <h1>
+                        <span>La science derrière l'autorégulation</span>
+                        Comprendre le cerveau autrement.<br>Mesurer, refléter, accompagner.
+                    </h1>
+                    <p>
+                        Le neurofeedback dynamique repose sur une idée simple : le cerveau possède une capacité naturelle d'adaptation. Lorsqu'il reçoit une information claire sur sa propre activité, il peut progressivement ajuster son fonctionnement.
+                    </p>
+                    <p style="font-size: 1.05rem; color: rgba(255,255,255,0.7); margin-top: 1.2rem;">
+                        À l'INFC, nous utilisons cette approche dans un cadre structuré, non invasif et humain. La technologie permet de mesurer et de refléter l'activité cérébrale ; l'accompagnement psychologique permet de comprendre, d'orienter et d'ajuster le parcours. Notre objectif n'est pas de forcer le cerveau, ni de le corriger : c'est de lui offrir un cadre dans lequel il peut mieux s'écouter, mieux se réguler et retrouver plus de stabilité.
+                    </p>
+                    <div style="margin-top: 2rem; display: flex; gap: 15px; flex-wrap: wrap;">
+                        <a href="contact.html" class="btn btn-gold pulse-cta">Réserver un bilan découverte</a>
+                        <a href="programmes.html" class="btn btn-outline" style="border-color: var(--color-white); color: var(--color-white) !important;">Découvrir nos programmes</a>
+                    </div>
                 </div>
-
-                <div class="regulation-grid">
-                    
-                    <!-- Left: Interactive Visualizer Card -->
-                    <div class="visualizer-card state-1" id="visualizerCard">
-                        <div class="visualizer-header">
-                            <span class="visualizer-status">
-                                <span class="status-dot"></span>
-                                <span id="visualizerStatusText">Étape 1 : Capture en cours</span>
-                            </span>
-                            <span style="color: rgba(255,255,255,0.4); font-size: 0.8rem; font-family: var(--font-heading); font-weight: 700; letter-spacing: 1px;">INFC MONITOR v1.2</span>
-                        </div>
-
-                        <div class="visualizer-body">
-                            <!-- Glow instability indicators (visible in step 2) -->
-                            <div class="instability-glow" style="top: 20%; left: 15%;"></div>
-                            <div class="instability-glow" style="top: 80%; left: 55%;"></div>
-                            <div class="instability-glow" style="top: 25%; left: 80%;"></div>
-
-                            <!-- Waves SVG -->
-                            <svg class="wave-svg" viewBox="0 0 500 150" preserveAspectRatio="none">
-                                <!-- Step 1 Wave: Erratic red -->
-                                <path class="wave-path erratic" d="M0,75 L25,30 L50,110 L75,20 L100,130 L125,50 L150,95 L175,30 L200,120 L225,45 L250,105 L275,25 L300,125 L325,55 L350,90 L375,35 L400,115 L425,40 L450,100 L475,30 L500,75"></path>
-                                
-                                <!-- Step 2 Wave: Gold with highlights -->
-                                <path class="wave-path analysis" d="M0,75 C25,50 50,100 75,30 C100,120 125,40 150,90 C175,40 200,110 225,50 C250,100 275,35 300,115 C325,55 350,95 375,40 C400,110 425,50 450,95 C475,45 500,75"></path>
-                                
-                                <!-- Step 3 Wave: Smooth green/stable -->
-                                <path class="wave-path stable" d="M0,75 C40,40 80,110 120,75 C160,40 200,110 240,75 C280,40 320,110 360,75 C400,40 440,110 480,75 L500,75"></path>
-                            </svg>
-                        </div>
-
-                        <div class="visualizer-footer">
-                            <span class="visualizer-footer-text" id="visualizerFooterText">Lecture passive de l'activité corticale naturelle. Aucun courant envoyé.</span>
-                            <span style="color: var(--color-gold); font-weight: 700; font-size: 0.8rem;">256 Hz Analysis</span>
-                        </div>
-                    </div>
-
-                    <!-- Right: Stepper Card Column -->
-                    <div class="stepper-column">
-                        
-                        <!-- Step 1 Card -->
-                        <div class="step-card active" onclick="setRegulationStep(1)">
-                            <div class="step-num-badge">1</div>
-                            <div class="step-text">
-                                <h3>La Capture (Écoute passive)</h3>
-                                <p>Des capteurs d'EEG passifs écoutent l'activité électrique naturelle de votre cerveau. Aucun courant n'est émis. Vous vous relaxez.</p>
-                            </div>
-                        </div>
-
-                        <!-- Step 2 Card -->
-                        <div class="step-card" onclick="setRegulationStep(2)">
-                            <div class="step-num-badge">2</div>
-                            <div class="step-text">
-                                <h3>L'Analyse en Temps Réel</h3>
-                                <p>Le logiciel analyse les signaux 256 fois par seconde. Il repère les sursauts de tension ou micro-instabilités qui précèdent le stress.</p>
-                            </div>
-                        </div>
-
-                        <!-- Step 3 Card -->
-                        <div class="step-card" onclick="setRegulationStep(3)">
-                            <div class="step-num-badge">3</div>
-                            <div class="step-text">
-                                <h3>Le Feedback (Auto-correction)</h3>
-                                <p>Une micro-interruption dans le flux audio signale l'instabilité au cerveau, qui choisit instantanément de se réorganiser.</p>
-                            </div>
-                        </div>
-
-                    </div>
+                <div class="science-hero-image-wrapper slide-in-right">
+                    <img src="assets/images/calm-brain-visualization.png" alt="Visualisation 3D d'un cerveau serein et régulé">
                 </div>
             </div>
         </section>
 
-        <!-- Comment se déroule une séance -->
-        <section class="section fade-in" style="background: var(--color-navy); color: #fff; overflow: hidden;">
-            <div class="container">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
-                    <div>
-                        <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:10px;">L'Expérience INFC</span>
-                        <h2 style="color: #fff; margin-bottom: 1.5rem;">Comment se déroule une séance ?</h2>
-                        <p style="opacity: 0.9; line-height: 1.7; margin-bottom: 1.5rem;">Vous vous installez confortablement dans un fauteuil ergonomique. Deux capteurs EEG sont délicatement placés sur le cuir chevelu — aucune douleur, aucune sensation. Vous lancez un film ou une playlist musicale de votre choix.</p>
-                        <p style="opacity: 0.9; line-height: 1.7; margin-bottom: 1.5rem;">Pendant 33 minutes, le logiciel NeurOptimal® analyse votre activité cérébrale 256 fois par seconde. À chaque micro-instabilité détectée, une interruption sonore imperceptible invite votre cerveau à se réorganiser de lui-même.</p>
-                        <p style="opacity: 0.9; line-height: 1.7; margin-bottom: 2rem;">Vous n'avez rien à faire. Pas d'effort conscient, pas de visualisation guidée. Votre cerveau travaille pour vous, à son rythme, de manière organique.</p>
-                        <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
-                            <div style="text-align: center;">
-                                <div style="font-size: 2.5rem; font-weight: 800; color: var(--color-gold); font-family: var(--font-heading);">33 min</div>
-                                <div style="font-size: 0.85rem; opacity: 0.7;">Durée d'une séance</div>
-                            </div>
-                            <div style="text-align: center;">
-                                <div style="font-size: 2.5rem; font-weight: 800; color: var(--color-gold); font-family: var(--font-heading);">0</div>
-                                <div style="font-size: 0.85rem; opacity: 0.7;">Effort conscient requis</div>
-                            </div>
-                            <div style="text-align: center;">
-                                <div style="font-size: 2.5rem; font-weight: 800; color: var(--color-gold); font-family: var(--font-heading);">256 Hz</div>
-                                <div style="font-size: 0.85rem; opacity: 0.7;">Fréquence d'analyse</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.4); border: 1px solid rgba(212,175,55,0.2);">
-                        <img src="assets/images/session-room.jpg" alt="Salle de séance neurofeedback INFC" style="width: 100%; height: 500px; object-fit: cover; display: block;">
-                    </div>
+        <!-- Le Principe Section -->
+        <section class="section bg-white">
+            <div class="container" style="max-width: 800px; text-align: center;">
+                <div class="section-header">
+                    <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:10px;">Le Principe</span>
+                    <h2>Le cerveau apprend en recevant de l'information</h2>
                 </div>
+                <p style="font-size: 1.15rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                    Le cerveau fonctionne en permanence par ajustements : il observe, compare, corrige, anticipe et s'adapte. C'est cette capacité naturelle d'adaptation que l'on appelle la <strong>neuroplasticité</strong>.
+                </p>
+                <p style="font-size: 1.15rem; line-height: 1.7;">
+                    Le neurofeedback dynamique s'appuie sur ce principe : il permet au cerveau de recevoir un retour en temps réel sur son activité. Ce retour agit comme un miroir. Il ne donne pas d'ordre au cerveau, ne le stimule pas, ne l'oblige pas à produire un état particulier : il lui renvoie simplement une information. À partir de là, le cerveau peut mieux percevoir ses propres variations et retrouver davantage de souplesse.
+                </p>
             </div>
-            <style>
-                @media (max-width: 992px) {
-                    .section [style*='grid-template-columns: 1fr 1fr'] {
-                        grid-template-columns: 1fr !important;
-                        gap: 40px !important;
-                    }
-                }
-            </style>
         </section>
 
-        <section class="section bg-creme fade-in">
+        <!-- La Boucle de Régulation Section -->
+        <section class="section bg-creme">
             <div class="container">
                 <div class="section-header">
-                    <h2>Des données, pas des promesses</h2>
-                    <p>Observations issues de millions d'heures d'entraînement à travers le monde.</p>
+                    <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:10px;">Fonctionnement</span>
+                    <h2>ÉCOUTER · REFLÉTER · RÉGULER</h2>
+                    <p style="margin-top: 10px;">Une boucle simple de retour d'information</p>
                 </div>
-                
-                <div class="card-grid">
-                    <div class="card text-center">
-                        <h2 class="text-gold" style="font-size: 3rem;">91%</h2>
-                        <p>Rapportent une amélioration de la gestion du stress.</p>
+                <div class="process-steps-container">
+                    <div class="science-step-card">
+                        <span style="font-size: 2.5rem;">🎧</span>
+                        <h3>01 · Écouter</h3>
+                        <p style="font-size: 0.95rem;">des capteurs passifs, placés sur le cuir chevelu et les oreilles, mesurent l'activité électrique naturelle du cerveau en temps réel. Ils n'envoient aucun courant, ne stimulent pas le cerveau : ils lisent l'information.</p>
                     </div>
-                    <div class="card text-center">
-                        <h2 class="text-gold" style="font-size: 3rem;">85%</h2>
-                        <p>Observent une réduction significative de l'anxiété.</p>
+                    <div class="science-step-card">
+                        <span style="font-size: 2.5rem;">🪞</span>
+                        <h3>02 · Refléter</h3>
+                        <p style="font-size: 0.95rem;">pendant que vous regardez un film ou écoutez de la musique, le système renvoie une information discrète sous forme de micro-interruption sonore lorsqu'il détecte une variation. Ce n'est pas une correction, c'est un signal - comme un miroir.</p>
                     </div>
-                    <div class="card text-center">
-                        <h2 class="text-gold" style="font-size: 3rem;">83%</h2>
-                        <p>Constatent une meilleure capacité de concentration.</p>
+                    <div class="science-step-card">
+                        <span style="font-size: 2.5rem;">🌱</span>
+                        <h3>03 · Réguler</h3>
+                        <p style="font-size: 0.95rem;">le cerveau utilise naturellement cette information pour s'ajuster, sans direction extérieure ni effort conscient. La régulation se fait progressivement, au rythme de chaque personne.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Nos Pères Fondateurs -->
-        <section class="section bg-white fade-in">
+        <!-- Ce que le neurofeedback n'est pas Section -->
+        <section class="section bg-white">
+            <div class="container" style="max-width: 900px;">
+                <div class="section-header">
+                    <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:10px;">Prudence et Cadre</span>
+                    <h2>Ce que le neurofeedback n'est pas</h2>
+                </div>
+                <div class="not-is-box">
+                    <h3 style="color: var(--color-navy); font-size: 1.3rem; margin-bottom: 1rem; font-family: var(--font-heading);">Une approche douce, pas une promesse magique</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                        Le neurofeedback dynamique n'est pas un médicament. Il ne remplace pas un suivi médical. Il ne pose pas de diagnostic. Il ne promet pas un résultat identique pour tous. Il ne force pas le cerveau à fonctionner d'une manière précise.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.7;">
+                        C'est un entraînement cérébral non invasif qui accompagne la capacité naturelle du cerveau à s'autoréguler. À l'INFC, cette approche s'inscrit toujours dans un cadre humain, structuré et responsable. Lorsque la situation nécessite un avis médical, un suivi spécialisé ou une orientation complémentaire, nous l'indiquons clairement.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Une approche non invasive Section -->
+        <section class="section bg-creme">
+            <div class="container" style="max-width: 800px; text-align: center;">
+                <div class="section-header">
+                    <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:10px;">Sécurité</span>
+                    <h2>Sans courant envoyé au cerveau</h2>
+                </div>
+                <p style="font-size: 1.15rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                    Le neurofeedback dynamique utilisé à l'INFC est une méthode non invasive : les capteurs placés sur la tête lisent l'activité cérébrale, mais n'envoient aucun courant au cerveau. La séance est :
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 0.8rem; font-weight: 600; color: var(--color-navy); font-size: 1.1rem; margin-bottom: 2rem;">
+                    <span>✓ Non invasive & indolore</span>
+                    <span>✓ Sans stimulation électrique</span>
+                    <span>✓ Sans effort conscient</span>
+                    <span>✓ Sans médicament</span>
+                    <span>✓ Adaptée à différents âges et profils</span>
+                </div>
+                <p style="font-size: 0.95rem; opacity: 0.8; font-style: italic;">
+                    Dans le cadre d'un accompagnement de bien-être, il n'y a généralement aucune contre-indication spécifique connue. En cas de pathologie médicale, de grossesse à risque, d'épilepsie suivie, de traitement lourd ou de situation particulière, l'avis du médecin reste recommandé avant de commencer.
+                </p>
+            </div>
+        </section>
+
+        <!-- Le Déroulé Section -->
+        <section class="section bg-white">
             <div class="container">
-                <div class="section-header" style="margin-bottom: 50px;">
-                    <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px;">Héritage Scientifique</span>
-                    <h2 style="margin-top: 10px;">Nos Pères Fondateurs</h2>
-                    <p>Le neurofeedback s'appuie sur plus de 50 ans de recherche en neurosciences. Voici les pionniers dont les travaux ont rendu cette technologie possible.</p>
+                <div class="section-header fade-up">
+                    <span class="eyebrow">Le Déroulé</span>
+                    <h2>Comment se déroule une séance ?</h2>
                 </div>
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 50px;">
-                    <div style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-hover); border: 1px solid rgba(212,175,55,0.15);">
-                        <img src="assets/images/founders-wall-closeup.jpg" alt="Nos Pères Fondateurs — Valdeane Brown, Barry Sterman, Susan Brown, Lisa Feldman Barrett" style="width: 100%; height: 420px; object-fit: cover; display: block;">
+                <div class="split-layout">
+                    <div class="fade-up" style="background: var(--color-creme); border-radius: var(--radius-lg); padding: 3rem;">
+                        <h3 style="color: var(--color-navy); margin-bottom: 1rem; font-family: var(--font-heading);">Vous n'avez rien à réussir.</h3>
+                        <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                            Une séance de neurofeedback dynamique se déroule dans un cadre calme et confortable. Vous êtes installé dans un fauteuil ; des capteurs sont placés sur votre cuir chevelu et vos oreilles. Vous pouvez regarder un film, écouter de la musique ou simplement vous détendre. Le système observe les variations de votre activité cérébrale et renvoie une information discrète sous forme de micro-interruptions sonores.
+                        </p>
+                        <p style="font-size: 1.1rem; line-height: 1.7;">
+                            Vous n'avez pas besoin de vous concentrer, de méditer ni de « bien faire ». Le cerveau reçoit une information sur lui-même et peut progressivement ajuster son activité. Une séance dure environ 33 minutes ; le nombre de séances dépend du besoin, du profil, de l'objectif et de l'évolution observée.
+                        </p>
                     </div>
-                    <div>
-                        <blockquote style="border-left: 4px solid var(--color-gold); padding-left: 20px; margin-bottom: 2rem;">
-                            <p style="font-size: 1.3rem; font-style: italic; color: var(--color-navy); line-height: 1.5; font-family: var(--font-heading);">« Le cerveau sait ce qu'il fait. Nous n'avons pas besoin de le diriger, nous devons juste lui permettre de mieux se percevoir. »</p>
-                            <footer style="color: var(--color-gold); font-weight: 700; margin-top: 10px;">— Valdeane W. Brown, Inventeur du Neurofeedback Dynamique NeurOptimal®</footer>
-                        </blockquote>
-                        <p style="line-height: 1.7; margin-bottom: 1.5rem;">De <strong>Barry Sterman</strong>, pionnier de la recherche sur les rythmes SMR dans les années 1960, à <strong>Valdeane et Susan Brown</strong>, créateurs du système NeurOptimal® qui a révolutionné l'approche du neurofeedback, en passant par <strong>Lisa Feldman Barrett</strong> et ses travaux novateurs sur la construction des émotions — chaque avancée scientifique a posé les fondations de notre méthode.</p>
-                        <p style="line-height: 1.7;">Chez INFC, nous honorons cet héritage en restant fidèles à un principe fondamental : <strong>le cerveau n'est jamais un problème à corriger, c'est une intelligence à accompagner.</strong></p>
+                    <div class="split-image-wrapper slide-in-right">
+                        <img src="assets/images/neuroptimal-equipment.jpg" alt="Équipement NeurOptimal® et capteurs passifs" loading="lazy" style="width: 100%; height: auto; display: block;">
                     </div>
                 </div>
-                
-                <div style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-hover); border: 1px solid rgba(212,175,55,0.15);">
-                    <img src="assets/images/founders-wall-full.jpg" alt="Mur complet des Pères Fondateurs du Neurofeedback à l'INFC" style="width: 100%; height: 400px; object-fit: cover; display: block;">
+            </div>
+        </section>
+
+        <!-- La cartographie cérébrale Section -->
+        <section class="section bg-creme">
+            <div class="container" style="max-width: 800px; text-align: center;">
+                <div class="section-header">
+                    <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:10px;">Mesure et Suivi</span>
+                    <h2>La cartographie cérébrale (qEEG)</h2>
                 </div>
-                <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: var(--color-grey-text); font-style: italic;">Le mur des Pères Fondateurs du neurofeedback, installé dans nos centres INFC au Maroc.</p>
+                <p style="font-size: 1.15rem; line-height: 1.7; margin-bottom: 1.5rem; color: var(--color-navy); font-weight: 500;">
+                    Mesurer pour mieux comprendre
+                </p>
+                <p style="font-size: 1.15rem; line-height: 1.7;">
+                    La cartographie cérébrale, ou qEEG, est un outil de mesure qui permet d'observer certains aspects du fonctionnement cérébral. À l'INFC, elle peut servir à mieux comprendre le profil neurophysiologique d'une personne, orienter l'accompagnement et suivre l'évolution du parcours. Elle ne remplace pas un diagnostic médical, ne prédit pas un résultat et ne résume pas une personne à des chiffres.
+                </p>
             </div>
         </section>
 
         <!-- Neuroplasticité Section -->
-        <section class="section fade-in" style="background: linear-gradient(135deg, #0A1628, #152238);">
-            <div class="container">
-                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                    <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:15px;">Le Principe Scientifique</span>
-                    <h2 style="color: #fff; margin-bottom: 1.5rem;">La Neuroplasticité : votre cerveau sait se transformer</h2>
-                    <p style="color: rgba(255,255,255,0.85); font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem;">La neuroplasticité est la capacité du cerveau à se réorganiser en formant de nouvelles connexions neuronales tout au long de la vie. Ce n'est pas une promesse — c'est un fait biologique documenté par des milliers d'études.</p>
+        <section class="section bg-white">
+            <div class="container" style="max-width: 800px; text-align: center;">
+                <div class="section-header">
+                    <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:10px;">Neuroplasticité</span>
+                    <h2>Le cerveau reste capable d'évoluer</h2>
                 </div>
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 900px; margin: 0 auto;">
-                    <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.2); border-radius: var(--radius-md); padding: 30px; text-align: center;">
-                        <div style="font-size: 2.5rem; margin-bottom: 15px;">🧬</div>
-                        <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">Régénération Synaptique</h3>
-                        <p style="color: rgba(255,255,255,0.7); font-size: 0.92rem; line-height: 1.5;">Votre cerveau crée de nouvelles voies neuronales à chaque séance, renforçant sa résilience naturelle.</p>
-                    </div>
-                    <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.2); border-radius: var(--radius-md); padding: 30px; text-align: center;">
-                        <div style="font-size: 2.5rem; margin-bottom: 15px;">🔄</div>
-                        <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">Auto-Organisation</h3>
-                        <p style="color: rgba(255,255,255,0.7); font-size: 0.92rem; line-height: 1.5;">Aucune direction imposée. Le cerveau choisit lui-même la meilleure voie de régulation. C'est la philosophie NeurOptimal®.</p>
-                    </div>
-                    <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.2); border-radius: var(--radius-md); padding: 30px; text-align: center;">
-                        <div style="font-size: 2.5rem; margin-bottom: 15px;">📈</div>
-                        <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">Effet Cumulatif</h3>
-                        <p style="color: rgba(255,255,255,0.7); font-size: 0.92rem; line-height: 1.5;">Les bienfaits se renforcent séance après séance. La régulation devient progressivement naturelle et durable.</p>
-                    </div>
-                </div>
-                <div style="text-align: center; margin-top: 3rem;">
-                    <p style="color: rgba(255,255,255,0.6); font-size: 0.85rem; max-width: 600px; margin: 0 auto; font-style: italic;">Le neurofeedback NeurOptimal® ne traite aucune pathologie. Il entraîne le cerveau à mieux se percevoir, favorisant une régulation organique progressive.</p>
-                </div>
+                <p style="font-size: 1.15rem; line-height: 1.7;">
+                    La neuroplasticité désigne la capacité du cerveau à s'adapter, à modifier certaines connexions, à apprendre et à se réorganiser tout au long de la vie. Le neurofeedback dynamique s'inscrît dans cette logique d'apprentissage : il ne force pas le cerveau, il lui donne une information qui peut l'aider à mieux s'ajuster. Une approche progressive, respectueuse du rythme de chaque personne.
+                </p>
             </div>
-            <style>
-                @media (max-width: 768px) {
-                    [style*='grid-template-columns: repeat(3'] {
-                        grid-template-columns: 1fr !important;
-                    }
-                }
-            </style>
         </section>
 
-        <section class="section bg-white fade-in">
-            <div class="container" style="max-width: 800px;">
+        <!-- Pourquoi l'accompagnement humain est essentiel Section -->
+        <section class="section bg-navy">
+            <div class="container" style="max-width: 800px; text-align: center;">
+                <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:10px;">L'Humain avant tout</span>
+                <h2>La technologie mesure. L'humain accompagne.</h2>
+                <p style="font-size: 1.15rem; line-height: 1.7; margin-top: 1.5rem; margin-bottom: 1.5rem; opacity: 0.9;">
+                    Un cerveau ne fonctionne jamais hors contexte : il appartient à une personne, avec son histoire, ses émotions, son rythme de vie, ses contraintes et ses objectifs. C'est pourquoi l'INFC ne propose pas seulement des séances : nous proposons un accompagnement. L'équipe prend le temps de comprendre votre situation, de suivre votre évolution et d'ajuster le parcours.
+                </p>
+                <div style="font-style: italic; font-size: 1.1rem; color: var(--color-gold);">
+                    « La technologie donne une information au cerveau. L'accompagnement humain donne du sens à l'évolution. »
+                </div>
+            </div>
+        </section>
+
+        <!-- Ce que dit la recherche Section -->
+        <section class="section bg-white">
+            <div class="container" style="max-width: 900px;">
                 <div class="section-header">
-                    <h2>Questions Fréquentes</h2>
+                    <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:10px;">Littérature Scientifique</span>
+                    <h2>Une approche documentée</h2>
                 </div>
-                
-                <div class="faq-container">
-                    <div class="faq-item">
-                        <div class="faq-question">Est-ce médical ou invasif ?</div>
-                        <div class="faq-answer">Non. Le neurofeedback dynamique est une approche naturelle et non invasive. Aucun courant électrique ni impulsion n'est envoyé au cerveau. Le système agit uniquement comme un miroir, permettant au cerveau de s'auto-réguler. C'est un entraînement, pas un traitement.</div>
+                <div style="background: var(--color-creme); border-radius: var(--radius-lg); padding: 3rem; line-height: 1.7;">
+                    <p style="font-size: 1.1rem; margin-bottom: 1rem;">
+                        Le neurofeedback s'inscrit dans un champ de recherche qui explore les liens entre activité cérébrale, autorégulation, attention, stress, sommeil, émotions et apprentissage. Les résultats peuvent varier selon les protocoles, les profils et les méthodes.
+                    </p>
+                    <p style="font-size: 1.1rem; font-weight: 500; color: var(--color-navy);">
+                        À l'INFC, nous présentons cette littérature avec prudence : nous ne promettons aucun résultat standardisé, ne remplaçons pas un diagnostic médical, et ne présentons pas le neurofeedback comme une solution unique.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Questions fréquentes Section -->
+        <section class="section bg-creme">
+            <div class="container">
+                <div class="section-header">
+                    <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:10px;">FAQ</span>
+                    <h2>Questions fréquentes</h2>
+                </div>
+                <div class="qa-grid">
+                    <div class="qa-card">
+                        <h3>Est-ce douloureux ?</h3>
+                        <p>Non. La séance est indolore : les capteurs lisent l'activité mais n'envoient aucun courant.</p>
                     </div>
-                    <div class="faq-item">
-                        <div class="faq-question">Combien de temps avant de ressentir les effets ?</div>
-                        <div class="faq-answer">Les premiers bienfaits sont souvent ressentis dès la première séance : une sensation de clarté mentale, un sommeil plus profond, ou un apaisement général. Cependant, la régulation cérébrale est un processus progressif et organique — un accompagnement sur la durée permet d'ancrer durablement ces changements.</div>
+                    <div class="qa-card">
+                        <h3>Est-ce invasif ?</h3>
+                        <p>Non. Le neurofeedback dynamique est non invasif : ni stimulation électrique, ni intervention physique, ni effort particulier.</p>
                     </div>
-                    <div class="faq-item">
-                        <div class="faq-question">Est-ce adapté aux enfants ?</div>
-                        <div class="faq-answer">Oui, parfaitement. Notre approche est sans effort conscient. L'enfant s'installe, regarde un film ou écoute de la musique, et son cerveau s'entraîne de manière passive. C'est idéal pour la préparation aux examens, l'accompagnement neuro-atypique (TDA/H, autisme) et la gestion du stress scolaire.</div>
+                    <div class="qa-card">
+                        <h3>Dois-je me concentrer ?</h3>
+                        <p>Non. Film, musique ou simple détente : le cerveau reçoit l'information sans effort conscient.</p>
                     </div>
-                    <div class="faq-item">
-                        <div class="faq-question">Quelle est la différence avec le neurofeedback classique ?</div>
-                        <div class="faq-answer">Le neurofeedback classique (linéaire) impose des protocoles fixes au cerveau en ciblant des fréquences spécifiques. NeurOptimal® est un neurofeedback dynamique : il ne dirige pas le cerveau, il lui donne un miroir en temps réel pour qu'il s'auto-organise. C'est plus respectueux, plus sûr, et aligné avec le fonctionnement naturel du système nerveux central.</div>
+                    <div class="qa-card">
+                        <h3>Adapté aux enfants ?</h3>
+                        <p>Oui. Séances passives et confortables, avec une attention portée aux parents et à l'environnement.</p>
                     </div>
-                    <div class="faq-item">
-                        <div class="faq-question">Combien de séances sont recommandées ?</div>
-                        <div class="faq-answer">Il n'y a pas de nombre standard — chaque cerveau est unique. En général, 10 à 20 séances permettent d'observer des changements significatifs. Certains clients choisissent de poursuivre l'entraînement sur le long terme comme un rituel de bien-être cérébral, à l'image de l'exercice physique régulier.</div>
+                    <div class="qa-card">
+                        <h3>Adapté aux femmes enceintes ?</h3>
+                        <p>L'approche est non invasive et sans stimulation électrique : pas de contre-indication connue pendant la grossesse. En cas de grossesse à risque ou de doute, l'avis du médecin reste recommandé.</p>
                     </div>
-                    <div class="faq-item">
-                        <div class="faq-question">Y a-t-il des effets secondaires ?</div>
-                        <div class="faq-answer">NeurOptimal® est considéré comme l'un des systèmes de neurofeedback les plus sûrs au monde. Aucun courant n'est envoyé au cerveau. Occasionnellement, certaines personnes peuvent ressentir une légère fatigue passagère après les premières séances — signe que le cerveau réorganise activement ses réseaux.</div>
+                    <div class="qa-card">
+                        <h3>Des contre-indications ?</h3>
+                        <p>Dans un cadre de bien-être, généralement aucune contre-indication spécifique connue. En cas de pathologie, d'épilepsie suivie, de traitement lourd ou de situation particulière, un avis médical peut être recommandé.</p>
+                    </div>
+                    <div class="qa-card">
+                        <h3>Combien de séances ?</h3>
+                        <p>Cela dépend du profil, de l'objectif et de l'évolution. L'orientation se fait après un premier bilan.</p>
+                    </div>
+                    <div class="qa-card">
+                        <h3>Peut-on arrêter un traitement médical grâce au neurofeedback ?</h3>
+                        <p>Non. Il ne remplace pas un traitement et ne doit jamais conduire à l'arrêter sans avis du médecin.</p>
+                    </div>
+                    <div class="qa-card" style="grid-column: span 2;">
+                        <h3>Les résultats sont-ils garantis ?</h3>
+                        <p>Non. Chaque cerveau répond à son rythme. L'INFC offre un cadre structuré, humain et progressif.</p>
                     </div>
                 </div>
-                
-                <div class="text-center" style="margin-top: 3rem;">
-                    <a href="contact.html" class="btn btn-navy">Échange d'orientation personnalisé</a>
+            </div>
+        </section>
+
+        <!-- Notre position Section -->
+        <section class="section bg-white" style="padding-bottom: 0;">
+            <div class="container">
+                <div class="double-cta-box">
+                    <h2>Une méthode douce, un cadre exigeant</h2>
+                    <p>
+                        Le neurofeedback dynamique ouvre une nouvelle manière d'accompagner le cerveau : plus douce, plus respectueuse, plus progressive. Mais la technologie ne suffit jamais seule. Chaque parcours INFC associe l'entraînement cérébral, l'écoute clinique, l'observation, le suivi psychologique et l'ajustement personnalisé. Nous ne cherchons pas à remplacer la médecine, la psychologie ou l'éducation : nous créons un espace complémentaire, structuré et humain.
+                    </p>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                        <a href="contact.html" class="btn btn-gold">Réserver un bilan découverte</a>
+                        <a href="programmes.html" class="btn btn-navy">Découvrir nos programmes</a>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer here (same as index.html) -->
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <img src="assets/logos/logowhite.png" alt="INFC Logo" style="height: 40px; margin-bottom: 1rem;">
-                    <p>Une approche humaine du bien-être cérébral.</p>
+                    <p>Centre de régulation cérébrale et d'accompagnement psychologique au Maroc.</p>
                 </div>
                 <div class="footer-col">
-                    <h4>Navigation</h4>
+                    <h4>Raccourcis</h4>
                     <ul>
+                        <li><a href="index.html">Accueil</a></li>
                         <li><a href="neurofeedback.html">La Science</a></li>
-                        <li><a href="programmes.html">Programmes</a></li>
-                        <li><a href="centres.html">Nos Centres</a></li>
-                        <li><a href="apropos.html">À Propos</a></li>
+                        <li><a href="programmes.html">Nos Programmes</a></li>
+                        <li><a href="vision.html">Notre Vision</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Réseau</h4>
+                    <ul>
+                        <li><a href="centres.html">Casablanca</a></li>
+                        <li><a href="centres.html">Marrakech</a></li>
+                        <li><a href="centres.html">Kénitra</a></li>
+                        <li><a href="centres.html">Tanger</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Espaces Dédiés</h4>
+                    <ul>
+                        <li><a href="b2b.html">Entreprises & B2B</a></li>
+                        <li><a href="franchise.html">Modèle Franchise</a></li>
+                        <li><a href="contact.html">Nous Contacter</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
+                <p style="font-size: 0.8rem; margin-bottom: 1.5rem; line-height: 1.6; opacity: 0.6; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    Le neurofeedback dynamique est un entraînement cérébral d'autorégulation et de bien-être. Cette méthode ne constitue pas un traitement médical, ne pose aucun diagnostic et ne remplace pas une consultation ou un suivi auprès de professionnels de santé habilités.
+                </p>
                 <p>&copy; 2026 International Neurofeedback Center. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
-    <script>
-        // Interactive visualizer state machine
-        function setRegulationStep(step) {
-            const card = document.getElementById('visualizerCard');
-            const statusText = document.getElementById('visualizerStatusText');
-            const footerText = document.getElementById('visualizerFooterText');
-            const stepCards = document.querySelectorAll('.step-card');
-            
-            // Update active states on step cards
-            stepCards.forEach((btn, index) => {
-                if (index === (step - 1)) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
-            });
-
-            // Update card classes to trigger wave path transitions
-            card.className = `visualizer-card state-${step}`;
-
-            // Update text dynamic content
-            if (step === 1) {
-                statusText.textContent = "Étape 1 : Capture en cours";
-                footerText.textContent = "Lecture passive de l'activité corticale naturelle. Aucun courant envoyé.";
-            } else if (step === 2) {
-                statusText.textContent = "Étape 2 : Analyse active (256 Hz)";
-                footerText.textContent = "Recherche d'instabilités de signaux. Détection pré-symptomatique du stress.";
-            } else if (step === 3) {
-                statusText.textContent = "Étape 3 : Feedback harmonisé";
-                footerText.textContent = "Micro-coupures sonores initiant une auto-régulation naturelle immédiate.";
-            }
-        }
-
-        // FAQ Accordion
-        document.addEventListener('DOMContentLoaded', () => {
-            const faqItems = document.querySelectorAll('.faq-item');
-            faqItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    const isActive = item.classList.contains('active');
-                    faqItems.forEach(i => i.classList.remove('active'));
-                    if (!isActive) {
-                        item.classList.add('active');
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>

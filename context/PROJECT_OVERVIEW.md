@@ -5,6 +5,9 @@ Welcome to the **NeuroMaroc** and **International Neurofeedback Center (INC)** p
 ## Core Mission
 NeuroMaroc focuses on clinical excellence through Neurofeedback and AI-driven growth strategies to dominate the digital and clinical space in Morocco and beyond.
 
+## Central Hub Reference
+- **[INFC Business Handbook](file:///Users/user/Desktop/2K25/PROJECT%20X/NeuroMaroc/context/INFC_BUSINESS_HANDBOOK.md)**: The absolute source of truth consolidating brand guidelines, clinical pathways, marketing playbooks, and expansion strategies.
+
 ## Project Structure (Contextual)
 
 This `./context/` directory organizes knowledge into logical areas:

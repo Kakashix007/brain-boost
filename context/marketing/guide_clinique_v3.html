@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Guide Clinique & Portail Patient — INFC</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap');
+
+    :root {
+      --primary: #0A1628;
+      --primary-light: #162A45;
+      --accent: #D4AF37;
+      --accent-light: #F3E5AB;
+      --bg-cream: #FDFBF7;
+      --bg-card: #FFFFFF;
+      --text: #2C3E50;
+      --text-light: #5A6B7C;
+      --border: #E8EBF0;
+      --success: #10B981;
+      --success-bg: #E6F8F2;
+      --shadow: rgba(10, 22, 40, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: #E2E8F0;
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      padding: 20mm;
+      margin: 20px auto;
+      background: var(--bg-cream);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      position: relative;
+      page-break-after: always;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    @media print {
+      body {
+        background: none;
+      }
+      .page {
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+      }
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--primary);
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-top: 15px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    h2::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 18px;
+      background-color: var(--accent);
+      border-radius: 2px;
+    }
+
+    p {
+      font-size: 13px;
+      margin: 0 0 10px 0;
+      color: var(--text-light);
+      text-align: justify;
+    }
+
+    /* Cover Page */
+    .cover {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 30mm 15mm;
+      position: relative;
+    }
+
+    .cover::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: linear-gradient(90deg, var(--accent) 0%, #F3E5AB 100%);
+    }
+
+    .cover .logo {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: var(--accent);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .cover h1 {
+      color: #FFFFFF;
+      border-bottom: none;
+      font-size: 32px;
+      line-height: 1.3;
+      margin-bottom: 15px;
+      padding-bottom: 0;
+    }
+
+    .cover h2 {
+      color: var(--accent);
+      font-size: 18px;
+      font-weight: 400;
+      margin-top: 0;
+      margin-bottom: 30px;
+    }
+
+    .cover h2::before {
+      display: none;
+    }
+
+    .cover .intro-text {
+      max-width: 550px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 40px;
+      font-weight: 300;
+      text-align: center;
+    }
+
+    .cover .meta {
+      font-size: 12px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      line-height: 1.8;
+      margin-top: auto;
+    }
+
+    .cover .footer-note {
+      font-size: 11px;
+      opacity: 0.6;
+      margin-top: 15px;
+    }
+
+    /* Highlight box */
+    .highlight-box {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+
+    /* Stats display */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .stat-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .stat-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* Cases card */
+    .case-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 4px var(--shadow);
+    }
+
+    .case-card strong {
+      color: var(--primary);
+      font-size: 13.5px;
+    }
+
+    .case-card p {
+      margin: 5px 0 0 0;
+      font-size: 12.5px;
+    }
+
+    /* Compare Table */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      background: #FFFFFF;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .compare-table th, .compare-table td {
+      padding: 10px 12px;
+      text-align: left;
+      font-size: 12px;
+    }
+
+    .compare-table th {
+      background-color: var(--primary);
+      color: #FFFFFF;
+      font-weight: 500;
+    }
+
+    .compare-table td {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .compare-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Portal feature */
+    .portal-item {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 15px;
+      margin-bottom: 10px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .portal-item strong {
+      display: block;
+      color: var(--primary);
+      font-size: 13.5px;
+      margin-bottom: 3px;
+    }
+
+    .portal-item p {
+      margin: 0;
+      font-size: 12.5px;
+    }
+
+    /* Steps timeline */
+    .steps-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 15px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 15px;
+    }
+
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--primary);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .step-details strong {
+      display: block;
+      color: var(--primary);
+      font-size: 13.5px;
+      margin-bottom: 3px;
+    }
+
+    .step-details p {
+      margin: 0;
+      font-size: 12.5px;
+    }
+
+    /* Call to Action card */
+    .cta-card {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: #FFFFFF;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .cta-card h3 {
+      color: var(--accent);
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .cta-card p {
+      color: rgba(255,255,255,0.85);
+      text-align: center;
+      max-width: 500px;
+      margin: 0 auto 12px auto;
+      font-size: 12.5px;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      background: var(--accent);
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+      padding: 10px 25px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 15px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 12px;
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* Footer */
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+      font-size: 11px;
+      color: var(--text-light);
+    }
+
+    .footer-right {
+      color: var(--accent);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1: COVER -->
+  <div class="page cover">
+    <div class="logo">INFC</div>
+    <h1>Guide Clinique & Portail Patient</h1>
+    <h2>L'Entraînement Cérébral par Neurofeedback</h2>
+    <div class="intro-text">
+      Principes scientifiques · Suivi qEEG · Études de cas patients<br><br>
+      Document confidentiel destiné aux patients et prospects qualifiés du réseau INFC Maroc.
+    </div>
+    <div class="meta">
+      Directeur Scientifique : Comité Médical INFC<br>
+      Casablanca · Marrakech · Tanger · Kénitra
+    </div>
+    <div class="footer-note">Réseau International Neurofeedback Center</div>
+  </div>
+
+  <!-- PAGE 2: SECTIONS 1 & 2 -->
+  <div class="page">
+    <div>
+      <h1>Section 1 — La Science Derrière les Résultats</h1>
+      <p>
+        Le Neurofeedback n'est pas une approche alternative. C'est une discipline appuyée par plus de 40 ans de recherche en neurosciences, et aujourd'hui accessible au grand public grâce à la technologie NeurOptimal®.
+      </p>
+
+      <h2>Le principe : la plasticité cérébrale</h2>
+      <p>
+        Votre cerveau est capable de se reconfigurer tout au long de votre vie. Lorsqu'il reçoit un retour instantané sur sa propre activité électrique, il ajuste ses schémas de fonctionnement. C'est exactement ce que fait le neurofeedback — ni plus, ni moins.
+      </p>
+
+      <div class="highlight-box">
+        <strong style="color: var(--primary); display: block; margin-bottom: 5px; font-size: 13.5px;">Protocole 100% passif et non invasif :</strong>
+        <p style="margin: 0; font-size: 12.5px;">
+          Les capteurs posés sur votre cuir chevelu mesurent uniquement. Aucune électricité n'est envoyée vers vous. Aucune substance introduite. Votre cerveau fait le travail.
+        </p>
+      </div>
+
+      <h2 style="margin-top: 20px;">Taux d'amélioration cliniques (10 à 15 séances)</h2>
+      <div class="grid-2">
+        <div class="stat-card">
+          <span class="stat-label">Clarté & calme mental</span>
+          <span class="stat-value">91%</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Gestion de l'anxiété</span>
+          <span class="stat-value">89%</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Qualité du sommeil</span>
+          <span class="stat-value">85%</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Focus & concentration</span>
+          <span class="stat-value">82%</span>
+        </div>
+      </div>
+
+      <h1 style="margin-top: 25px;">Section 2 — Études de Cas Réels</h1>
+      <div class="case-card">
+        <strong>Cas N°1 : Yassine, 14 ans — Casablanca (Stress d'examens & attention)</strong>
+        <p>
+          <em>Situation initiale :</em> Theta lentes élevées au lobe préfrontal (Fz). Grande dispersion, troubles de mémoire et forte anxiété.<br>
+          <em>Protocole :</em> 12 séances ciblées sur Fz.<br>
+          <em>Résultats :</em> Amplitude Theta réduite (7.5 µV → 5.8 µV), score de symptômes (8/10 → 3/10). Examens réussis sereinement.
+        </p>
+      </div>
+
+      <div class="case-card">
+        <strong>Cas N°2 : Sofia, 38 ans — Marrakech (Burnout & insomnies chroniques)</strong>
+        <p>
+          <em>Situation initiale :</em> Instabilité marquée des ondes Alpha (Fz / Cz) empêchant la récupération au repos.<br>
+          <em>Protocole :</em> 15 séances de stabilisation des ondes Alpha.<br>
+          <em>Résultats :</em> Amplitude stabilisée à 5.7 µV, score de symptômes (8/10 → 2/10). Sommeil réparateur retrouvé et retour de la clarté mentale au travail.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Guide Clinique — INFC</span>
+      <span class="footer-right">Page 2</span>
+    </div>
+  </div>
+
+  <!-- PAGE 3: SECTIONS 3 & 4 -->
+  <div class="page">
+    <div>
+      <h1>Section 3 — Tableau Comparatif Avant / Après</h1>
+      <p>
+        Suivi quantitatif des mesures qEEG des amplitudes d'ondes d'un patient type sur Fz :
+      </p>
+
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Symptôme ciblé</th>
+            <th>Onde (Fz)</th>
+            <th>Séance 1</th>
+            <th>Séance 12</th>
+            <th>Norme</th>
+            <th>Score symptôme</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Dispersion & Inattention</strong></td>
+            <td>Theta</td>
+            <td>7.5 µV</td>
+            <td>5.8 µV</td>
+            <td>5.0–9.0 µV</td>
+            <td>8/10 → 3/10</td>
+          </tr>
+          <tr>
+            <td><strong>Anxiété & Hyper-vigilance</strong></td>
+            <td>Alpha</td>
+            <td>4.2 µV (instable)</td>
+            <td>5.7 µV (stable)</td>
+            <td>4.0–8.0 µV</td>
+            <td>8/10 → 2/10</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h1 style="margin-top: 30px;">Section 4 — Votre Espace Patient : La Différence INFC</h1>
+      <p>
+        La majorité des centres de neurofeedback dans le monde travaillent encore avec des dossiers papier. Chez INFC, chaque patient dispose d'un portail digital sécurisé — parce que vous méritez de voir votre transformation.
+      </p>
+
+      <div style="margin-top: 15px;">
+        <div class="portal-item">
+          <strong>📊 Cartographie qEEG en temps réel</strong>
+          <p>Visualisez l'état de régulation de votre lobe préfrontal (Fz) et central (Cz). Suivez l'amplitude de vos ondes Alpha et Theta séance par séance.</p>
+        </div>
+
+        <div class="portal-item">
+          <strong>⏳ Historique inter-centres synchronisé</strong>
+          <p>Toutes vos séances, quel que soit le centre INFC visité, sont enregistrées sur le même profil. Votre praticien accède immédiatement à votre historique complet.</p>
+        </div>
+
+        <div class="portal-item">
+          <strong>📝 Observations cliniques & rapports PDF</strong>
+          <p>Accédez aux notes de votre praticien référent après chaque séance. Téléchargez votre rapport clinique complet avec cartes de chaleur cérébrale.</p>
+        </div>
+
+        <div class="portal-item">
+          <strong>📚 Bibliothèque personnalisée</strong>
+          <p>Exercices de cohérence cardiaque, routines d'optimisation Alpha, guides sur la surcharge cognitive — adaptés à votre profil.</p>
+        </div>
+
+        <div class="portal-item">
+          <strong>💳 Transparence financière totale</strong>
+          <p>Détail de chaque règlement, historique de factures sur l'ensemble du réseau, graphique d'évolution mensuelle de vos dépenses.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Guide Clinique — INFC</span>
+      <span class="footer-right">Page 3</span>
+    </div>
+  </div>
+
+  <!-- PAGE 4: SECTIONS 5 & 6 -->
+  <div class="page">
+    <div>
+      <h1>Section 5 — Le Déroulement d'une Séance</h1>
+      <p>
+        Durée totale de la séance : 33 minutes d'entraînement actif. Aucun effort requis de votre part.
+      </p>
+
+      <div class="steps-container">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-details">
+            <strong>Installation (5 min)</strong>
+            <p>Vous prenez place dans un fauteuil ergonomique. Votre praticien pose deux capteurs légers sur votre tête. Aucune préparation particulière n'est nécessaire.</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-details">
+            <strong>Entraînement (33 min)</strong>
+            <p>Vous écoutez une musique relaxante, les yeux fermés si vous le souhaitez. Le système crée des micro-interruptions sonores imperceptibles chaque fois que votre cerveau commence à se déréguler. Vous n'avez rien à faire — votre cerveau travaille seul.</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-details">
+            <strong>Consultation du portail (5 min)</strong>
+            <p>Après la séance, connectez-vous à votre espace personnel pour observer l'évolution de vos scores et de vos amplitudes d'ondes en temps réel.</p>
+          </div>
+        </div>
+      </div>
+
+      <h1 style="margin-top: 30px;">Section 6 — Commencer Votre Parcours</h1>
+      <p>
+        Débutez sereinement par un échange direct d'orientation et découvrez la réponse à toutes vos questions.
+      </p>
+
+      <div class="cta-card">
+        <h3>Échange d'Orientation Gratuit — 15 minutes</h3>
+        <p>
+          Avant tout engagement, nous vous offrons un échange téléphonique de 15 minutes avec un conseiller certifié INFC. Ensemble, vous évaluez vos besoins, vos objectifs et la pertinence d'un programme pour votre situation.
+        </p>
+        <a href="https://wa.me/212600000000" class="cta-btn">Réserver mon appel par WhatsApp</a>
+        <div class="contact-info">
+          <div>📲 Réserver par WhatsApp</div>
+          <div>📞 Lundi – Samedi · 9h00 – 20h00</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Guide Clinique — INFC</span>
+      <span class="footer-right">Page 4</span>
+    </div>
+  </div>
+
+</body>
+</html>

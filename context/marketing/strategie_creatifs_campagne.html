@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Stratégie d'Acquisition & Créatifs — INFC</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap');
+
+    :root {
+      --primary: #0A1628;
+      --accent: #D4AF37;
+      --bg-cream: #F8F5F0;
+      --white: #FFFFFF;
+      --text: #2C3E50;
+      --text-light: #6B7280;
+      --shadow: rgba(10, 22, 40, 0.05);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    .page {
+      width: 190mm;
+      min-height: 272mm;
+      padding: 15mm;
+      margin: 10px auto;
+      background: var(--white);
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-sizing: border-box;
+      position: relative;
+      page-break-after: always;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--primary);
+    }
+
+    h1 {
+      font-size: 24px;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 8px;
+      margin-top: 0;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-top: 25px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+    }
+
+    h2::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 18px;
+      background-color: var(--accent);
+      margin-right: 12px;
+      border-radius: 2px;
+    }
+
+    p {
+      font-size: 13.5px;
+      margin-bottom: 12px;
+      text-align: justify;
+    }
+
+    /* Cover Page styling */
+    .cover {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .cover h1 {
+      color: var(--accent);
+      border-bottom: none;
+      font-size: 34px;
+      margin-bottom: 15px;
+      line-height: 1.3;
+    }
+
+    .cover h2 {
+      color: var(--white);
+      font-weight: 300;
+      font-size: 20px;
+      margin-top: 0;
+      max-width: 500px;
+      line-height: 1.4;
+    }
+    
+    .cover h2::before {
+      display: none;
+    }
+
+    .cover .meta {
+      margin-top: 100px;
+      font-size: 13px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      line-height: 2;
+    }
+
+    .cover .footer-note {
+      position: absolute;
+      bottom: 30px;
+      font-size: 12px;
+      opacity: 0.8;
+    }
+
+    /* Strategy box */
+    .strategy-box {
+      border: 1px solid #E5E7EB;
+      padding: 15px;
+      border-radius: 8px;
+      background: var(--bg-cream);
+      margin-bottom: 20px;
+    }
+
+    .strategy-box strong {
+      color: var(--primary);
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    /* Creative display block */
+    .creative-block {
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      background: #FDFBF8;
+    }
+
+    .creative-header {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 15px;
+      border-bottom: 1px solid #F3F4F6;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .creative-meta {
+      font-size: 11px;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    .creative-body {
+      font-size: 12.5px;
+    }
+
+    .creative-copy {
+      background: var(--white);
+      border: 1px solid #E5E7EB;
+      padding: 10px;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 12px;
+      white-space: pre-wrap;
+      margin: 10px 0;
+      color: #333;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      left: 15mm;
+      right: 15mm;
+      font-size: 10px;
+      color: var(--text-light);
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid #E5E7EB;
+      padding-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1: COVER -->
+  <div class="page cover">
+    <div style="font-size: 18px; font-weight: 700; color: var(--accent); letter-spacing: 2px; margin-bottom: 20px;">INFC</div>
+    <h1>STRATÉGIE PUBLICITAIRE & CRÉATIFS</h1>
+    <h2>Générer du Trafic Qualifié vers le Site Web de l'INFC</h2>
+    <div style="width: 80px; height: 3px; background-color: var(--accent); margin: 25px auto;"></div>
+    <p style="max-width: 500px; opacity: 0.9; font-size: 15px;">
+      Principes directeurs, angles d'acquisition et modèles de campagnes conformes à l'éthique de la régulation neuro-sensible.
+    </p>
+    <div class="meta">
+      Réseau INFC Maroc<br>
+      Casablanca · Marrakech · Tanger · Kénitra
+    </div>
+    <div class="footer-note">
+      Document de référence pour le pôle Marketing & Acquisition.
+    </div>
+  </div>
+
+  <!-- PAGE 2: STRATÉGIE GLOBALE -->
+  <div class="page">
+    <h1>1. Les Piliers de la Stratégie d'Acquisition</h1>
+    <p>
+      Contrairement aux méthodes d'acquisition classiques agressives, la stratégie publicitaire de l'INFC repose sur l'<strong>éducation du marché</strong> et la <strong>mise en valeur des preuves cliniques</strong>.
+    </p>
+
+    <h2>🎯 Nos 3 Angles d'Attaque Majeurs</h2>
+    <div class="strategy-box">
+      <strong>Angle 1 : L'autorité par la science (qEEG)</strong>
+      <span>Nous ciblons les personnes sceptiques en démontrant que le neurofeedback s'appuie sur des mesures concrètes de l'activité cérébrale (cartographie qEEG) disponibles directement sur notre Portail Patient.</span>
+    </div>
+    <div class="strategy-box">
+      <strong>Angle 2 : La régulation vs La cure miracle</strong>
+      <span>Nous expliquons de façon transparente le fonctionnement des séances. Nous n'utilisons jamais de promesses de guérison instantanée. Nous axons notre communication sur la transition progressive (ex: l'impact de 10 séances).</span>
+    </div>
+    <div class="strategy-box">
+      <strong>Angle 3 : L'éducation parentale (Lead Magnet)</strong>
+      <span>Nous captons les parents stressés en leur offrant de la valeur en amont : notre guide gratuit sur la surcharge cognitive et le stress des examens chez l'enfant.</span>
+    </div>
+
+    <h2>⚠️ Consignes de Conformité (Brand Safety)</h2>
+    <ul>
+      <li><strong>Pas de médicalisation excessive</strong> : N'utilisez pas de termes comme "médecine", "médecin", "traitement curatif" ou "guérir". Parlez d'entraînement, de praticiens référents et d'auto-régulation.</li>
+      <li><strong>Esthétique Premium</strong> : Les visuels doivent respecter la charte de l'INFC (Navy dominant, accents Gold, fonds Crème). Évitez les visuels cliniques anxiogènes ou "low-cost".</li>
+    </ul>
+
+    <div class="footer">
+      <span>Stratégie d'Acquisition — INFC</span>
+      <span>Page 2</span>
+    </div>
+  </div>
+
+  <!-- PAGE 3: CRÉATIF 1 (SCIENCÉ) -->
+  <div class="page">
+    <h1>2. Campagne 1 : La Preuve Scientifique (qEEG)</h1>
+    <p>
+      Cette campagne cible en priorité le public rationnel et cartésien cherchant des méthodes scientifiquement mesurables.
+    </p>
+
+    <div class="creative-block">
+      <div class="creative-header">
+        <span>Concept 1 — L'évolution de vos ondes en direct</span>
+        <span class="creative-meta">Meta Ads / Google Display</span>
+      </div>
+      <div class="creative-body">
+        <p><strong>Ciblage :</strong> Adultes (30-55 ans), professions libérales, cadres dirigeants, Casablanca & Marrakech.</p>
+        <p><strong>Visuel suggéré :</strong> Mockup d'un écran de smartphone affichant l'interface du portail patient INFC avec le schéma de cartographie du Lobe Frontal (Fz) et des graphiques stabilisés d'ondes Alpha et Theta.</p>
+        
+        <p><strong>Texte Publicitaire (Copy) :</strong></p>
+        <div class="creative-copy">Surcharge cognitive, insomnies, stress chronique... Et si vous pouviez voir votre cerveau apprendre à s'apaiser ?
+
+À l'INFC, nous n'utilisons pas de méthodes miraculeuses. Nous mesurons l'activité électrique naturelle de votre cerveau (qEEG) et l'aidons à s'auto-réguler grâce au Neurofeedback.
+
+Grâce à notre portail patient sécurisé, suivez précisément l'évolution de vos ondes Alpha et Theta séance après séance.
+
+👉 Cliquez sur le lien pour découvrir la science derrière nos protocoles.</div>
+        
+        <p><strong>CTA :</strong> En savoir plus</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Stratégie d'Acquisition — INFC</span>
+      <span>Page 3</span>
+    </div>
+  </div>
+
+  <!-- PAGE 4: CRÉATIF 2 (10 SÉANCES) -->
+  <div class="page">
+    <h1>3. Campagne 2 : Le Récit de Transformation (10 Séances)</h1>
+    <p>
+      Cette campagne met en avant la notion de progression et rassure le client sur la durée de son engagement.
+    </p>
+
+    <div class="creative-block">
+      <div class="creative-header">
+        <span>Concept 2 — 10 séances pour retrouver l'équilibre</span>
+        <span class="creative-meta">Meta Ads (Instagram Focus)</span>
+      </div>
+      <div class="creative-body">
+        <p><strong>Ciblage :</strong> Personnes intéressées par le bien-être, le développement professionnel, la méditation, la gestion du stress.</p>
+        <p><strong>Visuel suggéré :</strong> Une frise chronologique minimaliste et élégante de l'INFC illustrant la baisse de l'intensité des symptômes (Séance 1 : Surcharge ➔ Séance 5 : Sommeil régulé ➔ Séance 10 : Focus ancré).</p>
+        
+        <p><strong>Texte Publicitaire (Copy) :</strong></p>
+        <div class="creative-copy">Quand le cerveau se régule, tout change. 
+
+Le Neurofeedback n'est pas une thérapie intrusive, c'est un entraînement cérébral naturel et non invasif. En 10 séances, offrez à votre cerveau le miroir dont il a besoin pour s'auto-corriger.
+
+Découvrez comment des centaines de patients au Maroc ont retrouvé un sommeil profond, diminué leur stress et restauré leur concentration grâce à notre accompagnement personnalisé.
+
+Consultez nos études de cas réelles sur notre site.</div>
+        
+        <p><strong>CTA :</strong> Découvrir</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Stratégie d'Acquisition — INFC</span>
+      <span>Page 4</span>
+    </div>
+  </div>
+
+  <!-- PAGE 5: CRÉATIF 3 (PARENT / EXAMEN) -->
+  <div class="page">
+    <h1>4. Campagne 3 : Le Tunnel Pédagogique (Guide Examens)</h1>
+    <p>
+      Cette campagne s'appuie sur le Lead Magnet "Guide Examens" pour capter des leads qualifiés à un coût très faible.
+    </p>
+
+    <div class="creative-block">
+      <div class="creative-header">
+        <span>Concept 3 — Guide pratique offert aux parents</span>
+        <span class="creative-meta">Meta Lead Generation</span>
+      </div>
+      <div class="creative-body">
+        <p><strong>Ciblage :</strong> Parents d'enfants/adolescents de 12 à 18 ans au Maroc, s'intéressant à l'éducation, aux révisions scolaires.</p>
+        <p><strong>Visuel suggéré :</strong> Mockup 3D réaliste de la couverture du guide PDF "Préparer le cerveau de votre enfant pour les examens" posé sur un bureau d'étudiant épuré.</p>
+        
+        <p><strong>Texte Publicitaire (Copy) :</strong></p>
+        <div class="creative-copy">Votre enfant révise beaucoup mais n'obtient pas les résultats espérés ? 
+
+Le stress provoque une surcharge cognitive qui bloque les zones de la mémoire dans le cortex préfrontal. Forcer les révisions est alors inefficace.
+
+Découvrez les clés neuroscientifiques pour l'aider à s'apaiser et à se concentrer. 
+
+📥 Téléchargez gratuitement notre guide pratique de 8 pages conçu par le comité médical INFC pour préparer sereinement les examens.</div>
+        
+        <p><strong>CTA :</strong> Télécharger le PDF</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Stratégie d'Acquisition — INFC</span>
+      <span>Page 5</span>
+    </div>
+  </div>
+
+</body>
+</html>

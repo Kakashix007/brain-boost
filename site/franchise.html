@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Franchise · International Neurofeedback Center</title>
+  <meta name="description" content="Rejoignez le réseau INFC : ouvrez un centre de neurofeedback clinique au Maroc. Formation complète, accompagnement expert, modèle éprouvé à 4 centres." />
+  <link rel="stylesheet" href="index.css" />
+  <style>
+    /* ── Page-specific styles ── */
+
+    /* HERO */
+    .franchise-hero {
+      background: linear-gradient(140deg, #072A5A 0%, #0B3A78 55%, #0D4494 100%);
+      padding: clamp(5rem, 10vw, 10rem) 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .franchise-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 70% at 85% 15%, rgba(201,150,45,0.16) 0%, transparent 60%),
+        radial-gradient(ellipse 35% 50% at 10% 85%, rgba(7,42,90,0.6) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .franchise-hero > .container { position: relative; z-index: 1; }
+    .franchise-hero h1 {
+      color: #fff;
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      line-height: 1.12;
+      margin-bottom: 1.5rem;
+    }
+    .franchise-hero p.lead {
+      font-size: clamp(1.1rem, 2vw, 1.3rem);
+      color: rgba(255,255,255,0.8);
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.65;
+    }
+    .franchise-hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* MANIFESTO BAND */
+    .manifesto-band {
+      background: #C9962D;
+      color: #fff;
+      text-align: center;
+      padding: 1.8rem 0;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      font-style: italic;
+      letter-spacing: 0.3px;
+    }
+
+    /* VALUE BOXES */
+    .value-boxes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+    @media (max-width: 900px) { .value-boxes { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .value-boxes { grid-template-columns: 1fr; } }
+    .value-box {
+      background: var(--color-white-warm);
+      border-radius: var(--radius-xl);
+      padding: 2.8rem 2.5rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(7,42,90,0.07);
+      border-top: 5px solid var(--color-gold);
+      transition: var(--transition);
+      text-align: center;
+    }
+    .value-box:hover { transform: translateY(-6px); box-shadow: var(--shadow-card); }
+    .value-box-icon {
+      font-size: 2.4rem;
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+    .value-box h3 { font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--color-navy-deep); }
+
+    /* FRANCHISE OFFER TABLE */
+    .offer-table {
+      background: var(--color-white-warm);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      margin-top: 3rem;
+    }
+    .offer-header {
+      background: linear-gradient(135deg, var(--color-navy-deep) 0%, var(--color-navy) 100%);
+      padding: 2.5rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 2rem;
+    }
+    @media (max-width: 600px) { .offer-header { grid-template-columns: 1fr; text-align: center; } }
+    .offer-header h3 { color: #fff; font-size: 1.6rem; }
+    .offer-header span { color: var(--color-gold); font-size: 0.9rem; font-weight: 600; font-family: var(--font-heading); letter-spacing: 1px; text-transform: uppercase; }
+    .offer-body { padding: 2.5rem 3rem 3rem; }
+    @media (max-width: 600px) { .offer-body { padding: 1.8rem; } }
+    .offer-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
+    @media (max-width: 600px) { .offer-list { grid-template-columns: 1fr; } }
+    .offer-item {
+      background: var(--color-creme);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: var(--color-navy);
+      border: 1px solid rgba(7,42,90,0.07);
+    }
+    .offer-item-check { color: var(--color-gold); font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+
+    /* KEY NUMBERS BAND */
+    .numbers-band {
+      background: var(--color-navy-deep);
+      padding: var(--spacing-lg) 0;
+    }
+    .numbers-band-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+    @media (max-width: 768px) { .numbers-band-grid { grid-template-columns: 1fr 1fr; } }
+    .kpi-item { padding: 1.5rem 1rem; }
+    .kpi-number {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--color-gold);
+      display: block;
+      line-height: 1;
+    }
+    .kpi-label { color: rgba(247,241,229,0.7); font-size: 0.88rem; margin-top: 0.5rem; font-family: var(--font-heading); }
+
+    /* ELIGIBILITY GRID */
+    .eligibility-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 768px) { .eligibility-grid { grid-template-columns: 1fr; } }
+    .eligibility-col h3 { font-size: 1.2rem; color: var(--color-navy-deep); margin-bottom: 1.2rem; padding-bottom: 0.8rem; border-bottom: 2px dashed rgba(201,150,45,0.3); }
+    .eligibility-list { list-style: none; }
+    .eligibility-list li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(7,42,90,0.06);
+      display: flex;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: var(--color-text);
+    }
+    .eligibility-list li .icon { flex-shrink: 0; }
+    .yes-icon { color: #22c55e; }
+    .no-icon  { color: #ef4444; }
+
+    /* DISCLAIMER */
+    .disclaimer-box {
+      background: rgba(201, 150, 45, 0.08);
+      border: 1px solid rgba(201, 150, 45, 0.2);
+      border-left: 4px solid var(--color-gold);
+      border-radius: var(--radius-md);
+      padding: 1.5rem 2rem;
+      margin-top: 2rem;
+      font-size: 0.88rem;
+      color: var(--color-navy);
+      line-height: 1.65;
+    }
+
+    /* PROCESS STEPS */
+    .franchise-process {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      margin-top: 3.5rem;
+      position: relative;
+    }
+    @media (max-width: 1000px) { .franchise-process { grid-template-columns: 1fr 1fr; gap: 1.5rem; } }
+    @media (max-width: 500px)  { .franchise-process { grid-template-columns: 1fr; } }
+    .franchise-process::before {
+      content: '';
+      position: absolute;
+      top: 32px; left: 10%;
+      width: 80%; height: 2px;
+      background: linear-gradient(90deg, var(--color-gold) 0%, rgba(201,150,45,0.2) 100%);
+      z-index: 0;
+    }
+    @media (max-width: 1000px) { .franchise-process::before { display: none; } }
+    .fprocess-step {
+      text-align: center;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    .fprocess-num {
+      width: 64px; height: 64px;
+      background: var(--color-white-warm);
+      border: 3px solid var(--color-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--color-navy-deep);
+      margin: 0 auto 1.2rem;
+      box-shadow: 0 4px 14px rgba(201, 150, 45, 0.2);
+      transition: var(--transition);
+    }
+    .fprocess-step:hover .fprocess-num {
+      background: var(--color-gold);
+      color: #fff;
+      transform: scale(1.08);
+    }
+    .fprocess-label { font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; color: var(--color-navy-deep); margin-bottom: 0.5rem; }
+    .fprocess-sub { font-size: 0.78rem; color: var(--color-text-muted); line-height: 1.5; }
+
+    /* TESTIMONIAL BLOCK (partner) */
+    .partner-testimonial {
+      background: linear-gradient(135deg, var(--color-navy-deep) 0%, #0D4494 100%);
+      border-radius: var(--radius-xl);
+      padding: 4rem;
+      margin-top: 4rem;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .partner-testimonial::before {
+      content: '\201C';
+      position: absolute;
+      top: 0.5rem; left: 2rem;
+      font-size: 8rem;
+      color: rgba(201,150,45,0.12);
+      font-family: 'Playfair Display', Georgia, serif;
+      line-height: 1;
+    }
+    .partner-testimonial > * { position: relative; z-index: 1; }
+    .partner-testimonial blockquote {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+      font-style: italic;
+      color: rgba(255,255,255,0.9);
+      max-width: 740px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+    .partner-testimonial cite {
+      color: var(--color-gold);
+      font-family: var(--font-heading);
+      font-style: normal;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+    @media (max-width: 768px) { .partner-testimonial { padding: 2.5rem 2rem; } }
+
+    /* FINAL CTA */
+    .franchise-final-cta {
+      background: linear-gradient(140deg, var(--color-navy-deep) 0%, #0D4494 100%);
+      padding: clamp(5rem, 10vw, 8rem) 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .franchise-final-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 85% 20%, rgba(201,150,45,0.14) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .franchise-final-cta > .container { position: relative; z-index: 1; }
+    .franchise-final-cta h2 { color: #fff; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; }
+    .franchise-final-cta p { color: rgba(255,255,255,0.76); max-width: 600px; margin: 0 auto 3rem; font-size: 1.05rem; line-height: 1.65; }
+    .final-cta-btns { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; }
+
+    /* nav active */
+    .nav-links a[href="franchise.html"] { color: var(--color-gold); }
+  </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="container nav-container">
+    <a class="logo" href="index.html"><img src="assets/logo.png" alt="INFC Logo" /></a>
+    <nav aria-label="Navigation principale">
+      <ul class="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="neurofeedback.html">La Science</a></li>
+        <li><a href="programmes.html">Programmes</a></li>
+        <li><a href="vision.html">Vision</a></li>
+        <li><a href="centres.html">Nos Centres</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="b2b.html">B2B</a></li>
+        <li><a href="franchise.html" class="active">Franchise</a></li>
+      </ul>
+    </nav>
+    <a href="contact.html" class="btn btn-gold nav-cta">Réserver un bilan</a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="franchise-hero" aria-label="Introduction franchise">
+  <div class="container">
+    <span class="eyebrow">Devenir partenaire INFC</span>
+    <h1>
+      Ouvrez votre centre de<br />neurofeedback au Maroc.
+    </h1>
+    <p class="lead">
+      Rejoignez un réseau pionnier en régulation cérébrale clinique. Un modèle structuré, une marque premium, une formation complète — et une raison d'agir profonde.
+    </p>
+    <ul class="hero-bullets">
+      <li>Modèle éprouvé sur 4 centres</li>
+      <li>Formation &amp; certification INFC</li>
+      <li>Accompagnement opérationnel continu</li>
+      <li>Marque à forte reconnaissance</li>
+      <li>Secteur en pleine expansion</li>
+    </ul>
+    <div class="franchise-hero-btns">
+      <a href="#candidater" class="btn btn-gold">Déposer ma candidature</a>
+      <a href="#offre" class="btn btn-ghost">Découvrir l'offre</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MANIFESTO ===== -->
+<div class="manifesto-band" role="note">
+  « La santé mentale n'est pas un luxe. Le neurofeedback clinique mérite d'être accessible partout au Maroc. »
+</div>
+
+<!-- ===== POURQUOI INFC ===== -->
+<section class="section bg-creme fade-in" id="pourquoi" aria-labelledby="pourquoi-title">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Pourquoi choisir INFC</span>
+      <h2 id="pourquoi-title">Un réseau bâti sur la rigueur scientifique et l'impact humain</h2>
+      <p>INFC est le premier réseau de centres de neurofeedback clinique structuré au Maroc. Rejoindre la franchise, c'est porter un projet de santé mentale sérieux — avec le soutien d'une organisation qui a déjà construit la preuve par les résultats.</p>
+    </div>
+    <div class="value-boxes">
+      <div class="value-box">
+        <span class="value-box-icon">🧠</span>
+        <h3>Protocoles cliniques validés</h3>
+        <p>Nos protocoles sont issus de plus de 15 ans de recherche internationale sur le neurofeedback. Chaque franchisé bénéficie des mêmes outils que nos centres fondateurs.</p>
+      </div>
+      <div class="value-box">
+        <span class="value-box-icon">🏛️</span>
+        <h3>Marque premium établie</h3>
+        <p>INFC est reconnu au Maroc pour sa rigueur, son éthique et son positionnement premium. Vous bénéficiez d'un capital confiance construit sur 4 centres actifs.</p>
+      </div>
+      <div class="value-box">
+        <span class="value-box-icon">📚</span>
+        <h3>Formation & certification complète</h3>
+        <p>Formation théorique en neurosciences, pratique sur équipements professionnels, certification de praticien INFC — tout est inclus avant ouverture.</p>
+      </div>
+      <div class="value-box">
+        <span class="value-box-icon">🤝</span>
+        <h3>Accompagnement opérationnel</h3>
+        <p>Launch pack, support marketing, supervision clinique, outils de gestion, accès à notre réseau de psychologues partenaires — nous sommes à vos côtés à chaque étape.</p>
+      </div>
+      <div class="value-box">
+        <span class="value-box-icon">📈</span>
+        <h3>Marché en forte croissance</h3>
+        <p>La prise de conscience autour de la santé mentale au Maroc est croissante. Le neurofeedback clinique est encore peu accessible : c'est une position stratégique exceptionnelle.</p>
+      </div>
+      <div class="value-box">
+        <span class="value-box-icon">🎯</span>
+        <h3>Modèle économique éprouvé</h3>
+        <p>Nos 4 centres ont validé un modèle de rentabilité structuré. Vous ne démarrez pas de zéro — vous construisez sur une fondation solide et testée.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CHIFFRES CLÉS ===== -->
+<section class="numbers-band" aria-label="Chiffres clés INFC">
+  <div class="container">
+    <div class="numbers-band-grid">
+      <div class="kpi-item fade-in">
+        <span class="kpi-number">4</span>
+        <span class="kpi-label">Centres actifs au Maroc</span>
+      </div>
+      <div class="kpi-item fade-in">
+        <span class="kpi-number">3</span>
+        <span class="kpi-label">Villes couvertes (Casablanca, Rabat, Marrakech)</span>
+      </div>
+      <div class="kpi-item fade-in">
+        <span class="kpi-number">+500</span>
+        <span class="kpi-label">Personnes accompagnées en parcours structuré</span>
+      </div>
+      <div class="kpi-item fade-in">
+        <span class="kpi-number">15+</span>
+        <span class="kpi-label">Ans de recherche en neurofeedback clinique</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== L'OFFRE FRANCHISE ===== -->
+<section class="section bg-white fade-in" id="offre" aria-labelledby="offre-title">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">L'offre franchise</span>
+      <h2 id="offre-title">Tout ce dont vous avez besoin pour ouvrir et réussir</h2>
+      <p>L'offre INFC Franchise couvre l'intégralité du démarrage — de la formation clinique à l'ouverture officielle, avec un accompagnement continu sur la durée.</p>
+    </div>
+    <div class="offer-table">
+      <div class="offer-header">
+        <div>
+          <h3>Pack Franchise INFC Complet</h3>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-top: 0.5rem;">Accès dès la signature au réseau, aux protocoles et à l'équipe siège</p>
+        </div>
+        <span>Contactez-nous pour tarification</span>
+      </div>
+      <div class="offer-body">
+        <p style="color: var(--color-navy); font-weight: 600; font-family: var(--font-heading); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Inclus dans le pack :</p>
+        <div class="offer-list">
+          <div class="offer-item"><span class="offer-item-check">✓</span><span>Licence d'exploitation de la marque INFC pour votre territoire</span></div>
+          <div class="offer-item"><span class="offer-item-check">✓</span><span>Formation théorique complète en neurofeedback clinique</span></div>
+          <div class="offer-item"><span class="offer-item-check">✓</span><span>Formation pratique sur équipements professionnels certifiés</span></div>
+          <div class="offer-item"><span class="offer-item-check">✓</span><span>Certification de praticien INFC (reconnaissance réseau)</span></div>
+          <div class="offer-item"><span class="offer-item-check">✓</span><span>Manuel opérationnel & protocoles cliniques complets</span></div>
+          <div class="offer-item"><span class="offer-item-check">✓</span><span>Accès aux outils digitaux : portail patient, logiciels, CRM</span></div>
+          <div class="offer-item"><span class="offer-item-check">✓</span><span>Kit marketing & identité visuelle complet (print + digital)</span></div>
+          <div class="offer-item"><span class="offer-item-check">✓</span><span>Soutien au lancement : campagne d'ouverture, RP locale</span></div>
+          <div class="offer-item"><span class="offer-item-check">✓</span><span>Accès au réseau de psychologues partenaires INFC</span></div>
+          <div class="offer-item"><span class="offer-item-check">✓</span><span>Supervision clinique régulière par l'équipe siège</span></div>
+          <div class="offer-item"><span class="offer-item-check">✓</span><span>Assistance à l'aménagement & standards de centre INFC</span></div>
+          <div class="offer-item"><span class="offer-item-check">✓</span><span>Accès aux mises à jour protocolaires et formations continues</span></div>
+        </div>
+        <div class="disclaimer-box" role="note">
+          <strong>Important — Nos engagements éthiques :</strong> INFC ne propose aucun diagnostic automatique, aucune promesse de guérison, et aucun marketing agressif. Chaque franchisé s'engage à respecter notre charte éthique, notre positionnement premium, et nos protocoles cliniques. Notre réputation repose sur la rigueur scientifique et l'accompagnement humain.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESSUS D'INTÉGRATION ===== -->
+<section class="section bg-creme fade-in" id="processus" aria-labelledby="processus-title">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Comment ça fonctionne</span>
+      <h2 id="processus-title">5 étapes pour ouvrir votre centre INFC</h2>
+      <p>Un processus structuré, transparent et accompagné — de votre première prise de contact à l'inauguration de votre centre.</p>
+    </div>
+    <div class="franchise-process">
+      <div class="fprocess-step fade-in">
+        <div class="fprocess-num">1</div>
+        <div class="fprocess-label">Candidature &amp; entretien</div>
+        <div class="fprocess-sub">Formulaire en ligne + appel de découverte avec l'équipe siège</div>
+      </div>
+      <div class="fprocess-step fade-in">
+        <div class="fprocess-num">2</div>
+        <div class="fprocess-label">Étude du projet</div>
+        <div class="fprocess-sub">Analyse de votre ville, de votre profil et de votre vision avec le comité INFC</div>
+      </div>
+      <div class="fprocess-step fade-in">
+        <div class="fprocess-num">3</div>
+        <div class="fprocess-label">Signature &amp; onboarding</div>
+        <div class="fprocess-sub">Signature du contrat de franchise, remise du kit complet, accès au portail franchisé</div>
+      </div>
+      <div class="fprocess-step fade-in">
+        <div class="fprocess-num">4</div>
+        <div class="fprocess-label">Formation &amp; certification</div>
+        <div class="fprocess-sub">Formation intensive sur site INFC : théorie, pratique, protocoles, éthique</div>
+      </div>
+      <div class="fprocess-step fade-in">
+        <div class="fprocess-num">5</div>
+        <div class="fprocess-label">Ouverture officielle</div>
+        <div class="fprocess-sub">Inauguration soutenue par l'équipe siège — votre centre INFC est opérationnel</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CRITÈRES D'ÉLIGIBILITÉ ===== -->
+<section class="section bg-white fade-in" id="eligibilite" aria-labelledby="eligibilite-title">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Profil recherché</span>
+      <h2 id="eligibilite-title">Qui peut rejoindre le réseau INFC ?</h2>
+      <p>INFC sélectionne ses franchisés avec rigueur. Nous cherchons des partenaires qui partagent nos valeurs autant que notre ambition de développement.</p>
+    </div>
+    <div class="eligibility-grid">
+      <div class="eligibility-col">
+        <h3>✅ Profils bienvenus</h3>
+        <ul class="eligibility-list">
+          <li><span class="icon yes-icon">✓</span>Professionnels de santé ou du bien-être (médecin, psychologue, coach certifié, thérapeute)</li>
+          <li><span class="icon yes-icon">✓</span>Entrepreneurs motivés par l'impact social et la santé mentale</li>
+          <li><span class="icon yes-icon">✓</span>Investisseurs souhaitant un modèle à forte valeur ajoutée humaine</li>
+          <li><span class="icon yes-icon">✓</span>Profils mixtes : santé + business, éthique + ambition commerciale</li>
+          <li><span class="icon yes-icon">✓</span>Personnes ayant une connaissance ou un intérêt sincère pour les neurosciences</li>
+          <li><span class="icon yes-icon">✓</span>Vision à long terme, ancrage local, engagement dans la durée</li>
+        </ul>
+      </div>
+      <div class="eligibility-col">
+        <h3>❌ Ce que nous n'acceptons pas</h3>
+        <ul class="eligibility-list">
+          <li><span class="icon no-icon">✗</span>Approches de revente rapide ou logique purement spéculative</li>
+          <li><span class="icon no-icon">✗</span>Promesses non éthiques aux patients (guérison garantie, résultats instantanés)</li>
+          <li><span class="icon no-icon">✗</span>Pratiques commerciales agressives incompatibles avec notre positionnement médical</li>
+          <li><span class="icon no-icon">✗</span>Absence totale de motivation liée à la santé ou au bien-être humain</li>
+          <li><span class="icon no-icon">✗</span>Implantation dans des villes déjà couvertes par le réseau (exclusivité territoriale)</li>
+        </ul>
+        <div class="disclaimer-box" role="note">
+          <strong>Notre sélection est éthique et rigoureuse.</strong> Chaque partenaire est un ambassadeur de la marque INFC — et de son engagement envers des pratiques responsables en santé mentale.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TÉMOIGNAGE PARTENAIRE ===== -->
+<section class="section bg-creme fade-in" aria-label="Témoignage partenaire">
+  <div class="container">
+    <div class="partner-testimonial">
+      <blockquote>
+        « Rejoindre INFC, c'était rejoindre quelque chose de plus grand que moi. Je ne voulais pas juste ouvrir un centre — je voulais faire partie d'un mouvement sérieux pour la santé mentale au Maroc. La formation était exigeante, l'équipe vraiment là, et les résultats avec mes patients me rappellent chaque jour pourquoi j'ai fait ce choix. »
+      </blockquote>
+      <cite>— Franchisé INFC, Marrakech · Ouverture 2023</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FORMULAIRE CANDIDATURE ===== -->
+<section class="section bg-white fade-in" id="candidater" aria-labelledby="candidature-title">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Déposer votre candidature</span>
+      <h2 id="candidature-title">Prenez le premier pas vers votre centre INFC</h2>
+      <p>Remplissez ce formulaire pour qu'un membre de notre équipe vous recontacte dans les 48h. Aucun engagement à ce stade — juste une conversation sérieuse.</p>
+    </div>
+    <div class="contact-form-container" style="max-width: 760px; margin: 0 auto;">
+      <form action="#" method="post" id="franchise-form" novalidate>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+          <div class="form-group">
+            <label for="f-prenom">Prénom <span aria-hidden="true">*</span></label>
+            <input id="f-prenom" class="form-control" type="text" name="prenom" placeholder="Votre prénom" required />
+          </div>
+          <div class="form-group">
+            <label for="f-nom">Nom <span aria-hidden="true">*</span></label>
+            <input id="f-nom" class="form-control" type="text" name="nom" placeholder="Votre nom" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="f-email">Adresse e-mail <span aria-hidden="true">*</span></label>
+          <input id="f-email" class="form-control" type="email" name="email" placeholder="votre@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="f-tel">Téléphone</label>
+          <input id="f-tel" class="form-control" type="tel" name="tel" placeholder="+212 6 00 00 00 00" />
+        </div>
+        <div class="form-group">
+          <label for="f-ville">Ville envisagée pour votre centre <span aria-hidden="true">*</span></label>
+          <input id="f-ville" class="form-control" type="text" name="ville" placeholder="ex. Fès, Agadir, Tanger…" required />
+        </div>
+        <div class="form-group">
+          <label for="f-profil">Votre profil professionnel <span aria-hidden="true">*</span></label>
+          <select id="f-profil" class="form-control" name="profil" required>
+            <option value="" disabled selected>Sélectionnez votre profil</option>
+            <option value="psy">Psychologue / Thérapeute</option>
+            <option value="medecin">Médecin / Professionnel de santé</option>
+            <option value="coach">Coach / Consultant bien-être</option>
+            <option value="entrepreneur">Entrepreneur (secteur non-santé)</option>
+            <option value="investisseur">Investisseur</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="f-motivation">Pourquoi souhaitez-vous rejoindre INFC ?</label>
+          <textarea id="f-motivation" class="form-control" name="motivation" rows="5" placeholder="Partagez votre motivation, votre vision, ou votre expérience dans le domaine de la santé ou du bien-être…"></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center; font-size: 1rem; padding: 1.1rem;">
+          Envoyer ma candidature →
+        </button>
+        <p style="margin-top: 1rem; text-align: center; font-size: 0.82rem; color: var(--color-text-muted);">Vos données sont confidentielles et ne seront jamais cédées à des tiers. Nous vous répondons sous 48h ouvrées.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="franchise-final-cta fade-in" aria-label="Appel à l'action final">
+  <div class="container">
+    <span class="eyebrow" style="color: var(--color-gold);">Le Maroc a besoin de vous</span>
+    <h2>Votre centre INFC peut devenir une référence dans votre région.</h2>
+    <p>Des centaines de personnes dans votre ville n'ont pas accès à une régulation cérébrale clinique sérieuse. Vous pouvez changer ça — avec le soutien d'une équipe qui croit dans ce que vous portez.</p>
+    <div class="final-cta-btns">
+      <a href="#candidater" class="btn btn-gold">Déposer ma candidature</a>
+      <a href="contact.html" class="btn btn-ghost">Parler à l'équipe INFC</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <img src="assets/logo-white.png" alt="INFC" style="height: 32px; margin-bottom: 1.2rem; filter: brightness(0) invert(1); opacity: 0.9;" />
+        <p>Premier réseau de centres de neurofeedback clinique au Maroc. 4 centres. Un engagement : l'excellence au service du cerveau.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="neurofeedback.html">La Science</a></li>
+          <li><a href="programmes.html">Programmes</a></li>
+          <li><a href="vision.html">Vision</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Développement</h4>
+        <ul>
+          <li><a href="centres.html">Nos Centres</a></li>
+          <li><a href="b2b.html">B2B &amp; Institutions</a></li>
+          <li><a href="franchise.html">Franchise</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Siège</h4>
+        <ul>
+          <li><a href="mailto:franchise@infc.ma">franchise@infc.ma</a></li>
+          <li><a href="tel:+212600000000">+212 6 00 00 00 00</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p style="font-size: 0.82rem;">© 2024 International Neurofeedback Center · Tous droits réservés · Maroc</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Fade-in on scroll
+  const fades = document.querySelectorAll('.fade-in');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  fades.forEach(el => io.observe(el));
+</script>
+    <script src="js/main.js"></script>
+</body>
+</html>

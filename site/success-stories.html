@@ -231,21 +231,90 @@
             color: var(--color-navy);
         }
 
-        /* Animation class for filtering */
-        .fade-in {
-            animation: fadeIn 0.4s ease forwards;
+        /* Search Bar & E-Commerce style filters */
+        .search-wrapper {
+            margin-bottom: 30px;
+            position: relative;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .search-input {
+            width: 100%;
+            padding: 15px 20px 15px 50px;
+            font-size: 1rem;
+            border: 1px solid rgba(10, 22, 40, 0.1);
+            border-radius: 8px;
+            background: #fff;
+            color: var(--color-navy);
+            transition: all 0.3s;
+            box-shadow: var(--shadow-soft);
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: var(--color-gold);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.1);
+        }
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: var(--color-grey-text);
+        }
+        .filter-group {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 2px solid var(--color-creme);
+        }
+        .filter-group-title {
+            font-size: 1rem;
+            color: var(--color-navy);
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .checkbox-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: var(--color-grey-text);
+            cursor: pointer;
+            user-select: none;
+        }
+        .checkbox-label input {
+            cursor: pointer;
+            accent-color: var(--color-gold);
+            width: 16px;
+            height: 16px;
+        }
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 50px 20px;
+            background: #fff;
+            border-radius: 12px;
+            border: 1px dashed rgba(10, 22, 40, 0.1);
+        }
+        .no-results h3 {
+            color: var(--color-navy);
+            margin-bottom: 10px;
+        }
+        .no-results p {
+            color: var(--color-grey-text);
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
 
     <!-- Header Navigation -->
-    <header>
+        <header>
         <div class="container nav-container">
             <div class="logo">
                 <a href="index.html">
@@ -253,13 +322,14 @@
                 </a>
             </div>
             <nav>
-                <ul class="nav-links">
+                                                                <ul class="nav-links">
                     <li><a href="index.html">Accueil</a></li>
                     <li><a href="neurofeedback.html">La Science</a></li>
                     <li><a href="programmes.html">Programmes</a></li>
+                    <li><a href="success-stories.html" class="active">Success Stories</a></li>
                     <li><a href="centres.html">Nos Centres</a></li>
                     <li><a href="apropos.html">À Propos</a></li>
-                    <li><a href="idees.html">Boîte à Idées</a></li>
+                    <li><a href="forum.html">💬 Forum Parents</a></li>
                     <li><a href="blog.html">Blog</a></li>
                 </ul>
             </nav>
@@ -289,7 +359,7 @@
                     <!-- Left Sidebar Filters -->
                     <aside class="filter-sidebar">
                         <h2 class="sidebar-title">Profils Cliniques</h2>
-                        <div class="filter-options">
+                        <div class="filter-options" style="margin-bottom: 20px;">
                             <button class="filter-btn active" data-filter="all">
                                 <span>Tous les récits</span>
                                 <span class="filter-count" id="count-all">0</span>
@@ -298,9 +368,9 @@
                                 <span>Parents & TDA/H</span>
                                 <span class="filter-count" id="count-parents">0</span>
                             </button>
-                            <button class="filter-btn" data-filter="veterans">
-                                <span>Vétérans & Trauma</span>
-                                <span class="filter-count" id="count-veterans">0</span>
+                            <button class="filter-btn" data-filter="seniors">
+                                <span>Seniors Actifs</span>
+                                <span class="filter-count" id="count-seniors">0</span>
                             </button>
                             <button class="filter-btn" data-filter="performers">
                                 <span>Peak Performers</span>
@@ -311,181 +381,327 @@
                                 <span class="filter-count" id="count-adults">0</span>
                             </button>
                         </div>
+
+                        <!-- Besoins / Symptômes Facet Checkboxes -->
+                        <div class="filter-group">
+                            <h3 class="filter-group-title">Besoins & Symptômes</h3>
+                            <div class="checkbox-list">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="tag-checkbox" value="sommeil">
+                                    <span>Sommeil & Récupération</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="tag-checkbox" value="concentration">
+                                    <span>Focus & Concentration</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="tag-checkbox" value="stress">
+                                    <span>Stress & Surcharge</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="tag-checkbox" value="tdah">
+                                    <span>TDA/H & Hyperactivité</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="tag-checkbox" value="memoire">
+                                    <span>Mémoire & Clarté</span>
+                                </label>
+                            </div>
+                        </div>
                     </aside>
 
-                    <!-- Right Stories Grid -->
-                    <div class="stories-grid" id="storiesGrid">
+                    <!-- Right Column Layout (Search bar + Grid) -->
+                    <div style="display: flex; flex-direction: column; width: 100%; gap: 10px;">
                         
-                        <!-- Story 1: Sarah M. -->
-                        <div class="story-full-card fade-in" data-category="parents">
-                            <div>
-                                <span class="card-category-badge">👶 Accompagnement Pédiatrique</span>
-                                <div class="card-title-row">
-                                    <div class="card-avatar">👩</div>
-                                    <div class="card-meta">
-                                        <h3>Sarah M.</h3>
-                                        <span>Mère de famille (Casablanca)</span>
-                                    </div>
-                                </div>
-                                <p class="card-quote">
-                                    "Après 6 mois de neurofeedback, les symptômes de TDAH de mon fils se sont spectaculairement améliorés. Son focus en classe et son comportement à la maison sont incomparables !"
-                                </p>
-                                
-                                <div class="card-divider"></div>
-                                
-                                <h4 class="card-section-title">👣 Le Processus & Les Étapes :</h4>
-                                <ul class="card-steps">
-                                    <li><strong>Étape 1 :</strong> Échange d'orientation & cartographie d'attention.</li>
-                                    <li><strong>Étape 2 :</strong> 6 séances initiales de régulation neuro-sensible (calmage).</li>
-                                    <li><strong>Étape 3 :</strong> 12 séances de consolidation + plan de nutrition cérébrale.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <div class="card-metrics">
-                                    📊 Chiffres clés : <span>-65%</span> de distractibilité en classe & endormissement en <span>12 min</span> (au lieu de 1h30).
-                                </div>
-                                <div class="card-guide">
-                                    📖 Guide Appliqué : <strong>Le Guide d'Accompagnement Neuro-Sensible INFC</strong> (gestion des écrans et routines).
-                                </div>
-                            </div>
+                        <!-- E-Commerce style search bar -->
+                        <div class="search-wrapper">
+                            <span class="search-icon">🔍</span>
+                            <input type="text" id="searchInput" class="search-input" placeholder="Rechercher par mot-clé (ex: sommeil, TDAH, concentration, ville)...">
                         </div>
 
-                        <!-- Story 2: James T. -->
-                        <div class="story-full-card fade-in" data-category="performers">
-                            <div>
-                                <span class="card-category-badge">🚀 Optimisation Cognitive</span>
-                                <div class="card-title-row">
-                                    <div class="card-avatar">👨‍💼</div>
-                                    <div class="card-meta">
-                                        <h3>James T.</h3>
-                                        <span>Directeur Financier (Marrakech)</span>
+                        <!-- Right Stories Grid -->
+                        <div class="stories-grid" id="storiesGrid">
+                            
+                            <!-- Story 1: Sarah M. -->
+                            <div class="story-full-card fade-in" data-category="parents" data-tags="tdah,concentration,sommeil" data-search-terms="sarah casablanca tdah focus concentration comportement ecole sommeil beta theta lzc">
+                                <div>
+                                    <span class="card-category-badge">👶 Accompagnement Pédiatrique & TDA/H</span>
+                                    <div class="card-title-row">
+                                        <div class="card-avatar">👩</div>
+                                        <div class="card-meta">
+                                            <h3>Sarah M.</h3>
+                                            <span>Mère de famille (Casablanca)</span>
+                                        </div>
+                                    </div>
+                                    <p class="card-quote">
+                                        "Après 18 séances de neurofeedback, les symptômes de TDAH de mon fils se sont spectaculairement résorbés. Son focus en classe et son comportement à la maison sont maintenant excellents !"
+                                    </p>
+                                    
+                                    <div class="card-divider"></div>
+                                    
+                                    <h4 class="card-section-title">👣 Bilan qEEG & Protocole Clinique :</h4>
+                                    <ul class="card-steps">
+                                        <li><strong>qEEG Initial :</strong> Excès d'ondes lentes Theta en zone frontale (Cz/Fz), ratio Theta/Beta élevé à 4.8.</li>
+                                        <li><strong>Protocole appliqué :</strong> 18 séances de régulation neuro-sensible NeurOptimal® + réorganisation des routines de sommeil.</li>
+                                        <li><strong>Suivi Portail :</strong> Suivi hebdomadaire de l'indice de distractibilité via les neuro-jeux du Portail Patient.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <div class="card-metrics">
+                                        📊 Chiffres qEEG : <span>-65%</span> de distractibilité motrice, endormissement réduit de 90 min à <span>12 min</span> et indice LZC remonté de 1.38 à <span>1.71</span>.
+                                    </div>
+                                    <div class="card-guide">
+                                        📖 Guide Appliqué : <strong>Le Guide d'Accompagnement Neuro-Sensible INFC</strong> (gestion des écrans et des ondes lentes).
                                     </div>
                                 </div>
-                                <p class="card-quote">
-                                    "J'étais sceptique au départ, mais le neurofeedback a transformé ma gestion du stress et mes prises de décision. Je me sens plus lucide et maître de mes capacités."
-                                </p>
-                                
-                                <div class="card-divider"></div>
-                                
-                                <h4 class="card-section-title">👣 Le Processus & Les Étapes :</h4>
-                                <ul class="card-steps">
-                                    <li><strong>Étape 1 :</strong> Bilan de stress aigu & mesure de surcharge mentale.</li>
-                                    <li><strong>Étape 2 :</strong> 8 séances intensives d'optimisation cognitive (bi-hebdomadaire).</li>
-                                    <li><strong>Étape 3 :</strong> 4 séances de stabilisation espacées sur 1 mois.</li>
-                                </ul>
                             </div>
-                            <div>
-                                <div class="card-metrics">
-                                    📊 Chiffres clés : <span>-58%</span> de stress perçu & <span>+45 min</span> de sommeil profond par nuit.
-                                </div>
-                                <div class="card-guide">
-                                    📖 Protocole Appliqué : <strong>Focus Haute Performance INFC</strong> (micro-siestes tactiques).
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- Story 3: Michael R. -->
-                        <div class="story-full-card fade-in" data-category="veterans">
-                            <div>
-                                <span class="card-category-badge">🎖️ Régulation du Système Nerveux</span>
-                                <div class="card-title-row">
-                                    <div class="card-avatar">👴</div>
-                                    <div class="card-meta">
-                                        <h3>Michael R.</h3>
-                                        <span>Vétéran & Retraité (Tanger)</span>
+                            <!-- Story 2: James T. -->
+                            <div class="story-full-card fade-in" data-category="performers" data-tags="stress,sommeil,concentration" data-search-terms="james marrakech stress decision clarte sommeil profond concentration beta f3 f4">
+                                <div>
+                                    <span class="card-category-badge">🚀 Optimisation Cognitive & Peak Performance</span>
+                                    <div class="card-title-row">
+                                        <div class="card-avatar">👨‍💼</div>
+                                        <div class="card-meta">
+                                            <h3>James T.</h3>
+                                            <span>Directeur Financier (Marrakech)</span>
+                                        </div>
+                                    </div>
+                                    <p class="card-quote">
+                                        "Le neurofeedback a profondément optimisé ma résistance face au stress intense et a clarifié mes prises de décision. Je me sens beaucoup plus lucide au quotidien."
+                                    </p>
+                                    
+                                    <div class="card-divider"></div>
+                                    
+                                    <h4 class="card-section-title">👣 Bilan qEEG & Protocole Clinique :</h4>
+                                    <ul class="card-steps">
+                                        <li><strong>qEEG Initial :</strong> Hyper-activation des ondes Beta rapides en zone frontale (F3/F4), traduisant une surcharge mentale constante.</li>
+                                        <li><strong>Protocole appliqué :</strong> 12 séances d'optimisation de la flexibilité synaptique focalisées sur les bandes de fréquence de calme.</li>
+                                        <li><strong>Suivi Portail :</strong> Monitoring de l'indice de sommeil profond par synchronisation avec le Portail Patient.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <div class="card-metrics">
+                                        📊 Chiffres qEEG : <span>-58%</span> de stress perçu en période fiscale et <span>+45 min</span> de sommeil profond mesurées par nuit.
+                                    </div>
+                                    <div class="card-guide">
+                                        📖 Protocole Appliqué : <strong>Focus Haute Performance & Clarté INFC</strong>.
                                     </div>
                                 </div>
-                                <p class="card-quote">
-                                    "Pour la première fois depuis des années, je dors toute la nuit. Les cauchemars ont complètement disparu. Le neurofeedback m'a tout simplement rendu ma vie."
-                                </p>
-                                
-                                <div class="card-divider"></div>
-                                
-                                <h4 class="card-section-title">👣 Le Processus & Les Étapes :</h4>
-                                <ul class="card-steps">
-                                    <li><strong>Étape 1 :</strong> Création d'un espace rassurant (à faible intensité lumineuse).</li>
-                                    <li><strong>Étape 2 :</strong> 10 séances axées sur l'apaisement du système sympathique.</li>
-                                    <li><strong>Étape 3 :</strong> 10 séances de consolidation de la résilience nerveuse.</li>
-                                </ul>
                             </div>
-                            <div>
-                                <div class="card-metrics">
-                                    📊 Chiffres clés : <span>Suppression totale</span> des cauchemars nocturnes & <span>-75%</span> d'hypervigilance.
-                                </div>
-                                <div class="card-guide">
-                                    📖 Guide Appliqué : <strong>Plan d'Apaisement Autonome Post-Traumatique</strong>.
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- Story 4: Leyla A. -->
-                        <div class="story-full-card fade-in" data-category="adults">
-                            <div>
-                                <span class="card-category-badge">🧠 Sérénité & Équilibre</span>
-                                <div class="card-title-row">
-                                    <div class="card-avatar">👩‍⚕️</div>
-                                    <div class="card-meta">
-                                        <h3>Leyla A.</h3>
-                                        <span>Architecte (Casablanca)</span>
+                            <!-- Story 3: Michel R. -->
+                            <div class="story-full-card fade-in" data-category="seniors" data-tags="memoire,sommeil,concentration" data-search-terms="michel tanger memoire concentration reactivite sommeil profond alpha o1 o2">
+                                <div>
+                                    <span class="card-category-badge">🧓 Vitalité Cognitive & Seniors Actifs</span>
+                                    <div class="card-title-row">
+                                        <div class="card-avatar">🧓</div>
+                                        <div class="card-meta">
+                                            <h3>Michel R.</h3>
+                                            <span>Cadre Retraité (Tanger)</span>
+                                        </div>
+                                    </div>
+                                    <p class="card-quote">
+                                        "À 64 ans, je voulais préserver ma mémoire et ma vivacité intellectuelle. Ces séances d'entraînement ont réveillé ma clarté d'esprit et régulé mon sommeil."
+                                    </p>
+                                    
+                                    <div class="card-divider"></div>
+                                    
+                                    <h4 class="card-section-title">👣 Bilan qEEG & Protocole Clinique :</h4>
+                                    <ul class="card-steps">
+                                        <li><strong>qEEG Initial :</strong> Baisse notable de l'amplitude du pic Alpha en zone occipitale (O1/O2), liée au ralentissement cognitif naturel.</li>
+                                        <li><strong>Protocole appliqué :</strong> 20 séances d'entraînement neuro-sensible d'entretien de la vitalité neuronale.</li>
+                                        <li><strong>Suivi Portail :</strong> Exercices cognitifs d'entretien de la mémoire sur l'espace d'entraînement.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <div class="card-metrics">
+                                        📊 Chiffres qEEG : Pic Alpha occipital restructuré à <span>10.50 Hz</span>, focus accru de <span>+40%</span> et recall mémoriel amélioré de <span>+35%</span>.
+                                    </div>
+                                    <div class="card-guide">
+                                        📖 Guide Appliqué : <strong>Livret d'Entretien Cognitif & Longévité Cérébrale INFC</strong>.
                                     </div>
                                 </div>
-                                <p class="card-quote">
-                                    "Le burn-out m'avait complètement vidée de mon énergie. Grâce aux séances de neurofeedback, j'ai retrouvé ma vitalité mentale et mon calme intérieur."
-                                </p>
-                                
-                                <div class="card-divider"></div>
-                                
-                                <h4 class="card-section-title">👣 Le Processus & Les Étapes :</h4>
-                                <ul class="card-steps">
-                                    <li><strong>Étape 1 :</strong> Évaluation de la fatigue cognitive et du profil de surmenage.</li>
-                                    <li><strong>Étape 2 :</strong> 8 séances de régulation neuro-sensible axées sur les ondes Alpha.</li>
-                                    <li><strong>Étape 3 :</strong> 6 séances d'harmonisation de l'humeur.</li>
-                                </ul>
                             </div>
-                            <div>
-                                <div class="card-metrics">
-                                    📊 Chiffres clés : <span>83%</span> de réduction de la charge mentale & disparition des crises de panique.
-                                </div>
-                                <div class="card-guide">
-                                    📖 Protocole Appliqué : <strong>Protocole Reset Fatigue INFC</strong>.
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- Story 5: Youssef K. -->
-                        <div class="story-full-card fade-in" data-category="parents">
-                            <div>
-                                <span class="card-category-badge">👶 Accompagnement Pédiatrique</span>
-                                <div class="card-title-row">
-                                    <div class="card-avatar">👦</div>
-                                    <div class="card-meta">
-                                        <h3>Youssef K. (10 ans)</h3>
-                                        <span>Élève (Kénitra)</span>
+                            <!-- Story 4: Leyla A. -->
+                            <div class="story-full-card fade-in" data-category="adults" data-tags="stress,sommeil" data-search-terms="leyla casablanca burn-out stress fatigue panique calme sommeil alpha asymetrie">
+                                <div>
+                                    <span class="card-category-badge">🧠 Sérénité & Équilibre (Régulation du Surmenage)</span>
+                                    <div class="card-title-row">
+                                        <div class="card-avatar">👩‍⚕️</div>
+                                        <div class="card-meta">
+                                            <h3>Leyla A.</h3>
+                                            <span>Architecte (Casablanca)</span>
+                                        </div>
+                                    </div>
+                                    <p class="card-quote">
+                                        "Le burn-out professionnel m'avait complètement vidée. Grâce aux séances de neurofeedback, j'ai surmonté la fatigue chronique et retrouvé ma paix intérieure."
+                                    </p>
+                                    
+                                    <div class="card-divider"></div>
+                                    
+                                    <h4 class="card-section-title">👣 Bilan qEEG & Protocole Clinique :</h4>
+                                    <ul class="card-steps">
+                                        <li><strong>qEEG Initial :</strong> Asymétrie Alpha frontale prononcée, traduisant une dysrégulation émotionnelle et un épuisement.</li>
+                                        <li><strong>Protocole appliqué :</strong> 14 séances de régulation neuro-sensible NeurOptimal® axées sur la détente profonde.</li>
+                                        <li><strong>Suivi Portail :</strong> Outil d'auto-évaluation du stress et journal clinique partagé avec le psychologue référent.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <div class="card-metrics">
+                                        📊 Chiffres qEEG : Diminution de <span>83%</span> de la charge cognitive ressentie et disparition totale des crises de panique.
+                                    </div>
+                                    <div class="card-guide">
+                                        📖 Protocole Appliqué : <strong>Protocole Reset Fatigue & Sommeil INFC</strong>.
                                     </div>
                                 </div>
-                                <p class="card-quote">
-                                    "Avant, l'école me faisait peur parce que je n'arrivais pas à rester assis. Maintenant, je lis des livres entiers et je me sens beaucoup plus tranquille."
-                                </p>
-                                
-                                <div class="card-divider"></div>
-                                
-                                <h4 class="card-section-title">👣 Le Processus & Les Étapes :</h4>
-                                <ul class="card-steps">
-                                    <li><strong>Étape 1 :</strong> Bilan d'orientation et de concentration ludique.</li>
-                                    <li><strong>Étape 2 :</strong> 10 séances de neurofeedback dynamique NeurOptimal®.</li>
-                                    <li><strong>Étape 3 :</strong> 5 séances de stabilisation avant la rentrée scolaire.</li>
-                                </ul>
                             </div>
-                            <div>
-                                <div class="card-metrics">
-                                    📊 Chiffres clés : <span>+50%</span> d'amélioration des notes & diminution de l'agitation motrice.
-                                </div>
-                                <div class="card-guide">
-                                    📖 Guide Appliqué : <strong>Guide de l'Apprentissage Heureux INFC</strong>.
-                                </div>
-                            </div>
-                        </div>
 
+                            <!-- Story 5: Youssef K. -->
+                            <div class="story-full-card fade-in" data-category="parents" data-tags="tdah,concentration" data-search-terms="youssef kenitra ecole concentration lecture calme agitation tdah cz fz theta">
+                                <div>
+                                    <span class="card-category-badge">👶 Accompagnement Pédiatrique & Concentration</span>
+                                    <div class="card-title-row">
+                                        <div class="card-avatar">👦</div>
+                                        <div class="card-meta">
+                                            <h3>Youssef K. (10 ans)</h3>
+                                            <span>Élève (Kénitra)</span>
+                                        </div>
+                                    </div>
+                                    <p class="card-quote">
+                                        "Avant, j'avais peur de l'école parce que je n'arrivais pas à rester calme et attentif. Aujourd'hui, je me concentre facilement et je lis des livres entiers."
+                                    </p>
+                                    
+                                    <div class="card-divider"></div>
+                                    
+                                    <h4 class="card-section-title">👣 Bilan qEEG & Protocole Clinique :</h4>
+                                    <ul class="card-steps">
+                                        <li><strong>qEEG Initial :</strong> Excès d'ondes Thêta lentes en Cz/Fz lors de l'effort attentionnel (profil type TDAH).</li>
+                                        <li><strong>Protocole appliqué :</strong> 15 séances de neurofeedback dynamique combinées à des sessions de concentration ludique.</li>
+                                        <li><strong>Suivi Portail :</strong> Jeux d'attention Focus Flow validés et suivis sur le Portail Patient.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <div class="card-metrics">
+                                        📊 Chiffres qEEG : Notes scolaires améliorées de <span>+50%</span> et diminution de <span>60%</span> de l'agitation motrice en classe.
+                                    </div>
+                                    <div class="card-guide">
+                                        📖 Guide Appliqué : <strong>Guide de l'Apprentissage Heureux INFC</strong>.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Story 6: Kenza B. -->
+                            <div class="story-full-card fade-in" data-category="adults" data-tags="stress,sommeil" data-search-terms="kenza casablanca burnout fatigue charge mentale sommeil anxiete maman lzc">
+                                <div>
+                                    <span class="card-category-badge">🤰 Récupération Émotionnelle & Fatigue Maternelle</span>
+                                    <div class="card-title-row">
+                                        <div class="card-avatar">👩</div>
+                                        <div class="card-meta">
+                                            <h3>Kenza B.</h3>
+                                            <span>Mère de 2 enfants (Casablanca)</span>
+                                        </div>
+                                    </div>
+                                    <p class="card-quote">
+                                        "Entre mon travail et ma vie de maman, j'étais en surchauffe mentale permanente. Le neurofeedback a restauré mon sommeil et m'a aidée à réguler mon anxiété."
+                                    </p>
+                                    
+                                    <div class="card-divider"></div>
+                                    
+                                    <h4 class="card-section-title">👣 Bilan qEEG & Protocole Clinique :</h4>
+                                    <ul class="card-steps">
+                                        <li><strong>qEEG Initial :</strong> Surcharge limbique temporale, hyper-cohérence des ondes Beta et baisse de l'indice de complexité LZC.</li>
+                                        <li><strong>Protocole appliqué :</strong> 12 séances de régulation neuro-sensible d'orientation sommeil et anxiété.</li>
+                                        <li><strong>Suivi Portail :</strong> Journal de suivi du sommeil et exercices de respiration guidés.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <div class="card-metrics">
+                                        📊 Chiffres qEEG : Score d'anxiété générale réduit de <span>70%</span> et endormissement stabilisé sous les <span>15 minutes</span>.
+                                    </div>
+                                    <div class="card-guide">
+                                        📖 Protocole Appliqué : <strong>Protocole Reset Surcharge & Maternité INFC</strong>.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Story 7: Amine L. -->
+                            <div class="story-full-card fade-in" data-category="performers" data-tags="concentration,memoire,sommeil" data-search-terms="amine marrakech etudiant concours memoire concentration insomnie prepa cpge">
+                                <div>
+                                    <span class="card-category-badge">🎓 Optimisation Étudiante & Réussite Prépa</span>
+                                    <div class="card-title-row">
+                                        <div class="card-avatar">👦</div>
+                                        <div class="card-meta">
+                                            <h3>Amine L. (19 ans)</h3>
+                                            <span>Étudiant en CPGE (Marrakech)</span>
+                                        </div>
+                                    </div>
+                                    <p class="card-quote">
+                                        "Les insomnies dues au stress du concours sabotaient mes révisions. Grâce aux séances, j'ai retrouvé des nuits calmes et une vitesse de mémorisation accrue."
+                                    </p>
+                                    
+                                    <div class="card-divider"></div>
+                                    
+                                    <h4 class="card-section-title">👣 Bilan qEEG & Protocole Clinique :</h4>
+                                    <ul class="card-steps">
+                                        <li><strong>qEEG Initial :</strong> Hyper-cohérence frontale limitant la flexibilité mentale, surcharge due au manque de sommeil.</li>
+                                        <li><strong>Protocole appliqué :</strong> 10 séances intensives de récupération cognitive et de régulation du cycle veille-sommeil.</li>
+                                        <li><strong>Suivi Portail :</strong> Suivi journalier des métriques de fatigue via les mini-tests du Portail Patient.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <div class="card-metrics">
+                                        📊 Chiffres qEEG : Vitesse de mémorisation accrue de <span>+30%</span> et suppression totale des réveils nocturnes après la 6e séance.
+                                    </div>
+                                    <div class="card-guide">
+                                        📖 Protocole Appliqué : <strong>Focus Examens & Haute Performance Cérébrale INFC</strong>.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Story 8: Karim S. -->
+                            <div class="story-full-card fade-in" data-category="performers" data-tags="stress,sommeil" data-search-terms="karim tanger executive dirigeant fatigue decisionnelle insomnie surcharge lzc">
+                                <div>
+                                    <span class="card-category-badge">💼 Clarté Executive & Surcharge des Dirigeants</span>
+                                    <div class="card-title-row">
+                                        <div class="card-avatar">👨</div>
+                                        <div class="card-meta">
+                                            <h3>Karim S.</h3>
+                                            <span>Directeur Général (Tanger)</span>
+                                        </div>
+                                    </div>
+                                    <p class="card-quote">
+                                        "La fatigue décisionnelle et le manque de sommeil profond commençaient à impacter ma vie pro. Le neurofeedback a sorti mon cerveau du mode alerte constant."
+                                    </p>
+                                    
+                                    <div class="card-divider"></div>
+                                    
+                                    <h4 class="card-section-title">👣 Bilan qEEG & Protocole Clinique :</h4>
+                                    <ul class="card-steps">
+                                        <li><strong>qEEG Initial :</strong> Diminution de l'indice de complexité LZC à 1.41, surcharge frontale localisée (fatigue décisionnelle).</li>
+                                        <li><strong>Protocole appliqué :</strong> 12 séances de régulation neuro-sensible d'ondes lentes + stabilisation de l'homéostasie frontale.</li>
+                                        <li><strong>Suivi Portail :</strong> Suivi des indices de performance et rapports qEEG téléchargeables sur le Portail Patient.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <div class="card-metrics">
+                                        📊 Chiffres qEEG : Indice de complexité LZC restauré à <span>1.73</span>, et hausse mesurée de <span>+1h20</span> de sommeil profond par nuit.
+                                    </div>
+                                    <div class="card-guide">
+                                        📖 Protocole Appliqué : <strong>Régulation Executive & Clarté Cérébrale INFC</strong>.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- E-commerce Empty State -->
+                            <div id="noResultsCard" class="no-results" style="display: none;">
+                                <h3>Aucune histoire ne correspond à vos critères</h3>
+                                <p>Essayez de réinitialiser vos filtres ou de modifier votre recherche.</p>
+                                <button class="btn btn-navy" id="resetFiltersBtn" style="border: none;">Réinitialiser tous les filtres</button>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -506,6 +722,7 @@
                         <li><a href="programmes.html">Sérénité & Sommeil</a></li>
                         <li><a href="programmes.html">Focus Scolaire</a></li>
                         <li><a href="programmes.html">Haute Performance</a></li>
+                        <li><a href="les-reponses-du-dr-chadia.html" style="color: var(--color-gold); font-weight: 600;">Réponses du Dr. Chadia</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -519,12 +736,13 @@
                 </div>
                 <div class="footer-col">
                     <h4>Contact</h4>
-                    <p>📍 Twin Center, Casablanca, Maroc</p>
-                    <p>📞 +212 622 60 60 09</p>
-                    <p>✉️ contact@neurofeedback.ma</p>
+                    <p>📍 Nº12 2ème étage, Immeuble Living office 362 BD Ghandi Oasis, Casablanca</p>
+                    <p>📞 <a href="tel:0522991783">0522991783</a></p>
+                    <p>✉️ <a href="mailto:contact@neurofeedback.ma">contact@neurofeedback.ma</a></p>
                 </div>
             </div>
             <div class="footer-bottom">
+                <p style="font-size: 0.8rem; margin-bottom: 1rem; color: rgba(255, 255, 255, 0.5); max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.5;">Le programme d'entraînement cérébral proposé par l'INFC est une approche d'optimisation cognitive et de bien-être neuro-sensible. Il ne remplace pas un suivi médical ou psychiatrique et ne saurait se substituer à une prescription médicamenteuse prescrite par un médecin habilité.</p>
                 <p>&copy; 2026 International Neurofeedback Center. Tous droits réservés.</p>
             </div>
         </div>
@@ -534,43 +752,94 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const filterButtons = document.querySelectorAll('.filter-btn');
+            const tagCheckboxes = document.querySelectorAll('.tag-checkbox');
+            const searchInput = document.getElementById('searchInput');
             const storyCards = document.querySelectorAll('.story-full-card');
+            const noResultsCard = document.getElementById('noResultsCard');
+            const resetFiltersBtn = document.getElementById('resetFiltersBtn');
 
-            // Set counts in sidebar
-            const countAll = storyCards.length;
-            const countParents = document.querySelectorAll('.story-full-card[data-category="parents"]').length;
-            const countVeterans = document.querySelectorAll('.story-full-card[data-category="veterans"]').length;
-            const countPerformers = document.querySelectorAll('.story-full-card[data-category="performers"]').length;
-            const countAdults = document.querySelectorAll('.story-full-card[data-category="adults"]').length;
+            // Initial static counts setup
+            updateCounts();
 
-            document.getElementById('count-all').textContent = countAll;
-            document.getElementById('count-parents').textContent = countParents;
-            document.getElementById('count-veterans').textContent = countVeterans;
-            document.getElementById('count-performers').textContent = countPerformers;
-            document.getElementById('count-adults').textContent = countAdults;
+            function updateCounts() {
+                document.getElementById('count-all').textContent = document.querySelectorAll('.story-full-card').length;
+                document.getElementById('count-parents').textContent = document.querySelectorAll('.story-full-card[data-category="parents"]').length;
+                document.getElementById('count-seniors').textContent = document.querySelectorAll('.story-full-card[data-category="seniors"]').length;
+                document.getElementById('count-performers').textContent = document.querySelectorAll('.story-full-card[data-category="performers"]').length;
+                document.getElementById('count-adults').textContent = document.querySelectorAll('.story-full-card[data-category="adults"]').length;
+            }
 
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    // Remove active class from other buttons
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
+            function filterStories() {
+                const activeCategoryBtn = document.querySelector('.filter-btn.active');
+                const selectedCategory = activeCategoryBtn.getAttribute('data-filter');
+                const searchQuery = searchInput.value.toLowerCase().trim();
+                
+                // Get checked tags
+                const checkedTags = Array.from(tagCheckboxes)
+                    .filter(cb => cb.checked)
+                    .map(cb => cb.value);
 
-                    const filterValue = button.getAttribute('data-filter');
+                let visibleCount = 0;
 
-                    storyCards.forEach(card => {
+                storyCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    const cardTags = (card.getAttribute('data-tags') || '').split(',');
+                    const searchTerms = (card.getAttribute('data-search-terms') || '').toLowerCase();
+                    
+                    // 1. Check category match
+                    const categoryMatch = (selectedCategory === 'all' || cardCategory === selectedCategory);
+
+                    // 2. Check search text match
+                    const searchMatch = !searchQuery || searchTerms.includes(searchQuery);
+
+                    // 3. Check tags match (card must contain all selected tags)
+                    const tagsMatch = checkedTags.every(tag => cardTags.includes(tag));
+
+                    if (categoryMatch && searchMatch && tagsMatch) {
+                        card.style.display = 'flex';
+                        card.classList.add('fade-in');
+                        visibleCount++;
+                    } else {
                         card.style.display = 'none';
                         card.classList.remove('fade-in');
-
-                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-                            card.style.display = 'flex';
-                            // Force reflow
-                            void card.offsetWidth;
-                            card.classList.add('fade-in');
-                        }
-                    });
+                    }
                 });
+
+                // Display empty state if no results match
+                if (visibleCount === 0) {
+                    noResultsCard.style.display = 'block';
+                } else {
+                    noResultsCard.style.display = 'none';
+                }
+            }
+
+            // Event listener for category buttons
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    filterStories();
+                });
+            });
+
+            // Event listeners for checkbox tags
+            tagCheckboxes.forEach(cb => {
+                cb.addEventListener('change', filterStories);
+            });
+
+            // Event listener for search input
+            searchInput.addEventListener('input', filterStories);
+
+            // Reset filters logic
+            resetFiltersBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                tagCheckboxes.forEach(cb => cb.checked = false);
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
+                filterStories();
             });
         });
     </script>
+    <script src="js/main.js"></script>
 </body>
 </html>

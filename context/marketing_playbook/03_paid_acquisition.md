@@ -152,11 +152,13 @@ Chaque persona doit atterrir sur une page conçue pour lui, avec un seul objecti
 | Engagés Instagram/Facebook (likes, comments) | Continu | Invitation consultation gratuite |
 | Visiteurs /nos-centres | 1–14 jours | Photos + avis du centre le plus proche |
 
-### Séquence WhatsApp post-clic
-1. **Message automatique** : "Merci de votre intérêt ! 🧠 Souhaitez-vous réserver un bilan gratuit de 15 minutes ?"
-2. **Si pas de réponse J+1** : Envoi d'un témoignage patient (texte court + photo)
-3. **Si pas de réponse J+3** : "Avez-vous des questions ? Notre équipe est là pour vous 🙏"
-4. **Si pas de réponse J+7** : Ajout à la liste de diffusion WhatsApp pour contenu mensuel
+### Séquence WhatsApp post-clic (Filtre anti-perte-de-temps)
+1. **Message automatique (Filtre)** : "Bonjour et bienvenue à l'INFC ! Afin de vous orienter au mieux, merci de préciser : 1. Votre ville, 2. Votre problématique principale (sommeil, stress, concentration, TDAH), 3. Pour qui est ce bilan (vous, enfant)."
+2. **Une fois qualifié** : Proposition de créneaux immédiats pour le Bilan Découverte en centre.
+3. **Si pas de réponse J+1** : Relance douce avec un témoignage patient ou cas clinique.
+4. **Si pas de réponse J+3** : Guide pratique gratuit (ex: Guide sommeil ou stress) pour capter l'intérêt et garder le contact.
+5. **Si pas de réponse J+7** : Ajout aux listes de diffusion.
+
 
 ---
 

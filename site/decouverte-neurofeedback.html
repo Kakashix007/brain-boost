@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Et si votre cerveau n'avait pas besoin d'être réparé ? — Neurofeedback | INFC</title>
+    <meta name="description" content="Découvrez le Neurofeedback dynamique NeurOptimal®. Une approche naturelle et non invasive pour aider votre cerveau à mieux s'autoréguler et retrouver son fonctionnement naturel.">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Premium Custom Variables & Base Adjustments */
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(212, 175, 55, 0.18);
+            --glass-shadow: 0 8px 32px 0 rgba(10, 22, 40, 0.05);
+            --gradient-navy-gold: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-light) 60%, rgba(212, 175, 55, 0.15) 100%);
+            --in-oklab: in oklab;
+        }
+
+        body {
+            background-color: var(--color-creme);
+            color: var(--color-navy);
+            font-family: var(--font-body);
+        }
+
+        /* ----------------------------------------------------
+           GLOBAL UTILITIES & COMPONENTS
+           ---------------------------------------------------- */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 992px) {
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .grid-4 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            box-shadow: var(--glass-shadow);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--color-gold);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Section Eyebrow */
+        .eyebrow {
+            display: inline-block;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--color-gold);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        /* Accent Badge */
+        .premium-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid var(--color-gold);
+            padding: 8px 16px;
+            border-radius: 50px;
+            margin-bottom: 25px;
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            gap: 8px;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--color-gold);
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 1.8s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 0.5; box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            50% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 0 8px rgba(212, 175, 55, 0); }
+            100% { transform: scale(0.9); opacity: 0.5; box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
+        /* Custom buttons styling */
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .btn-wa {
+            background-color: #25D366;
+            color: white !important;
+            border: 1px solid #20BA5A;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-wa:hover {
+            background-color: #20BA5A;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        /* ----------------------------------------------------
+           SECTION 1: HERO
+           ---------------------------------------------------- */
+        .landing-hero {
+            position: relative;
+            padding: 80px 0 100px;
+            background: linear-gradient(to bottom, var(--color-white) 0%, var(--color-creme) 100%);
+            overflow: hidden;
+        }
+
+        .landing-hero-content {
+            z-index: 2;
+            position: relative;
+        }
+
+        .landing-hero h1 {
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--color-navy);
+            margin-bottom: 20px;
+        }
+
+        .landing-hero h1 span {
+            color: var(--color-gold);
+            display: block;
+            font-size: 0.95em;
+        }
+
+        .landing-hero .subheadline {
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            line-height: 1.6;
+            color: var(--color-grey-text);
+            margin-bottom: 35px;
+            max-width: 650px;
+        }
+
+        .hero-img-frame {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+            border: 1px solid var(--glass-border);
+            height: 480px;
+        }
+
+        .hero-img-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 992px) {
+            .landing-hero {
+                padding: 50px 0;
+            }
+            .hero-img-frame {
+                height: 320px;
+                margin-top: 20px;
+            }
+        }
+
+        /* ----------------------------------------------------
+           SECTION 2: IDENTIFICATION
+           ---------------------------------------------------- */
+        .id-section {
+            padding: 100px 0;
+            background-color: var(--color-white);
+        }
+
+        .id-card {
+            background: var(--color-creme);
+            border: 1px solid rgba(10, 22, 40, 0.04);
+            border-radius: var(--radius-md);
+            padding: 25px 20px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+
+        .id-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: #fff;
+            border-color: var(--color-gold);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .id-icon {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .id-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            margin: 0;
+        }
+
+        /* ----------------------------------------------------
+           SECTION 3: THE BIG REFRAME
+           ---------------------------------------------------- */
+        .reframe-section {
+            padding: 100px 0;
+            background-color: var(--color-navy);
+            color: var(--color-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reframe-section h2 {
+            color: var(--color-white);
+            font-size: clamp(2rem, 3.5vw, 2.6rem);
+            margin-bottom: 25px;
+            line-height: 1.25;
+        }
+
+        .reframe-section p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.15rem;
+            line-height: 1.75;
+            margin-bottom: 25px;
+        }
+
+        .reframe-img-box {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .reframe-img-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ----------------------------------------------------
+           SECTION 4: HOW NEUROFEEDBACK WORKS
+           ---------------------------------------------------- */
+        .how-section {
+            padding: 100px 0;
+            background-color: var(--color-creme);
+        }
+
+        .step-timeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 50px 0 30px;
+            position: relative;
+        }
+
+        .step-timeline::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: dashed rgba(212, 175, 55, 0.3);
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .step-timeline {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .step-timeline::before {
+                display: none;
+            }
+        }
+
+        .step-node {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-number {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--color-navy);
+            color: var(--color-white);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.2rem;
+            border: 3px solid var(--color-gold);
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .step-node:hover .step-number {
+            transform: scale(1.15);
+            background: var(--color-gold);
+            color: var(--color-navy);
+        }
+
+        .step-node h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            margin-bottom: 8px;
+        }
+
+        .step-node p {
+            font-size: 0.92rem;
+            color: var(--color-grey-text);
+            line-height: 1.5;
+            padding: 0 10px;
+        }
+
+        /* ----------------------------------------------------
+           SECTION 5: SOCIAL PROOF
+           ---------------------------------------------------- */
+        .proof-section {
+            padding: 100px 0;
+            background-color: var(--color-white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .testimonial-card {
+            background: var(--color-creme);
+            border-radius: var(--radius-md);
+            padding: 35px;
+            border-left: 5px solid var(--color-gold);
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .testimonial-quote {
+            font-style: italic;
+            font-size: 1.05rem;
+            line-height: 1.65;
+            color: var(--color-navy);
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-circle-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--color-navy);
+            color: var(--color-gold);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .author-info h4 {
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            margin: 0;
+        }
+
+        .author-info span {
+            font-size: 0.8rem;
+            color: var(--color-gold);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .video-proof-box {
+            background: linear-gradient(135deg, var(--color-navy-light), var(--color-navy));
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            text-align: center;
+            color: white;
+            box-shadow: var(--shadow-hover);
+            margin-top: 50px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .video-placeholder-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .video-placeholder-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .video-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 16/10;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .video-card:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--color-gold);
+            transform: scale(1.03);
+        }
+
+        .play-icon-mini {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--color-gold);
+            color: var(--color-navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 4px 10px rgba(212,175,55,0.3);
+            transition: all 0.3s;
+        }
+
+        .video-card:hover .play-icon-mini {
+            transform: translate(-50%, -50%) scale(1.15);
+        }
+
+        .video-card-title {
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 700;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        /* ----------------------------------------------------
+           SECTION 6: THE HUMAN SIDE (DR. CHADIA)
+           ---------------------------------------------------- */
+        .human-section {
+            padding: 100px 0;
+            background-color: var(--color-creme);
+        }
+
+        .dr-portrait-frame {
+            position: relative;
+            background: linear-gradient(135deg, var(--color-navy), var(--color-navy-light));
+            border-radius: var(--radius-lg);
+            padding: 15px;
+            box-shadow: var(--shadow-hover);
+            border: 1px solid var(--glass-border);
+        }
+
+        .dr-portrait-frame img {
+            width: 100%;
+            border-radius: var(--radius-md);
+            object-fit: cover;
+            display: block;
+        }
+
+        .dr-text h2 {
+            font-size: clamp(2rem, 3vw, 2.5rem);
+            color: var(--color-navy);
+            margin-bottom: 5px;
+        }
+
+        .dr-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            font-family: var(--font-heading);
+        }
+
+        .dr-story {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--color-grey-text);
+            margin-bottom: 25px;
+        }
+
+        .dr-values {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 576px) {
+            .dr-values {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .value-block h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            margin-bottom: 6px;
+        }
+
+        .value-block p {
+            font-size: 0.9rem;
+            color: var(--color-grey-text);
+            line-height: 1.45;
+        }
+
+        /* ----------------------------------------------------
+           SECTION 7: SCIENTIFIC REASSURANCE
+           ---------------------------------------------------- */
+        .science-reassurance-section {
+            padding: 100px 0;
+            background-color: var(--color-white);
+        }
+
+        .sci-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 992px) {
+            .sci-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .sci-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sci-card {
+            background: var(--color-creme);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            border-top: 4px solid var(--color-navy);
+            transition: all 0.3s ease;
+        }
+
+        .sci-card:hover {
+            transform: translateY(-5px);
+            border-top-color: var(--color-gold);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .sci-check {
+            color: #10B981;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .sci-card h3 {
+            font-size: 1.1rem;
+            color: var(--color-navy);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .sci-card p {
+            font-size: 0.9rem;
+            color: var(--color-grey-text);
+            line-height: 1.5;
+        }
+
+        /* ----------------------------------------------------
+           SECTION 8: FAQ ACCORDION (MUTUALLY EXCLUSIVE)
+           ---------------------------------------------------- */
+        .faq-section {
+            padding: 100px 0;
+            background-color: var(--color-creme);
+        }
+
+        .faq-accordion {
+            max-width: 800px;
+            margin: 50px auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        details.faq-item {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(10, 22, 40, 0.04);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        details.faq-item[open] {
+            border-color: var(--color-gold);
+        }
+
+        details.faq-item summary {
+            padding: 22px 28px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--color-navy);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            outline: none;
+            user-select: none;
+        }
+
+        details.faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details.faq-item summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--color-gold);
+            transition: transform 0.3s ease;
+        }
+
+        details.faq-item[open] summary::after {
+            content: '−';
+            transform: rotate(90deg);
+        }
+
+        .faq-content {
+            padding: 0 28px 28px;
+            font-size: 0.98rem;
+            line-height: 1.65;
+            color: var(--color-grey-text);
+            border-top: 1px dashed rgba(10,22,40,0.08);
+            margin-top: 5px;
+            padding-top: 20px;
+        }
+
+        /* ----------------------------------------------------
+           SECTION 9: IMAGINE & FINAL CTA
+           ---------------------------------------------------- */
+        .imagine-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-light) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .imagine-section::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .imagine-box {
+            border-left: 3px solid var(--color-gold);
+            padding-left: 30px;
+            margin-bottom: 50px;
+        }
+
+        .imagine-box h2 {
+            color: white;
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            margin-bottom: 25px;
+        }
+
+        .imagine-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .imagine-list li {
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            margin-bottom: 18px;
+            position: relative;
+            padding-left: 35px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+
+        .imagine-list li::before {
+            content: '➔';
+            position: absolute;
+            left: 0;
+            color: var(--color-gold);
+            font-weight: 700;
+        }
+
+        .cta-container-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: var(--radius-lg);
+            padding: 50px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            border-top: 4px solid var(--color-gold);
+        }
+
+        .cta-container-card h3 {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .cta-container-card p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.05rem;
+            margin-bottom: 35px;
+        }
+
+        .cta-buttons-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        .cta-buttons-block .btn {
+            width: 100%;
+            padding: 1.1rem 2rem;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .cta-phone-desc {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .cta-phone-desc a {
+            color: var(--color-gold);
+            text-decoration: underline;
+        }
+
+        /* QUIZ STYLES */
+        .quiz-section {
+            padding: 100px 0;
+            background-color: var(--color-white);
+        }
+
+        .quiz-container {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            padding: 3rem;
+            box-shadow: var(--shadow-hover);
+            max-width: 750px;
+            margin: 0 auto;
+            border: 1px solid rgba(10, 22, 40, 0.05);
+        }
+
+        .quiz-container h2 {
+            text-align: center;
+            color: var(--color-navy);
+            margin-bottom: 0.8rem;
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        .quiz-subtitle {
+            text-align: center;
+            color: var(--color-grey-text);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .quiz-disclaimer {
+            text-align: center;
+            color: var(--color-grey-text);
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.4;
+        }
+
+        .quiz-progress {
+            height: 8px;
+            background: rgba(10, 22, 40, 0.06);
+            border-radius: 50px;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+        }
+
+        .quiz-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-gold) 0%, #E5C05B 100%);
+            border-radius: 50px;
+            transition: width 0.4s cubic-bezier(0.1, 0.8, 0.25, 1);
+        }
+
+        .quiz-step {
+            animation: quizFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes quizFadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .quiz-question {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            margin-bottom: 2rem;
+            text-align: center;
+            line-height: 1.5;
+            font-family: var(--font-heading);
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .quiz-option {
+            padding: 1.1rem 1.6rem;
+            border: 2px solid rgba(10, 22, 40, 0.08);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            font-size: 1.05rem;
+            text-align: left;
+            background: #FFFFFF;
+            color: var(--color-navy);
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.01);
+        }
+
+        .quiz-option:hover {
+            border-color: var(--color-gold);
+            background: rgba(212, 175, 55, 0.04);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(10, 22, 40, 0.03);
+        }
+
+        .quiz-option.selected {
+            border-color: var(--color-gold);
+            background: rgba(212, 175, 55, 0.08);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
+            font-weight: 600;
+        }
+
+        /* Styles du résultat */
+        .quiz-result {
+            text-align: center;
+        }
+
+        .result-header {
+            margin-bottom: 2rem;
+        }
+
+        .result-badge {
+            display: inline-block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: var(--color-gold);
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            background: rgba(212, 175, 55, 0.08);
+            padding: 6px 16px;
+            border-radius: 50px;
+            border: 1px solid var(--color-gold);
+        }
+
+        .result-advice {
+            color: var(--color-grey-text);
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 1.2rem auto 0;
+            line-height: 1.6;
+        }
+
+        .chart-container {
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+            position: relative;
+            height: 380px;
+        }
+
+        .cta-intro {
+            font-weight: 700;
+            color: var(--color-navy);
+            margin-bottom: 1.5rem;
+            font-size: 1.15rem;
+            font-family: var(--font-heading);
+        }
+
+        .cta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .cta-card {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            padding: 1.3rem;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid transparent;
+        }
+
+        .cta-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .cta-icon {
+            font-size: 2.2rem;
+            flex-shrink: 0;
+        }
+
+        .cta-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cta-text strong {
+            font-size: 1.05rem;
+            color: white;
+            font-family: var(--font-heading);
+        }
+
+        .cta-text small {
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+
+        .cta-pdf {
+            background: var(--color-navy);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .cta-pdf:hover {
+            border-color: var(--color-gold);
+            box-shadow: 0 8px 25px rgba(10, 22, 40, 0.2);
+        }
+
+        .cta-pdf small {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .cta-whatsapp {
+            background: #25D366;
+            border: 1px solid #20BA5A;
+        }
+
+        .cta-whatsapp:hover {
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+        }
+
+        .cta-whatsapp small {
+            color: rgba(255,255,255,0.9);
+        }
+
+        @media (max-width: 640px) {
+            .quiz-container {
+                padding: 1.8rem;
+            }
+            .cta-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .chart-container {
+                height: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/logos/logo.png" alt="INFC Logo">
+                </a>
+            </div>
+            <nav>
+                                                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="neurofeedback.html">La Science</a></li>
+                    <li><a href="programmes.html">Programmes</a></li>
+                    <li><a href="success-stories.html">Success Stories</a></li>
+                    <li><a href="centres.html">Nos Centres</a></li>
+                    <li><a href="apropos.html">À Propos</a></li>
+                    <li><a href="forum.html">💬 Forum Parents</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+            <div class="nav-cta">
+                <a href="contact.html" class="btn btn-navy">S'orienter</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECTION 1: HERO -->
+        <section class="landing-hero fade-in">
+            <div class="container">
+                <div class="grid-2">
+                    <div class="landing-hero-content">
+                        <div class="premium-badge">
+                            <span class="pulse-dot"></span>
+                            <span>Régulation Neuro-Sensible Premium</span>
+                        </div>
+                        <h1>La science de <span>l'auto-régulation cérébrale.</span></h1>
+                        <p class="subheadline">Comment le couplage du qEEG de haute précision et du neurofeedback dynamique permet au cerveau de restaurer son propre équilibre.</p>
+                        
+                        <div class="btn-container">
+                            <a href="#" class="btn btn-gold">📊 Télécharger le livre blanc scientifique (PDF)</a>
+                            <a href="https://wa.me/212622606011?text=Bonjour%2C%20je%20souhaite%20poser%20une%20question%20sur%20le%20Neurofeedback" target="_blank" class="btn btn-wa">
+                                📱 Poser une question sur WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="hero-img-frame">
+                            <img src="assets/images/hero-landing.png" alt="Personne calme, sereine et concentrée dans un centre de régulation premium" fetchpriority="high">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: IDENTIFICATION -->
+        <section class="id-section fade-in">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="eyebrow">Diagnostic de vos ressentis</span>
+                    <h2>Vous reconnaissez-vous dans l'une de ces situations ?</h2>
+                    <p>Découvrez comment une désorganisation de l'activité cérébrale peut affecter votre quotidien.</p>
+                </div>
+                
+                <div class="grid-4" style="margin-top: 50px;">
+                    <div class="id-card" onclick="document.querySelector('#booking-section').scrollIntoView({behavior: 'smooth'})">
+                        <span class="id-icon">🧠</span>
+                        <h3>Difficulté à se concentrer</h3>
+                    </div>
+                    <div class="id-card" onclick="document.querySelector('#booking-section').scrollIntoView({behavior: 'smooth'})">
+                        <span class="id-icon">😴</span>
+                        <h3>Fatigue mentale</h3>
+                    </div>
+                    <div class="id-card" onclick="document.querySelector('#booking-section').scrollIntoView({behavior: 'smooth'})">
+                        <span class="id-icon">😟</span>
+                        <h3>Stress ou anxiété</h3>
+                    </div>
+                    <div class="id-card" onclick="document.querySelector('#booking-section').scrollIntoView({behavior: 'smooth'})">
+                        <span class="id-icon">⚡</span>
+                        <h3>Hyperactivité</h3>
+                    </div>
+                    <div class="id-card" onclick="document.querySelector('#booking-section').scrollIntoView({behavior: 'smooth'})">
+                        <span class="id-icon">📚</span>
+                        <h3>Difficultés d'apprentissage</h3>
+                    </div>
+                    <div class="id-card" onclick="document.querySelector('#booking-section').scrollIntoView({behavior: 'smooth'})">
+                        <span class="id-icon">🌙</span>
+                        <h3>Troubles du sommeil</h3>
+                    </div>
+                    <div class="id-card" onclick="document.querySelector('#booking-section').scrollIntoView({behavior: 'smooth'})">
+                        <span class="id-icon">🎯</span>
+                        <h3>Manque de clarté mentale</h3>
+                    </div>
+                    <div class="id-card" onclick="document.querySelector('#quiz-section').scrollIntoView({behavior: 'smooth'})">
+                        <span class="id-icon">❤️</span>
+                        <h3>Surcharge émotionnelle</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUIZ SECTION -->
+        <section id="quiz-section" class="quiz-section fade-in">
+            <div class="quiz-container">
+                <h2>🧠 Test : Votre enfant souffre-t-il de fatigue cognitive ?</h2>
+                <p class="quiz-subtitle">5 questions simples · 1 minute · Résultat immédiat</p>
+                <p class="quiz-disclaimer">
+                    <em>Ce test est fourni à titre indicatif et éducatif. Il ne remplace en aucun cas une évaluation médicale ou psychologique.</em>
+                </p>
+                
+                <!-- Barre de progression -->
+                <div class="quiz-progress">
+                    <div class="quiz-progress-fill" id="quiz-bar" style="width: 0%"></div>
+                </div>
+
+                <!-- Question 1 -->
+                <div class="quiz-step active" data-step="1">
+                    <div class="quiz-question">1/5 — Votre enfant arrive‑t‑il à se concentrer plus de 15 minutes sur ses révisions ?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-score="0" onclick="selectOption(this)">Oui, sans difficulté</div>
+                        <div class="quiz-option" data-score="1" onclick="selectOption(this)">Parfois, ça dépend des jours</div>
+                        <div class="quiz-option" data-score="2" onclick="selectOption(this)">Rarement, il décroche très vite</div>
+                        <div class="quiz-option" data-score="3" onclick="selectOption(this)">Non, c'est très difficile pour lui</div>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-step" data-step="2" style="display: none;">
+                    <div class="quiz-question">2/5 — Comment décririez‑vous son sommeil ?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-score="0" onclick="selectOption(this)">Il dort bien et se réveille en forme</div>
+                        <div class="quiz-option" data-score="1" onclick="selectOption(this)">Sommeil correct mais fatigue occasionnelle</div>
+                        <div class="quiz-option" data-score="2" onclick="selectOption(this)">Il a du mal à s'endormir ou se réveille fatigué</div>
+                        <div class="quiz-option" data-score="3" onclick="selectOption(this)">Sommeil très perturbé, fatigue chronique</div>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-step" data-step="3" style="display: none;">
+                    <div class="quiz-question">3/5 — Observez‑vous des signes d'irritabilité ou d'anxiété liés aux études ?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-score="0" onclick="selectOption(this)">Non, il reste calme</div>
+                        <div class="quiz-option" data-score="1" onclick="selectOption(this)">Un peu de stress normal avant les contrôles</div>
+                        <div class="quiz-option" data-score="2" onclick="selectOption(this)">Oui, il est souvent nerveux ou en colère</div>
+                        <div class="quiz-option" data-score="3" onclick="selectOption(this)">Oui, crises fréquentes, pleurs ou blocages</div>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="quiz-step" data-step="4" style="display: none;">
+                    <div class="quiz-question">4/5 — Votre enfant retient‑il ce qu'il a révisé la veille ?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-score="0" onclick="selectOption(this)">Oui, sa mémoire est bonne</div>
+                        <div class="quiz-option" data-score="1" onclick="selectOption(this)">En général oui, mais pas toujours</div>
+                        <div class="quiz-option" data-score="2" onclick="selectOption(this)">Il oublie souvent malgré les efforts</div>
+                        <div class="quiz-option" data-score="3" onclick="selectOption(this)">Il oublie presque tout le lendemain</div>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="quiz-step" data-step="5" style="display: none;">
+                    <div class="quiz-question">5/5 — A‑t‑il tendance à procrastiner face aux révisions ?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-score="0" onclick="selectOption(this)">Non, il s'y met facilement</div>
+                        <div class="quiz-option" data-score="1" onclick="selectOption(this)">Un peu, comme tout le monde</div>
+                        <div class="quiz-option" data-score="2" onclick="selectOption(this)">Souvent, il repousse sans cesse</div>
+                        <div class="quiz-option" data-score="3" onclick="selectOption(this)">Systématiquement, même s'il sait que c'est urgent</div>
+                    </div>
+                </div>
+
+                <!-- Étape Résultat -->
+                <div class="quiz-step" data-step="result" style="display: none;">
+                    <div class="quiz-result">
+                        <div class="result-header">
+                            <span class="result-badge">Le Bilan de Prévention Brain Boost</span>
+                            <h2>Bravo d'avoir complété l'évaluation.</h2>
+                            <p id="quiz-advice" class="result-advice"></p>
+                        </div>
+                        
+                        <!-- Zone du graphique -->
+                        <div class="chart-container">
+                            <canvas id="quiz-chart"></canvas>
+                        </div>
+                        
+                        <p class="cta-intro">Découvrez comment l'accompagner sans pression :</p>
+                        
+                        <div class="cta-grid">
+                            <!-- Guide PDF -->
+                            <a href="#booking-section" class="cta-card cta-pdf">
+                                <span class="cta-icon">📖</span>
+                                <div class="cta-text">
+                                    <strong>Recevoir le Guide d'Accompagnement</strong>
+                                    <small>Téléchargement libre</small>
+                                </div>
+                            </a>
+                            <!-- WhatsApp Contact -->
+                            <a href="https://wa.me/212622606011?text=Bonjour%2C%20je%20viens%20de%20faire%20le%20test%20pour%20mon%20enfant%20et%20je%20souhaite%20recevoir%20le%20dossier%20complet%20Brain%20Boost." target="_blank" class="cta-card cta-whatsapp">
+                                <span class="cta-icon">💬</span>
+                                <div class="cta-text">
+                                    <strong>Demander le dossier complet</strong>
+                                    <small>Via WhatsApp</small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: THE BIG REFRAME -->
+        <section class="reframe-section fade-in">
+            <div class="container">
+                <div class="grid-2">
+                    <div>
+                        <span class="eyebrow" style="color: var(--color-gold);">Changement de Perspective</span>
+                        <h2>Le problème n'est pas toujours un manque d'effort.</h2>
+                        <p>Parfois, le cerveau travaille simplement dans un état de surcharge ou de déséquilibre.</p>
+                        <p>Lorsqu'il retrouve une meilleure régulation, de nouvelles capacités peuvent émerger naturellement.</p>
+                        <div style="margin-top: 35px;">
+                            <a href="#booking-section" class="btn btn-gold">S'orienter en 15 minutes →</a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="reframe-img-box">
+                            <img src="assets/images/calm-brain-visualization.png" alt="Visualisation 3D d'un cerveau serein et régulé" loading="lazy" width="500" height="500">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: HOW NEUROFEEDBACK WORKS -->
+        <section class="how-section fade-in">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="eyebrow">La Méthode Simplifiée</span>
+                    <h2>Comment fonctionne le Neurofeedback ?</h2>
+                    <p>Une boucle d'apprentissage naturelle, continue et organique.</p>
+                </div>
+                
+                <div class="step-timeline">
+                    <!-- Step 1 -->
+                    <div class="step-node">
+                        <div class="step-number">01</div>
+                        <h3>Capture</h3>
+                        <p>Analyse de l'activité cérébrale par des capteurs passifs de surface.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="step-node">
+                        <div class="step-number">02</div>
+                        <h3>Analyse</h3>
+                        <p>Le système détecte les variations abruptes de l'activité corticale.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="step-node">
+                        <div class="step-number">03</div>
+                        <h3>Rétroaction</h3>
+                        <p>Le cerveau apprend progressivement à mieux s'autoréguler grâce à des micro-coupures sonores.</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="step-node">
+                        <div class="step-number">04</div>
+                        <h3>Clarté</h3>
+                        <p>Retour de la clarté mentale, de la stabilité émotionnelle et du confort quotidien.</p>
+                    </div>
+                </div>
+                
+                <p style="text-align: center; font-size: 0.9rem; color: var(--color-grey-text); font-style: italic; margin-top: 40px;">
+                    💡 Méthode non invasive et basée sur l'apprentissage cérébral (neuroplasticité).
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION 5: SOCIAL PROOF -->
+        <section class="proof-section fade-in">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="eyebrow">Retours d'expérience</span>
+                    <h2>Ils ont découvert une nouvelle manière de fonctionner</h2>
+                    <p>Découvrez les récits de ceux qui ont transformé leur quotidien grâce à la régulation cérébrale.</p>
+                </div>
+                
+                <div class="testimonials-grid">
+                    <!-- Parents -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"Mon fils de 9 ans était en surcharge attentionnelle permanente à l'école. En quelques semaines de régulation neuro-sensible, nous avons retrouvé un calme familial inestimable. Ses enseignants n'en reviennent pas."</p>
+                        <div class="testimonial-author">
+                            <div class="author-circle-avatar">ML</div>
+                            <div class="author-info">
+                                <h4>Meryem L.</h4>
+                                <span>Mère d'élève — Casablanca</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Adults/Executives -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"Soumis à un stress managérial intense, j'avais un sommeil instable et un brouillard mental constant. L'entraînement NeurOptimal® m'a permis de retrouver une récupération profonde et une clarté de décision remarquable."</p>
+                        <div class="testimonial-author">
+                            <div class="author-circle-avatar">KY</div>
+                            <div class="author-info">
+                                <h4>Khalid Y.</h4>
+                                <span>Directeur Financier — Sidi Maarouf</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Students -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"Pendant la préparation du baccalauréat, j'oubliais tout à cause du stress. Le programme intensif m'a permis de stabiliser ma mémorisation et de passer mes épreuves sereinement, sans anxiété."</p>
+                        <div class="testimonial-author">
+                            <div class="author-circle-avatar">SA</div>
+                            <div class="author-info">
+                                <h4>Sami A.</h4>
+                                <span>Étudiant — Marrakech</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Neuro-atypical -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"Diagnostiquée avec un TDAH à l'âge adulte, l'entraînement neuro-sensible a été une révélation. J'ai pu réduire le bruit mental constant et m'organiser avec beaucoup moins d'efforts."</p>
+                        <div class="testimonial-author">
+                            <div class="author-circle-avatar">IB</div>
+                            <div class="author-info">
+                                <h4>Inès B.</h4>
+                                <span>Hypersensible & Atypique — Tanger</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video proof sub-section -->
+                <div class="video-proof-box">
+                    <span class="eyebrow" style="color: var(--color-gold);">Témoignages en Vidéo</span>
+                    <h3 style="margin-top: 10px; color: white;">Paroles de parents et de professionnels</h3>
+                    <p style="color: rgba(255,255,255,0.7); max-width: 600px; margin: 10px auto 30px;">Parce que la régulation se vit de l'intérieur, découvrez leurs vidéos de suivi clinique.</p>
+                    
+                    <div class="video-placeholder-container">
+                        <div class="video-card">
+                            <div class="play-icon-mini">▶</div>
+                            <span class="video-card-title">Récit de Fatim-Zahra (Maman)</span>
+                        </div>
+                        <div class="video-card">
+                            <div class="play-icon-mini">▶</div>
+                            <span class="video-card-title">Dr. Chadia Chakib (Neurologie)</span>
+                        </div>
+                        <div class="video-card">
+                            <div class="play-icon-mini">▶</div>
+                            <span class="video-card-title">Optimisation d'un Peak Performer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: THE HUMAN SIDE -->
+        <section class="human-section fade-in">
+            <div class="container">
+                <div class="grid-2">
+                    <div>
+                        <div class="dr-portrait-frame">
+                            <img src="assets/images/dr-chadia-portrait.png" alt="Dr. Chadia Chakib, Fondatrice de l'INFC Maroc" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="dr-text">
+                        <span class="eyebrow">La Dimension Humaine</span>
+                        <h2>Derrière la technologie, une équipe humaine</h2>
+                        <p class="dr-title">Sous la direction clinique du Dr. Chadia Chakib</p>
+                        <p class="dr-story">
+                            "Durant mes années de pratique en neurologie, j'ai constaté que de nombreuses personnes souffrent d'une surcharge nerveuse sans trouver de solution naturelle. L'INFC est né d'une mission simple : offrir un espace premium de régulation neuro-sensible où chaque cerveau est accompagné vers son propre équilibre organique, sans aucune stigmatisation."
+                        </p>
+                        <p class="dr-story">
+                            Notre vision repose sur le respect de votre écologie cérébrale. Nous n'imposons aucun protocole forcé ; nous aidons votre système nerveux à s'autoréguler pour libérer ses capacités naturelles.
+                        </p>
+                        
+                        <div class="dr-values">
+                            <div class="value-block">
+                                <h4>🧬 Rigueur Médicale</h4>
+                                <p>Des évaluations basées sur la science de la plasticité synaptique et des bilans qEEG.</p>
+                            </div>
+                            <div class="value-block">
+                                <h4>🤝 Bienveillance Clinique</h4>
+                                <p>Un accompagnement chaleureux et sur-mesure pour chaque membre de la famille.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: SCIENTIFIC REASSURANCE -->
+        <section class="science-reassurance-section fade-in">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="eyebrow">Validation Scientifique</span>
+                    <h2>Une approche fondée sur les neurosciences</h2>
+                    <p>Nous combinons rigueur d'observation clinique et respect de l'équilibre biologique.</p>
+                </div>
+                
+                <div class="sci-grid">
+                    <!-- 1 -->
+                    <div class="sci-card">
+                        <span class="sci-check">✓</span>
+                        <h3>Neurofeedback</h3>
+                        <p>Basé sur le retour d'information acoustique dynamique NeurOptimal® non invasif.</p>
+                    </div>
+                    <!-- 2 -->
+                    <div class="sci-card">
+                        <span class="sci-check">✓</span>
+                        <h3>qEEG (Bilan initial)</h3>
+                        <p>Cartographie cérébrale de surface pour identifier objectivement les zones de surcharge.</p>
+                    </div>
+                    <!-- 3 -->
+                    <div class="sci-card">
+                        <span class="sci-check">✓</span>
+                        <h3>Accompagnement</h3>
+                        <p>Des séances d'évaluation menées par des praticiens et psychologues certifiés.</p>
+                    </div>
+                    <!-- 4 -->
+                    <div class="sci-card">
+                        <span class="sci-check">✓</span>
+                        <h3>Régulation</h3>
+                        <p>Centré sur le renforcement de la flexibilité synaptique et de la résilience globale.</p>
+                    </div>
+                </div>
+
+                <!-- Callout Reassurance / Sécurité -->
+                <div style="background: rgba(212,175,55,0.06); border: 1px solid var(--color-gold); border-radius: 12px; padding: 25px; margin-top: 40px; display: flex; align-items: center; gap: 20px;">
+                    <div style="font-size: 2.2rem;">🛡️</div>
+                    <div>
+                        <h4 style="color: var(--color-navy); margin: 0 0 5px 0; font-size: 1.1rem; font-weight: 700;">Sécurité et Non-Invasivité Absolue</h4>
+                        <p style="color: var(--color-grey-text); margin: 0; font-size: 0.95rem; line-height: 1.6;">
+                            Les capteurs d'EEG posés sur votre cuir chevelu sont <strong>entièrement passifs</strong>. Ils se contentent de lire les signaux électriques naturels de votre cerveau. <strong>Aucun courant électrique n'est émis ou envoyé vers votre tête</strong>. Il n'y a donc aucun risque d'effet secondaire ou de douleur.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 8: FAQ ACCORDION -->
+        <section class="faq-section fade-in">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="eyebrow">Réponses à vos questions</span>
+                    <h2>Foire Aux Questions</h2>
+                    <p>Tout ce que vous devez savoir pour aborder votre première séance en toute sérénité.</p>
+                </div>
+                
+                <div class="faq-accordion">
+                    <!-- Q1 -->
+                    <details class="faq-item" name="faq-landing">
+                        <summary>Le Neurofeedback est-il douloureux ?</summary>
+                        <div class="faq-content">
+                            <p>Absolument pas. Les capteurs d'EEG posés sur le cuir chevelu sont entièrement passifs — ils mesurent simplement l'activité électrique naturelle du cerveau. Aucun courant n'est émis. Le feedback se fait uniquement sous forme de micro-interruptions dans la musique que vous écoutez.</p>
+                        </div>
+                    </details>
+                    
+                    <!-- Q2 -->
+                    <details class="faq-item" name="faq-landing">
+                        <summary>Combien de séances faut-il ?</summary>
+                        <div class="faq-content">
+                            <p>Chaque cerveau est unique. Cependant, pour ancrer durablement la régulation synaptique, nous constatons généralement des changements stables après un cycle de 10 séances (fatigue passagère, focus léger) à 20 séances (TDA/H, insomnie chronique ou stress de fond).</p>
+                        </div>
+                    </details>
+                    
+                    <!-- Q3 -->
+                    <details class="faq-item" name="faq-landing">
+                        <summary>Est-ce adapté pour les enfants ?</summary>
+                        <div class="faq-content">
+                            <p>Oui. Comme l'approche ne demande aucun effort conscient ou concentration de la part du participant, elle est idéale pour les enfants. Ils peuvent regarder un dessin animé ou écouter de la musique pendant que le système NeurOptimal® guide doucement leur régulation nerveuse.</p>
+                        </div>
+                    </details>
+                    
+                    <!-- Q4 -->
+                    <details class="faq-item" name="faq-landing">
+                        <summary>Est-ce adapté pour les adultes ?</summary>
+                        <div class="faq-content">
+                            <p>Tout à fait. Pour les adultes, c'est un excellent outil pour combattre l'épuisement professionnel (burnout), améliorer la concentration, calmer les ruminations mentales et restaurer un sommeil de qualité face à des journées chargées.</p>
+                        </div>
+                    </details>
+                    
+                    <!-- Q5 -->
+                    <details class="faq-item" name="faq-landing">
+                        <summary>Quand voit-on les premiers changements ?</summary>
+                        <div class="faq-content">
+                            <p>Les premiers effets sont fréquemment rapportés dès la première ou deuxième séance : sensation de détente musculaire, sommeil plus calme ou esprit plus reposé. Ces effets s'accumulent et se consolident au fil des séances régulières.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 9: THE FUTURE ("Imagine...") & FINAL CTA -->
+        <section class="imagine-section fade-in" id="booking-section">
+            <div class="container">
+                <div class="imagine-box">
+                    <h2>Imaginez...</h2>
+                    <ul class="imagine-list">
+                        <li>vous réveiller avec plus de clarté mentale ;</li>
+                        <li>vous concentrer plus facilement et sans forcer ;</li>
+                        <li>ressentir moins de surcharge cognitive au travail ;</li>
+                        <li>retrouver davantage de sérénité au sein de votre foyer.</li>
+                    </ul>
+                </div>
+                
+                <div class="cta-container-card">
+                    <h3>Découvrez ce qui devient possible lorsque votre cerveau retrouve son équilibre.</h3>
+                    <p>Réservez un échange d'orientation de 15 minutes avec un de nos praticiens certifiés pour faire le point sur vos besoins.</p>
+                    
+                    <div class="cta-buttons-block">
+                        <a href="contact.html" class="btn btn-gold">👉 Réserver un entretien découverte</a>
+                        <a href="https://wa.me/212622606011?text=Bonjour%2C%20je%20souhaite%20reserver%20un%20entretien%20decouverte" target="_blank" class="btn btn-wa">
+                            💬 Discuter sur WhatsApp
+                        </a>
+                    </div>
+                    
+                    <div class="cta-phone-desc">
+                        Ou contactez-nous directement par téléphone au <a href="tel:0522991783">0522991783</a> (Casablanca)
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="assets/logos/logowhite.png" alt="INFC Logo" style="height: 40px; margin-bottom: 1rem;">
+                    <p>Centre d'excellence en neurofeedback au Maroc. Entraînement cérébral 100% naturel pour votre bien-être.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Nos Programmes</h4>
+                    <ul>
+                        <li><a href="programmes.html">Sérénité & Sommeil</a></li>
+                        <li><a href="programmes.html">Focus Scolaire</a></li>
+                        <li><a href="programmes.html">Haute Performance</a></li>
+                        <li><a href="les-reponses-du-dr-chadia.html" style="color: var(--color-gold); font-weight: 600;">Réponses du Dr. Chadia</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Nos Centres</h4>
+                    <ul>
+                        <li><a href="centres.html">Casablanca</a></li>
+                        <li><a href="centres.html">Marrakech</a></li>
+                        <li><a href="centres.html">Kenitra</a></li>
+                        <li><a href="centres.html">Tanger</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p>📍 Nº12 2ème étage, Immeuble Living office 362 BD Ghandi Oasis, Casablanca</p>
+                    <p>📞 <a href="tel:0522991783">0522991783</a></p>
+                    <p>✉️ <a href="mailto:contact@neurofeedback.ma">contact@neurofeedback.ma</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p style="font-size: 0.8rem; margin-bottom: 1rem; color: rgba(255, 255, 255, 0.5); max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.5;">Le programme d'entraînement cérébral proposé par l'INFC est une approche d'optimisation cognitive et de bien-être neuro-sensible. Il ne remplace pas un suivi médical ou psychiatrique et ne saurait se substituer à une prescription médicamenteuse prescrite par un médecin habilité.</p>
+                <p>&copy; 2026 International Neurofeedback Center. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentStep = 1;
+        let totalScore = 0;
+        let questionScores = [0, 0, 0, 0, 0];
+        let radarChart = null;
+
+        function selectOption(el) {
+            // 1. Gérer l'état de sélection visuelle
+            el.parentNode.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+            el.classList.add('selected');
+            
+            // 2. Enregistrer le score pour cette étape (l'étape courante est basée sur 1)
+            questionScores[currentStep - 1] = parseInt(el.dataset.score);
+
+            // Petit délai pour donner un feedback visuel avant de passer à la question suivante
+            setTimeout(() => {
+                // Masquer l'étape actuelle
+                const currentEl = document.querySelector(`.quiz-step[data-step="${currentStep}"]`);
+                currentEl.classList.remove('active');
+                currentEl.style.display = 'none';
+                
+                currentStep++;
+
+                if (currentStep <= 5) {
+                    // Afficher l'étape suivante
+                    const nextEl = document.querySelector(`.quiz-step[data-step="${currentStep}"]`);
+                    nextEl.style.display = 'block';
+                    nextEl.classList.add('active');
+                    // Mettre à jour la barre de progression
+                    document.getElementById('quiz-bar').style.width = ((currentStep - 1) / 5 * 100) + '%';
+                } else {
+                    // Afficher le résultat
+                    document.getElementById('quiz-bar').style.width = '100%';
+                    const resultStep = document.querySelector('.quiz-step[data-step="result"]');
+                    resultStep.style.display = 'block';
+                    resultStep.classList.add('active');
+                    
+                    // Calculer le score total
+                    totalScore = questionScores.reduce((a, b) => a + b, 0);
+
+                    // Mettre à jour les recommandations
+                    let advice;
+                    if (totalScore <= 4) {
+                        advice = "<strong>Votre enfant a un bon équilibre, mais restez vigilant.</strong> Même un cerveau peu fatigué peut décrocher sous pression. Veuillez consulter le graphique ci-dessous illustrant ses zones de force et d'attention.";
+                    } else {
+                        advice = "<strong>Attention, votre enfant présente un risque de surcharge cognitive.</strong> Veuillez consulter les résultats détaillés dans le graphique ci-dessous. Ils soulignent nos observations ainsi que les moyens de protéger son équilibre mental avant les examens.";
+                    }
+                    document.getElementById('quiz-advice').innerHTML = advice;
+
+                    // Calculer les pourcentages par vulnérabilité pour le radar
+                    // Fatigue Attentionnelle (Questions 1 & 5) -> Score max de 6
+                    const attention = ((questionScores[0] + questionScores[4]) / 6) * 100;
+                    // Sommeil (Question 2) -> Score max de 3
+                    const sommeil = (questionScores[1] / 3) * 100;
+                    // Stress (Question 3) -> Score max de 3
+                    const stress = (questionScores[2] / 3) * 100;
+                    // Mémoire (Question 4) -> Score max de 3
+                    const memoire = (questionScores[3] / 3) * 100;
+
+                    // Rendre le graphique en radar avec Chart.js
+                    const ctx = document.getElementById('quiz-chart').getContext('2d');
+                    if (radarChart) radarChart.destroy();
+                    
+                    radarChart = new Chart(ctx, {
+                        type: 'radar',
+                        data: {
+                            labels: ['Fatigue Attentionnelle', 'Dette de Sommeil', 'Niveau de Stress', 'Charge Mémorielle'],
+                            datasets: [{
+                                label: 'Vulnérabilité (%)',
+                                data: [attention, sommeil, stress, memoire],
+                                backgroundColor: 'rgba(212, 175, 55, 0.4)', // Gold translucide
+                                borderColor: '#D4AF37', // Gold uni
+                                pointBackgroundColor: '#D4AF37',
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: '#D4AF37',
+                                borderWidth: 2
+                            }]
+                        },
+                        options: {
+                            maintainAspectRatio: false,
+                            scales: {
+                                r: {
+                                    angleLines: { color: 'rgba(10, 22, 40, 0.1)' },
+                                    grid: { color: 'rgba(10, 22, 40, 0.1)' },
+                                    pointLabels: {
+                                        color: '#0A1628',
+                                        font: { size: 12, family: 'Outfit', weight: 'bold' }
+                                    },
+                                    ticks: { display: false, min: 0, max: 100, stepSize: 25 }
+                                }
+                            },
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: { enabled: false }
+                            }
+                        }
+                    });
+                }
+            }, 400); // 400ms correspond au retour d'état actif de l'option cliquée
+        }
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>

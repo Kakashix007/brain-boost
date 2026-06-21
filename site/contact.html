@@ -3,80 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact & Orientation - INFC</title>
-    <meta name="description" content="Prenez contact avec l'International Neurofeedback Center pour un échange d'orientation personnalisé.">
+    <title>Contact & Orientation Personnalisée — INFC</title>
+    <meta name="description" content="Contactez l'International Neurofeedback Center pour un échange d'orientation ou un bilan dans nos centres de Casablanca, Marrakech, Kénitra et Tanger.">
     <link rel="stylesheet" href="index.css">
     <style>
-        .contact-container {
-            display: flex;
-            flex-direction: column;
-            gap: 4rem;
+        /* Contact Page Styles */
+        .contact-hero {
+            background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-light) 100%);
+            color: var(--color-white);
+            padding: clamp(3rem, 6vw, 6rem) 0;
+            text-align: center;
         }
-        @media(min-width: 768px) {
-            .contact-container {
-                flex-direction: row;
+        .contact-hero h1 {
+            color: var(--color-white);
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        .contact-hero h1 span {
+            color: var(--color-gold);
+            display: block;
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+        .contact-hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 750px;
+            margin: 0 auto 2rem;
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+            align-items: start;
+        }
+        @media (max-width: 992px) {
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 3rem;
             }
         }
-        .contact-form-wrapper {
-            flex: 1;
+
+        .contact-form-container {
             background: var(--color-white);
-            padding: 3rem;
             border-radius: var(--radius-lg);
+            padding: 3rem;
             box-shadow: var(--shadow-soft);
+            border-top: 4px solid var(--color-gold);
         }
-        .contact-info-wrapper {
-            flex: 1;
+        @media (max-width: 576px) {
+            .contact-form-container {
+                padding: 1.5rem;
+            }
         }
         .form-group {
             margin-bottom: 1.5rem;
         }
-        .form-label {
+        .form-group label {
             display: block;
             margin-bottom: 0.5rem;
+            font-family: var(--font-heading);
+            font-weight: 600;
             color: var(--color-navy);
-            font-weight: 500;
+            font-size: 0.95rem;
         }
         .form-control {
             width: 100%;
-            padding: 1rem;
-            border: 1px solid rgba(10, 22, 40, 0.1);
+            padding: 0.8rem 1.2rem;
             border-radius: var(--radius-sm);
+            border: 1px solid rgba(10,22,40,0.15);
             font-family: var(--font-body);
-            font-size: 1rem;
+            font-size: 0.95rem;
+            outline: none;
+            color: var(--color-navy);
+            background: var(--color-creme);
             transition: border-color 0.3s ease;
         }
         .form-control:focus {
-            outline: none;
             border-color: var(--color-gold);
         }
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        .city-grid {
+        .form-select-group {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 1rem;
-            margin-top: 2rem;
         }
-        .city-card {
+
+        .contact-channels-box {
             background: var(--color-white);
-            padding: 1.5rem;
-            border-radius: var(--radius-md);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
             box-shadow: var(--shadow-soft);
-            text-align: center;
         }
-        .city-card h4 {
+        .phone-badge-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(10,22,40,0.06);
+        }
+        .phone-badge-item:last-child {
+            border-bottom: none;
+        }
+        .phone-city {
+            font-weight: 600;
             color: var(--color-navy);
-            margin-bottom: 0.5rem;
         }
-        .city-card p {
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+        .phone-num a {
+            color: var(--color-gold);
+            font-weight: 700;
         }
     </style>
 </head>
 <body>
+
+    <!-- Header Navigation -->
     <header>
         <div class="container nav-container">
             <div class="logo">
@@ -89,109 +135,199 @@
                     <li><a href="index.html">Accueil</a></li>
                     <li><a href="neurofeedback.html">La Science</a></li>
                     <li><a href="programmes.html">Programmes</a></li>
+                    <li><a href="vision.html">Vision</a></li>
                     <li><a href="centres.html">Nos Centres</a></li>
-                    <li><a href="apropos.html">À Propos</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="b2b.html">B2B</a></li>
+                    <li><a href="franchise.html">Franchise</a></li>
                 </ul>
             </nav>
             <div class="nav-cta">
-                <a href="contact.html" class="btn btn-navy">S'orienter</a>
+                <a href="contact.html" class="btn btn-gold">Bilan découverte</a>
             </div>
         </div>
     </header>
 
     <main>
-        <section class="hero fade-in" style="padding: 80px 0;">
+        <!-- Hero Section -->
+        <section class="contact-hero">
             <div class="container">
-                <h1>Échange d'orientation personnalisé</h1>
-                <p>Prenez contact avec notre équipe pour discuter de votre situation et définir si notre approche est adaptée à vos besoins.</p>
+                <h1>
+                    <span>Échange d'orientation personnalisé</span>
+                    Parlons de votre situation.
+                </h1>
+                <p>
+                    Notre équipe vous aide à choisir le bon accompagnement. Vous souhaitez commencer un accompagnement, poser une question ou savoir si le neurofeedback dynamique peut correspondre à votre besoin ?
+                </p>
+                <p style="font-size: 1.1rem; color: rgba(255,255,255,0.7); max-width: 800px; margin: 1.5rem auto 0;">
+                    Nos équipes vous accueillent à Casablanca, Marrakech, Kénitra et Tanger pour un premier échange d'orientation, afin de comprendre votre demande et de vous proposer le parcours le plus adapté.
+                </p>
             </div>
         </section>
 
-        <section class="section bg-creme fade-in">
-            <div class="container contact-container">
-                
-                <div class="contact-info-wrapper">
-                    <h2 style="margin-bottom: 1.5rem; color: var(--color-navy);">Nos Centres</h2>
-                    <p style="margin-bottom: 2rem;">Vous pouvez nous contacter directement via WhatsApp pour toute question ou prise de rendez-vous dans le centre le plus proche de chez vous.</p>
-                    
-                    <div class="city-grid">
-                        <div class="city-card">
-                            <h4>Casablanca</h4>
-                            <p style="font-size: 0.85rem; line-height: 1.4; margin-bottom: 1rem;">
-                                📍 Nº12 2ème étage, Immeuble Living office 362 BD Ghandi Oasis<br>
-                                📞 Tél : <a href="tel:0522991783" style="color: inherit; text-decoration: underline;">0522991783</a><br>
-                                💬 WhatsApp : <a href="https://wa.me/212622606011" target="_blank" style="color: inherit; text-decoration: underline;">0622606011</a>
+        <!-- Form and Contact details -->
+        <section class="section bg-white" style="padding-top: 4rem;">
+            <div class="container">
+                <div class="contact-layout">
+                    <!-- Form Column -->
+                    <div class="contact-form-container">
+                        <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:5px;">Demande d'orientation</span>
+                        <h2 style="margin-bottom: 2rem;">Remplir le Formulaire</h2>
+                        
+                        <form onsubmit="handleContactSubmit(event)">
+                            <div class="form-group">
+                                <label for="fullname">Nom et prénom</label>
+                                <input type="text" id="fullname" required class="form-control" placeholder="Ex: Fatine Alaoui">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Téléphone / WhatsApp</label>
+                                <input type="tel" id="phone" required class="form-control" placeholder="Ex: 06 12 34 56 78">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="city">Ville souhaitée</label>
+                                <select id="city" required class="form-control">
+                                    <option value="">Sélectionnez une ville...</option>
+                                    <option value="casablanca">Casablanca</option>
+                                    <option value="marrakech">Marrakech</option>
+                                    <option value="kenitra">Kénitra</option>
+                                    <option value="tanger">Tanger</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="relation">Vous contactez pour :</label>
+                                <select id="relation" required class="form-control">
+                                    <option value="">Choisissez...</option>
+                                    <option value="self">Vous-même</option>
+                                    <option value="child">Votre enfant</option>
+                                    <option value="relative">Un proche</option>
+                                    <option value="pro">Un patient / orientation professionnelle</option>
+                                    <option value="franchise">Une demande de franchise</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="need">Votre besoin principal :</label>
+                                <select id="need" required class="form-control">
+                                    <option value="">Choisissez un besoin...</option>
+                                    <option value="stress">Stress / anxiété</option>
+                                    <option value="sleep">Sommeil / récupération</option>
+                                    <option value="focus">Attention / concentration</option>
+                                    <option value="child">Enfant / apprentissage</option>
+                                    <option value="burnout">Burnout / surcharge</option>
+                                    <option value="hypersens">Hypersensibilité / émotions</option>
+                                    <option value="performance">Performance cognitive</option>
+                                    <option value="senior">Senior / vitalité cognitive</option>
+                                    <option value="woman">Femme / grossesse / post-partum</option>
+                                    <option value="unknown">Je ne sais pas encore</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" rows="4" class="form-control" placeholder="Décrivez brièvement votre demande ou votre situation..."></textarea>
+                            </div>
+
+                            <p style="font-size: 0.82rem; color: var(--color-grey-text); margin-bottom: 1.5rem; line-height: 1.5;">
+                                🛡️ <em>« Vos données sont traitées de façon confidentielle. Elles servent uniquement à répondre à votre demande et à organiser votre orientation. »</em>
                             </p>
-                            <a href="https://wa.me/212622606011?text=Bonjour%2C%20je%20souhaite%20contacter%20le%20centre%20de%20Casablanca" target="_blank" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.9rem; width: 100%;">WhatsApp</a>
+
+                            <button type="submit" class="btn btn-gold" style="width: 100%;">Envoyer ma demande</button>
+                        </form>
+                    </div>
+
+                    <!-- Details Column -->
+                    <div style="display: flex; flex-direction: column; gap: 2rem;">
+                        <!-- Contacts Box -->
+                        <div class="contact-channels-box">
+                            <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:5px;">Contact direct</span>
+                            <h2 style="margin-bottom: 1.5rem;">Nous contacter</h2>
+                            <p style="font-size: 0.95rem; margin-bottom: 2rem;">Un premier échange simple, rapide et humain par téléphone ou WhatsApp.</p>
+                            
+                            <div class="phone-badge-item">
+                                <span class="phone-city">Casablanca</span>
+                                <span class="phone-num"><a href="tel:0522991783">05.22.99.17.83</a></span>
+                            </div>
+                            <div class="phone-badge-item">
+                                <span class="phone-city">Marrakech</span>
+                                <span class="phone-num"><a href="tel:0524207263">05.24.20.72.63</a></span>
+                            </div>
+                            <div class="phone-badge-item">
+                                <span class="phone-city">Kénitra</span>
+                                <span class="phone-num"><a href="tel:0622606033">06.22.60.60.33</a></span>
+                            </div>
+                            <div class="phone-badge-item">
+                                <span class="phone-city">Tanger</span>
+                                <span class="phone-num"><a href="tel:0539367519">05.39.36.75.19</a></span>
+                            </div>
                         </div>
-                        <div class="city-card">
-                            <h4>Marrakech</h4>
-                            <p style="font-size: 0.85rem; line-height: 1.4; margin-bottom: 1rem;">
-                                📍 N°33 3ème étage, Résidence Le Noyer A, Rue Ibn Sina Gueliz<br>
-                                📞 Tél : <a href="tel:0524207263" style="color: inherit; text-decoration: underline;">0524207263</a><br>
-                                💬 WhatsApp : <a href="https://wa.me/212622606012" target="_blank" style="color: inherit; text-decoration: underline;">0622606012</a>
-                            </p>
-                            <a href="https://wa.me/212622606012?text=Bonjour%2C%20je%20souhaite%20contacter%20le%20centre%20de%20Marrakech" target="_blank" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.9rem; width: 100%;">WhatsApp</a>
-                        </div>
-                        <div class="city-card">
-                            <h4>Tanger</h4>
-                            <p style="font-size: 0.85rem; line-height: 1.4; margin-bottom: 1rem;">
-                                📍 N° 25 2ème étage, Résidence El Jaghaoui, Tower Route Des Abattoirs<br>
-                                📞 Tél : <a href="tel:0539367519" style="color: inherit; text-decoration: underline;">0539367519</a><br>
-                                💬 WhatsApp : <a href="https://wa.me/212622606017" target="_blank" style="color: inherit; text-decoration: underline;">0622606017</a>
-                            </p>
-                            <a href="https://wa.me/212622606017?text=Bonjour%2C%20je%20souhaite%20contacter%20le%20centre%20de%20Tanger" target="_blank" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.9rem; width: 100%;">WhatsApp</a>
-                        </div>
-                        <div class="city-card">
-                            <h4>Kénitra</h4>
-                            <p style="font-size: 0.85rem; line-height: 1.4; margin-bottom: 1rem;">
-                                📍 Nº2 Résidence el waha rue imam ali et saad zaghlou<br>
-                                📞 Tél : <a href="tel:0622606033" style="color: inherit; text-decoration: underline;">0622606033</a><br>
-                                💬 WhatsApp : <a href="https://wa.me/212622606033" target="_blank" style="color: inherit; text-decoration: underline;">0622606033</a>
-                            </p>
-                            <a href="https://wa.me/212622606033?text=Bonjour%2C%20je%20souhaite%20contacter%20le%20centre%20de%20Kenitra" target="_blank" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.9rem; width: 100%;">WhatsApp</a>
+
+                        <!-- Highlights Box -->
+                        <div class="contact-channels-box" style="border-top: 4px solid var(--color-navy);">
+                            <h3>Cadre d'intervention</h3>
+                            <ul style="list-style: none; margin-top: 1.5rem; font-size: 0.92rem; line-height: 1.6; display: flex; flex-direction: column; gap: 1rem;">
+                                <li>🌸 <strong>Femmes & étapes de vie :</strong> l'approche étant non invasive et sans stimulation électrique, elle peut s'accompagner doucement pendant la grossesse ou le post-partum. En cas de grossesse à risque, l'avis médical reste recommandé.</li>
+                                <li>🛡️ <strong>Non invasif :</strong> les capteurs mesurent l'activité cérébrale naturelle sans envoyer de courant. Indolore, sans effort conscient ni médicament. En cas de pathologie ou d'épilepsie, l'avis du médecin est conseillé.</li>
+                                <li>💼 <strong>Professionnels de santé :</strong> contactez notre équipe pour comprendre l'approche, demander une documentation ou échanger autour d'une orientation. Les dossiers restent confidentiels.</li>
+                                <li>🔑 <strong>Demande franchise :</strong> pour ouvrir un centre INFC dans votre ville, remplissez le formulaire ci-contre en choisissant l'option "Une demande de franchise".</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="contact-form-wrapper">
-                    <h2 style="margin-bottom: 1.5rem; color: var(--color-navy);">Demande de contact</h2>
-                    <p style="margin-bottom: 2rem;">Remplissez ce formulaire et un praticien INFC vous recontactera dans les plus brefs délais.</p>
-                    
-                    <form action="#" method="POST">
-                        <div class="form-group">
-                            <label for="name" class="form-label">Nom et Prénom</label>
-                            <input type="text" id="name" name="name" class="form-control" required placeholder="Votre nom complet">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone" class="form-label">Téléphone / WhatsApp</label>
-                            <input type="tel" id="phone" name="phone" class="form-control" required placeholder="+212 6 XX XX XX XX">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="city" class="form-label">Ville de résidence</label>
-                            <select id="city" name="city" class="form-control" required>
-                                <option value="" disabled selected>Sélectionnez votre ville</option>
-                                <option value="casablanca">Casablanca</option>
-                                <option value="marrakech">Marrakech</option>
-                                <option value="tanger">Tanger</option>
-                                <option value="kenitra">Kénitra</option>
-                                <option value="autre">Autre ville</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message" class="form-label">Quel est le motif de votre demande ? (Optionnel)</label>
-                            <textarea id="message" name="message" class="form-control" placeholder="Décrivez brièvement votre situation ou vos attentes..."></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-gold" style="width: 100%; border: none;">Envoyer ma demande</button>
-                    </form>
+        <!-- FAQ Section -->
+        <section class="section bg-creme">
+            <div class="container">
+                <div class="section-header">
+                    <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:10px;">FAQ</span>
+                    <h2>Questions fréquentes</h2>
                 </div>
+                <div class="qa-grid">
+                    <div class="qa-card">
+                        <h3>Rendez-vous par WhatsApp ?</h3>
+                        <p>Oui, directement avec le centre de votre ville via les liens téléphoniques fournis.</p>
+                    </div>
+                    <div class="qa-card">
+                        <h3>Le premier contact est-il un diagnostic ?</h3>
+                        <p>Non. C'est un échange d'orientation pour évaluer la cohérence d'un parcours avec votre situation.</p>
+                    </div>
+                    <div class="qa-card">
+                        <h3>Puis-je venir pour mon enfant ?</h3>
+                        <p>Oui. Nous proposons un accompagnement pédiatrique en intégrant les parents dans le cadre rassurant du centre.</p>
+                    </div>
+                    <div class="qa-card">
+                        <h3>Dois-je choisir mon programme avant ?</h3>
+                        <p>Non. L'équipe vous aide à identifier le parcours le plus cohérent après le premier échange.</p>
+                    </div>
+                    <div class="qa-card">
+                        <h3>Puis-je venir si je suis déjà suivi(e) ?</h3>
+                        <p>Oui. Le neurofeedback dynamique peut s'inscrire en complément d'autres thérapies, sans interférer.</p>
+                    </div>
+                    <div class="qa-card">
+                        <h3>Puis-je arrêter mon traitement ?</h3>
+                        <p>Non. Toute modification ou arrêt de traitement médical doit être exclusivement discuté et validé avec votre médecin prescripteur.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- Final Action Section -->
+        <section class="section bg-white" style="padding-bottom: 0;">
+            <div class="container">
+                <div class="double-cta-box">
+                    <h2>Commençons la discussion</h2>
+                    <p>Posez vos questions par écrit ou réservez un créneau d'appel avec nos praticiens.</p>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                        <a href="contact.html" class="btn btn-gold">Réserver un bilan découverte</a>
+                        <a href="https://wa.me/212522991783" class="btn btn-navy" style="background:#25D366; border-color:#25D366;">Nous écrire sur WhatsApp</a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -199,12 +335,54 @@
     <!-- Footer -->
     <footer>
         <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="assets/logos/logowhite.png" alt="INFC Logo" style="height: 40px; margin-bottom: 1rem;">
+                    <p>Centre de régulation cérébrale et d'accompagnement psychologique au Maroc.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Raccourcis</h4>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="neurofeedback.html">La Science</a></li>
+                        <li><a href="programmes.html">Nos Programmes</a></li>
+                        <li><a href="vision.html">Notre Vision</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Réseau</h4>
+                    <ul>
+                        <li><a href="centres.html">Casablanca</a></li>
+                        <li><a href="centres.html">Marrakech</a></li>
+                        <li><a href="centres.html">Kénitra</a></li>
+                        <li><a href="centres.html">Tanger</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Espaces Dédiés</h4>
+                    <ul>
+                        <li><a href="b2b.html">Entreprises & B2B</a></li>
+                        <li><a href="franchise.html">Modèle Franchise</a></li>
+                        <li><a href="contact.html">Nous Contacter</a></li>
+                    </ul>
+                </div>
+            </div>
             <div class="footer-bottom">
+                <p style="font-size: 0.8rem; margin-bottom: 1.5rem; line-height: 1.6; opacity: 0.6; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    Le neurofeedback dynamique est un entraînement cérébral d'autorégulation et de bien-être. Cette méthode ne constitue pas un traitement médical, ne pose aucun diagnostic et ne remplace pas une consultation ou un suivi auprès de professionnels de santé habilités.
+                </p>
                 <p>&copy; 2026 International Neurofeedback Center. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
+    <script>
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            alert("📩 Votre demande d'orientation a bien été envoyée. Notre équipe vous contactera dans les plus brefs délais.");
+            event.target.reset();
+        }
+    </script>
 </body>
 </html>

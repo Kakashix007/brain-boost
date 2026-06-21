@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portail Patient — INFC Premium</title>
+    <meta name="description" content="Accédez à votre dossier centralisé, suivez vos progrès et jouez à vos neuro-jeux personnalisés.">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="css/portal-patient.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/logos/logo.png" alt="INFC Logo">
+                </a>
+            </div>
+            <nav>
+                                                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="neurofeedback.html">La Science</a></li>
+                    <li><a href="programmes.html">Programmes</a></li>
+                    <li><a href="success-stories.html">Success Stories</a></li>
+                    <li><a href="centres.html">Nos Centres</a></li>
+                    <li><a href="apropos.html">À Propos</a></li>
+                    <li><a href="forum.html">💬 Forum Parents</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+            <div class="nav-cta">
+                <a href="#" class="btn btn-navy">Se Connecter</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="portal-hero">
+            <div class="container">
+                <div class="portal-hero-cta">
+                    <h1>Mon Espace <span>Cérébral</span> INFC</h1>
+                    <p>Votre accompagnement neuro-sensible ne s'arrête pas au centre. Suivez vos progrès, restez en contact avec votre équipe, et entraînez votre cerveau où que vous soyez.</p>
+                    <a href="#" class="btn btn-gold" style="padding: 1rem 3rem; font-size: 1.1rem; box-shadow: 0 10px 30px rgba(212,175,55,0.4);">Accéder à mon portail</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature 1: Le Dossier Unique Centralisé -->
+        <section class="portal-sync">
+            <div class="container">
+                <div class="portal-sync-grid">
+                    <div class="sync-info">
+                        <span style="color:var(--color-gold); font-weight:700; letter-spacing:1.5px; text-transform:uppercase;">Inter-Center Sync</span>
+                        <h2 style="font-size: clamp(2rem, 3vw, 2.8rem); margin: 15px 0 25px;">Le Dossier Unique Centralisé</h2>
+                        <p style="font-size: 1.1rem; color: var(--color-grey-text); line-height: 1.7;">Commencez votre thérapie à Casablanca, continuez-la à Marrakech ou Tanger. Pas de paperasse, pas de tracas.</p>
+                        <p style="font-size: 1.1rem; color: var(--color-grey-text); line-height: 1.7; margin-top: 15px;">Vos données cliniques, vos cartographies qEEG, et les observations du Dr. Chadia vous suivent instantanément en toute sécurité.</p>
+                    </div>
+                    <div class="sync-visual">
+                        <div class="sync-nodes">
+                            <div class="sync-node">Casablanca</div>
+                            <div class="sync-node">Marrakech</div>
+                            <div class="sync-node">Kénitra</div>
+                            <div class="sync-node">Tanger</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature 2: Le Tableau de Bord Interactif & Calendrier -->
+        <section class="portal-dashboard">
+            <div class="container text-center">
+                <span style="color:var(--color-gold); font-weight:700; letter-spacing:1.5px; text-transform:uppercase;">Vue d'ensemble</span>
+                <h2 style="font-size: clamp(2rem, 3vw, 2.8rem); margin: 15px 0 20px;">Tableau de Bord & Calendrier</h2>
+                <p style="max-width: 700px; margin: 0 auto; font-size: 1.1rem;">Gardez un œil sur vos séances, consultez les notes cliniques, suivez vos progrès, ou reprogrammez une séance en un seul clic depuis votre calendrier sécurisé.</p>
+                
+                <div class="dashboard-showcase">
+                    <div class="dash-header">
+                        <div class="dash-user">
+                            <div class="dash-avatar">JD</div>
+                            <div style="text-align: left;">
+                                <div style="font-weight: 700; color: var(--color-navy); font-size: 1.1rem;">Bienvenue, Jean D.</div>
+                                <div style="font-size: 0.85rem; color: var(--color-grey-text);">Programme: Sérénité & Sommeil</div>
+                            </div>
+                        </div>
+                        <div class="dash-btn" style="background: rgba(212,175,55,0.1); color: var(--color-gold); padding: 8px 20px; border-radius: 20px; font-weight: 600; font-size: 0.9rem;">
+                            Prochaine séance : Demain à 10h00
+                        </div>
+                    </div>
+                    <div class="dash-grid">
+                        <div class="dash-card calendar">
+                            <h3 style="margin-bottom: 15px;">📅 Mon Calendrier</h3>
+                            <p style="font-size: 0.9rem;">3 séances prévues cette semaine.</p>
+                            <a href="#" style="color: var(--portal-emerald); font-weight: 600; font-size: 0.9rem; margin-top: 15px; display: inline-block;">Gérer mes RDV ➔</a>
+                        </div>
+                        <div class="dash-card progress" style="grid-column: span 2;">
+                            <h3 style="margin-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 10px;">📈 Mon Évolution & Indices qEEG Cliniques</h3>
+                            <p style="font-size: 0.95rem; color: var(--color-grey-text); margin-bottom: 20px;">Indicateurs composites calculés d'après votre dernière cartographie cérébrale qEEG du 16/06/2026.</p>
+                            
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px;">
+                                <div style="background: var(--color-creme); border-radius: 8px; padding: 12px; text-align: center; border: 1px solid rgba(212,175,55,0.1);">
+                                    <div style="font-size: 0.8rem; color: var(--color-grey-text); text-transform: uppercase;">Cognition</div>
+                                    <div style="font-size: 1.6rem; font-weight: 700; color: var(--color-navy); margin: 5px 0;">6.5<span style="font-size: 0.85rem; font-weight: 400;">/10</span></div>
+                                    <div style="font-size: 0.75rem; color: #2ecc71;">📈 Stable (+0.4)</div>
+                                </div>
+                                <div style="background: var(--color-creme); border-radius: 8px; padding: 12px; text-align: center; border: 1px solid rgba(212,175,55,0.1);">
+                                    <div style="font-size: 0.8rem; color: var(--color-grey-text); text-transform: uppercase;">Qualité Sommeil</div>
+                                    <div style="font-size: 1.6rem; font-weight: 700; color: var(--color-navy); margin: 5px 0;">8.3<span style="font-size: 0.85rem; font-weight: 400;">/10</span></div>
+                                    <div style="font-size: 0.75rem; color: #2ecc71;">📈 Sommeil profond (+1.2)</div>
+                                </div>
+                                <div style="background: var(--color-creme); border-radius: 8px; padding: 12px; text-align: center; border: 1px solid rgba(212,175,55,0.1);">
+                                    <div style="font-size: 0.8rem; color: var(--color-grey-text); text-transform: uppercase;">Dysrégulation</div>
+                                    <div style="font-size: 1.6rem; font-weight: 700; color: #e74c3c; margin: 5px 0;">2.1<span style="font-size: 0.85rem; font-weight: 400;">/10</span></div>
+                                    <div style="font-size: 0.75rem; color: #2ecc71;">📉 En baisse (-0.8)</div>
+                                </div>
+                                <div style="background: var(--color-creme); border-radius: 8px; padding: 12px; text-align: center; border: 1px solid rgba(212,175,55,0.1);">
+                                    <div style="font-size: 0.8rem; color: var(--color-grey-text); text-transform: uppercase;">Stress & Anxiété</div>
+                                    <div style="font-size: 1.6rem; font-weight: 700; color: #2ecc71; margin: 5px 0;">1.0<span style="font-size: 0.85rem; font-weight: 400;">/10</span></div>
+                                    <div style="font-size: 0.75rem; color: #2ecc71;">✅ Optimal</div>
+                                </div>
+                            </div>
+
+                            <div style="background: rgba(10,22,40,0.03); border-radius: 10px; padding: 15px; margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
+                                <div style="font-size: 1.8rem;">🧠</div>
+                                <div>
+                                    <div style="font-weight: 700; color: var(--color-navy); font-size: 0.9rem;">Complexité de Lempel-Ziv (LZC) : 1.7321</div>
+                                    <p style="font-size: 0.8rem; color: var(--color-grey-text); margin: 2px 0 0 0;">L'indice de complexité reflète un état d'éveil et de vigilance sain. Une valeur inférieure à 1.5 peut être associée à de la fatigue cognitive sévère ou à un sommeil non réparateur.</p>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                                <span style="font-size: 0.8rem; color: var(--color-grey-text);">Prochain Bilan de réévaluation dans 5 séances</span>
+                                <a href="#" style="color: var(--color-gold); font-weight: 700; font-size: 0.95rem; text-decoration: none;">Voir le rapport d'analyse qEEG complet (PDF) ➔</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature 3: Les Canaux de Communication Dédiés -->
+        <section class="portal-comms">
+            <div class="container text-center">
+                <span style="color:var(--color-gold); font-weight:700; letter-spacing:1.5px; text-transform:uppercase;">Assistance Premium</span>
+                <h2 style="font-size: clamp(2rem, 3vw, 2.8rem); margin: 15px 0 20px;">Vous n'êtes jamais seul</h2>
+                <p style="max-width: 700px; margin: 0 auto; font-size: 1.1rem;">Échangez directement avec votre équipe soignante via nos canaux sécurisés, séparés pour plus d'efficacité.</p>
+                
+                <div class="comms-grid">
+                    <div class="comm-card">
+                        <div class="comm-icon">👩‍⚕️</div>
+                        <h3 style="color: var(--color-navy); margin-bottom: 15px;">Dr. Chadia</h3>
+                        <p style="font-size: 0.95rem; margin-bottom: 20px;">Pour vos questions cliniques, les retours sur vos symptômes et les ajustements de protocoles sur-mesure.</p>
+                        <span style="color: var(--color-gold); font-weight: 600; font-size: 0.9rem;">Messagerie Médicale</span>
+                    </div>
+                    <div class="comm-card">
+                        <div class="comm-icon">🧠</div>
+                        <h3 style="color: var(--color-navy); margin-bottom: 15px;">Votre Psychologue</h3>
+                        <p style="font-size: 0.95rem; margin-bottom: 20px;">Pour un soutien émotionnel, faire le bilan de vos séances et échanger sur vos exercices à domicile.</p>
+                        <span style="color: var(--color-gold); font-weight: 600; font-size: 0.9rem;">Soutien Thérapeutique</span>
+                    </div>
+                    <div class="comm-card">
+                        <div class="comm-icon">📞</div>
+                        <h3 style="color: var(--color-navy); margin-bottom: 15px;">Support & Accueil</h3>
+                        <p style="font-size: 0.95rem; margin-bottom: 20px;">Pour toutes vos questions pratiques, la facturation ou la gestion rapide de vos réservations.</p>
+                        <span style="color: var(--color-gold); font-weight: 600; font-size: 0.9rem;">Secrétariat</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature 4: L'Espace Neuro-Jeux Personnalisés -->
+        <section class="portal-games">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span style="color:var(--color-gold); font-weight:700; letter-spacing:1.5px; text-transform:uppercase;">Play-to-Earn Care</span>
+                    <h2>Espace Neuro-Jeux Personnalisés</h2>
+                    <p style="max-width: 700px; margin: 0 auto;">Entraînez votre cerveau à la maison avec des jeux spécifiquement sélectionnés pour votre profil cognitif.</p>
+                </div>
+                
+                <div class="games-grid">
+                    <div class="game-card">
+                        <div class="game-icon-wrap game-focus">🎯</div>
+                        <h3>Focus Flow</h3>
+                        <p>Idéal pour la concentration et l'attention. Fortement recommandé pour les profils TDAH ou enfants.</p>
+                        <span class="game-badge">Jouer & Gagner</span>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-icon-wrap game-zen">🧘</div>
+                        <h3>Zen Match</h3>
+                        <p>Plongez dans un état de relaxation profonde pour mieux contrôler le stress et l'anxiété au quotidien.</p>
+                        <span class="game-badge">Jouer & Gagner</span>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-icon-wrap game-memory">🧩</div>
+                        <h3>Memory Matrix</h3>
+                        <p>Boostez votre mémoire de travail et votre logique générale grâce à ces défis cérébraux stimulants.</p>
+                        <span class="game-badge">Jouer & Gagner</span>
+                    </div>
+                </div>
+
+                <div class="points-banner">
+                    <div style="font-size: 3rem;">🎁</div>
+                    <div style="text-align: left;">
+                        <h3>Cumulez des points de fidélité</h3>
+                        <p>Gagnez des points en jouant régulièrement. Échangez-les contre des bons de réduction à déduire du coût de vos prochaines séances en centre !</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="assets/logos/logowhite.png" alt="INFC Logo" style="height: 40px; margin-bottom: 1rem;">
+                    <p>Centre d'excellence en neurofeedback au Maroc. Entraînement cérébral 100% naturel pour votre bien-être.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Nos Programmes</h4>
+                    <ul>
+                        <li><a href="programmes.html">Sérénité & Sommeil</a></li>
+                        <li><a href="programmes.html">Focus Scolaire</a></li>
+                        <li><a href="programmes.html">Haute Performance</a></li>
+                        <li><a href="les-reponses-du-dr-chadia.html" style="color: var(--color-gold); font-weight: 600;">Réponses du Dr. Chadia</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Nos Centres</h4>
+                    <ul>
+                        <li><a href="centres.html">Casablanca</a></li>
+                        <li><a href="centres.html">Marrakech</a></li>
+                        <li><a href="centres.html">Kenitra</a></li>
+                        <li><a href="centres.html">Tanger</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p>📍 Nº12 2ème étage, Immeuble Living office 362 BD Ghandi Oasis, Casablanca</p>
+                    <p>📞 <a href="tel:0522991783">0522991783</a></p>
+                    <p>✉️ <a href="mailto:contact@neurofeedback.ma">contact@neurofeedback.ma</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 International Neurofeedback Center. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

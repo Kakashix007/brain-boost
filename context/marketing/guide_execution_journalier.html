@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Guide d'Exécution Simplifié — INFC (NeuroMaroc)</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap');
+
+    :root {
+      --primary: #0A1628;
+      --accent: #D4AF37;
+      --bg-cream: #F8F5F0;
+      --white: #FFFFFF;
+      --text: #2C3E50;
+      --text-light: #6B7280;
+      --shadow: rgba(10, 22, 40, 0.05);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    .page {
+      width: 190mm;
+      min-height: 272mm;
+      padding: 12mm;
+      margin: 10px auto;
+      background: var(--white);
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-sizing: border-box;
+      position: relative;
+      page-break-after: always;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--primary);
+    }
+
+    h1 {
+      font-size: 26px;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 10px;
+      margin-top: 0;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    h2::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 18px;
+      background-color: var(--accent);
+      margin-right: 10px;
+      border-radius: 2px;
+    }
+
+    p {
+      font-size: 13.5px;
+      margin-bottom: 10px;
+    }
+
+    /* Cover Page Specific styling */
+    .cover {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .cover h1 {
+      color: var(--accent);
+      border-bottom: none;
+      font-size: 34px;
+      margin-bottom: 15px;
+    }
+
+    .cover h2 {
+      color: var(--white);
+      font-weight: 300;
+      font-size: 20px;
+      margin-top: 0;
+    }
+    
+    .cover h2::before {
+      display: none;
+    }
+
+    .cover .meta {
+      margin-top: 80px;
+      font-size: 13px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      line-height: 2;
+    }
+
+    .cover .footer-note {
+      position: absolute;
+      bottom: 30px;
+      font-size: 11px;
+      opacity: 0.8;
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      font-size: 12px;
+    }
+
+    th, td {
+      border: 1px solid #E5E7EB;
+      padding: 8px 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .tool-list, .budget-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .tool-item, .budget-item {
+      background: var(--bg-cream);
+      padding: 10px 15px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      font-size: 12.5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .tool-item strong, .budget-item strong {
+      color: var(--primary);
+    }
+
+    .sandbox-box {
+      border: 2px dashed var(--accent);
+      background-color: #FFFDF9;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    /* Day Card grid */
+    .day-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .day-card {
+      background: var(--bg-cream);
+      border-left: 4px solid var(--primary);
+      padding: 10px 12px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 3px var(--shadow);
+    }
+
+    .day-card.accent-card {
+      border-left-color: var(--accent);
+      background: #FDFBF7;
+    }
+
+    .day-title {
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .day-action {
+      font-size: 11.5px;
+      color: var(--text);
+    }
+
+    .day-badge {
+      display: inline-block;
+      padding: 1px 5px;
+      font-size: 9px;
+      border-radius: 3px;
+      background: var(--primary);
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .day-badge.cro { background: #10B981; }
+    .day-badge.local { background: #F59E0B; }
+    .day-badge.content { background: #3B82F6; }
+    .day-badge.ads { background: #EF4444; }
+
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      left: 12mm;
+      right: 12mm;
+      font-size: 9px;
+      color: var(--text-light);
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid #E5E7EB;
+      padding-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1: COVER -->
+  <div class="page cover">
+    <h1>GUIDE DE LANCEMENT DIGITAL</h1>
+    <h2>Présentation Stratégique de Lancement Digital</h2>
+    <div style="width: 80px; height: 3px; background-color: var(--accent); margin: 20px auto;"></div>
+    <p style="max-width: 500px; opacity: 0.9; font-size: 15px;">
+      Une approche simple, étape par étape, pour lancer la visibilité locale, le contenu éducatif et l'acquisition de patients qualifiés pour l'INFC.
+    </p>
+    <div class="meta">
+      Version : Simplifiée pour Revue Partenaire<br>
+      Réseau INFC : Casablanca · Marrakech · Tanger · Kénitra
+    </div>
+    <div class="footer-note">
+      International Neurofeedback Center — Document de Partage & Décision
+    </div>
+  </div>
+
+  <!-- PAGE 2: STRATÉGIE, BUDGETS & RETOUR SUR INVESTISSEMENT -->
+  <div class="page">
+    <h1>1. Vision Synthétique & Budgets Recommandés</h1>
+    <p>
+      Ce plan vise à capter de nouveaux patients de manière éthique, scientifique et sans publicité agressive. Il combine la confiance locale (Google Maps), l'éducation (Guide gratuit) et la présence sur les réseaux professionnels (LinkedIn).
+    </p>
+
+    <h2>💰 Budgets Mensuels Estimés</h2>
+    <p>Voici les enveloppes budgétaires conseillées pour démarrer sereinement :</p>
+    
+    <ul class="budget-list">
+      <li class="budget-item">
+        <span><strong>Google Search Ads (SEA)</strong><br><small>Capter les requêtes intentionnelles (Maroc)</small></span>
+        <strong>3 000 à 4 500 MAD / mois</strong>
+      </li>
+      <li class="budget-item">
+        <span><strong>Meta Ads (Optionnel - Lead Magnet)</strong><br><small>Téléchargement du guide gratuit sur WhatsApp</small></span>
+        <strong>2 000 à 3 000 MAD / mois</strong>
+      </li>
+      <li class="budget-item">
+        <span><strong>Abonnements Outils (Tech Stack)</strong><br><small>Mesure et automatisation</small></span>
+        <strong>~500 MAD / mois</strong>
+      </li>
+    </ul>
+
+    <h2>📈 Retours Attendus (Objectif V1)</h2>
+    <ul>
+      <li><strong>Visibilité Immédiate</strong> : Apparaître en top position sur Google pour toute recherche "Neurofeedback + Ville".</li>
+      <li><strong>Acquisition Directe</strong> : Générer entre 25 et 40 contacts (leads) qualifiés par mois.</li>
+      <li><strong>Positionnement d'Expert</strong> : Asseoir la marque de l'INFC sur LinkedIn auprès des prescripteurs et partenaires potentiels.</li>
+    </ul>
+
+    <div class="footer">
+      <span>Guide de Lancement Simplifié — INFC</span>
+      <span>Page 2</span>
+    </div>
+  </div>
+
+  <!-- PAGE 3: OUTILS & TESTING (LE SANDBOX WHATSAPP) -->
+  <div class="page">
+    <h1>2. Vos Outils & Phase de Test Privé (WhatsApp)</h1>
+    <p>Pour garantir que tout fonctionne parfaitement avant de déléguer aux assistants, nous mettons en place un protocole de test simple.</p>
+
+    <h2>🛠️ Les Outils Recommandés</h2>
+    <ul class="tool-list">
+      <li class="tool-item">
+        <span><strong>Canva (Gratuit / Pro)</strong><br><small>Pour mettre en page le guide PDF aux couleurs Navy/Gold</small></span>
+        <span>Création Graphique</span>
+      </li>
+      <li class="tool-item">
+        <span><strong>WhatsApp Business API / ManyChat</strong><br><small>Pour envoyer automatiquement le guide aux prospects</small></span>
+        <span>Automatisation</span>
+      </li>
+      <li class="tool-item">
+        <span><strong>Microsoft Clarity (Gratuit)</strong><br><small>Pour voir les sessions de navigation en vidéo</small></span>
+        <span>Analyse CRO</span>
+      </li>
+      <li class="tool-item">
+        <span><strong>Google Business Profile (Gratuit)</strong><br><small>Pour gérer la visibilité locale et les avis clients</small></span>
+        <span>SEO Local</span>
+      </li>
+    </ul>
+
+    <div class="sandbox-box">
+      <h3 style="margin-top: 0; color: var(--primary);">📲 Protocole de Test Privé (WhatsApp Sandbox)</h3>
+      <p>
+        Avant de donner les scripts à vos assistants, testez vous-même le tunnel de conversion avec ce numéro dédié aux tests :
+      </p>
+      <p style="font-size: 15px; font-weight: bold; color: var(--accent); text-align: center; margin: 10px 0;">
+        Numéro de Test Sandbox : +212 6 00 00 00 00
+      </p>
+      <p><strong>Comment procéder pour le test :</strong></p>
+      <ol style="font-size: 12px; margin-bottom: 0;">
+        <li>Envoyez le mot-clé <strong>"EXAMENS"</strong> par WhatsApp à ce numéro.</li>
+        <li>Vérifiez la réception instantanée du message d'accueil et du lien PDF.</li>
+        <li>Cliquez sur le lien pour vous assurer que le fichier s'ouvre correctement sur votre smartphone.</li>
+        <li>Simulez une réponse 24h après pour tester la réactivité de l'assistant.</li>
+      </ol>
+    </div>
+
+    <div class="footer">
+      <span>Guide de Lancement Simplifié — INFC</span>
+      <span>Page 3</span>
+    </div>
+  </div>
+
+  <!-- PAGE 4: ROUTE SIMPLIFIÉE 30 JOURS (JOURS 1-15) -->
+  <div class="page">
+    <h1>3. Plan d'Action Simplifié (Jours 1 à 15)</h1>
+    <p><em>Chaque jour correspond à une tâche claire d'environ 30 à 45 minutes.</em></p>
+
+    <div class="day-card accent-card">
+      <div class="day-badge cro">CRO</div>
+      <div class="day-title">Jour 1 — Installer le tracking</div>
+      <div class="day-action">Placer GA4 et Microsoft Clarity sur le site.</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge local">LOCAL</div>
+      <div class="day-title">Jour 2 — Audit Google Maps</div>
+      <div class="day-action">Vérifier les fiches de Casablanca et Marrakech.</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge local">LOCAL</div>
+      <div class="day-title">Jour 3 — Création Tanger & Kénitra</div>
+      <div class="day-action">Lancer la création des nouvelles fiches locales.</div>
+    </div>
+
+    <div class="day-card accent-card">
+      <div class="day-badge content">CONTENU</div>
+      <div class="day-title">Jour 4 — Design Canva du Guide</div>
+      <div class="day-action">Mettre en page le guide PDF (8 pages) aux couleurs INFC.</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge cro">CRO</div>
+      <div class="day-title">Jour 5 — Recette Mobile</div>
+      <div class="day-action">Vérifier que le site est lisible et rapide sur smartphone.</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge local">LOCAL</div>
+      <div class="day-title">Jour 6 — Collecte d'avis</div>
+      <div class="day-action">Envoyer le lien d'avis aux 10 premiers patients fidèles.</div>
+    </div>
+
+    <div class="day-card accent-card">
+      <div class="day-badge content">CONTENU</div>
+      <div class="day-title">Jour 7 — Landing page</div>
+      <div class="day-action">Créer la page de téléchargement sur le site.</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge content">SEO</div>
+      <div class="day-title">Jour 8 — Plan de Mots-Clés</div>
+      <div class="day-action">Définir les requêtes de recherche stratégiques marocaines.</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge content">SEO</div>
+      <div class="day-title">Jour 9 — Rédaction Article 1</div>
+      <div class="day-action">Rédiger l'article sur la concentration et les examens.</div>
+    </div>
+
+    <div class="day-card accent-card">
+      <div class="day-badge content">SEO</div>
+      <div class="day-title">Jour 10 — Publication de l'article</div>
+      <div class="day-action">Mettre en ligne l'article avec des liens vers le guide.</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge ads">LINKEDIN</div>
+      <div class="day-title">Jour 11 — Profil LinkedIn Fondateur</div>
+      <div class="day-action">Optimiser le titre et la bannière de son profil.</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge ads">LINKEDIN</div>
+      <div class="day-title">Jour 12 — Planification</div>
+      <div class="day-action">Programmer les posts LinkedIn des deux premières semaines.</div>
+    </div>
+
+    <div class="day-card accent-card">
+      <div class="day-badge local">LOCAL</div>
+      <div class="day-title">Jour 13 — NAP Audit</div>
+      <div class="day-action">Harmoniser les numéros et adresses sur internet.</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge ads">LINKEDIN</div>
+      <div class="day-title">Jour 14 — Post LinkedIn 1</div>
+      <div class="day-action">Publier et répondre aux premiers commentaires.</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge ads">GOOGLE ADS</div>
+      <div class="day-title">Jour 15 — Compte Google Ads</div>
+      <div class="day-action">Activer et configurer le compte publicitaire Google.</div>
+    </div>
+
+    <div class="footer">
+      <span>Guide de Lancement Simplifié — INFC</span>
+      <span>Page 4</span>
+    </div>
+  </div>
+
+  <!-- PAGE 5: ROUTE SIMPLIFIÉE 30 JOURS (JOURS 16-30) -->
+  <div class="page">
+    <h1>4. Plan d'Action Simplifié (Jours 16 à 30)</h1>
+    <p><em>Phase finale d'acquisition payante et d'analyse comportementale CRO.</em></p>
+
+    <div class="day-card accent-card">
+      <div class="day-badge ads">GOOGLE ADS</div>
+      <div class="day-title">Jour 16 — Campagnes & Groupes</div>
+      <div class="day-action">Structurer les campagnes par ville.</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge ads">GOOGLE ADS</div>
+      <div class="day-title">Jour 17 — Saisie des Annonces</div>
+      <div class="day-action">Rédiger les titres et descriptions validés.</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge ads">GOOGLE ADS</div>
+      <div class="day-title">Jour 18 — Mots-clés Négatifs</div>
+      <div class="day-action">Ajouter la liste des exclusions pour protéger le budget.</div>
+    </div>
+
+    <div class="day-card accent-card">
+      <div class="day-badge cro">CRO</div>
+      <div class="day-title">Jour 19 — Lancement Publicitaire</div>
+      <div class="day-action">Activer les campagnes Google Ads.</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge content">SEO</div>
+      <div class="day-title">Jour 20 — Rédaction Article 2</div>
+      <div class="day-action">Rédiger l'article sur la fatigue des cadres (dirigeants).</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge ads">LINKEDIN</div>
+      <div class="day-title">Jour 21 — Post LinkedIn 2</div>
+      <div class="day-action">Publier le post sur le stress scolaire des enfants.</div>
+    </div>
+
+    <div class="day-card accent-card">
+      <div class="day-badge ads">GOOGLE ADS</div>
+      <div class="day-title">Jour 22 — Analyse des clics</div>
+      <div class="day-action">Ajuster les enchères selon les recherches réelles.</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge cro">CRO</div>
+      <div class="day-title">Jour 23 — Session Recordings</div>
+      <div class="day-action">Regarder les vidéos des visiteurs sur Clarity.</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge content">SEO</div>
+      <div class="day-title">Jour 24 — Publication Article 2</div>
+      <div class="day-action">Publier l'article cadre/burnout.</div>
+    </div>
+
+    <div class="day-card accent-card">
+      <div class="day-badge ads">LINKEDIN</div>
+      <div class="day-title">Jour 25 — Post LinkedIn 3</div>
+      <div class="day-action">Publier le post ciblant les cadres.</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge cro">CRO</div>
+      <div class="day-title">Jour 26 — Revue Conformité</div>
+      <div class="day-action">Vérifier qu'aucune promesse médicale non réglementaire n'est faite.</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge cro">CRO</div>
+      <div class="day-title">Jour 27 — Lancement Test A/B</div>
+      <div class="day-action">Tester deux variantes de bouton sur le formulaire.</div>
+    </div>
+
+    <div class="day-card accent-card">
+      <div class="day-badge cro">CRO</div>
+      <div class="day-title">Jour 28 — Dashboard</div>
+      <div class="day-action">Mettre en place le tableau Looker Studio mensuel.</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge cro">CRO</div>
+      <div class="day-title">Jours 29 & 30 — Analyse & Suite</div>
+      <div class="day-action">Bilan du coût d'acquisition de patient et priorisation ICE du mois 2.</div>
+    </div>
+
+    <div class="footer">
+      <span>Guide de Lancement Simplifié — INFC</span>
+      <span>Page 5</span>
+    </div>
+  </div>
+
+</body>
+</html>

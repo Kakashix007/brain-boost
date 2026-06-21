@@ -3,301 +3,363 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nos Centres - INFC</title>
-    <meta name="description" content="Carte du Maroc et détails des centres INFC (Casablanca, Marrakech, Tanger, Kénitra).">
+    <title>Nos Centres au Maroc — INFC</title>
+    <meta name="description" content="Découvrez nos 4 centres d'excellence de régulation neuro-sensible au Maroc : Casablanca, Marrakech, Kénitra et Tanger.">
     <link rel="stylesheet" href="index.css">
     <style>
-        .custom-map-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 0;
+        /* Centres Specific Styles */
+        .centers-hero {
+            background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-light) 100%);
+            color: var(--color-white);
+            padding: clamp(3rem, 6vw, 6rem) 0;
+            text-align: center;
+        }
+        .centers-hero h1 {
+            color: var(--color-white);
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        .centers-hero h1 span {
+            color: var(--color-gold);
+            display: block;
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+        .centers-hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 750px;
+            margin: 0 auto 2rem;
+        }
+
+        .center-detail-card {
             background: var(--color-white);
             border-radius: var(--radius-lg);
+            padding: 3rem;
             box-shadow: var(--shadow-soft);
             margin-bottom: 3rem;
-            border: 1px solid rgba(10, 22, 40, 0.05);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
         }
-        .morocco-map-container {
-            position: relative;
-            width: 100%;
-            max-width: 500px;
-            aspect-ratio: 1/1;
+        @media (max-width: 768px) {
+            .center-detail-card {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+                gap: 2rem;
+            }
         }
-        .morocco-map-img {
-            width: 100%;
-            height: auto;
-            display: block;
-            opacity: 0.9;
-        }
-        .map-marker {
-            position: absolute;
-            transform: translate(-50%, -50%);
-            cursor: pointer;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .marker-dot {
-            width: 12px;
-            height: 12px;
-            background-color: var(--color-gold);
-            border-radius: 50%;
-            border: 2px solid var(--color-white);
-            box-shadow: 0 0 10px rgba(0,0,0,0.3);
-            z-index: 2;
-        }
-        .marker-pulse {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 12px;
-            height: 12px;
-            background-color: var(--color-gold);
-            border-radius: 50%;
-            z-index: 1;
-            animation: pulse 2s infinite ease-out;
-        }
-        .marker-label {
-            background-color: var(--color-navy);
-            color: var(--color-white);
-            font-size: 0.8rem;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 20px;
-            margin-top: 6px;
-            white-space: nowrap;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            transition: all 0.3s ease;
-            font-family: var(--font-heading);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-        .map-marker:hover .marker-label {
-            background-color: var(--color-gold);
+        .center-details-info h3 {
+            font-size: 1.6rem;
             color: var(--color-navy);
-            transform: translateY(-2px);
+            margin-bottom: 0.5rem;
         }
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 0.8;
-            }
-            100% {
-                transform: scale(3.5);
-                opacity: 0;
-            }
+        .center-tag {
+            color: var(--color-gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 1rem;
         }
-        .centre-card {
-            background: var(--color-white);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            box-shadow: var(--shadow-soft);
-            margin-bottom: 2rem;
-            border: 2px solid rgba(10, 22, 40, 0.05);
-            transition: all 0.5s ease;
+        .center-meta-list {
+            list-style: none;
+            margin: 2rem 0;
         }
-        .centre-card.highlighted {
-            border-color: var(--color-gold);
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
-            transform: scale(1.02);
+        .center-meta-list li {
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            display: flex;
+            gap: 12px;
         }
-        .centre-gallery { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
-        .centre-gallery img { width: calc(33% - 0.66rem); border-radius: var(--radius-md); }
-        .btn-group { display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap; }
+        .center-action-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 0.8rem;
+        }
+        .center-action-buttons .btn {
+            font-size: 0.85rem;
+            padding: 0.7rem 1rem;
+            border-radius: 30px;
+        }
     </style>
 </head>
 <body>
+
+    <!-- Header Navigation -->
     <header>
         <div class="container nav-container">
-            <div class="logo"><a href="index.html"><img src="assets/logos/logo.png" alt="INFC Logo"></a></div>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/logos/logo.png" alt="INFC Logo">
+                </a>
+            </div>
             <nav>
                 <ul class="nav-links">
                     <li><a href="index.html">Accueil</a></li>
                     <li><a href="neurofeedback.html">La Science</a></li>
                     <li><a href="programmes.html">Programmes</a></li>
-                    <li><a href="centres.html" class="active">Nos Centres</a></li>
-                    <li><a href="apropos.html">À Propos</a></li>
-                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="vision.html">Vision</a></li>
+                    <li><a href="centres.html">Nos Centres</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="b2b.html">B2B</a></li>
+                    <li><a href="franchise.html">Franchise</a></li>
                 </ul>
             </nav>
-            <div class="nav-cta"><a href="contact.html" class="btn btn-navy">S'orienter</a></div>
+            <div class="nav-cta">
+                <a href="contact.html" class="btn btn-gold">Bilan découverte</a>
+            </div>
         </div>
     </header>
 
     <main>
-        <section class="hero fade-in" style="background: linear-gradient(rgba(10, 22, 40, 0.75), rgba(10, 22, 40, 0.75)), url('assets/images/centre-headline-bg.jpg') no-repeat center center / cover; color: var(--color-white); padding: 140px 0; text-align: center;">
+        <!-- Hero Section -->
+        <section class="centers-hero">
             <div class="container">
-                <h1>Nos Centres au Maroc</h1>
-                <p>Un espace premium et humain dédié à la régulation neuro‑sensible.</p>
-            </div>
-        </section>
-
-        <!-- Interactive map -->
-        <section class="section bg-creme fade-in">
-            <div class="container">
-                <div class="custom-map-wrapper">
-                    <div class="morocco-map-container">
-                        <img src="assets/images/morocco-map.jpg" alt="Carte du Maroc INFC" class="morocco-map-img">
-                        
-                        <!-- Tanger Marker -->
-                        <div class="map-marker" style="top: 10%; left: 68%;" onclick="showCentre('Tanger')">
-                            <span class="marker-pulse"></span>
-                            <span class="marker-dot"></span>
-                            <span class="marker-label">Tanger</span>
-                        </div>
-                        
-                        <!-- Kénitra Marker -->
-                        <div class="map-marker" style="top: 21%; left: 63%;" onclick="showCentre('Kénitra')">
-                            <span class="marker-pulse"></span>
-                            <span class="marker-dot"></span>
-                            <span class="marker-label">Kénitra</span>
-                        </div>
-
-                        <!-- Casablanca Marker -->
-                        <div class="map-marker" style="top: 29%; left: 54%;" onclick="showCentre('Casablanca')">
-                            <span class="marker-pulse"></span>
-                            <span class="marker-dot"></span>
-                            <span class="marker-label">Casablanca</span>
-                        </div>
-
-                        <!-- Marrakech Marker -->
-                        <div class="map-marker" style="top: 44%; left: 45%;" onclick="showCentre('Marrakech')">
-                            <span class="marker-pulse"></span>
-                            <span class="marker-dot"></span>
-                            <span class="marker-label">Marrakech</span>
-                        </div>
-                    </div>
+                <h1>
+                    <span>4 Centres au Maroc</span>
+                    Un centre près de chez vous.
+                </h1>
+                <p>
+                    Un même accompagnement, une même exigence. L'International Neurofeedback Center vous accueille dans plusieurs villes du Maroc, au sein d'espaces pensés pour le calme, l'écoute et l'accompagnement neurocognitif.
+                </p>
+                <p style="font-size: 1.1rem; color: rgba(255,255,255,0.7); max-width: 800px; margin: 1.5rem auto 0;">
+                    Que vous soyez à Casablanca, Marrakech, Tanger ou Kénitra, vous bénéficiez du même cadre : une méthode non invasive, une équipe formée et des parcours adaptés.
+                </p>
+                <div style="margin-top: 2.5rem; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <a href="contact.html" class="btn btn-gold">Réserver un bilan découverte</a>
+                    <a href="contact.html?type=locator" class="btn btn-outline" style="border-color: var(--color-white); color: var(--color-white) !important;">Contacter le centre le plus proche</a>
                 </div>
             </div>
         </section>
 
-        <!-- Centre details (mock data) -->
-        <section class="section bg-white fade-in">
+        <!-- Les 4 Centres Section -->
+        <section class="section bg-white">
             <div class="container">
                 <!-- Casablanca -->
-                <div class="centre-card" id="centre-casablanca">
-                    <h2>INFC Casablanca</h2>
-                    <p><strong>Adresse :</strong> Nº12 2ème étage, Immeuble Living office 362 BD Ghandi Oasis, Casablanca, Maroc</p>
-                    <p><strong>Téléphone :</strong> <a href="tel:0522991783">0522991783</a></p>
-                    <p><strong>Horaires :</strong> Lundi‑Samedi : 09h00 – 19h00</p>
-                    <p><strong>Équipe :</strong> Dr. Chadia Chakib (Fondatrice), 3 praticiens certifiés</p>
-                    <div class="btn-group">
-                        <a href="https://www.google.com/maps/search/?api=1&query=Living+office+362+BD+Ghandi+Oasis+Casablanca" target="_blank" class="btn btn-outline">📍 Itinéraire Google Maps</a>
-                        <a href="https://wa.me/212622606011" target="_blank" class="btn btn-gold">💬 WhatsApp</a>
-                        <a href="tel:0522991783" class="btn btn-navy">📞 Appeler</a>
+                <div class="center-detail-card">
+                    <div class="center-details-info">
+                        <span class="center-tag">Siège du réseau</span>
+                        <h3>Centre INFC Casablanca</h3>
+                        <p style="margin-top: 1rem; line-height: 1.7;">
+                            Le siège du réseau, dans un cadre premium, calme et structuré. Situé au quartier Oasis, à proximité de la gare ferroviaire Oasis et des grands axes - pratique depuis Casablanca, Rabat, Mohammedia ou Bouskoura.
+                        </p>
+                        <ul class="center-meta-list">
+                            <li>📍 <strong>Adresse :</strong> Nº12, 2ᵉ étage, Immeuble Living Office, 362 Boulevard Ghandi, Oasis, Casablanca</li>
+                            <li>📞 <strong>Tél / WhatsApp :</strong> 05.22.99.17.83</li>
+                            <li>🕒 <strong>Horaires :</strong> Lundi au samedi - 9h00 à 19h00</li>
+                        </ul>
                     </div>
-                    <div class="centre-gallery">
-                        <img src="assets/images/neurofeedback-casablanca-1-480.jpg" alt="Casablanca – intérieur">
-                        <img src="assets/images/neurofeedback-casablanca-2-480.jpg" alt="Casablanca – salle de séance">
-                        <img src="assets/images/neurofeedback-casablanca-3-480.jpg" alt="Casablanca – réception">
+                    <div>
+                        <div style="aspect-ratio: 16/10; border-radius: var(--radius-md); background: #e2e8f0; display: flex; align-items: center; justify-content: center; font-size: 3rem; margin-bottom: 2rem;">🏙️</div>
+                        <div class="center-action-buttons">
+                            <a href="contact.html?center=casa" class="btn btn-gold">Réserver</a>
+                            <a href="tel:0522991783" class="btn btn-navy">Appeler</a>
+                            <a href="https://wa.me/212522991783" class="btn btn-outline" style="border-color:#25D366; color:#25D366 !important;">WhatsApp</a>
+                            <a href="https://maps.google.com/?q=362+Boulevard+Ghandi+Casablanca" target="_blank" class="btn btn-outline">Itinéraire</a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Marrakech -->
-                <div class="centre-card" id="centre-marrakech">
-                    <h2>INFC Marrakech</h2>
-                    <p><strong>Adresse :</strong> N°33 3ème étage, Résidence Le Noyer A, Rue Ibn Sina Gueliz, Marrakech, Maroc</p>
-                    <p><strong>Téléphone :</strong> <a href="tel:0524207263">0524207263</a></p>
-                    <p><strong>Horaires :</strong> Lundi‑Samedi : 09h00 – 18h30</p>
-                    <p><strong>Équipe :</strong> 2 praticiens certifiés, 1 coordinateur</p>
-                    <div class="btn-group">
-                        <a href="https://www.google.com/maps/search/?api=1&query=Residence+Le+Noyer+A+Rue+Ibn+Sina+Gueliz+Marrakech" target="_blank" class="btn btn-outline">📍 Itinéraire Google Maps</a>
-                        <a href="https://wa.me/212622606012" target="_blank" class="btn btn-gold">💬 WhatsApp</a>
-                        <a href="tel:0524207263" class="btn btn-navy">📞 Appeler</a>
+                <div class="center-detail-card">
+                    <div class="center-details-info">
+                        <span class="center-tag">Le centre historique</span>
+                        <h3>Centre INFC Marrakech</h3>
+                        <p style="margin-top: 1rem; line-height: 1.7;">
+                            Le premier centre du réseau : stress, sommeil, attention, récupération, équilibre émotionnel ou performance cognitive, dans un cadre calme et professionnel.
+                        </p>
+                        <ul class="center-meta-list">
+                            <li>📍 <strong>Adresse :</strong> N°33, 3ᵉ étage, Résidence Le Noyer A, Rue Ibn Sina, Guéliz, Marrakech</li>
+                            <li>📞 <strong>Tél / WhatsApp :</strong> 05.24.20.72.63</li>
+                            <li>🕒 <strong>Horaires :</strong> Lundi au samedi - 9h00 à 19h00</li>
+                        </ul>
                     </div>
-                    <div class="centre-gallery">
-                        <img src="assets/images/neurofeedback-marrakech-2-480.jpg" alt="Marrakech – intérieur">
-                        <img src="assets/images/neurofeedback-marrakech-3-480.jpg" alt="Marrakech – salle de séance">
-                        <img src="assets/images/neurofeedback-marrakech-5-480.jpg" alt="Marrakech – réception">
-                    </div>
-                </div>
-
-                <!-- Tanger -->
-                <div class="centre-card" id="centre-tanger">
-                    <h2>INFC Tanger</h2>
-                    <p><strong>Adresse :</strong> N° 25 2ème étage, Résidence El Jaghaoui, Tower Route Des Abattoirs, Tanger, Maroc</p>
-                    <p><strong>Téléphone :</strong> <a href="tel:0539367519">0539367519</a></p>
-                    <p><strong>Horaires :</strong> Lundi‑Samedi : 09h00 – 19h00</p>
-                    <p><strong>Équipe :</strong> 2 praticiens certifiés</p>
-                    <div class="btn-group">
-                        <a href="https://www.google.com/maps/search/?api=1&query=Residence+El+Jaghaoui+Tower+Route+Des+Abattoirs+Tanger" target="_blank" class="btn btn-outline">📍 Itinéraire Google Maps</a>
-                        <a href="https://wa.me/212622606017" target="_blank" class="btn btn-gold">💬 WhatsApp</a>
-                        <a href="tel:0539367519" class="btn btn-navy">📞 Appeler</a>
-                    </div>
-                    <div class="centre-gallery">
-                        <img src="assets/images/neurofeedback-tanger-2.jpg" alt="Tanger – intérieur">
-                        <img src="assets/images/neurofeedback-tanger-3.jpg" alt="Tanger – salle de séance">
-                        <img src="assets/images/neurofeedback-tanger-4-480.jpg" alt="Tanger – réception">
+                    <div>
+                        <div style="aspect-ratio: 16/10; border-radius: var(--radius-md); background: #e2e8f0; display: flex; align-items: center; justify-content: center; font-size: 3rem; margin-bottom: 2rem;">🌴</div>
+                        <div class="center-action-buttons">
+                            <a href="contact.html?center=kech" class="btn btn-gold">Réserver</a>
+                            <a href="tel:0524207263" class="btn btn-navy">Appeler</a>
+                            <a href="https://wa.me/212524207263" class="btn btn-outline" style="border-color:#25D366; color:#25D366 !important;">WhatsApp</a>
+                            <a href="https://maps.google.com/?q=Guéliz+Marrakech+Ibn+Sina" target="_blank" class="btn btn-outline">Itinéraire</a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Kénitra -->
-                <div class="centre-card" id="centre-kenitra">
-                    <h2>INFC Kénitra</h2>
-                    <p><strong>Adresse :</strong> Nº2 Résidence el waha rue imam ali et saad zaghlou, Kénitra, Maroc</p>
-                    <p><strong>Téléphone :</strong> <a href="tel:0622606033">0622606033</a></p>
-                    <p><strong>Horaires :</strong> Lundi‑Samedi : 09h00 – 19h00</p>
-                    <p><strong>Équipe :</strong> Praticiens certifiés INFC</p>
-                    <div class="btn-group">
-                        <a href="https://www.google.com/maps/search/?api=1&query=Residence+el+waha+rue+imam+ali+et+saad+zaghlou+Kenitra" target="_blank" class="btn btn-outline">📍 Itinéraire Google Maps</a>
-                        <a href="https://wa.me/212622606033" target="_blank" class="btn btn-gold">💬 WhatsApp</a>
-                        <a href="tel:0622606033" class="btn btn-navy">📞 Appeler</a>
+                <div class="center-detail-card">
+                    <div class="center-details-info">
+                        <span class="center-tag">Cabinet de Proximité</span>
+                        <h3>Centre INFC Kénitra</h3>
+                        <p style="margin-top: 1rem; line-height: 1.7;">
+                            Un accompagnement structuré autour du neurofeedback dynamique et de la régulation cérébrale, au cœur de Kénitra.
+                        </p>
+                        <ul class="center-meta-list">
+                            <li>📍 <strong>Adresse :</strong> Nº2, Résidence El Waha, Rue Imam Ali et Saad Zaghloul, Kénitra</li>
+                            <li>📞 <strong>Tél / WhatsApp :</strong> 06.22.60.60.33</li>
+                            <li>🕒 <strong>Horaires :</strong> Lundi au samedi - 9h00 à 19h00</li>
+                        </ul>
                     </div>
-                    <div class="centre-gallery">
-                        <img src="assets/images/neurofeedback-casablanca-1-480.jpg" alt="Placeholder image">
-                        <img src="assets/images/neurofeedback-casablanca-2-480.jpg" alt="Placeholder image">
-                        <img src="assets/images/neurofeedback-casablanca-3-480.jpg" alt="Placeholder image">
+                    <div>
+                        <div style="aspect-ratio: 16/10; border-radius: var(--radius-md); background: #e2e8f0; display: flex; align-items: center; justify-content: center; font-size: 3rem; margin-bottom: 2rem;">🏢</div>
+                        <div class="center-action-buttons">
+                            <a href="contact.html?center=kenitra" class="btn btn-gold">Réserver</a>
+                            <a href="tel:0622606033" class="btn btn-navy">Appeler</a>
+                            <a href="https://wa.me/212622606033" class="btn btn-outline" style="border-color:#25D366; color:#25D366 !important;">WhatsApp</a>
+                            <a href="https://maps.google.com/?q=El+Waha+Kenitra" target="_blank" class="btn btn-outline">Itinéraire</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tanger -->
+                <div class="center-detail-card">
+                    <div class="center-details-info">
+                        <span class="center-tag">Pôle Régional Nord</span>
+                        <h3>Centre INFC Tanger</h3>
+                        <p style="margin-top: 1rem; line-height: 1.7;">
+                            Un espace dédié à l'écoute, à la régulation et au confort, pour les personnes du nord du Maroc.
+                        </p>
+                        <ul class="center-meta-list">
+                            <li>📍 <strong>Adresse :</strong> N°25, 2ᵉ étage, Résidence El Jaghaoui, Tower, Route des Abattoirs, Tanger</li>
+                            <li>📞 <strong>Tél / WhatsApp :</strong> 05.39.36.75.19</li>
+                            <li>🕒 <strong>Horaires :</strong> Lundi au samedi - 9h00 à 19h00</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div style="aspect-ratio: 16/10; border-radius: var(--radius-md); background: #e2e8f0; display: flex; align-items: center; justify-content: center; font-size: 3rem; margin-bottom: 2rem;">⚓</div>
+                        <div class="center-action-buttons">
+                            <a href="contact.html?center=tanger" class="btn btn-gold">Réserver</a>
+                            <a href="tel:0539367519" class="btn btn-navy">Appeler</a>
+                            <a href="https://wa.me/212539367519" class="btn btn-outline" style="border-color:#25D366; color:#25D366 !important;">WhatsApp</a>
+                            <a href="https://maps.google.com/?q=El+Jaghaoui+Tanger" target="_blank" class="btn btn-outline">Itinéraire</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- À qui s'adressent nos centres Section -->
+        <section class="section bg-creme">
+            <div class="container">
+                <div class="section-header">
+                    <span style="color:var(--color-gold); font-weight:700; text-transform:uppercase; font-size:0.85rem; letter-spacing:1.5px; display:block; margin-bottom:10px;">Publics</span>
+                    <h2>À qui s'adressent nos centres ?</h2>
+                    <p style="margin-top: 10px; font-weight:600; color:var(--color-navy);">Enfants, Adultes, Familles, Professionnels et Seniors</p>
+                </div>
+                <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                    <div class="card">
+                        <h3>Enfants & adolescents</h3>
+                        <p style="font-size: 0.95rem; margin-top: 0.5rem;">Attention, agitation, concentration, sommeil, confiance, régulation émotionnelle, adaptation scolaire.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Adultes</h3>
+                        <p style="font-size: 0.95rem; margin-top: 0.5rem;">Stress, anxiété, surcharge mentale, fatigue nerveuse, sommeil, hypersensibilité.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Femmes & étapes de vie</h3>
+                        <p style="font-size: 0.95rem; margin-top: 0.5rem;">Charge mentale, fatigue, variations émotionnelles, grossesse, post-partum. Le neurofeedback est non invasif et sans stimulation électrique : pas de contre-indication connue. En cas de grossesse à risque ou de doute, l'avis du médecin reste recommandé.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Seniors</h3>
+                        <p style="font-size: 0.95rem; margin-top: 0.5rem;">Sommeil, attention, récupération, vitalité cognitive, confort mental.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Cadres, dirigeants & entrepreneurs</h3>
+                        <p style="font-size: 0.95rem; margin-top: 0.5rem;">Clarté mentale, récupération, stabilité sous pression, décision, endurance cognitive.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Sportifs & profils de performance</h3>
+                        <p style="font-size: 0.95rem; margin-top: 0.5rem;">Focus, récupération nerveuse, gestion de la pression, stabilité mentale.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Le premier rendez-vous & approche Section -->
+        <section class="section bg-white">
+            <div class="container" style="max-width: 900px;">
+                <div class="entrance-grid">
+                    <div class="entrance-card">
+                        <h3>Le premier rendez-vous</h3>
+                        <p style="margin-top: 1rem; line-height: 1.7; font-size: 0.95rem;">
+                            Le premier rendez-vous permet de comprendre votre situation, vos besoins et vos objectifs. Il ne s'agit pas d'un diagnostic médical, mais d'un temps d'échange et d'orientation : parcours signature, accompagnement à la carte, consultation psychologique, cartographie qEEG si nécessaire, ou orientation complémentaire.
+                        </p>
+                    </div>
+                    <div class="entrance-card">
+                        <h3>Une approche non invasive</h3>
+                        <p style="margin-top: 1rem; line-height: 1.7; font-size: 0.95rem;">
+                            Dans chaque centre, les séances de neurofeedback dynamique se déroulent dans un cadre calme. Des capteurs passifs mesurent l'activité cérébrale naturelle, sans envoyer de courant. La séance est non invasive, indolore, sans stimulation électrique, sans effort conscient et sans médicament. En cas de pathologie, de grossesse à risque, d'épilepsie suivie ou de traitement lourd, un avis médical peut être recommandé.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Action Section -->
+        <section class="section bg-white" style="padding-bottom: 0;">
+            <div class="container">
+                <div class="double-cta-box">
+                    <h2>Trouvez votre équilibre</h2>
+                    <p>Réservez dès maintenant votre premier rendez-vous d'échange et de bilan dans le centre de votre choix.</p>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                        <a href="contact.html" class="btn btn-gold">Réserver un bilan découverte</a>
+                        <a href="contact.html?type=locator" class="btn btn-navy">Choisir mon centre</a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-col"><img src="assets/logos/logowhite.png" alt="INFC" style="height:40px; margin-bottom:1rem;"><p>Une approche humaine du bien‑être cérébral.</p></div>
-                <div class="footer-col"><h4>Navigation</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="neurofeedback.html">La Science</a></li><li><a href="programmes.html">Programmes</a></li><li><a href="centres.html">Nos Centres</a></li><li><a href="apropos.html">À Propos</a></li></ul></div>
-                <div class="footer-col"><h4>Informations</h4><ul><li><a href="faq.html">FAQ</a></li><li><a href="recrutement.html">Recrutement</a></li><li><a href="franchise.html">Franchise</a></li></ul></div>
                 <div class="footer-col">
-                    <h4>Contact</h4>
-                    <p>📍 Nº12 2ème étage, Immeuble Living office 362 BD Ghandi Oasis, Casablanca</p>
-                    <p>📞 <a href="tel:0522991783">0522991783</a></p>
-                    <p>✉️ <a href="mailto:contact@neurofeedback.ma">contact@neurofeedback.ma</a></p>
+                    <img src="assets/logos/logowhite.png" alt="INFC Logo" style="height: 40px; margin-bottom: 1rem;">
+                    <p>Centre de régulation cérébrale et d'accompagnement psychologique au Maroc.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Raccourcis</h4>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="neurofeedback.html">La Science</a></li>
+                        <li><a href="programmes.html">Nos Programmes</a></li>
+                        <li><a href="vision.html">Notre Vision</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Réseau</h4>
+                    <ul>
+                        <li><a href="centres.html">Casablanca</a></li>
+                        <li><a href="centres.html">Marrakech</a></li>
+                        <li><a href="centres.html">Kénitra</a></li>
+                        <li><a href="centres.html">Tanger</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Espaces Dédiés</h4>
+                    <ul>
+                        <li><a href="b2b.html">Entreprises & B2B</a></li>
+                        <li><a href="franchise.html">Modèle Franchise</a></li>
+                        <li><a href="contact.html">Nous Contacter</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-bottom"><p>&copy; 2026 International Neurofeedback Center. Tous droits réservés.</p></div>
+            <div class="footer-bottom">
+                <p style="font-size: 0.8rem; margin-bottom: 1.5rem; line-height: 1.6; opacity: 0.6; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    Le neurofeedback dynamique est un entraînement cérébral d'autorégulation et de bien-être. Cette méthode ne constitue pas un traitement médical, ne pose aucun diagnostic et ne remplace pas une consultation ou un suivi auprès de professionnels de santé habilités.
+                </p>
+                <p>&copy; 2026 International Neurofeedback Center. Tous droits réservés.</p>
+            </div>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
-    <script>
-        function showCentre(name) {
-            // Convert e.g., "Kénitra" -> "kenitra" for element ID lookup
-            const idMap = {
-                'Tanger': 'centre-tanger',
-                'Kénitra': 'centre-kenitra',
-                'Casablanca': 'centre-casablanca',
-                'Marrakech': 'centre-marrakech'
-            };
-            
-            const targetId = idMap[name];
-            const element = document.getElementById(targetId);
-            
-            if (element) {
-                // Smooth scroll to the centre details block
-                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                
-                // Add highlight animation
-                element.classList.add('highlighted');
-                
-                // Remove highlight animation after 2.5s
-                setTimeout(() => {
-                    element.classList.remove('highlighted');
-                }, 2500);
-            }
-        }
-    </script>
 </body>
 </html>

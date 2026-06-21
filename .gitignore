@@ -15,3 +15,6 @@ Thumbs.db
 site/franchise-dashboard.html
 site/generate_ads_report.js
 site/generate_guide.js
+
+# Debug logs
+firebase-debug.log

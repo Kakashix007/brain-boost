@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dossier de Validation Stratégique - NeuroMaroc / INC</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap');
+
+        :root {
+            --color-navy: #0A1628;
+            --color-gold: #D4AF37;
+            --color-grey-text: #4A5568;
+            --color-creme: #FDFBF7;
+            --color-white: #FFFFFF;
+            --color-green: #10B981;
+            --border-color: #E2E8F0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-navy);
+            background-color: var(--color-white);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--color-navy);
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            border-bottom: 2px solid var(--color-gold);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--color-navy);
+            margin-top: 40px;
+            border-left: 4px solid var(--color-gold);
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 25px;
+            color: #1A202C;
+        }
+
+        p, li {
+            font-size: 1.05rem;
+            color: var(--color-grey-text);
+            text-align: justify;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .badge-strategy {
+            background-color: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--color-gold);
+            color: var(--color-navy);
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .badge-strategy h4 {
+            margin: 0 0 10px 0;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--color-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .review-box {
+            background-color: var(--color-creme);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .review-box h4 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-family: 'Inter', sans-serif;
+            color: var(--color-navy);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--color-navy);
+        }
+
+        .checkbox-item input {
+            margin-right: 8px;
+            transform: scale(1.1);
+        }
+
+        .comment-lines {
+            border-bottom: 1px dashed #CBD5E0;
+            height: 24px;
+            margin-top: 10px;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        .header-meta {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 0.95rem;
+            color: var(--color-grey-text);
+        }
+
+        .copywriting-preview {
+            background-color: #F7FAFC;
+            border-left: 3px solid var(--color-navy);
+            padding: 15px 20px;
+            margin: 15px 0;
+            font-style: italic;
+            font-size: 1rem;
+        }
+
+        .checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .checklist li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+        }
+
+        .checklist li::before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            top: -2px;
+            font-size: 1.3rem;
+            color: var(--color-gold);
+        }
+
+        @media print {
+            body {
+                background-color: white;
+            }
+            .container {
+                max-width: 100%;
+                padding: 0;
+            }
+            .page-break {
+                page-break-after: always;
+            }
+            .review-box {
+                background-color: #FAFAFA;
+                border: 1px solid #CCCCCC;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- PAGE 1: COVER & STRATEGIC VISION -->
+    <div class="page-break" style="text-align: center; padding-top: 100px;">
+        <h1 style="font-size: 2.8rem; border-bottom: none; margin-bottom: 10px;">NEUROMAROC / INC</h1>
+        <p style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--color-gold); font-style: italic; text-align: center; margin-top: 0;">
+            Dossier de Validation de l'Architecture Web & de la Stratégie de Contenu
+        </p>
+        <div style="width: 100px; height: 2px; background-color: var(--color-gold); margin: 30px auto;"></div>
+        
+        <div class="header-meta" style="margin-top: 80px;">
+            <p><strong>Préparé pour :</strong> Dr. Chadia Chakib, Directrice Clinique</p>
+            <p><strong>Auteur :</strong> Pôle Business Development & Stratégie de Croissance</p>
+            <p><strong>Statut :</strong> Document de travail pré-lancement (Non publié)</p>
+            <p><strong>Date :</strong> Juin 2026</p>
+        </div>
+
+        <div class="badge-strategy" style="margin-top: 100px; text-align: left;">
+            <h4>Note Stratégique : Approche Direct-to-Consumer & Rentabilité</h4>
+            Ce site web est conçu comme une <strong>Landing Page multi-entrées</strong> optimisée pour convertir le trafic issu des campagnes publicitaires locales. Contrairement à un site vitrine passif, chaque section cible un besoin clinique précis pour emmener l'utilisateur vers une consultation. Nous intégrerons des capteurs comportementaux <em>Microsoft Clarity</em> (cartes de chaleur) pour mesurer le taux de lecture et optimiser le parcours utilisateur en continu.
+        </div>
+    </div>
+
+    <!-- PAGE 2: OBJECTIFS STRATÉGIQUES ET CONVERSION -->
+    <div class="page-break">
+        <h2>1. LA VISION BUSINESS ET LE TUNNEL D'ACQUISITION</h2>
+        <p>
+            L'architecture du site répond à un impératif d'efficacité économique. Plutôt que de développer des tunnels complexes sur des plateformes tierces coûteuses, nous centralisons l'expérience client sur <strong>neuromaroc.com</strong>.
+        </p>
+        
+        <h3>A. L'Entonnoir WhatsApp (Le Canal Majoritaire)</h3>
+        <p>
+            Au Maroc, WhatsApp est le canal de conversion numéro un. Le site intègre des boutons de contact direct paramétrés géographiquement (en fonction du centre sélectionné). Lorsqu'un prospect clique, son message est pré-rempli (ex: <em>"Bonjour, je souhaite réserver une séance découverte à Casablanca..."</em>), facilitant le travail de notre secrétariat.
+        </p>
+
+        <h3>B. La Mesure comportementale (Microsoft Clarity)</h3>
+        <p>
+            Chaque clic, défilement et zone d'hésitation sera analysé. Cela nous permet de valider scientifiquement l'ergonomie :
+        </p>
+        <ul>
+            <li><strong>Scrollmaps :</strong> Mesurer le pourcentage d'utilisateurs arrivant au bas des pages tarifaires.</li>
+            <li><strong>Session Recordings :</strong> Observer anonymement les obstacles techniques ou ergonomiques rencontrés par les patients.</li>
+            <li><strong>A/B Testing de contenu :</strong> Ajuster les titres cliniques selon les taux de clics réels.</li>
+        </ul>
+
+        <h3>C. Les Trois Piliers du Contenu</h3>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+            <thead>
+                <tr style="border-bottom: 2px solid var(--color-gold); text-align: left;">
+                    <th style="padding: 10px; font-weight: 700;">Pilier</th>
+                    <th style="padding: 10px; font-weight: 700;">Format d'Actif</th>
+                    <th style="padding: 10px; font-weight: 700;">Rôle Business</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                    <td style="padding: 10px; font-weight: 600;">1. Aimant (Lead Magnet)</td>
+                    <td style="padding: 10px;">Quiz TDA/H, Guide PDF Sommeil</td>
+                    <td style="padding: 10px;">Capturer le contact (Téléphone / E-mail)</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                    <td style="padding: 10px; font-weight: 600;">2. Éducation Clinique</td>
+                    <td style="padding: 10px;">Articles de Blog, Réponses Dr. Chadia</td>
+                    <td style="padding: 10px;">Lever les objections scientifiques</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; font-weight: 600;">3. Preuve (Validation)</td>
+                    <td style="padding: 10px;">Cartographie qEEG Avant/Après</td>
+                    <td style="padding: 10px;">Prouver visuellement la plasticité cérébrale</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- PAGE 3: PAGE D'ACCUEIL (DETAILED COPY) -->
+    <div class="page-break">
+        <h2>2. STRUCTURE DU SITE ET TEXTES PROPOSÉS</h2>
+        
+        <h3>Page 1 : Accueil (`index.html`)</h3>
+        <p><strong>But principal :</strong> Rassurer immédiatement et orienter vers la prise de rendez-vous en moins de 10 secondes.</p>
+        
+        <h4>Section 1 : Hero Header (Au-dessus de la ligne de flottaison)</h4>
+        <div class="copywriting-preview">
+            « Libérez votre cerveau du stress. Retrouvez votre plein potentiel grâce à la régulation cérébrale premium de l'INC au Maroc. Une approche naturelle, scientifiquement prouvée et non invasive. »
+            <br><small><strong>CTA :</strong> [Faire mon évaluation cérébrale en 2 min] | [Prendre rendez-vous sur WhatsApp]</small>
+        </div>
+
+        <h4>Section 2 : Comment ça marche (3 étapes simplifiées)</h4>
+        <div class="copywriting-preview">
+            « 1. Cartographie qEEG initiale : Nous enregistrons l'activité électrique de votre cerveau pour identifier les déséquilibres.<br>
+            2. Entraînement sur-mesure : Vous apprenez à votre cerveau à s'autoréguler grâce à des exercices visuels et auditifs interactifs.<br>
+            3. Changement durable : Les séances renforcent la plasticité cérébrale pour des résultats stables et à long terme. »
+        </div>
+
+        <h4>Section 3 : Présentation des Centres et de la Direction Scientifique</h4>
+        <div class="copywriting-preview">
+            « Sous la direction du Dr. Chadia Chakib, l'INC dispose de 4 cliniques équipées des dernières technologies à Casablanca, Marrakech, Tanger et Kénitra. »
+        </div>
+
+        <div class="review-box">
+            <h4>Validation Clinique & Stratégique - Page d'Accueil</h4>
+            <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox"> Conserver</label>
+                <label class="checkbox-item"><input type="checkbox"> Modifier</label>
+                <label class="checkbox-item"><input type="checkbox"> Supprimer</label>
+            </div>
+            <strong>Notes / Modifications demandées par le Dr. Chadia :</strong>
+            <div class="comment-lines"></div>
+            <div class="comment-lines"></div>
+        </div>
+    </div>
+
+    <!-- PAGE 4: PAGE À PROPOS & TECHNIQUE -->
+    <div class="page-break">
+        <h3>Page 2 : À Propos (`apropos.html`)</h3>
+        <p><strong>But principal :</strong> Mettre en valeur la caution médicale et l'expérience du Dr. Chadia Chakib pour asseoir l'autorité clinique.</p>
+        
+        <h4>Section 1 : La Vision Médicale du Dr. Chadia</h4>
+        <div class="copywriting-preview">
+            « Ma conviction profonde est que notre cerveau possède une capacité extraordinaire de guérison et d'adaptation : la neuroplasticité. L'INC est né de la volonté d'offrir aux Marocains une alternative non médicamenteuse, rigoureuse et validée cliniquement pour traiter le stress chronique, le TDA/H et le burnout. »
+        </div>
+
+        <h4>Section 2 : Charte Qualité et Rigueur INC</h4>
+        <div class="copywriting-preview">
+            « Chaque protocole est supervisé. Nos techniciens certifiés appliquent des normes rigoureuses basées sur des bases de données de cerveaux sains de référence internationale. »
+        </div>
+
+        <div class="review-box">
+            <h4>Validation Clinique & Stratégique - À Propos</h4>
+            <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox"> Conserver</label>
+                <label class="checkbox-item"><input type="checkbox"> Modifier</label>
+                <label class="checkbox-item"><input type="checkbox"> Supprimer</label>
+            </div>
+            <strong>Notes / Modifications demandées par le Dr. Chadia :</strong>
+            <div class="comment-lines"></div>
+            <div class="comment-lines"></div>
+        </div>
+
+        <h3 style="margin-top: 40px;">Page 3 : Le Neurofeedback (`neurofeedback.html`)</h3>
+        <p><strong>But principal :</strong> Expliquer scientifiquement la méthode sans jargonner, pour rassurer les patients sceptiques.</p>
+        
+        <h4>Section 1 : La Boucle de Régulation (explications)</h4>
+        <div class="copywriting-preview">
+            « Pendant que vous regardez un écran, des capteurs mesurent vos ondes cérébrales. Dès que votre cerveau adopte un rythme optimal, l'écran devient plus lumineux ou le son s'active. Votre cerveau associe cette récompense à l'état recherché et apprend à le reproduire naturellement. »
+        </div>
+
+        <div class="review-box">
+            <h4>Validation Clinique & Stratégique - Explications Techniques</h4>
+            <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox"> Conserver</label>
+                <label class="checkbox-item"><input type="checkbox"> Modifier</label>
+                <label class="checkbox-item"><input type="checkbox"> Supprimer</label>
+            </div>
+            <strong>Notes / Modifications demandées par le Dr. Chadia :</strong>
+            <div class="comment-lines"></div>
+            <div class="comment-lines"></div>
+        </div>
+    </div>
+
+    <!-- PAGE 5: PROGRAMMES ET PERSONAS (DETAILS) -->
+    <div class="page-break">
+        <h3>Page 4 : Programmes & Personas (`programmes.html`)</h3>
+        <p><strong>But principal :</strong> Permettre à chaque prospect de s'identifier à un parcours de soins et d'en comprendre la pertinence clinique.</p>
+        
+        <h4>1. Pour les Parents (TDA/H, Échecs scolaires, Impulsivité)</h4>
+        <div class="copywriting-preview">
+            « Fatigue à l'école, difficultés à se concentrer, agitation physique permanente. Le protocole INC cible le renforcement des ondes bêta (liées à l'attention focalisée) et la réduction des ondes thêta (ondes de somnolence cognitive), aidant votre enfant à retrouver son autonomie sans dépendre de traitements chimiques. »
+        </div>
+
+        <h4>2. Peak Performers (Dirigeants, Sportifs, Décideurs)</h4>
+        <div class="copywriting-preview">
+            « Concentration extrême, prise de recul sous pression, clarté mentale. Notre programme d'entraînement optimise la cohérence inter-hémisphérique et le rythme alpha pour vous aider à rester dans "la zone" lors de vos rendez-vous stratégiques. »
+        </div>
+
+        <h4>3. Adulte & Gestion du Stress (Burnout, Dépression, Anxiété)</h4>
+        <div class="copywriting-preview">
+            « Anxiété généralisée, sensation de surcharge mentale permanente, épuisement. Nous entraînons la régulation de l'hyperactivité de l'amygdale cérébrale pour restaurer le calme intérieur et rééquilibrer le sommeil profond. »
+        </div>
+
+        <div class="review-box">
+            <h4>Validation Clinique & Stratégique - Programmes & Personas</h4>
+            <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox"> Conserver</label>
+                <label class="checkbox-item"><input type="checkbox"> Modifier</label>
+                <label class="checkbox-item"><input type="checkbox"> Supprimer</label>
+            </div>
+            <strong>Notes / Modifications demandées par le Dr. Chadia :</strong>
+            <div class="comment-lines"></div>
+            <div class="comment-lines"></div>
+        </div>
+    </div>
+
+    <!-- PAGE 6: TARIFS & CENTRES -->
+    <div class="page-break">
+        <h3>Page 5 : Packs & Tarifs (`tarifs.html` / `pack.html`)</h3>
+        <p><strong>But principal :</strong> Minimiser le frein financier et valoriser l'engagement à long terme pour garantir la réussite clinique.</p>
+        
+        <h4>Section 1 : La Séance Découverte (La porte d'entrée)</h4>
+        <div class="copywriting-preview">
+            « Cartographie cérébrale qEEG complète + Consultation initiale d'évaluation + Premier test d'entraînement neuro-sensible.<br>
+            <strong>Objectif :</strong> Comprendre l'architecture de votre cerveau avant de vous engager. »
+        </div>
+
+        <h4>Section 2 : Pack Brain Boost™ (8 séances focus)</h4>
+        <div class="copywriting-preview">
+            « Destiné aux étudiants et enfants pour un coup de boost attentionnel avant les examens ou la rentrée. Comprend 8 sessions d'entraînement cérébral ciblé. »
+        </div>
+
+        <div class="review-box">
+            <h4>Validation Clinique & Stratégique - Offres & Tarification</h4>
+            <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox"> Conserver</label>
+                <label class="checkbox-item"><input type="checkbox"> Modifier</label>
+                <label class="checkbox-item"><input type="checkbox"> Supprimer</label>
+            </div>
+            <strong>Notes / Modifications demandées par le Dr. Chadia :</strong>
+            <div class="comment-lines"></div>
+            <div class="comment-lines"></div>
+        </div>
+
+        <h3 style="margin-top: 40px;">Page 6 : Nos Centres (`centres.html`)</h3>
+        <p><strong>But principal :</strong> Rassurer sur la proximité géographique et générer des appels ou visites directes.</p>
+        <p><strong>Détails requis :</strong> Casablanca (Bourgogne/Anfa), Marrakech (Guéliz), Tanger (Centre-Ville), Kénitra. Chaque centre doit posséder son propre bouton de contact WhatsApp pour éviter toute friction de transfert de dossier.</p>
+
+        <div class="review-box">
+            <h4>Validation Clinique & Stratégique - Réseau Local</h4>
+            <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox"> Conserver</label>
+                <label class="checkbox-item"><input type="checkbox"> Modifier</label>
+                <label class="checkbox-item"><input type="checkbox"> Supprimer</label>
+            </div>
+            <strong>Notes :</strong>
+            <div class="comment-lines"></div>
+        </div>
+    </div>
+
+    <!-- PAGE 7: PREUVE CLINIQUE & CONTENU ÉDUCATIF -->
+    <div class="page-break">
+        <h3>Page 7 : Success Stories & Évaluations (`success-stories.html`)</h3>
+        <p><strong>But principal :</strong> Apporter une preuve visuelle incontestable de la plasticité cérébrale.</p>
+        
+        <h4>Format Proposé : Avant / Après qEEG</h4>
+        <p>
+            Nous présenterons des modèles graphiques de cerveaux montrant par exemple des zones rouges d'hyperactivité (ondes bêta rapides dans l'anxiété) se normalisant en vert après 20 séances. Ce format visuel est l'atout de vente le plus puissant de notre spécialité.
+        </p>
+
+        <div class="review-box">
+            <h4>Validation Clinique & Stratégique - Success Stories</h4>
+            <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox"> Conserver</label>
+                <label class="checkbox-item"><input type="checkbox"> Modifier</label>
+                <label class="checkbox-item"><input type="checkbox"> Supprimer</label>
+            </div>
+            <strong>Notes / Validations éthiques demandées :</strong>
+            <div class="comment-lines"></div>
+            <div class="comment-lines"></div>
+        </div>
+
+        <h3 style="margin-top: 40px;">Page 8 : Réponses du Dr. Chadia & Recherche (`les-reponses-du-dr-chadia.html` / `recherche.html`)</h3>
+        <p><strong>But principal :</strong> Répondre aux craintes médicales de manière proactive et appuyer scientifiquement le discours.</p>
+        
+        <h4>Exemple d'objection traitée : « Le Neurofeedback émet-il des ondes dans le cerveau ? »</h4>
+        <div class="copywriting-preview">
+            « Non. Les capteurs posés sur votre cuir chevelu ne font que lire et enregistrer l'activité électrique naturelle de votre cerveau. Aucune impulsion électrique ou magnétique n'est injectée dans votre boîte crânienne. C'est une technique 100% passive et sûre. »
+        </div>
+
+        <div class="review-box">
+            <h4>Validation Clinique & Stratégique - FAQ & Preuve Scientifique</h4>
+            <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox"> Conserver</label>
+                <label class="checkbox-item"><input type="checkbox"> Modifier</label>
+                <label class="checkbox-item"><input type="checkbox"> Supprimer</label>
+            </div>
+            <strong>Remarques :</strong>
+            <div class="comment-lines"></div>
+        </div>
+    </div>
+
+    <!-- PAGE 8: LE PLAN D'ACTION (CONTENU REQUIS POUR LANCEMENT) -->
+    <div>
+        <h2>3. CHECKLIST DU CONTENU À DÉVELOPPER (TO-DO LIST)</h2>
+        <p>
+            Pour intégrer définitivement ces éléments sur la plateforme finale, voici la liste des contenus spécifiques que nous devons préparer et valider ensemble :
+        </p>
+
+        <ul class="checklist">
+            <li><strong>Portraits & Photos d'Équipe :</strong> Photos en haute définition du Dr. Chadia et des cliniciens dans les cabines d'entraînement de Casablanca et Marrakech.</li>
+            <li><strong>Photos Immobilières des 4 Centres :</strong> Visuels premium des espaces d'attente et des bureaux de consultation pour la page <em>Centres</em>.</li>
+            <li><strong>Vidéo d'Accueil Clinique :</strong> Script de 90 secondes à faire enregistrer par le Dr. Chadia expliquant la méthode INC de manière bienveillante et rassurante.</li>
+            <li><strong>Anonymisation de 3 dossiers cliniques de référence :</strong> Exportations qEEG propres (Cartes couleur du cerveau) avant/après protocole pour illustrer le TDAH et l'Anxiété.</li>
+            <li><strong>Rédaction définitive de la Bio Clinique :</strong> Récit du parcours professionnel, des formations suivies aux USA/Europe et de l'introduction du concept au Maroc.</li>
+            <li><strong>Documents PDF d'Acquisition (Téléchargements) :</strong> Rédaction du guide <em>"Mieux accompagner le TDA/H : Le Guide Clinique INC"</em> pour servir de premier point de contact par e-mail.</li>
+        </ul>
+
+        <div class="review-box" style="margin-top: 50px;">
+            <h4>Signature de Validation du Projet Clinique</h4>
+            <p>
+                En signant ci-dessous, le Dr. Chadia Chakib approuve la structure éditoriale globale et donne son feu vert pour le montage technique final de la plateforme neuromaroc.com sous réserve des modifications manuscrites apportées dans ce dossier.
+            </p>
+            <table style="width: 100%; margin-top: 30px;">
+                <tr>
+                    <td style="width: 50%;"><strong>Signature du Dr. Chadia Chakib :</strong></td>
+                    <td style="width: 50%;"><strong>Date de signature :</strong></td>
+                </tr>
+                <tr>
+                    <td style="height: 60px; border-bottom: 1px solid #000;"></td>
+                    <td style="height: 60px; border-bottom: 1px solid #000;"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

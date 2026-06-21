@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Présentation Neurofeedback & Espace Patient — INFC</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap');
+
+    :root {
+      --primary: #0A1628;
+      --accent: #D4AF37;
+      --bg-cream: #F8F5F0;
+      --white: #FFFFFF;
+      --text: #2C3E50;
+      --text-light: #6B7280;
+      --shadow: rgba(10, 22, 40, 0.05);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    .page {
+      width: 190mm;
+      min-height: 272mm;
+      padding: 15mm;
+      margin: 10px auto;
+      background: var(--white);
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-sizing: border-box;
+      position: relative;
+      page-break-after: always;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--primary);
+    }
+
+    h1 {
+      font-size: 24px;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 8px;
+      margin-top: 0;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-top: 25px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+    }
+
+    h2::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 18px;
+      background-color: var(--accent);
+      margin-right: 12px;
+      border-radius: 2px;
+    }
+
+    p {
+      font-size: 13.5px;
+      margin-bottom: 12px;
+      text-align: justify;
+    }
+
+    /* Cover Page styling */
+    .cover {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .cover h1 {
+      color: var(--accent);
+      border-bottom: none;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .cover h2 {
+      color: var(--white);
+      font-weight: 300;
+      font-size: 20px;
+      margin-top: 0;
+    }
+    
+    .cover h2::before {
+      display: none;
+    }
+
+    .cover .meta {
+      margin-top: 100px;
+      font-size: 13px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      line-height: 2;
+    }
+
+    .cover .footer-note {
+      position: absolute;
+      bottom: 30px;
+      font-size: 12px;
+      opacity: 0.8;
+    }
+
+    /* Charts styling */
+    .chart-container {
+      margin: 15px 0;
+      background: var(--bg-cream);
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    .chart-bar-wrapper {
+      margin-bottom: 12px;
+    }
+
+    .chart-label {
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .chart-bar-bg {
+      background: #E5E7EB;
+      height: 10px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .chart-bar-fill {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      height: 100%;
+      border-radius: 5px;
+    }
+
+    /* Case Studies */
+    .case-card {
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 15px;
+      background: #FDFBF8;
+    }
+
+    .case-header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #F3F4F6;
+      padding-bottom: 6px;
+      margin-bottom: 8px;
+    }
+
+    .case-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 14px;
+    }
+
+    .case-meta {
+      font-size: 11px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .case-quote {
+      font-style: italic;
+      color: var(--text-light);
+      font-size: 12px;
+      margin: 8px 0;
+      padding-left: 10px;
+      border-left: 3px solid var(--accent);
+    }
+
+    /* Patient Portal Section */
+    .portal-preview {
+      display: flex;
+      gap: 15px;
+      margin: 15px 0;
+    }
+
+    .portal-col {
+      flex: 1;
+      background: var(--bg-cream);
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      border-left: 3px solid var(--primary);
+    }
+
+    .portal-col strong {
+      color: var(--primary);
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    /* Compare Table */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11.5px;
+      margin: 10px 0;
+    }
+
+    .compare-table th, .compare-table td {
+      border: 1px solid #E5E7EB;
+      padding: 6px 10px;
+      text-align: center;
+    }
+
+    .compare-table th {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      left: 15mm;
+      right: 15mm;
+      font-size: 10px;
+      color: var(--text-light);
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid #E5E7EB;
+      padding-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1: COVER -->
+  <div class="page cover">
+    <h1>INFC — GUIDE CLINIQUE & PORTAIL PATIENT</h1>
+    <h2>L'Entraînement Cérébral par Neurofeedback : Principes, Suivi de Progrès qEEG et Études de Cas</h2>
+    <div style="width: 80px; height: 3px; background-color: var(--accent); margin: 25px auto;"></div>
+    <p style="max-width: 500px; opacity: 0.9; font-size: 15px;">
+      Une technologie douce d'auto-régulation appuyée par un espace patient interactif pour visualiser l'évolution de vos ondes cérébrales à Casablanca, Marrakech, Tanger et Kénitra.
+    </p>
+    <div class="meta">
+      Réseau INFC Maroc<br>
+      Directeur Scientifique : Comité Médical INFC
+    </div>
+    <div class="footer-note">
+      Document confidentiel d'information destiné aux patients du réseau INFC.
+    </div>
+  </div>
+
+  <!-- PAGE 2: LE NEUROFEEDBACK & STATISTIQUES -->
+  <div class="page">
+    <h1>1. L'Efficacité du Neurofeedback en Chiffres</h1>
+    <p>
+      Le Neurofeedback s'appuie sur la plasticité cérébrale : la capacité naturelle du cerveau à s'auto-corriger lorsqu'il reçoit un retour (feedback) instantané sur son activité électrique.
+    </p>
+
+    <h2>📊 Taux de Réduction des Symptômes (Après 10 à 15 séances)</h2>
+    <p>
+      Statistiques cliniques mesurant l'amélioration fonctionnelle déclarée par nos patients :
+    </p>
+
+    <div class="chart-container">
+      <div class="chart-bar-wrapper">
+        <div class="chart-label">
+          <span>Gestion de l'Anxiété et du Stress Diffus</span>
+          <span>89% d'amélioration</span>
+        </div>
+        <div class="chart-bar-bg">
+          <div class="chart-bar-fill" style="width: 89%;"></div>
+        </div>
+      </div>
+
+      <div class="chart-bar-wrapper">
+        <div class="chart-label">
+          <span>Qualité et Profondeur du Sommeil</span>
+          <span>85% d'amélioration</span>
+        </div>
+        <div class="chart-bar-bg">
+          <div class="chart-bar-fill" style="width: 85%;"></div>
+        </div>
+      </div>
+
+      <div class="chart-bar-wrapper">
+        <div class="chart-label">
+          <span>Capacité de Focus & d'Attention (Adultes / Enfants)</span>
+          <span>82% d'amélioration</span>
+        </div>
+        <div class="chart-bar-bg">
+          <div class="chart-bar-fill" style="width: 82%;"></div>
+        </div>
+      </div>
+
+      <div class="chart-bar-wrapper">
+        <div class="chart-label">
+          <span>Clarté et Calme Mental</span>
+          <span>91% d'amélioration</span>
+        </div>
+        <div class="chart-bar-bg">
+          <div class="chart-bar-fill" style="width: 91%;"></div>
+        </div>
+      </div>
+    </div>
+
+    <h2>🧬 Technologie non invasive en boucle fermée</h2>
+    <p>
+      Les capteurs posés sur votre cuir chevelu mesurent de manière 100% passive votre EEG (aucune électricité n'est envoyée vers vous). Dès qu'un dysfonctionnement d'attention ou une instabilité de stress se prépare, la musique que vous écoutez s'interrompt brièvement. Cette rétroaction rapide invite le cerveau à revenir à un état plus régulé.
+    </p>
+
+    <div class="footer">
+      <span>Présentation Clinique — INFC</span>
+      <span>Page 2</span>
+    </div>
+  </div>
+
+  <!-- PAGE 3: ÉTUDES DE CAS -->
+  <div class="page">
+    <h1>2. Cas Cliniques & Suivi de Mesures</h1>
+    <p>
+      Le neurofeedback permet de cibler des zones et des types d'ondes précis (comme les ondes Alpha associées à la relaxation ou les ondes Theta au contrôle cognitif).
+    </p>
+
+    <div class="case-card">
+      <div class="case-header">
+        <div class="case-title">Cas N°1 : Yassine, 14 ans (Casablanca) — Stress & Focus</div>
+        <div class="case-meta">Ondes Theta ciblées sur le Lobe Frontal (Fz)</div>
+      </div>
+      <p>
+        <strong>Contexte :</strong> Stress paralysant lors des examens. L'analyse qEEG initiale révélait une suractivité d'ondes Theta lentes au niveau du lobe préfrontal (Fz), provoquant une inattention et une dispersion mentale.
+      </p>
+      <p>
+        <strong>Résultats après 12 séances :</strong> Réduction de l'amplitude des ondes Theta lentes de 7.5 µV à 5.8 µV (plage standard). Amélioration du calme et réussite sereine de ses examens.
+      </p>
+    </div>
+
+    <div class="case-card">
+      <div class="case-header">
+        <div class="case-title">Cas N°2 : Sofia, 38 ans (Marrakech) — Burnout Cadre</div>
+        <div class="case-meta">Stabilisation des ondes Alpha (Fz / Cz)</div>
+      </div>
+      <p>
+        <strong>Contexte :</strong> Fatigue décisionnelle, anxiété permanente et insomnies. Ses ondes Alpha présentaient une grande instabilité, incapable de se stabiliser lors des phases de repos.
+      </p>
+      <p>
+        <strong>Résultats après 15 séances :</strong> Stabilité de l'onde Alpha à 5.7 µV. Sofia a retrouvé un sommeil profond et une excellente réactivité mentale au travail.
+      </p>
+    </div>
+
+    <h2>📈 Tableau Comparatif Ondes Cérébrales (Avant / Après)</h2>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Symptôme ciblé</th>
+          <th>Onde Mesurée (Fz)</th>
+          <th>Amplitude Initiale (Séance 1)</th>
+          <th>Amplitude Stabilisée (Séance 12)</th>
+          <th>Norme Cible</th>
+          <th>Score Symptôme</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Dispersion & Inattention</strong></td>
+          <td>Theta (Lobe Frontal)</td>
+          <td>7.5 µV</td>
+          <td>5.8 µV</td>
+          <td>5.0 - 9.0 µV</td>
+          <td><span style="color: #EF4444;">8/10</span> → <span style="color: #10B981;">3/10</span></td>
+        </tr>
+        <tr>
+          <td><strong>Anxiété & Hyper-vigilance</strong></td>
+          <td>Alpha (Lobe Frontal)</td>
+          <td>4.2 µV (Instable)</td>
+          <td>5.7 µV (Stable)</td>
+          <td>4.0 - 8.0 µV</td>
+          <td><span style="color: #EF4444;">8/10</span> → <span style="color: #10B981;">2/10</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="footer">
+      <span>Présentation Clinique — INFC</span>
+      <span>Page 3</span>
+    </div>
+  </div>
+
+  <!-- PAGE 4: PORTAIL PATIENT (NEW!) -->
+  <div class="page">
+    <h1>3. Votre Espace Patient Interactif</h1>
+    <p>
+      À l'INFC, votre accompagnement est entièrement digitalisé. Dès votre première séance, vous accédez à un <strong>portail patient en ligne sécurisé</strong> pour suivre l'évolution de vos mesures et la transformation de votre cerveau.
+    </p>
+
+    <div class="portal-preview">
+      <div class="portal-col">
+        <strong>📊 Cartographie & Ondes qEEG</strong>
+        Visualisez l'état de régulation de votre lobe préfrontal (Fz) et central (Cz). Le portail affiche en temps réel l'amplitude de vos ondes Alpha et Theta ainsi que les zones en cours de régulation.
+      </div>
+      <div class="portal-col">
+        <strong>⏳ Historique Inter-Centres Synchronisé</strong>
+        Toutes vos séances (effectuées à Casablanca, Marrakech, Tanger ou Kénitra) sont enregistrées sur le même profil. Vos praticiens accèdent instantanément à votre historique d'évolution où que vous soyez.
+      </div>
+    </div>
+
+    <div class="portal-preview" style="margin-top: 0;">
+      <div class="portal-col">
+        <strong>📝 Observations Cliniques & Rapports</strong>
+        Accédez aux notes d'observations cliniques rédigées par vos praticiens référents après chaque séance. Vous pouvez également télécharger votre <strong>Rapport Clinique Complet (PDF)</strong> incluant les cartes de chaleur cérébrale.
+      </div>
+      <div class="portal-col">
+        <strong>📚 Bibliothèque Neuro-Éducative</strong>
+        Retrouvez des ressources personnalisées selon votre profil : exercices de cohérence cardiaque pour consolider vos séances, routines pour optimiser les ondes Alpha et guides sur la surcharge cognitive.
+      </div>
+    </div>
+
+    <h2>💳 Transparence Totale & Suivi Budgétaire</h2>
+    <p>
+      Votre portail intègre un espace de facturation clair. Vous pouvez y consulter à tout moment le détail de vos règlements, l'historique de vos factures acquittées sur l'ensemble du réseau INFC, ainsi que le graphique d'évolution mensuelle de vos dépenses de soins.
+    </p>
+
+    <div class="footer">
+      <span>Présentation Clinique — INFC</span>
+      <span>Page 4</span>
+    </div>
+  </div>
+
+  <!-- PAGE 5: SÉANCE & DEMARRAGE -->
+  <div class="page">
+    <h1>4. Commencer Votre Accompagnement</h1>
+    <p>
+      Le réseau INFC garantit un cadre chaleureux et discret pour vous permettre de réaliser vos séances dans des conditions optimales de détente.
+    </p>
+
+    <h2>🛋️ Le Déroulement d'une Séance</h2>
+    <ul class="step-list">
+      <li>
+        <strong>Étape 1 : L'installation</strong><br>
+        Vous prenez place dans un fauteuil ergonomique. Le praticien pose deux capteurs légers sur votre tête pour mesurer vos ondes en direct.
+      </li>
+      <li>
+        <strong>Étape 2 : L'entraînement</strong><br>
+        Vous écoutez une musique relaxante. Le système crée des micro-interruptions sonores invisibles à chaque fois que votre cerveau commence à s'agiter, favorisant le retour au calme.
+      </li>
+      <li>
+        <strong>Étape 3 : La consultation du Portail</strong><br>
+        Après la séance, connectez-vous à votre espace personnel pour voir l'évolution de vos scores de symptômes et vos amplitudes d'ondes.
+      </li>
+    </ul>
+
+    <div style="background-color: var(--primary); color: var(--white); padding: 25px; border-radius: 8px; text-align: center; margin-top: 30px;">
+      <h3 style="color: var(--accent); margin-top: 0; font-size: 18px;">Prenez rendez-vous pour votre Échange d'Orientation</h3>
+      <p style="text-align: center; font-size: 13.5px; max-width: 500px; margin: 0 auto 15px auto;">
+        Échangez gratuitement pendant 15 minutes par téléphone avec un conseiller certifié INFC pour évaluer vos besoins.
+      </p>
+      <a href="https://wa.me/212600000000" style="display: inline-block; background: var(--accent); color: var(--primary); text-decoration: none; padding: 10px 25px; font-weight: bold; border-radius: 4px; font-size: 13.5px; text-transform: uppercase;">Réserver par WhatsApp</a>
+    </div>
+
+    <div class="footer">
+      <span>Présentation Clinique — INFC</span>
+      <span>Page 5</span>
+    </div>
+  </div>
+
+</body>
+</html>
