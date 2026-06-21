@@ -1,0 +1,548 @@
+
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Rapport de Captures d'Écran - NeuroMaroc</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@400;500&display=swap');
+            
+            body {
+                font-family: 'Inter', sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #fcfbfa;
+                color: #0b1a2d;
+            }
+            
+            .header-page {
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                background: linear-gradient(135deg, #072a5a 0%, #0a1628 100%);
+                color: #ffffff;
+                page-break-after: always;
+                box-sizing: border-box;
+                padding: 40px;
+            }
+            
+            .header-page h1 {
+                font-family: 'Outfit', sans-serif;
+                font-size: 4rem;
+                margin-top: 1.5rem;
+                margin-bottom: 0.5rem;
+                color: #d4af37;
+                letter-spacing: -0.5px;
+            }
+            
+            .header-page p {
+                font-size: 1.8rem;
+                opacity: 0.9;
+                max-width: 800px;
+                margin-bottom: 3rem;
+                font-weight: 300;
+                line-height: 1.4;
+            }
+
+            .header-page .meta {
+                font-size: 1.1rem;
+                opacity: 0.6;
+                line-height: 1.6;
+                border-top: 1px solid rgba(255,255,255,0.15);
+                padding-top: 2rem;
+                width: 300px;
+            }
+            
+            .page-section {
+                padding: 40px;
+                page-break-after: always;
+                box-sizing: border-box;
+            }
+            
+            .page-title {
+                font-family: 'Outfit', sans-serif;
+                font-size: 2.5rem;
+                border-bottom: 3px solid #d4af37;
+                padding-bottom: 15px;
+                margin-bottom: 40px;
+                color: #072a5a;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+            }
+
+            .page-title span {
+                font-size: 1.1rem;
+                font-family: 'Inter', sans-serif;
+                color: #6c7a89;
+                font-weight: 500;
+                background: #f1f5f9;
+                padding: 6px 16px;
+                border-radius: 20px;
+            }
+            
+            .screenshot-grid {
+                display: flex;
+                gap: 50px;
+                align-items: flex-start;
+            }
+            
+            .desktop-col {
+                flex: 2.2;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .mobile-col {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .col-title {
+                font-family: 'Outfit', sans-serif;
+                font-size: 1.4rem;
+                font-weight: 600;
+                color: #072a5a;
+                margin: 0;
+                border-left: 4px solid #d4af37;
+                padding-left: 12px;
+            }
+            
+            .device-frame {
+                border-radius: 12px;
+                box-shadow: 0 15px 50px rgba(7,42,90,0.08);
+                border: 1px solid #e2e8f0;
+                background-color: #fff;
+                overflow: hidden;
+                width: 100%;
+            }
+
+            .desktop-frame {
+                border-top: 30px solid #edf2f7;
+                position: relative;
+            }
+
+            .desktop-frame::before {
+                content: '';
+                position: absolute;
+                top: -20px;
+                left: 14px;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: #fc8181;
+                box-shadow: 20px 0 0 #f6e05e, 40px 0 0 #68d391;
+            }
+            
+            .device-frame img {
+                width: 100%;
+                display: block;
+                height: auto;
+            }
+
+            .mobile-frame {
+                border: 14px solid #1a202c;
+                border-radius: 40px;
+                box-sizing: border-box;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header-page">
+            <div style="font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 700; color: #d4af37; letter-spacing: 4px; text-transform: uppercase;">International Neurofeedback Center</div>
+            <h1>NeuroMaroc</h1>
+            <p>Maquette Visuelle Interactive & Plan de Site<br>Rapport de Captures d'Écran Desktop & Mobile</p>
+            <div class="meta">
+                Date de Génération : 21 Juin 2026<br>
+                Format de Page : A3 Paysage<br>
+                Statut : Prêt pour Revue Client
+            </div>
+        </div>
+    
+        <div class="page-section">
+            <div class="page-title">
+                Accueil (Page principale)
+                <span>Fichier : site/index.html</span>
+            </div>
+            <div class="screenshot-grid">
+                <div class="desktop-col">
+                    <h3 class="col-title">🖥️ Aperçu Ordinateur (Desktop)</h3>
+                    <div class="device-frame desktop-frame">
+                        <img src="screenshots_temp/index_desktop.jpg" alt="Accueil (Page principale) Desktop">
+                    </div>
+                </div>
+                <div class="mobile-col">
+                    <h3 class="col-title">📱 Aperçu Téléphone (Mobile)</h3>
+                    <div class="device-frame mobile-frame">
+                        <img src="screenshots_temp/index_mobile.jpg" alt="Accueil (Page principale) Mobile">
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="page-section">
+            <div class="page-title">
+                Découverte du Neurofeedback
+                <span>Fichier : site/decouverte-neurofeedback.html</span>
+            </div>
+            <div class="screenshot-grid">
+                <div class="desktop-col">
+                    <h3 class="col-title">🖥️ Aperçu Ordinateur (Desktop)</h3>
+                    <div class="device-frame desktop-frame">
+                        <img src="screenshots_temp/decouverte-neurofeedback_desktop.jpg" alt="Découverte du Neurofeedback Desktop">
+                    </div>
+                </div>
+                <div class="mobile-col">
+                    <h3 class="col-title">📱 Aperçu Téléphone (Mobile)</h3>
+                    <div class="device-frame mobile-frame">
+                        <img src="screenshots_temp/decouverte-neurofeedback_mobile.jpg" alt="Découverte du Neurofeedback Mobile">
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="page-section">
+            <div class="page-title">
+                La Science
+                <span>Fichier : site/neurofeedback.html</span>
+            </div>
+            <div class="screenshot-grid">
+                <div class="desktop-col">
+                    <h3 class="col-title">🖥️ Aperçu Ordinateur (Desktop)</h3>
+                    <div class="device-frame desktop-frame">
+                        <img src="screenshots_temp/neurofeedback_desktop.jpg" alt="La Science Desktop">
+                    </div>
+                </div>
+                <div class="mobile-col">
+                    <h3 class="col-title">📱 Aperçu Téléphone (Mobile)</h3>
+                    <div class="device-frame mobile-frame">
+                        <img src="screenshots_temp/neurofeedback_mobile.jpg" alt="La Science Mobile">
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="page-section">
+            <div class="page-title">
+                Programmes d'entraînement
+                <span>Fichier : site/programmes.html</span>
+            </div>
+            <div class="screenshot-grid">
+                <div class="desktop-col">
+                    <h3 class="col-title">🖥️ Aperçu Ordinateur (Desktop)</h3>
+                    <div class="device-frame desktop-frame">
+                        <img src="screenshots_temp/programmes_desktop.jpg" alt="Programmes d'entraînement Desktop">
+                    </div>
+                </div>
+                <div class="mobile-col">
+                    <h3 class="col-title">📱 Aperçu Téléphone (Mobile)</h3>
+                    <div class="device-frame mobile-frame">
+                        <img src="screenshots_temp/programmes_mobile.jpg" alt="Programmes d'entraînement Mobile">
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="page-section">
+            <div class="page-title">
+                Notre Vision
+                <span>Fichier : site/vision.html</span>
+            </div>
+            <div class="screenshot-grid">
+                <div class="desktop-col">
+                    <h3 class="col-title">🖥️ Aperçu Ordinateur (Desktop)</h3>
+                    <div class="device-frame desktop-frame">
+                        <img src="screenshots_temp/vision_desktop.jpg" alt="Notre Vision Desktop">
+                    </div>
+                </div>
+                <div class="mobile-col">
+                    <h3 class="col-title">📱 Aperçu Téléphone (Mobile)</h3>
+                    <div class="device-frame mobile-frame">
+                        <img src="screenshots_temp/vision_mobile.jpg" alt="Notre Vision Mobile">
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="page-section">
+            <div class="page-title">
+                Nos Centres
+                <span>Fichier : site/centres.html</span>
+            </div>
+            <div class="screenshot-grid">
+                <div class="desktop-col">
+                    <h3 class="col-title">🖥️ Aperçu Ordinateur (Desktop)</h3>
+                    <div class="device-frame desktop-frame">
+                        <img src="screenshots_temp/centres_desktop.jpg" alt="Nos Centres Desktop">
+                    </div>
+                </div>
+                <div class="mobile-col">
+                    <h3 class="col-title">📱 Aperçu Téléphone (Mobile)</h3>
+                    <div class="device-frame mobile-frame">
+                        <img src="screenshots_temp/centres_mobile.jpg" alt="Nos Centres Mobile">
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="page-section">
+            <div class="page-title">
+                B2B & Entreprises
+                <span>Fichier : site/b2b.html</span>
+            </div>
+            <div class="screenshot-grid">
+                <div class="desktop-col">
+                    <h3 class="col-title">🖥️ Aperçu Ordinateur (Desktop)</h3>
+                    <div class="device-frame desktop-frame">
+                        <img src="screenshots_temp/b2b_desktop.jpg" alt="B2B & Entreprises Desktop">
+                    </div>
+                </div>
+                <div class="mobile-col">
+                    <h3 class="col-title">📱 Aperçu Téléphone (Mobile)</h3>
+                    <div class="device-frame mobile-frame">
+                        <img src="screenshots_temp/b2b_mobile.jpg" alt="B2B & Entreprises Mobile">
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="page-section">
+            <div class="page-title">
+                Modèle Franchise
+                <span>Fichier : site/franchise.html</span>
+            </div>
+            <div class="screenshot-grid">
+                <div class="desktop-col">
+                    <h3 class="col-title">🖥️ Aperçu Ordinateur (Desktop)</h3>
+                    <div class="device-frame desktop-frame">
+                        <img src="screenshots_temp/franchise_desktop.jpg" alt="Modèle Franchise Desktop">
+                    </div>
+                </div>
+                <div class="mobile-col">
+                    <h3 class="col-title">📱 Aperçu Téléphone (Mobile)</h3>
+                    <div class="device-frame mobile-frame">
+                        <img src="screenshots_temp/franchise_mobile.jpg" alt="Modèle Franchise Mobile">
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="page-section">
+            <div class="page-title">
+                Portail Patient
+                <span>Fichier : site/portal-patient.html</span>
+            </div>
+            <div class="screenshot-grid">
+                <div class="desktop-col">
+                    <h3 class="col-title">🖥️ Aperçu Ordinateur (Desktop)</h3>
+                    <div class="device-frame desktop-frame">
+                        <img src="screenshots_temp/portal-patient_desktop.jpg" alt="Portail Patient Desktop">
+                    </div>
+                </div>
+                <div class="mobile-col">
+                    <h3 class="col-title">📱 Aperçu Téléphone (Mobile)</h3>
+                    <div class="device-frame mobile-frame">
+                        <img src="screenshots_temp/portal-patient_mobile.jpg" alt="Portail Patient Mobile">
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="page-section">
+            <div class="page-title">
+                Les Réponses du Dr. Chadia
+                <span>Fichier : site/les-reponses-du-dr-chadia.html</span>
+            </div>
+            <div class="screenshot-grid">
+                <div class="desktop-col">
+                    <h3 class="col-title">🖥️ Aperçu Ordinateur (Desktop)</h3>
+                    <div class="device-frame desktop-frame">
+                        <img src="screenshots_temp/les-reponses-du-dr-chadia_desktop.jpg" alt="Les Réponses du Dr. Chadia Desktop">
+                    </div>
+                </div>
+                <div class="mobile-col">
+                    <h3 class="col-title">📱 Aperçu Téléphone (Mobile)</h3>
+                    <div class="device-frame mobile-frame">
+                        <img src="screenshots_temp/les-reponses-du-dr-chadia_mobile.jpg" alt="Les Réponses du Dr. Chadia Mobile">
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="page-section">
+            <div class="page-title">
+                Contact & Orientation
+                <span>Fichier : site/contact.html</span>
+            </div>
+            <div class="screenshot-grid">
+                <div class="desktop-col">
+                    <h3 class="col-title">🖥️ Aperçu Ordinateur (Desktop)</h3>
+                    <div class="device-frame desktop-frame">
+                        <img src="screenshots_temp/contact_desktop.jpg" alt="Contact & Orientation Desktop">
+                    </div>
+                </div>
+                <div class="mobile-col">
+                    <h3 class="col-title">📱 Aperçu Téléphone (Mobile)</h3>
+                    <div class="device-frame mobile-frame">
+                        <img src="screenshots_temp/contact_mobile.jpg" alt="Contact & Orientation Mobile">
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="page-section">
+            <div class="page-title">
+                Success Stories
+                <span>Fichier : site/success-stories.html</span>
+            </div>
+            <div class="screenshot-grid">
+                <div class="desktop-col">
+                    <h3 class="col-title">🖥️ Aperçu Ordinateur (Desktop)</h3>
+                    <div class="device-frame desktop-frame">
+                        <img src="screenshots_temp/success-stories_desktop.jpg" alt="Success Stories Desktop">
+                    </div>
+                </div>
+                <div class="mobile-col">
+                    <h3 class="col-title">📱 Aperçu Téléphone (Mobile)</h3>
+                    <div class="device-frame mobile-frame">
+                        <img src="screenshots_temp/success-stories_mobile.jpg" alt="Success Stories Mobile">
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="page-section">
+            <div class="page-title">
+                Tarifs & Formules
+                <span>Fichier : site/tarifs.html</span>
+            </div>
+            <div class="screenshot-grid">
+                <div class="desktop-col">
+                    <h3 class="col-title">🖥️ Aperçu Ordinateur (Desktop)</h3>
+                    <div class="device-frame desktop-frame">
+                        <img src="screenshots_temp/tarifs_desktop.jpg" alt="Tarifs & Formules Desktop">
+                    </div>
+                </div>
+                <div class="mobile-col">
+                    <h3 class="col-title">📱 Aperçu Téléphone (Mobile)</h3>
+                    <div class="device-frame mobile-frame">
+                        <img src="screenshots_temp/tarifs_mobile.jpg" alt="Tarifs & Formules Mobile">
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="page-section">
+            <div class="page-title">
+                Brain Boost
+                <span>Fichier : site/brain-boost.html</span>
+            </div>
+            <div class="screenshot-grid">
+                <div class="desktop-col">
+                    <h3 class="col-title">🖥️ Aperçu Ordinateur (Desktop)</h3>
+                    <div class="device-frame desktop-frame">
+                        <img src="screenshots_temp/brain-boost_desktop.jpg" alt="Brain Boost Desktop">
+                    </div>
+                </div>
+                <div class="mobile-col">
+                    <h3 class="col-title">📱 Aperçu Téléphone (Mobile)</h3>
+                    <div class="device-frame mobile-frame">
+                        <img src="screenshots_temp/brain-boost_mobile.jpg" alt="Brain Boost Mobile">
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="page-section">
+            <div class="page-title">
+                Forum de discussion
+                <span>Fichier : site/forum.html</span>
+            </div>
+            <div class="screenshot-grid">
+                <div class="desktop-col">
+                    <h3 class="col-title">🖥️ Aperçu Ordinateur (Desktop)</h3>
+                    <div class="device-frame desktop-frame">
+                        <img src="screenshots_temp/forum_desktop.jpg" alt="Forum de discussion Desktop">
+                    </div>
+                </div>
+                <div class="mobile-col">
+                    <h3 class="col-title">📱 Aperçu Téléphone (Mobile)</h3>
+                    <div class="device-frame mobile-frame">
+                        <img src="screenshots_temp/forum_mobile.jpg" alt="Forum de discussion Mobile">
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="page-section">
+            <div class="page-title">
+                Blog d'actualités
+                <span>Fichier : site/blog.html</span>
+            </div>
+            <div class="screenshot-grid">
+                <div class="desktop-col">
+                    <h3 class="col-title">🖥️ Aperçu Ordinateur (Desktop)</h3>
+                    <div class="device-frame desktop-frame">
+                        <img src="screenshots_temp/blog_desktop.jpg" alt="Blog d'actualités Desktop">
+                    </div>
+                </div>
+                <div class="mobile-col">
+                    <h3 class="col-title">📱 Aperçu Téléphone (Mobile)</h3>
+                    <div class="device-frame mobile-frame">
+                        <img src="screenshots_temp/blog_mobile.jpg" alt="Blog d'actualités Mobile">
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="page-section">
+            <div class="page-title">
+                Packs & Formules
+                <span>Fichier : site/pack.html</span>
+            </div>
+            <div class="screenshot-grid">
+                <div class="desktop-col">
+                    <h3 class="col-title">🖥️ Aperçu Ordinateur (Desktop)</h3>
+                    <div class="device-frame desktop-frame">
+                        <img src="screenshots_temp/pack_desktop.jpg" alt="Packs & Formules Desktop">
+                    </div>
+                </div>
+                <div class="mobile-col">
+                    <h3 class="col-title">📱 Aperçu Téléphone (Mobile)</h3>
+                    <div class="device-frame mobile-frame">
+                        <img src="screenshots_temp/pack_mobile.jpg" alt="Packs & Formules Mobile">
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="page-section">
+            <div class="page-title">
+                Recherche
+                <span>Fichier : site/recherche.html</span>
+            </div>
+            <div class="screenshot-grid">
+                <div class="desktop-col">
+                    <h3 class="col-title">🖥️ Aperçu Ordinateur (Desktop)</h3>
+                    <div class="device-frame desktop-frame">
+                        <img src="screenshots_temp/recherche_desktop.jpg" alt="Recherche Desktop">
+                    </div>
+                </div>
+                <div class="mobile-col">
+                    <h3 class="col-title">📱 Aperçu Téléphone (Mobile)</h3>
+                    <div class="device-frame mobile-frame">
+                        <img src="screenshots_temp/recherche_mobile.jpg" alt="Recherche Mobile">
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+    </body>
+    </html>
+    
