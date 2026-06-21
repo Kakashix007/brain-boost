@@ -12,12 +12,9 @@ const pages = [
   { name: "B2B & Entreprises", file: "b2b.html" },
   { name: "Modèle Franchise", file: "franchise.html" },
   { name: "Portail Patient", file: "portal-patient.html" },
-  { name: "Les Réponses du Dr. Chadia", file: "les-reponses-du-dr-chadia.html" },
   { name: "Contact & Orientation", file: "contact.html" },
   { name: "Success Stories", file: "success-stories.html" },
   { name: "Tarifs & Formules", file: "tarifs.html" },
-  { name: "Brain Boost", file: "brain-boost.html" },
-  { name: "Forum de discussion", file: "forum.html" },
   { name: "Blog d'actualités", file: "blog.html" },
   { name: "Packs & Formules", file: "pack.html" },
   { name: "Recherche", file: "recherche.html" }
