@@ -2,6 +2,22 @@
 // INFC Premium Interactions & Navigation (2026)
 
 document.addEventListener('DOMContentLoaded', () => {
+    // 0. Header Scroll Effect
+    const header = document.querySelector('header');
+    if (header) {
+        const scrollListener = () => {
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        };
+        
+        window.addEventListener('scroll', scrollListener, { passive: true });
+        // Check on load in case page loads scrolled
+        scrollListener();
+    }
+
     // 1. Dynamic Mobile Navigation Menu
     const navContainer = document.querySelector('.nav-container');
     const nav = document.querySelector('nav');
