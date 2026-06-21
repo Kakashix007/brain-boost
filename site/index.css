@@ -211,6 +211,11 @@ header {
   background: var(--color-gold-light);
 }
 
+/* Mobile CTA button (only shown inside drawer on mobile) */
+.nav-drawer-cta {
+  display: none;
+}
+
 /* Mobile nav & Hamburger menu */
 .hamburger-menu {
   display: none;
@@ -258,6 +263,9 @@ header {
 
 @media (max-width: 991px) {
   .hamburger-menu {
+    display: block;
+  }
+  .nav-drawer-cta {
     display: block;
   }
   .nav-container {
