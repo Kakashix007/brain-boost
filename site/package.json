@@ -1,4 +1,12 @@
 {
+  "name": "brain-boost",
+  "version": "1.0.0",
+  "description": "Brain Boost - Neurofeedback Center",
+  "scripts": {
+    "dev": "python3 -m http.server 3000",
+    "build": "echo 'Static site - no build needed'",
+    "start": "python3 -m http.server 3000"
+  },
   "dependencies": {
     "html-pdf": "^2.2.0",
     "pdfkit": "^0.18.0"
